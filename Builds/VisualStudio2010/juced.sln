@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{177EA987-E5C1-A512-2496-AB734FEBABCD}") = "juced", "juced.vcxproj", "{AFC3A166-9DE0-B0F5-2202-49577BD97BBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFC3A166-9DE0-B0F5-2202-49577BD97BBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AFC3A166-9DE0-B0F5-2202-49577BD97BBA}.Debug|Win32.Build.0 = Debug|Win32
+		{AFC3A166-9DE0-B0F5-2202-49577BD97BBA}.Release|Win32.ActiveCfg = Release|Win32
+		{AFC3A166-9DE0-B0F5-2202-49577BD97BBA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

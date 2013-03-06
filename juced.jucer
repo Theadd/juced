@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="fnjJNJ" name="juced" projectType="guiapp" version="0.1" bundleIdentifier="edu.upc.juced"
+              jucerVersion="3.0.0" userNotes="JUCE GUI Designer">
+  <MAINGROUP id="PHxAmr" name="juced">
+    <GROUP id="{28A7121C-2451-00DC-CECA-C9820136CEE0}" name="Source">
+      <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="ewv5Hh" name="button.png" compile="0" resource="1" file="Source/BinaryData/button.png"/>
+        <FILE id="ZPZBPR" name="combobox.png" compile="0" resource="1" file="Source/BinaryData/combobox.png"/>
+        <FILE id="QRniEe" name="label.png" compile="0" resource="1" file="Source/BinaryData/label.png"/>
+        <FILE id="bUxPE5" name="listbox.png" compile="0" resource="1" file="Source/BinaryData/listbox.png"/>
+        <FILE id="zCmQsx" name="tabs.png" compile="0" resource="1" file="Source/BinaryData/tabs.png"/>
+        <FILE id="l7NHO5" name="textbox.png" compile="0" resource="1" file="Source/BinaryData/textbox.png"/>
+        <FILE id="Y58W3l" name="window.png" compile="0" resource="1" file="Source/BinaryData/window.png"/>
+        <FILE id="AIae3g" name="juced.png" compile="0" resource="1" file="Source/BinaryData/juced.png"/>
+        <FILE id="eSzrF7" name="juced.ico" compile="0" resource="1" file="Source/BinaryData/juced.ico"/>
+      </GROUP>
+      <GROUP id="{581679E4-FD22-7AAC-8A3A-D3891EEB2824}" name="Interface">
+        <FILE id="EMY6BB" name="SelectionArea.cpp" compile="1" resource="0"
+              file="Source/Interface/SelectionArea.cpp"/>
+        <FILE id="OQ1dzG" name="Toolbox.cpp" compile="1" resource="0" file="Source/Interface/Toolbox.cpp"/>
+      </GROUP>
+      <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="mF8wyZ" name="juced_Label.cpp" compile="1" resource="0" file="Source/Modules/juced_Label.cpp"/>
+        <FILE id="bsZ3l9" name="juced_MainComponent.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_MainComponent.cpp"/>
+        <FILE id="sRMGCg" name="juced_MainComponent.h" compile="0" resource="0"
+              file="Source/Modules/juced_MainComponent.h"/>
+        <FILE id="xYVOML" name="juced_Window.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_Window.cpp"/>
+      </GROUP>
+      <FILE id="ReQbaF" name="JUCE_Designer.cpp" compile="1" resource="0"
+            file="Source/JUCE_Designer.cpp"/>
+      <FILE id="INhdEW" name="JUCE_Designer.h" compile="0" resource="0" file="Source/JUCE_Designer.h"/>
+      <FILE id="c8pY4o" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="gJrFKz" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="jboPuI" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <EXPORTFORMATS>
+    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="..\JUCE\modules"
+            bigIcon="AIae3g" smallIcon="AIae3g">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="juced"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="juced"/>
+      </CONFIGURATIONS>
+    </VS2010>
+  </EXPORTFORMATS>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
