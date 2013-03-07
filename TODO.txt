@@ -1,0 +1,2 @@
+
+- If there are multiple instances of toolbox we have to deselect other toolboxes selected item when selecting any tool in any toolbox.

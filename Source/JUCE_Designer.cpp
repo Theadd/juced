@@ -1,161 +1,143 @@
-/*
-  ==============================================================================
-
-  This is an automatically generated file created by the Jucer!
-
-  Creation date:  5 Mar 2013 9:28:21am
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Jucer version: 1.12
-
-  ------------------------------------------------------------------------------
-
-  The Jucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright 2004-6 by Raw Material Software ltd.
-
-  ==============================================================================
-*/
-
-//[Headers] You can add your own extra header files here...
-//[/Headers]
 
 #include "JUCE_Designer.h"
 
-
-//[MiscUserDefs] You can add your own user definitions and misc code here...
-//[/MiscUserDefs]
-
-//==============================================================================
 JUCE_Designer::JUCE_Designer ()
 {
-
-    //[UserPreSize]
-    //[/UserPreSize]
-
-    setSize (300, 400);
-
-
-    //[Constructor] You can add your own custom stuff here..
-    //[/Constructor]
+	setSize (500, 400);
+	
 }
 
-JUCE_Designer::~JUCE_Designer()
-{
-    //[Destructor_pre]. You can add your own custom destruction code here..
-    //[/Destructor_pre]
+JUCE_Designer::~JUCE_Designer() { }
 
+Component* JUCE_Designer::createToolbox (int itemsPerRow, int itemSize, int itemPadding) {
+	Toolbox *toolbox = new Toolbox(itemsPerRow, itemSize, itemPadding);
+	toolbox->setBounds(0, 0, 1, 1);
+	toolbox->loadTooltips();
+	toolboxes.add(toolbox);
+	return toolbox;
+}
 
+void JUCE_Designer::addToolboxItem (Component* _toolbox, const String& name, const String& toolTip, const char* image, int imageSize) {
+	Toolbox *toolbox = (Toolbox*) _toolbox;
+	toolbox->addItem(name, toolTip, image, imageSize);
+}
 
-    //[Destructor]. You can add your own custom destruction code here..
-    //[/Destructor]
+String* JUCE_Designer::getSelectedToolName () {
+	for (int i = 0; i < toolboxes.size(); i++) {
+		if (toolboxes[i]->getSelectedToolName()->isNotEmpty()) {
+			return toolboxes[i]->getSelectedToolName();
+		}
+	}
+	return (new String(""));
+}
+
+void JUCE_Designer::deselectTool () {
+	for (int i = 0; i < toolboxes.size(); i++) {
+		toolboxes[i]->deselectTool();
+	}
+}
+
+void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int height) {
+	juced_Window *win = new juced_Window();
+	parent->addAndMakeVisible(win);
+	win->setBounds(x, y, (width >= win->minWidth) ? width : win->minWidth, (height >= win->minHeight) ? height : win->minHeight);
+	win->getContentComponent()->addMouseListener(this, true);
+	juced_Windows.add(win);
 }
 
 //==============================================================================
 void JUCE_Designer::paint (Graphics& g)
 {
-    //[UserPrePaint] Add your own custom painting code here..
-    //[/UserPrePaint]
+    g.fillAll (Colour((uint8) 245, (uint8) 245, (uint8) 245));
 
-    g.fillAll (Colours::white);
-
-    //[UserPaint] Add your own custom painting code here..
-    //[/UserPaint]
+    g.setFont (Font (16.0f));
+    g.setColour (Colours::black);
+    //g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
+	for (float x = 15.0f; x < (float) getWidth(); x+=15.0f) {
+		g.drawLine(x, 0.0f, x, (float) getHeight(), 0.1f);
+		g.drawLine(0.0f, x, (float) getWidth(), x, 0.1f);
+	}
 }
 
 void JUCE_Designer::resized()
 {
-    //[UserResized] Add your own custom resize handling here..
-    //[/UserResized]
+
 }
 
 void JUCE_Designer::lookAndFeelChanged()
 {
-    //[UserCode_lookAndFeelChanged] -- Add your code here...
-    //[/UserCode_lookAndFeelChanged]
+
 }
 
 void JUCE_Designer::childrenChanged()
 {
-    //[UserCode_childrenChanged] -- Add your code here...
-    //[/UserCode_childrenChanged]
+
 }
 
-void JUCE_Designer::mouseDown (const MouseEvent& e)
+void JUCE_Designer::mouseDown (const MouseEvent& event)
 {
-    //[UserCode_mouseDown] -- Add your code here...
-    //[/UserCode_mouseDown]
+	if (getSelectedToolName()->isNotEmpty()) {
+		selectionArea = new SelectionArea();
+		addAndMakeVisible(selectionArea);
+		MouseEvent relativeEvent = event.getEventRelativeTo(this);
+		selectionArea->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1);
+	}
 }
 
-void JUCE_Designer::mouseDrag (const MouseEvent& e)
+void JUCE_Designer::mouseDrag (const MouseEvent& event)
 {
-    //[UserCode_mouseDrag] -- Add your code here...
-    //[/UserCode_mouseDrag]
+	if (selectionArea != nullptr) {
+		MouseEvent relativeEvent = event.getEventRelativeTo(this);
+		selectionArea->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
+
+	}
 }
 
-void JUCE_Designer::mouseUp (const MouseEvent& e)
+void JUCE_Designer::mouseUp (const MouseEvent& event)
 {
-    //[UserCode_mouseUp] -- Add your code here...
-    //[/UserCode_mouseUp]
+	String *selectedToolName = getSelectedToolName();
+	if (!event.mouseWasClicked()) {
+		if (selectedToolName->isNotEmpty()) {
+			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
+			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
+				addWindow(event.originalComponent, relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
+			} else if (selectedToolName->equalsIgnoreCase("juced_Label")) {
+				juced_Label *label = new juced_Label();
+				label->setText("label1", false);
+				event.originalComponent->addAndMakeVisible(label);
+				label->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
+				label->addMouseListener(this, false);
+				juced_Labels.add(label);
+			}
+			selectionArea = nullptr;
+		}
+	} else {
+		if (selectedToolName->isEmpty()) {
+			if (event.originalComponent != this) {
+				//Selecting a component
+				selectionArea = new SelectionArea(true);
+				addAndMakeVisible(selectionArea);
+				//MouseEvent relativeEvent = event.getEventRelativeTo(this);
+				//Point<int> p = event.originalComponent->getLocalPoint(this, event.originalComponent->getPosition());
+				selectionArea->setSelectionBounds(event.originalComponent->getX(), event.originalComponent->getY(), event.originalComponent->getWidth(), event.originalComponent->getHeight());
+			}
+		}
+	}
+	deselectTool();
 }
 
 void JUCE_Designer::mouseDoubleClick (const MouseEvent& e)
 {
-    //[UserCode_mouseDoubleClick] -- Add your code here...
-    //[/UserCode_mouseDoubleClick]
+
 }
 
 bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
-    //[UserCode_keyPressed] -- Add your code here...
+
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
-    //[/UserCode_keyPressed]
 }
 
 void JUCE_Designer::focusOfChildComponentChanged (FocusChangeType cause)
 {
-    //[UserCode_focusOfChildComponentChanged] -- Add your code here...
-    //[/UserCode_focusOfChildComponentChanged]
+
 }
-
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-//[/MiscUserCode]
-
-
-//==============================================================================
-#if 0
-/*  -- Jucer information section --
-
-    This is where the Jucer puts all of its metadata, so don't change anything in here!
-
-BEGIN_JUCER_METADATA
-
-<JUCER_COMPONENT documentType="Component" className="JUCE_Designer" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330000013"
-                 fixedSize="0" initialWidth="300" initialHeight="400">
-  <METHODS>
-    <METHOD name="childrenChanged()"/>
-    <METHOD name="mouseUp (const MouseEvent&amp; e)"/>
-    <METHOD name="keyPressed (const KeyPress&amp; key)"/>
-    <METHOD name="lookAndFeelChanged()"/>
-    <METHOD name="mouseDown (const MouseEvent&amp; e)"/>
-    <METHOD name="mouseDrag (const MouseEvent&amp; e)"/>
-    <METHOD name="mouseDoubleClick (const MouseEvent&amp; e)"/>
-    <METHOD name="focusOfChildComponentChanged (FocusChangeType cause)"/>
-  </METHODS>
-  <BACKGROUND backgroundColour="ffffffff"/>
-</JUCER_COMPONENT>
-
-END_JUCER_METADATA
-*/
-#endif
-
-
-
-//[EndFile] You can add extra defines here...
-//[/EndFile]

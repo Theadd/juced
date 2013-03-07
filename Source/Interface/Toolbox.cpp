@@ -69,7 +69,7 @@ public:
 		return selectedToolName;
 	}
 
-	void unselectTool () {
+	void deselectTool () {
 		String *pString = new String("");
 		selectedToolName = pString;
 	}
