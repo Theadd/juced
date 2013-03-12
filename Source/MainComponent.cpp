@@ -12,7 +12,7 @@
 //==============================================================================
 MainContentComponent::MainContentComponent()
 {
-	setSize (500, 400);
+	setSize (800, 600);
     juced = new JUCE_Designer();
 	addAndMakeVisible(juced);
 	Component* toolbox;

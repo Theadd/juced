@@ -27,7 +27,7 @@ public:
     void initialise (const String& commandLine)
     {
         // This method is where you should put your application's initialisation code..
-
+		if (commandLine.isNotEmpty()) {}	//TODO: remove
         mainWindow = new MainWindow();
     }
 
@@ -48,6 +48,7 @@ public:
 
     void anotherInstanceStarted (const String& commandLine)
     {
+		if (commandLine.isNotEmpty()) {}	//TODO: remove
         // When another instance of the app is launched while this one is running,
         // this method is invoked, and the commandLine parameter tells you what
         // the other instance's command-line arguments were.

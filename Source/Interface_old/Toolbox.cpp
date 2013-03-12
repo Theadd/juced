@@ -77,7 +77,8 @@ public:
 	void mouseUp (const MouseEvent &event) {
 		
 		if (event.mouseWasClicked()) {
-			for (int i = 0; i < tools.size(); i++) {
+			//for (int i = 0; i < tools.size(); i++) {
+			for (int i = tools.size(); --i >= 0;) {
 				if (tools[i]->getScreenBounds().contains(event.getMouseDownScreenPosition())) {
 					selectedToolName = new String(tools[i]->getName());
 				}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window id="2f49d0b6f14a208683d6c20e89a18c65" className="juced_Window"
+        name="Test Window" width="128" height="128" foo="Method" objectType="window">
+  <component id="b442dd8ec2925c3a613269efd1c3752f" className="juced_MainComponent"
+             name="" width="500" height="400" objectType="component">
+    <label id="a6475ad3306ba341158cf338eee94c31" className="juced_Label"
+           name="" width="0" height="0" text="Test label message" objectType="label"/>
+    <label id="b3d69ab494a2faaa79c9232f38df013d" className="juced_Label"
+           name="" width="0" height="0" text="Test label message" objectType="label"/>
+  </component>
+</window>

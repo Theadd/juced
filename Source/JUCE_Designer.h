@@ -3,10 +3,15 @@
 #define __JUCER_HEADER_JUCEDESIGNER_JUCEDESIGNER_BDA26567__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Designer/BaseModules.h"
 #include "Modules/juced_Window.cpp"
-#include "Modules/juced_Label.cpp"
-#include "Interface/SelectionArea.cpp"
-#include "Interface/Toolbox.cpp"
+#include "Modules/juced_Label.h"
+#include "Designer/SelectionArea.cpp"
+#include "Designer/Toolbox.cpp"
+#include "Designer/PropertiesComponent.cpp"
+#include "Designer/BigTree.cpp"
+
+
 
 class JUCE_Designer  : public Component
 {
@@ -35,10 +40,15 @@ public:
 
 
 private:
-	OwnedArray<juced_Window> juced_Windows;
-	OwnedArray<juced_Label> juced_Labels;
+	//OwnedArray<juced_Window> juced_Windows;
+	//OwnedArray<juced_Label> juced_Labels;
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
+	ScopedPointer<Component> selectedComponent;
+	ScopedPointer<BigTree> bigTree;
+	ScopedPointer<ComponentBuilder> builder;
+	
+	ScopedPointer<PropertyPanelViewport> propertiesViewport;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_Designer)
 };

@@ -12,18 +12,22 @@
 #define __JUCED_MAINCOMPONENT_H_1B08AA79__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../Designer/BaseModules.h"
 
 class juced_MainComponent : public Component,
-							public MouseListener
+							public DynamicObject
 {
 public:
-    //==============================================================================
+    
+	ValueTree *linkedValueTree;
+
     juced_MainComponent();
     ~juced_MainComponent();
 
     void paint(Graphics&);
     void resized();
-	bool isChildAllowed();
+
+	typedef ReferenceCountedObjectPtr<juced_MainComponent> Ptr;
 
 private:
 
