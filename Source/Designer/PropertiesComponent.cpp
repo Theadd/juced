@@ -7,9 +7,10 @@
 
   ==============================================================================
 */
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "BaseModules.h"
 
+#include "Globals.h"
+
+/*
 class PropertyListBuilder
 {
 public:
@@ -92,99 +93,112 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
 };
+*/
 
-
-
-class PropertyPanelViewport  : public Component
+class PropertyView  : public Viewport
 {
 public:
-    PropertyPanelViewport (Component* content)
+    PropertyView (Component* content) : Viewport()
     {
-        addAndMakeVisible (&viewport);
-        //addAndMakeVisible (&rolloverHelp);
-        viewport.setViewedComponent (content, true);
-		//content->setBounds(0, 0, 200, 300);
-		resized();
+        setViewedComponent (content);
+		setScrollBarsShown(true, false);
     }
 
 	void setViewedComponent (Component* content) {
-		viewport.setViewedComponent (content, true);
+		Viewport::setViewedComponent (content, true);
 		resized();
 	}
 
     void paint (Graphics& g)
     {
-        //IntrojucerLookAndFeel::fillWithBackgroundTexture (*this, g);
-		g.fillAll (Colours::transparentWhite);
-		
+		g.fillAll (Colours::white);
+		#ifdef __JUCER_APPEARANCESETTINGS_H_34D762C7__
+			IntrojucerLookAndFeel::fillWithBackgroundTexture (*this, g);
+		#endif
     }
 
     void resized()
     {
         Rectangle<int> r (getLocalBounds());
-        //rolloverHelp.setBounds (r.removeFromBottom (70).reduced (10, 0));
-		viewport.getViewedComponent()->setBounds(0, 0, r.getWidth(), r.getHeight());
-        viewport.setBounds (r);
+		if (!isVerticalScrollBarShown() || !getVerticalScrollBar()->isVisible()) {
+			getViewedComponent()->setBounds(0, 0, r.getWidth(), r.getHeight());
+		} else {
+			getViewedComponent()->setBounds(0, 0, r.getWidth() - getScrollBarThickness(), r.getHeight());
+		}
     }
-
-    Viewport viewport;
-    //RolloverHelpComp rolloverHelp;
 
 private:
 	ScopedPointer<Component> content;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyPanelViewport)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyView)
 };
 
 
-class PropertiesComponent  : public Component
+class PropertyGroup  : public Component
 {
 public:
-	/*ProjectExporter::BuildConfiguration* conf,*/ 
-    PropertiesComponent (const String& expName)
+
+    PropertyGroup ()
     {
-		group.setName (expName);
-
-        addAndMakeVisible (&group);
-
-        PropertyListBuilder props;
-        group.setProperties (props);
-
-        parentSizeChanged();
+		setName ("Properties View");
+		PropertyGroup (nullptr);
     }
 
-	PropertiesComponent (const String& expName, ValueTree *tree) {
-		group.setName(expName);
-		addAndMakeVisible (&group);
-		PropertyListBuilder props;
-		Identifier t;
-		for (int i = tree->getNumProperties(); --i >= 0;) {
-			t = tree->getPropertyName(i);
-			if (t != Ids::object) {
-				props.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false),
-               "The name of this configuration.");
+	PropertyGroup (ValueTree *tree) {
+		setName ("Properties View");
+		if (tree != nullptr) {
+			setName((tree->hasProperty(Attributes::name)) ? tree->getProperty(Attributes::name) : "undefined");
+			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + tree->getProperty(Attributes::objectType.toString()) : getName());
+			Identifier t;
+			for (int i = tree->getNumProperties(); --i >= 0;) {
+				t = tree->getPropertyName(i);
+				if (Attributes::isVisibleAsProperty(t)) {	// != Attributes::object) {
+					properties.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false));
+				}
 			}
 		}
-		group.setProperties (props);
-		parentSizeChanged();
+
+		for (int i = properties.size(); --i >= 0;)
+            addAndMakeVisible (properties.getUnchecked(i));
+
+		//parentSizeChanged();
+		resized();
 	}
 
 
 	void paint (Graphics& g)
     {
-        //IntrojucerLookAndFeel::fillWithBackgroundTexture (*this, g);
-		g.fillAll (Colours::transparentWhite);
+		const Colour bkg (Colour((uint8) 245, (uint8) 245, (uint8) 245));	//(Colours::black);//
+
+        g.setColour (Colours::lightgrey.withAlpha (0.35f));
+        if (properties.size() > 0)
+			g.fillRect (0, 30, getWidth(), getHeight() - 38);
+
+        g.setFont (Font (15.0f, Font::bold));
+        g.setColour (bkg.contrasting (0.7f));
+        g.drawFittedText (getName(), 12, 0, getWidth() - 16, 25, Justification::bottomLeft, 1);
     }
 
 	void resized()
     {
-        group.updateSize(0, 0, getWidth());
+        int height = 38;
+
+        for (int i = 0; i < properties.size(); ++i)
+        {
+            PropertyComponent* pp = properties.getUnchecked(i);
+            pp->setBounds (10, height, getWidth() - 20, pp->getPreferredHeight());
+            height += pp->getHeight();
+        }
+
+        height += 16;
+        setBounds (0, 0, getWidth(), height);
+        //return height;	TODO: update parent container to fit this group of properties
     }
 
+	OwnedArray<PropertyComponent> properties;
 
 private:
-    PropertyGroup group;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertiesComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
 };
 
 

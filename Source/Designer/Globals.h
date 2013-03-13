@@ -1,27 +1,27 @@
 /*
   ==============================================================================
 
-    BaseModules.h
-    Created: 11 Mar 2013 7:49:07pm
+    Globals.h
+    Created: 13 Mar 2013 5:51:46pm
     Author:  admin
 
   ==============================================================================
 */
 
-#ifndef __BASEMODULES_H_E6ABB6F5__
-#define __BASEMODULES_H_E6ABB6F5__
-
 #include "../JuceLibraryCode/JuceHeader.h"
 
-/*
-namespace dTags
-{
-    const Identifier juced_Window       ("window");
-    const Identifier juced_Component            ("component");
-	const Identifier juced_Unknown            ("unknown");
-}*/
+#ifndef __GLOBALS_H_4F86195D__
+#define __GLOBALS_H_4F86195D__
 
-namespace Ids
+namespace Modules
+{
+    const Identifier Window       ("Window");
+    const Identifier Component    ("Component");
+	const Identifier Label        ("Label");
+    const Identifier Unknown	  ("Unknown");
+}
+
+namespace Attributes
 {
     #define DECLARE_ID(name)      const Identifier name (#name)
 
@@ -39,18 +39,15 @@ namespace Ids
     const Identifier class_ ("class");
 
     #undef DECLARE_ID
+
+	inline bool isVisibleAsProperty (Identifier _name)
+	{
+		return (_name == Attributes::name |
+			_name == Attributes::text |
+			_name == Attributes::width |
+			_name == Attributes::height );
+	}
+
 }
 
-class juced_BaseWindow    : public DocumentWindow,
-							public DynamicObject
-{
-public:
-
-	juced_BaseWindow (String _name, Colour _colour, DocumentWindow::TitleBarButtons _buttons);
-
-};
-
-
-
-
-#endif  // __BASEMODULES_H_E6ABB6F5__
+#endif   // __GLOBALS_H_4F86195D__

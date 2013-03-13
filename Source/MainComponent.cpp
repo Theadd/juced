@@ -24,7 +24,14 @@ MainContentComponent::MainContentComponent()
 	juced->addToolboxItem(toolbox, "juced_Combobox", "Combobox", BinaryData::combobox_png, BinaryData::combobox_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Listbox", "Listbox", BinaryData::listbox_png, BinaryData::listbox_pngSize);
 	juced->addToolboxItem(toolbox, "juced_TabPanel", "Tab panel", BinaryData::tabs_png, BinaryData::tabs_pngSize);
-	juced->addAndMakeVisible(toolbox);
+	toolbox->setAlwaysOnTop(true);
+	juced->addAndMakeVisible(toolbox, 11);
+
+	Viewport *propertyView = juced->getPropertyView();
+	addAndMakeVisible(propertyView);
+	propertyView->setBounds(100, 100, 200, 400);
+	propertyView->setOpaque(true);
+	propertyView->addToDesktop((ComponentPeer::StyleFlags::windowHasTitleBar | ComponentPeer::StyleFlags::windowIsResizable));
 
 }
 
@@ -39,7 +46,7 @@ void MainContentComponent::paint (Graphics& g)
 
 void MainContentComponent::resized()
 {
-    // This is called when the MainContentComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
+    Rectangle<int> r (getLocalBounds());
+	if (juced != nullptr)
+		juced->setBounds(0, 0, r.getWidth(), r.getHeight());
 }

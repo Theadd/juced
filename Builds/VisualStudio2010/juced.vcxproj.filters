@@ -223,9 +223,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Designer\BaseModules.cpp">
-      <Filter>juced\Source\Designer</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
@@ -1146,8 +1143,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Designer\BaseModules.h">
+    <ClInclude Include="..\..\Source\Designer\Globals.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_Window.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_Label.h">
       <Filter>juced\Source\Modules</Filter>

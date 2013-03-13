@@ -13,13 +13,14 @@
 juced_MainComponent::juced_MainComponent()
 {
     setSize (500, 400);
-	setProperty(Ids::objectType, "component");
-	setProperty(Ids::height, getHeight());
-	setProperty(Ids::width, getWidth());
-	setProperty(Ids::name, getName());
-	setProperty(Ids::className, "juced_MainComponent");
+	setName("component");
+	setProperty(Attributes::objectType, "Component");
+	setProperty(Attributes::height, getHeight());
+	setProperty(Attributes::width, getWidth());
+	setProperty(Attributes::name, getName());
+	setProperty(Attributes::className, "juced_MainComponent");
 	setComponentID(Uuid().toString());
-	setProperty(Ids::ID, getComponentID());
+	setProperty(Attributes::ID, getComponentID());
 }
 
 juced_MainComponent::~juced_MainComponent()

@@ -8,19 +8,17 @@
   ==============================================================================
 */
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "BaseModules.h"
+#include "Globals.h"
 #include "../Modules/juced_Label.h"
-
-
-
+#include "../Modules/juced_Window.h"
+#include "../Modules/juced_MainComponent.h"
 
 class BigTree : public ValueTree,
 				public ValueTree::Listener
 {
 public:
     //==============================================================================
-	BigTree() : ValueTree("COMPONENT")
+	BigTree() : ValueTree(Modules::Unknown.toString())
 	{
 
 	}
@@ -35,7 +33,7 @@ public:
 		addListener(this);
 	}
 
-	BigTree(DynamicObject *object) : ValueTree("unknown")
+	BigTree(DynamicObject *object) : ValueTree(Modules::Unknown.toString())
 	{
 		getDynamicObjectProperties(object);
 		addListener(this);
@@ -46,19 +44,19 @@ public:
 		//Deal with changes on this ValueTree only, not their childs.
 		if (treeWhosePropertyHasChanged == *this) {
 
-			jassert (this->hasProperty(Ids::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
+			jassert (this->hasProperty(Attributes::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
 
-			if (this->getProperty(Ids::objectType) == "window") {
-				juced_BaseWindow *obj = (juced_BaseWindow *)this->getProperty(Ids::object).getDynamicObject();
-				if (property == Ids::height) {
+			if (this->getProperty(Attributes::objectType) == Modules::Window) {
+				juced_Window *obj = (juced_Window *)this->getProperty(Attributes::object).getDynamicObject();
+				if (property == Attributes::height) {
 					int height = treeWhosePropertyHasChanged.getProperty(property);
 					obj->setSize(obj->getWidth(), height);
-				} else if (property == Ids::name) {
+				} else if (property == Attributes::name) {
 					obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
 				}
-			} else if (this->getProperty(Ids::objectType) == "label") {
-				juced_Label *obj = (juced_Label *)this->getProperty(Ids::object).getDynamicObject();
-				if (property == Ids::text) {
+			} else if (this->getProperty(Attributes::objectType) == Modules::Label) {
+				juced_Label *obj = (juced_Label *)this->getProperty(Attributes::object).getDynamicObject();
+				if (property == Attributes::text) {
 					obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
 				}
 			}
@@ -95,7 +93,7 @@ public:
 	{
 
 		BigTree *printableTree = new BigTree(createCopy());
-		printableTree->recursive_removeProperty(Ids::object, 0);
+		printableTree->recursive_removeProperty(Attributes::object, 0);
 		ValueTree *vTree = (ValueTree *) printableTree;
 		return vTree->createXml();
 	}
@@ -103,7 +101,7 @@ public:
 private:
 
 	void getDynamicObjectProperties(DynamicObject *object) {
-		setProperty(Ids::object, var(object), 0);
+		setProperty(Attributes::object, var(object), 0);
 
 		NamedValueSet values = object->getProperties();
 		for (int i = values.size(); --i >= 0;) {

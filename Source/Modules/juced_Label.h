@@ -8,11 +8,12 @@
   ==============================================================================
 */
 
+
+
 #ifndef __JUCED_LABEL_H_9DD865FB__
 #define __JUCED_LABEL_H_9DD865FB__
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "../Designer/BaseModules.h"
+#include "../Designer/Globals.h"
 
 class juced_Label    : public Label,
 					   public DynamicObject
@@ -22,8 +23,6 @@ public:
 	ValueTree *linkedValueTree;
 
     juced_Label();
-
-	typedef ReferenceCountedObjectPtr<juced_Label> Ptr;
 
 private:
 

@@ -11,8 +11,7 @@
 #ifndef __JUCED_MAINCOMPONENT_H_1B08AA79__
 #define __JUCED_MAINCOMPONENT_H_1B08AA79__
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "../Designer/BaseModules.h"
+#include "../Designer/Globals.h"
 
 class juced_MainComponent : public Component,
 							public DynamicObject
@@ -26,8 +25,6 @@ public:
 
     void paint(Graphics&);
     void resized();
-
-	typedef ReferenceCountedObjectPtr<juced_MainComponent> Ptr;
 
 private:
 

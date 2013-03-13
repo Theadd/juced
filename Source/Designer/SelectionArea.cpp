@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Globals.h"
 
 class SelectionArea : public Component
 {

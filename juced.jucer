@@ -16,8 +16,7 @@
         <FILE id="eSzrF7" name="juced.ico" compile="0" resource="1" file="Source/BinaryData/juced.ico"/>
       </GROUP>
       <GROUP id="{CD61A17A-EFAF-9E46-E500-10D885059D59}" name="Designer">
-        <FILE id="ABJosH" name="BaseModules.cpp" compile="1" resource="0" file="Source/Designer/BaseModules.cpp"/>
-        <FILE id="jg1Wrg" name="BaseModules.h" compile="0" resource="0" file="Source/Designer/BaseModules.h"/>
+        <FILE id="tWLmYr" name="Globals.h" compile="0" resource="0" file="Source/Designer/Globals.h"/>
         <FILE id="kDfdBj" name="BigTree.cpp" compile="1" resource="0" file="Source/Designer/BigTree.cpp"/>
         <FILE id="L86rWX" name="PropertiesComponent.cpp" compile="1" resource="0"
               file="Source/Designer/PropertiesComponent.cpp"/>
@@ -26,6 +25,7 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="WJcU4n" name="juced_Window.h" compile="0" resource="0" file="Source/Modules/juced_Window.h"/>
         <FILE id="A70ZFF" name="juced_Label.h" compile="0" resource="0" file="Source/Modules/juced_Label.h"/>
         <FILE id="mF8wyZ" name="juced_Label.cpp" compile="1" resource="0" file="Source/Modules/juced_Label.cpp"/>
         <FILE id="bsZ3l9" name="juced_MainComponent.cpp" compile="1" resource="0"

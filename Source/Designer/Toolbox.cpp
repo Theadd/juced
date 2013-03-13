@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "Globals.h"
 
 class Toolbox   : public Component
 {
