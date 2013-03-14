@@ -12,7 +12,7 @@
 
 juced_MainComponent::juced_MainComponent()
 {
-    setSize (500, 400);
+    //setSize (500, 400);
 	setName("component");
 	setProperty(Attributes::objectType, "Component");
 	setProperty(Attributes::height, getHeight());

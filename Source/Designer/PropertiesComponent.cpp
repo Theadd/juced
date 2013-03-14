@@ -9,91 +9,88 @@
 */
 
 #include "Globals.h"
+//#include "Properties\FontPropertyComponent.h"
 
-/*
-class PropertyListBuilder
+class TextWithButtonPropertyComponent  : public TextPropertyComponent,
+										 public Button::Listener
 {
 public:
-    PropertyListBuilder() {}
+	TextButton *button;
+	Label *textLabel;
 
-    void add (PropertyComponent* propertyComp)
+    TextWithButtonPropertyComponent (Value &ValueToControl, const String &propertyName) : TextPropertyComponent(ValueToControl, propertyName, 96, false)
     {
-        components.add (propertyComp);
+		textLabel = (Label *) this->getChildComponent(0);
+		button = new TextButton("...");
+		addAndMakeVisible(button);
+		button->setConnectedEdges(Button::ConnectedEdgeFlags::ConnectedOnRight | Button::ConnectedEdgeFlags::ConnectedOnLeft);
+		button->addListener(this);
+		resized();
     }
 
-    void add (PropertyComponent* propertyComp, const String& tooltip)
-    {
-        propertyComp->setTooltip (tooltip);
-        add (propertyComp);
-    }
+	~TextWithButtonPropertyComponent()
+	{
+		button->removeListener(this);
+	}
 
-    void addSearchPathProperty (const Value& value, const String& name, const String& mainHelpText)
-    {
-        add (new TextPropertyComponent (value, name, 16384, true),
-             mainHelpText + " Use semi-colons or new-lines to separate multiple paths.");
-    }
+	void buttonClicked (Button *button)
+	{
+		//AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
+	}
 
-    void setPreferredHeight (int height)
-    {
-        for (int j = components.size(); --j >= 0;)
-            components.getUnchecked(j)->setPreferredHeight (height);
-    }
-
-    Array <PropertyComponent*> components;
-
-private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyListBuilder)
+	void resized()
+	{
+		TextPropertyComponent::resized();
+		//Label *child = (Label *) this->getChildComponent(0);
+		//child->setSize(getWidth() - child->getHeight() - child->getX() - 2, child->getHeight());
+		textLabel->setSize(getWidth() - textLabel->getHeight() - textLabel->getX() - 2, textLabel->getHeight());
+		
+        button->setBounds(getWidth() - textLabel->getHeight() - 1, textLabel->getY(), textLabel->getHeight(), textLabel->getHeight());
+	}
 };
 
-
-class PropertyGroup  : public Component
+class ColourPropertyComponent  : public TextWithButtonPropertyComponent,
+								 public ChangeListener
 {
 public:
-    PropertyGroup()  {}
+	Colour colour;
 
-    void setProperties (const PropertyListBuilder& newProps)
+	ColourPropertyComponent (Value &ValueToControl, const String &propertyName) : TextWithButtonPropertyComponent(ValueToControl, propertyName)
     {
-        properties.clear();
-        properties.addArray (newProps.components);
+		Colour colour = Colour::fromString(ValueToControl.toString());	//Misc::getColourFromStringDisplay(ValueToControl.toString());
+		textLabel->setColour(Label::backgroundColourId, colour);
+		textLabel->setColour(Label::textColourId, colour.withAlpha(1.0f).contrasting(1.0f));
+		textLabel->setText(colour.toDisplayString(true), false);
+	}
 
-        for (int i = properties.size(); --i >= 0;)
-            addAndMakeVisible (properties.getUnchecked(i));
-    }
+	~ColourPropertyComponent ()
+	{
 
-    int updateSize (int x, int y, int width)
-    {
-        int height = 38;
+	}
 
-        for (int i = 0; i < properties.size(); ++i)
-        {
-            PropertyComponent* pp = properties.getUnchecked(i);
-            pp->setBounds (10, height, width - 20, pp->getPreferredHeight());
-            height += pp->getHeight();
-        }
+	void buttonClicked (Button *button)
+	{
+        ColourSelector* colourSelector = new ColourSelector();
+        colourSelector->setName ("background");
+        colourSelector->setCurrentColour (colour);	//(TextButton::buttonColourId));
+        colourSelector->addChangeListener (this);
+        colourSelector->setColour (ColourSelector::backgroundColourId, Colours::transparentBlack);
+        colourSelector->setSize (300, 400);
 
-        height += 16;
-        setBounds (x, y, width, height);
-        return height;
-    }
+        CallOutBox::launchAsynchronously (colourSelector, getScreenBounds(), nullptr);
+	}
 
-    void paint (Graphics& g)
-    {
-        const Colour bkg (Colour((uint8) 245, (uint8) 245, (uint8) 245));
+	void changeListenerCallback (ChangeBroadcaster *source)
+	{
+		ColourSelector* cs = dynamic_cast <ColourSelector*> (source);
+		colour = cs->getCurrentColour();
+		textLabel->setColour(Label::backgroundColourId, colour);
+		textLabel->setColour(Label::textColourId, colour.withAlpha(1.0f).contrasting(1.0f));
+		textLabel->setText(colour.toDisplayString(true), false);
+	}
 
-        g.setColour (Colours::white.withAlpha (0.35f));
-        g.fillRect (0, 30, getWidth(), getHeight() - 38);
-
-        g.setFont (Font (15.0f, Font::bold));
-        g.setColour (bkg.contrasting (0.7f));
-        g.drawFittedText (getName(), 12, 0, getWidth() - 16, 25, Justification::bottomLeft, 1);
-    }
-
-    OwnedArray<PropertyComponent> properties;
-
-private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
 };
-*/
+
 
 class PropertyView  : public Viewport
 {
@@ -151,8 +148,12 @@ public:
 			Identifier t;
 			for (int i = tree->getNumProperties(); --i >= 0;) {
 				t = tree->getPropertyName(i);
-				if (Attributes::isVisibleAsProperty(t)) {	// != Attributes::object) {
-					properties.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false));
+				if (Attributes::isVisibleAsProperty(t)) {
+					if (Attributes::getAttributeType(t) == AttributeType::colour) {
+						properties.add (new ColourPropertyComponent(tree->getPropertyAsValue(t, 0), t.toString()));
+					} else {
+						properties.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false));
+					}
 				}
 			}
 		}

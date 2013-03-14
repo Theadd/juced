@@ -14,6 +14,9 @@
     <Filter Include="juced\Source\Designer">
       <UniqueIdentifier>{A1984B8A-DD6A-C740-CE15-3BDB5BC4C458}</UniqueIdentifier>
     </Filter>
+    <Filter Include="juced\Source\Designer\Properties">
+      <UniqueIdentifier>{6F7BE87E-3AFF-02FA-CF28-2F4C55EB8BD6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="juced\Source\Modules">
       <UniqueIdentifier>{BE30E77F-5FEE-372C-B01C-98A3FE42DB3F}</UniqueIdentifier>
     </Filter>
@@ -223,6 +226,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Designer\Properties\FontPropertyComponent.cpp">
+      <Filter>juced\Source\Designer\Properties</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
@@ -1143,6 +1149,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Designer\Properties\FontPropertyComponent.h">
+      <Filter>juced\Source\Designer\Properties</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Globals.h">
       <Filter>juced\Source\Designer</Filter>
     </ClInclude>

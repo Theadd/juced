@@ -58,12 +58,15 @@ void JUCE_Designer::deselectTool () {
 void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int height) {
 
 	juced_Window *win = new juced_Window();
-
+	parent->addAndMakeVisible(win);
 	win->setBounds(x, y, (width >= win->minWidth) ? width : win->minWidth, (height >= win->minHeight) ? height : win->minHeight);
+	
+	win->setProperty(Attributes::x, x);
+	win->setProperty(Attributes::y, y);
+	win->setProperty(Attributes::width, (width >= win->minWidth) ? width : win->minWidth);
+	win->setProperty(Attributes::height, (height >= win->minHeight) ? height : win->minHeight);
 
 	bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
-
-	parent->addAndMakeVisible(win);
 
 	juced_MainComponent *comp = new juced_MainComponent();
 	win->setContentOwned(comp, true);
@@ -74,6 +77,17 @@ void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int h
 	PropertyGroup *properties = new PropertyGroup(bigTree);
 	propertyView->setViewedComponent(properties);
 
+}
+
+void JUCE_Designer::writeXmlToFile (String _filename)
+{
+	XmlElement *obj_xml = bigTree->createXml();
+
+	//Create xml file from XmlElement
+	File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
+	file.create();
+	obj_xml->writeToFile(file, "");
+	//file.revealToUser();
 }
 
 
@@ -142,14 +156,12 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
 				addWindow(event.originalComponent, relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
 			} else if (selectedToolName->equalsIgnoreCase("juced_Label")) {
-				//juced_Label::Ptr pLabel = new juced_Label();
-				//juced_Label *label = pLabel.getObject();
+
 				juced_Label *label = new juced_Label();
-				//label->setText("label1", false);
+
 				event.originalComponent->addAndMakeVisible(label);
 				label->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
 				label->addMouseListener(this, false);
-				//juced_Labels.add(label);
 
 				BigTree *labelTree = new BigTree(label, label->getProperty(Attributes::objectType));
 				if (parentTree.isValid()) {
@@ -159,14 +171,6 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 				PropertyGroup *properties = new PropertyGroup(labelTree);
 				propertyView->setViewedComponent(properties);
 
-				//TODO: remove
-				//XmlElement *obj_xml = bigTree->createXml();
-
-				//Create xml file from XmlElement
-				//File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "test.xml");
-				//file.create();
-				//obj_xml->writeToFile(file, "");
-				//file.revealToUser();
 			}
 			selectionArea = nullptr;
 		}

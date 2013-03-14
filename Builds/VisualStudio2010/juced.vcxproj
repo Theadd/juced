@@ -125,6 +125,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Designer\Properties\FontPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\PropertiesComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
@@ -949,6 +950,7 @@
     <ClCompile Include="..\..\..\JUCE\modules\juce_opengl\juce_opengl.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Designer\Properties\FontPropertyComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Label.h"/>

@@ -23,7 +23,8 @@ public:
 
     juced_Window();
 
-	void closeButtonPressed();
+	void closeButtonPressed ();
+	void setContentOwned (Component *newContentComponent, bool resizeToFitWhenContentChangesSize);
 
 private:
 

@@ -21,6 +21,14 @@ namespace Modules
     const Identifier Unknown	  ("Unknown");
 }
 
+namespace AttributeType
+{
+    const Identifier text       ("text");
+    const Identifier textarea    ("textarea");
+	const Identifier font        ("font");
+    const Identifier colour	  ("colour");
+}
+
 namespace Attributes
 {
     #define DECLARE_ID(name)      const Identifier name (#name)
@@ -30,6 +38,11 @@ namespace Attributes
     DECLARE_ID (text);
     DECLARE_ID (width);
     DECLARE_ID (height);
+    DECLARE_ID (x);
+    DECLARE_ID (y);
+	DECLARE_ID (font);
+	DECLARE_ID (backgroundColour);
+	DECLARE_ID (textColour);
 	DECLARE_ID (className);
     DECLARE_ID (classDesc);
 	DECLARE_ID (objectType);
@@ -42,12 +55,31 @@ namespace Attributes
 
 	inline bool isVisibleAsProperty (Identifier _name)
 	{
-		return (_name == Attributes::name |
-			_name == Attributes::text |
-			_name == Attributes::width |
+		return (_name == Attributes::name ||
+			_name == Attributes::text ||
+			_name == Attributes::font ||
+			_name == Attributes::backgroundColour ||
+			_name == Attributes::textColour ||
+			_name == Attributes::width ||
 			_name == Attributes::height );
 	}
 
+	inline Identifier getAttributeType (Identifier _name)
+	{
+		return ((_name == Attributes::backgroundColour || _name == Attributes::textColour) ? AttributeType::colour : AttributeType::text);
+	}
+
 }
+
+/*
+namespace Misc
+{
+	inline Colour getColourFromStringDisplay (String _colour)
+	{
+		int i = _colour.getHexValue32();
+		return Colour::fromRGBA(i & 4278190080, i & 16711680, i & 65280, i & 255);
+
+	}
+}*/
 
 #endif   // __GLOBALS_H_4F86195D__

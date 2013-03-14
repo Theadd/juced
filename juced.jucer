@@ -16,6 +16,12 @@
         <FILE id="eSzrF7" name="juced.ico" compile="0" resource="1" file="Source/BinaryData/juced.ico"/>
       </GROUP>
       <GROUP id="{CD61A17A-EFAF-9E46-E500-10D885059D59}" name="Designer">
+        <GROUP id="{D96D4016-5332-3C8E-B7B2-0C1D88D1B9A6}" name="Properties">
+          <FILE id="t1kRoO" name="FontPropertyComponent.cpp" compile="1" resource="0"
+                file="Source/Designer/Properties/FontPropertyComponent.cpp"/>
+          <FILE id="ZF3WYv" name="FontPropertyComponent.h" compile="0" resource="0"
+                file="Source/Designer/Properties/FontPropertyComponent.h"/>
+        </GROUP>
         <FILE id="tWLmYr" name="Globals.h" compile="0" resource="0" file="Source/Designer/Globals.h"/>
         <FILE id="kDfdBj" name="BigTree.cpp" compile="1" resource="0" file="Source/Designer/BigTree.cpp"/>
         <FILE id="L86rWX" name="PropertiesComponent.cpp" compile="1" resource="0"

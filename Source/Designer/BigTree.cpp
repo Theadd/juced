@@ -58,6 +58,12 @@ public:
 				juced_Label *obj = (juced_Label *)this->getProperty(Attributes::object).getDynamicObject();
 				if (property == Attributes::text) {
 					obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
+				} else if (property == Attributes::backgroundColour) {
+					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+					obj->setColour(Label::backgroundColourId, newColour);
+				} else if (property == Attributes::textColour) {
+					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+					obj->setColour(Label::textColourId, newColour);
 				}
 			}
 

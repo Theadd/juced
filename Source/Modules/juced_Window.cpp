@@ -33,7 +33,16 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 
 }
 
-void juced_Window::closeButtonPressed()
+void juced_Window::closeButtonPressed ()
 {
     //JUCEApplication::getInstance()->systemRequestedQuit();
+
 }
+
+void juced_Window::setContentOwned (Component *newContentComponent, bool resizeToFitWhenContentChangesSize)
+{
+	Rectangle<int> r (getLocalBounds());
+	newContentComponent->setBounds(0, 0, r.getWidth(), r.getHeight() - getTitleBarHeight());
+	DocumentWindow::setContentOwned(newContentComponent, resizeToFitWhenContentChangesSize);
+}
+
