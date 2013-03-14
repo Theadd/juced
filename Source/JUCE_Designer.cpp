@@ -124,12 +124,14 @@ void JUCE_Designer::mouseMove (const MouseEvent& event)
 
 void JUCE_Designer::mouseDown (const MouseEvent& event)
 {
+	
 	if (getSelectedToolName()->isNotEmpty()) {
 		selectionArea = new SelectionArea();
 		addAndMakeVisible(selectionArea);
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
 		selectionArea->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1);
 	}
+	
 }
 
 void JUCE_Designer::mouseDrag (const MouseEvent& event)
@@ -185,7 +187,8 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 				selectionArea->setSelectionBounds(event.originalComponent->getX(), event.originalComponent->getY(), event.originalComponent->getWidth(), event.originalComponent->getHeight());
 				selectedComponent = event.originalComponent;
 			} else {
-				selectedComponent = nullptr;
+				if (selectedComponent != nullptr)
+					selectedComponent = nullptr;
 			}
 		}
 	}

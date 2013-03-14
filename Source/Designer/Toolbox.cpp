@@ -19,8 +19,7 @@ public:
 		itemsPerRow = _itemsPerRow;
 		itemPadding = _itemPadding;
 		setBounds(0, 0, itemsPerRow * itemSize, itemSize);
-		//tooltipWindow = new TooltipWindow(this);
-		//tooltipWindow->setBounds(0, 0, 10, 10);
+		deselectTool();		//don't remove
 	};
 
 	void setBounds (int x, int y, int width, int height) {

@@ -56,7 +56,7 @@ private:
 	//OwnedArray<juced_Label> juced_Labels;
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
-	ScopedPointer<Component> selectedComponent;
+	Component *selectedComponent;
 	ScopedPointer<BigTree> bigTree;
 	//ScopedPointer<ComponentBuilder> builder;
 	
