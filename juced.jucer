@@ -31,6 +31,10 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="XeWAZG" name="juced_TextButton.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_TextButton.cpp"/>
+        <FILE id="ZxjZ2z" name="juced_TextButton.h" compile="0" resource="0"
+              file="Source/Modules/juced_TextButton.h"/>
         <FILE id="WJcU4n" name="juced_Window.h" compile="0" resource="0" file="Source/Modules/juced_Window.h"/>
         <FILE id="A70ZFF" name="juced_Label.h" compile="0" resource="0" file="Source/Modules/juced_Label.h"/>
         <FILE id="mF8wyZ" name="juced_Label.cpp" compile="1" resource="0" file="Source/Modules/juced_Label.cpp"/>

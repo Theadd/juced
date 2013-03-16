@@ -6,6 +6,7 @@
 #include "Modules/juced_Window.h"
 #include "Modules/juced_MainComponent.h"
 #include "Modules/juced_Label.h"
+#include "Modules/juced_TextButton.h"
 #include "Designer/SelectionArea.cpp"
 #include "Designer/Toolbox.cpp"
 #include "Designer/PropertiesComponent.cpp"
@@ -61,6 +62,8 @@ private:
 	//ScopedPointer<ComponentBuilder> builder;
 	
 	ScopedPointer<PropertyView> propertyView;
+
+	DynamicObject* createObjectFromToolName (String *selectedToolName);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_Designer)
 };

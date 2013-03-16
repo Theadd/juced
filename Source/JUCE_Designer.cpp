@@ -157,22 +157,27 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 
 			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
 				addWindow(event.originalComponent, relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
-			} else if (selectedToolName->equalsIgnoreCase("juced_Label")) {
+			} else {
 
-				juced_Label *label = new juced_Label();
+				DynamicObject *dynamicObj;
+				if ((dynamicObj = createObjectFromToolName(selectedToolName)) != nullptr) {
 
-				event.originalComponent->addAndMakeVisible(label);
-				label->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
-				label->addMouseListener(this, false);
+					event.originalComponent->addAndMakeVisible(dynamic_cast<Component *> (dynamicObj));
+					(dynamic_cast<Component *> (dynamicObj))->addMouseListener(this, false);
 
-				BigTree *labelTree = new BigTree(label, label->getProperty(Attributes::objectType));
-				if (parentTree.isValid()) {
-					parentTree.addChild(*labelTree, -1, 0);
-				} else AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
+					BigTree *objTree = new BigTree(dynamicObj, dynamicObj->getProperty(Attributes::objectType));
+					if (parentTree.isValid()) {
+						parentTree.addChild(*objTree, -1, 0);
+					} else AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
 
-				PropertyGroup *properties = new PropertyGroup(labelTree);
-				propertyView->setViewedComponent(properties);
+					objTree->setProperty(Attributes::x, relativeEvent.getMouseDownX(), 0);
+					objTree->setProperty(Attributes::y, relativeEvent.getMouseDownY(), 0);
+					objTree->setProperty(Attributes::width, relativeEvent.getDistanceFromDragStartX(), 0);
+					objTree->setProperty(Attributes::height, relativeEvent.getDistanceFromDragStartY(), 0);
 
+					PropertyGroup *properties = new PropertyGroup(objTree);
+					propertyView->setViewedComponent(properties);
+				}
 			}
 			selectionArea = nullptr;
 		}
@@ -216,6 +221,20 @@ void JUCE_Designer::focusGained (FocusChangeType cause)
 	propertyView->grabKeyboardFocus();
 }
 
+
+//====================private methods================================
+
+DynamicObject* JUCE_Designer::createObjectFromToolName (String *selectedToolName)
+{
+	if (selectedToolName->equalsIgnoreCase("juced_Label")) {
+		juced_Label *object = new juced_Label();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_TextButton")) {
+		juced_TextButton *object = new juced_TextButton();
+		return (DynamicObject *)object;
+	}
+	return nullptr;
+}
 
 //===================================================================
 

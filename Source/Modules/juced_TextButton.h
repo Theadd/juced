@@ -1,32 +1,29 @@
 /*
   ==============================================================================
 
-    juced_Label.h
-    Created: 11 Mar 2013 9:34:46pm
+    juced_TextButton.h
+    Created: 16 Mar 2013 12:39:06pm
     Author:  admin
 
   ==============================================================================
 */
 
+#ifndef __JUCED_TEXTBUTTON_H_4A5B470C__
+#define __JUCED_TEXTBUTTON_H_4A5B470C__
 
-
-#ifndef __JUCED_LABEL_H_9DD865FB__
-#define __JUCED_LABEL_H_9DD865FB__
 
 #include "../Designer/Globals.h"
 
-class juced_Label    : public Label,
+class juced_TextButton    : public TextButton,
 					   public DynamicObject
 {
 public:
 
-	//ValueTree *linkedValueTree;
-
-    juced_Label();
+    juced_TextButton();
 
 private:
 
 };
 
 
-#endif  // __JUCED_LABEL_H_9DD865FB__
+#endif  // __JUCED_TEXTBUTTON_H_4A5B470C__

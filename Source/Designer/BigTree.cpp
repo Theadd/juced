@@ -10,6 +10,7 @@
 
 #include "Globals.h"
 #include "../Modules/juced_Label.h"
+#include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
 #include "../Modules/juced_MainComponent.h"
 
@@ -46,6 +47,7 @@ public:
 
 			jassert (this->hasProperty(Attributes::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
 
+			//since Windows don't inherit from Component class we deal with it separately
 			if (this->getProperty(Attributes::objectType) == Modules::Window) {
 				juced_Window *obj = (juced_Window *)this->getProperty(Attributes::object).getDynamicObject();
 				if (property == Attributes::height) {
@@ -54,20 +56,58 @@ public:
 				} else if (property == Attributes::name) {
 					obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
 				}
-			} else if (this->getProperty(Attributes::objectType) == Modules::Label) {
-				juced_Label *obj = (juced_Label *)this->getProperty(Attributes::object).getDynamicObject();
-				if (property == Attributes::text) {
-					obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
-				} else if (property == Attributes::backgroundColour) {
-					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
-					obj->setColour(Label::backgroundColourId, newColour);
-				} else if (property == Attributes::textColour) {
-					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
-					obj->setColour(Label::textColourId, newColour);
+			} else {
+				//deal with other type of components since its not a window
+				bool propertyChanged = true;
+				if (this->getProperty(Attributes::objectType) == Modules::Label) {
+					//deal with Label specific properties
+					juced_Label *cObject = (juced_Label *)this->getProperty(Attributes::object).getDynamicObject();
+					if (property == Attributes::text) {
+						cObject->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
+					} else if (property == Attributes::backgroundColour) {
+						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+						cObject->setColour(Label::backgroundColourId, newColour);
+					} else if (property == Attributes::textColour) {
+						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+						cObject->setColour(Label::textColourId, newColour);
+					} else {
+						propertyChanged = false;
+					}
+				} else if (this->getProperty(Attributes::objectType) == Modules::TextButton) {
+					//deal with TextButton specific properties
+					juced_TextButton *cObject = (juced_TextButton *)this->getProperty(Attributes::object).getDynamicObject();
+					if (property == Attributes::buttonText) {
+						cObject->setButtonText(treeWhosePropertyHasChanged.getProperty(property).toString());
+					} else if (property == Attributes::buttonColour) {
+						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+						cObject->setColour(TextButton::ColourIds::buttonColourId, newColour);
+					} else if (property == Attributes::buttonOnColour) {
+						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+						cObject->setColour(TextButton::ColourIds::buttonOnColourId, newColour);
+					} else {
+						propertyChanged = false;
+					}
+				}
+				if (!propertyChanged) {
+					//deal with common component properties
+					Component *obj = dynamic_cast<Component *> (this->getProperty(Attributes::object).getDynamicObject());
+					if (property == Attributes::x) {
+						int value = treeWhosePropertyHasChanged.getProperty(property);
+						obj->setBounds(value, obj->getY(), obj->getWidth(), obj->getHeight());
+					} else if (property == Attributes::y) {
+						int value = treeWhosePropertyHasChanged.getProperty(property);
+						obj->setBounds(obj->getX(), value, obj->getWidth(), obj->getHeight());
+					} else if (property == Attributes::width) {
+						int value = treeWhosePropertyHasChanged.getProperty(property);
+						obj->setBounds(obj->getX(), obj->getY(), value, obj->getHeight());
+					} else if (property == Attributes::height) {
+						int value = treeWhosePropertyHasChanged.getProperty(property);
+						obj->setBounds(obj->getX(), obj->getY(), obj->getWidth(), value);
+					} else if (property == Attributes::name) {
+						obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
+					}
 				}
 			}
-
-			
 		}
 	}
 

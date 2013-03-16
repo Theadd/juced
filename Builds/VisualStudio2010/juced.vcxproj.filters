@@ -241,6 +241,9 @@
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Modules\juced_TextButton.cpp">
+      <Filter>juced\Source\Modules</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Modules\juced_Label.cpp">
       <Filter>juced\Source\Modules</Filter>
     </ClCompile>
@@ -1154,6 +1157,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Globals.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_TextButton.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h">
       <Filter>juced\Source\Modules</Filter>

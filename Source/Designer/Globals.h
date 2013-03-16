@@ -18,6 +18,7 @@ namespace Modules
     const Identifier Window       ("Window");
     const Identifier Component    ("Component");
 	const Identifier Label        ("Label");
+	const Identifier TextButton   ("TextButton");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -36,13 +37,17 @@ namespace Attributes
     DECLARE_ID (name);
     DECLARE_ID (file);
     DECLARE_ID (text);
+	DECLARE_ID (buttonText);
     DECLARE_ID (width);
     DECLARE_ID (height);
     DECLARE_ID (x);
     DECLARE_ID (y);
 	DECLARE_ID (font);
 	DECLARE_ID (backgroundColour);
+	//const Identifier backgroundColour ("Background colour");
 	DECLARE_ID (textColour);
+	DECLARE_ID (buttonColour);
+	DECLARE_ID (buttonOnColour);
 	DECLARE_ID (className);
     DECLARE_ID (classDesc);
 	DECLARE_ID (objectType);
@@ -57,16 +62,26 @@ namespace Attributes
 	{
 		return (_name == Attributes::name ||
 			_name == Attributes::text ||
+			_name == Attributes::buttonText ||
 			_name == Attributes::font ||
 			_name == Attributes::backgroundColour ||
 			_name == Attributes::textColour ||
+			_name == Attributes::buttonColour ||
+			_name == Attributes::buttonOnColour ||
+			_name == Attributes::x ||
+			_name == Attributes::y ||
 			_name == Attributes::width ||
 			_name == Attributes::height );
 	}
 
 	inline Identifier getAttributeType (Identifier _name)
 	{
-		return ((_name == Attributes::backgroundColour || _name == Attributes::textColour) ? AttributeType::colour : AttributeType::text);
+		if (_name.toString().containsIgnoreCase("colour")) {
+			return AttributeType::colour;
+		} else {
+			return AttributeType::text;
+		}
+		//return ((_name == Attributes::backgroundColour || _name == Attributes::textColour) ? AttributeType::colour : AttributeType::text);
 	}
 
 }

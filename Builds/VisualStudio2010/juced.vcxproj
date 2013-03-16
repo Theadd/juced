@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\Source\Designer\PropertiesComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_TextButton.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Label.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Window.cpp"/>
@@ -952,6 +953,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Designer\Properties\FontPropertyComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_TextButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Label.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_MainComponent.h"/>

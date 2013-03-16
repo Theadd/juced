@@ -50,7 +50,7 @@ public:
 	void paint (Graphics& g)
 	{
 		if (!isComponentSelection) {
-			g.fillAll (Colours::white);
+			g.fillAll (Colours::grey);
 			setAlpha(0.3f);
 		}
 	}
