@@ -11,6 +11,7 @@
 #include "Designer/Toolbox.cpp"
 #include "Designer/PropertiesComponent.cpp"
 #include "Designer/BigTree.cpp"
+#include "Designer/Constructor.h"
 
 
 
@@ -57,6 +58,7 @@ private:
 	//OwnedArray<juced_Label> juced_Labels;
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
+	ScopedPointer<SelectionArea> selectionBox;
 	Component *selectedComponent;
 	ScopedPointer<BigTree> bigTree;
 	//ScopedPointer<ComponentBuilder> builder;

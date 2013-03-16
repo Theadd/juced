@@ -13,6 +13,13 @@
 #ifndef __GLOBALS_H_4F86195D__
 #define __GLOBALS_H_4F86195D__
 
+namespace ValueType
+{
+	const Identifier text		("text");
+	const Identifier integer	("integer");
+	const Identifier rgba		("rgba");
+}
+
 namespace Modules
 {
     const Identifier Window       ("Window");

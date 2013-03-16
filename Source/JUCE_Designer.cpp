@@ -16,6 +16,15 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setFont(Font(12.0f));
 	mousePositionLabel.setBounds(getWidth() - 80, getHeight() - 25, 80, 25);
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
+	
+	Constructor *constructor = Constructor::getInstance();
+	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
+
+	selectionBox = new SelectionArea(true);
+	addAndMakeVisible(selectionBox);
+	selectionBox->setAlwaysOnTop(true);
+	selectionBox->setInterceptsMouseClicks(false, true);
+	selectionBox->setVisible(false);
 }
 
 JUCE_Designer::~JUCE_Designer() { }
@@ -185,11 +194,12 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 		if (selectedToolName->isEmpty()) {
 			if (event.originalComponent != this) {
 				//Selecting a component
-				selectionArea = new SelectionArea(true);
-				addAndMakeVisible(selectionArea);
+				selectionBox->setVisible(true);
+				Point<int> pos = this->getScreenPosition() - event.originalComponent->getScreenPosition();
+				selectionBox->setSelectionBounds(pos.getX(), pos.getY(), event.originalComponent->getWidth(), event.originalComponent->getHeight());
+				
 				//MouseEvent relativeEvent = event.getEventRelativeTo(this);
 				//Point<int> p = event.originalComponent->getLocalPoint(this, event.originalComponent->getPosition());
-				selectionArea->setSelectionBounds(event.originalComponent->getX(), event.originalComponent->getY(), event.originalComponent->getWidth(), event.originalComponent->getHeight());
 				selectedComponent = event.originalComponent;
 			} else {
 				if (selectedComponent != nullptr)

@@ -22,6 +22,8 @@
           <FILE id="ZF3WYv" name="FontPropertyComponent.h" compile="0" resource="0"
                 file="Source/Designer/Properties/FontPropertyComponent.h"/>
         </GROUP>
+        <FILE id="HSLMsx" name="Constructor.cpp" compile="1" resource="0" file="Source/Designer/Constructor.cpp"/>
+        <FILE id="m3Ii1r" name="Constructor.h" compile="0" resource="0" file="Source/Designer/Constructor.h"/>
         <FILE id="tWLmYr" name="Globals.h" compile="0" resource="0" file="Source/Designer/Globals.h"/>
         <FILE id="kDfdBj" name="BigTree.cpp" compile="1" resource="0" file="Source/Designer/BigTree.cpp"/>
         <FILE id="L86rWX" name="PropertiesComponent.cpp" compile="1" resource="0"

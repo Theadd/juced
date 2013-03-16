@@ -52,6 +52,9 @@ public:
 		if (!isComponentSelection) {
 			g.fillAll (Colours::grey);
 			setAlpha(0.3f);
+		} else {
+			g.fillAll (Colours::grey);
+			setAlpha(0.3f);
 		}
 	}
 

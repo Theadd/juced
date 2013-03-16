@@ -229,6 +229,9 @@
     <ClCompile Include="..\..\Source\Designer\Properties\FontPropertyComponent.cpp">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Designer\Constructor.cpp">
+      <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
@@ -1154,6 +1157,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Designer\Properties\FontPropertyComponent.h">
       <Filter>juced\Source\Designer\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Designer\Constructor.h">
+      <Filter>juced\Source\Designer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Globals.h">
       <Filter>juced\Source\Designer</Filter>
