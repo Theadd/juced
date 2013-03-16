@@ -31,7 +31,8 @@ MainContentComponent::MainContentComponent()
 	addAndMakeVisible(propertyView);
 	propertyView->setBounds(100, 100, 200, 400);
 	propertyView->setOpaque(true);
-	propertyView->addToDesktop((ComponentPeer::StyleFlags::windowHasTitleBar | ComponentPeer::StyleFlags::windowIsResizable));
+	//int style = (ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable);
+	propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
 
 }
 

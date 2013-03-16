@@ -18,12 +18,12 @@ public:
 	TextButton *button;
 	Label *textLabel;
 
-    TextWithButtonPropertyComponent (Value &ValueToControl, const String &propertyName) : TextPropertyComponent(ValueToControl, propertyName, 96, false)
+    TextWithButtonPropertyComponent (const Value &ValueToControl, const String &propertyName) : TextPropertyComponent(ValueToControl, propertyName, 96, false)
     {
 		textLabel = (Label *) this->getChildComponent(0);
 		button = new TextButton("...");
 		addAndMakeVisible(button);
-		button->setConnectedEdges(Button::ConnectedEdgeFlags::ConnectedOnRight | Button::ConnectedEdgeFlags::ConnectedOnLeft);
+		button->setConnectedEdges((int)(TextButton::ConnectedOnRight | TextButton::ConnectedOnLeft));
 		button->addListener(this);
 		resized();
     }
@@ -33,10 +33,10 @@ public:
 		button->removeListener(this);
 	}
 
-	void buttonClicked (Button *button)
+	/*void buttonClicked (Button *button)
 	{
 		//AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
-	}
+	}*/
 
 	void resized()
 	{
@@ -55,7 +55,7 @@ class ColourPropertyComponent  : public TextWithButtonPropertyComponent,
 public:
 	Colour colour;
 
-	ColourPropertyComponent (Value &ValueToControl, const String &propertyName) : TextWithButtonPropertyComponent(ValueToControl, propertyName)
+	ColourPropertyComponent (const Value &ValueToControl, const String &propertyName) : TextWithButtonPropertyComponent(ValueToControl, propertyName)
     {
 		Colour colour = Colour::fromString(ValueToControl.toString());	//Misc::getColourFromStringDisplay(ValueToControl.toString());
 		textLabel->setColour(Label::backgroundColourId, colour);
@@ -68,8 +68,10 @@ public:
 
 	}
 
-	void buttonClicked (Button *button)
+	void buttonClicked (Button *buttonThatWasClicked)
 	{
+		if (buttonThatWasClicked != this->button) return;
+
         ColourSelector* colourSelector = new ColourSelector();
         colourSelector->setName ("background");
         colourSelector->setCurrentColour (colour);	//(TextButton::buttonColourId));

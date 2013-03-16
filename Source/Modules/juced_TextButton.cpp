@@ -16,8 +16,8 @@ juced_TextButton::juced_TextButton()  : TextButton ()
 	setButtonText("Text Button");
 	setProperty(Attributes::objectType, Modules::TextButton.toString());
 	setProperty(Attributes::font, getFont().toString());
-	setProperty(Attributes::buttonColour, findColour(TextButton::ColourIds::buttonColourId).toDisplayString(true));
-	setProperty(Attributes::buttonOnColour, findColour(TextButton::ColourIds::buttonOnColourId).toDisplayString(true));
+	setProperty(Attributes::buttonColour, findColour(TextButton::buttonColourId).toDisplayString(true));
+	setProperty(Attributes::buttonOnColour, findColour(TextButton::buttonOnColourId).toDisplayString(true));
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());

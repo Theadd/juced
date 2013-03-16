@@ -24,7 +24,7 @@ public:
 
 	}
 
-	BigTree(ValueTree &other) : ValueTree(other)
+	BigTree(const ValueTree &other) : ValueTree(other)
 	{
 
 	}
@@ -80,10 +80,10 @@ public:
 						cObject->setButtonText(treeWhosePropertyHasChanged.getProperty(property).toString());
 					} else if (property == Attributes::buttonColour) {
 						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
-						cObject->setColour(TextButton::ColourIds::buttonColourId, newColour);
+						cObject->setColour(TextButton::buttonColourId, newColour);
 					} else if (property == Attributes::buttonOnColour) {
 						Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
-						cObject->setColour(TextButton::ColourIds::buttonOnColourId, newColour);
+						cObject->setColour(TextButton::buttonOnColourId, newColour);
 					} else {
 						propertyChanged = false;
 					}
@@ -111,16 +111,31 @@ public:
 		}
 	}
 
-    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) {}
+    void valueTreeChildAdded (ValueTree& parentTree, ValueTree& childWhichHasBeenAdded)
+	{
+		if (parentTree == childWhichHasBeenAdded) {}	//useless - to avoid warnings
+	}
 
-    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved) {}
+    void valueTreeChildRemoved (ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved)
+	{
+		if (parentTree == childWhichHasBeenRemoved) {}	//useless - to avoid warnings
+	}
 
 
-	void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved) {}
+	void valueTreeChildOrderChanged (ValueTree& parentTreeWhoseChildrenHaveMoved)
+	{
+		if (*this == parentTreeWhoseChildrenHaveMoved) {}	//useless - to avoid warnings
+	}
 
-	void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged) {}
+	void valueTreeParentChanged (ValueTree& treeWhoseParentHasChanged)
+	{
+		if (*this == treeWhoseParentHasChanged) {}	//useless - to avoid warnings
+	}
 
-	void valueTreeRedirected (ValueTree& treeWhichHasBeenChanged) {}
+	void valueTreeRedirected (ValueTree& treeWhichHasBeenChanged)
+	{
+		if (*this == treeWhichHasBeenChanged) {}	//useless - to avoid warnings
+	}
 
 	BigTree getChild(int index) const
 	{

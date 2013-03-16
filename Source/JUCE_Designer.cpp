@@ -87,7 +87,7 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 	File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
 	file.create();
 	obj_xml->writeToFile(file, "");
-	//file.revealToUser();
+	file.revealToUser();
 }
 
 
@@ -202,23 +202,23 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 
 void JUCE_Designer::mouseDoubleClick (const MouseEvent& event)
 {
-	Time e = event.eventTime;	//TODO: remove
+	Time e = event.eventTime;	//useless - to avoid warnings
 }
 
 bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
-	if (key.isCurrentlyDown()) {}	//TODO: remove
+	if (key.isCurrentlyDown()) {}	//useless - to avoid warnings
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
 }
 
 void JUCE_Designer::focusOfChildComponentChanged (FocusChangeType cause)
 {
-	if (cause == 1) {}	//TODO: remove
+	if (cause == 1) {}	//useless - to avoid warnings
 }
 
 void JUCE_Designer::focusGained (FocusChangeType cause)
 {
-	propertyView->grabKeyboardFocus();
+	if (cause == 1) {}	//useless - to avoid warnings
 }
 
 
