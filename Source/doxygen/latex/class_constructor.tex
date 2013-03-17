@@ -1,0 +1,99 @@
+\hypertarget{class_constructor}{\section{Constructor Class Reference}
+\label{class_constructor}\index{Constructor@{Constructor}}
+}
+
+
+Object required to build components and show its properties.  
+
+
+
+
+{\ttfamily \#include $<$Constructor.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_constructor_aa276e1e035578f7964780a2f3453395f}{load\-Attributes\-From\-Xml\-File} (const File \&xml\-File)
+\begin{DoxyCompactList}\small\item\em Function called within \hyperlink{class_j_u_c_e___designer}{J\-U\-C\-E\-\_\-\-Designer} constructor. \end{DoxyCompactList}\item 
+\hyperlink{struct_attribute}{Attribute} $\ast$ \hyperlink{class_constructor_ab34f1e9062445681a508550415ff18ef}{get\-Attribute\-Of} (Identifier \-\_\-name)
+\begin{DoxyCompactList}\small\item\em Returns a struct pointer of attribute parameters given it's Identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_constructor}{Constructor} $\ast$ \hyperlink{class_constructor_a757cc1671f52f15291b89772bef7aa98}{get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em This function is called to create an instance of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_constructor_ae5d823f5aaef582e23842ee45a001c12}{Array$<$ \hyperlink{struct_attribute}{Attribute} $\ast$ $>$ {\bfseries \-\_\-attributes}}\label{class_constructor_ae5d823f5aaef582e23842ee45a001c12}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object required to build components and show its properties. 
+
+Only one instance of this object is allowed.
+
+To use, simply get an instance of this class using the \hyperlink{class_constructor_a757cc1671f52f15291b89772bef7aa98}{get\-Instance()} static method. Example\-: \hyperlink{class_constructor}{Constructor} $\ast$constructor = \hyperlink{class_constructor_a757cc1671f52f15291b89772bef7aa98}{Constructor\-::get\-Instance()}; 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_constructor_ab34f1e9062445681a508550415ff18ef}{\index{Constructor@{Constructor}!get\-Attribute\-Of@{get\-Attribute\-Of}}
+\index{get\-Attribute\-Of@{get\-Attribute\-Of}!Constructor@{Constructor}}
+\subsubsection[{get\-Attribute\-Of}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} $\ast$ Constructor\-::get\-Attribute\-Of (
+\begin{DoxyParamCaption}
+\item[{Identifier}]{\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{class_constructor_ab34f1e9062445681a508550415ff18ef}
+
+
+Returns a struct pointer of attribute parameters given it's Identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-name} & \hyperlink{struct_attribute}{Attribute} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{struct_attribute}{Attribute} 
+
+Attributes 
+\end{DoxySeeAlso}
+\hypertarget{class_constructor_a757cc1671f52f15291b89772bef7aa98}{\index{Constructor@{Constructor}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Constructor@{Constructor}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Constructor} $\ast$ Constructor\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_constructor_a757cc1671f52f15291b89772bef7aa98}
+
+
+This function is called to create an instance of the class. 
+
+Calling the constructor publicly is not allowed. The constructor is private and is only called by this Instance function. \hypertarget{class_constructor_aa276e1e035578f7964780a2f3453395f}{\index{Constructor@{Constructor}!load\-Attributes\-From\-Xml\-File@{load\-Attributes\-From\-Xml\-File}}
+\index{load\-Attributes\-From\-Xml\-File@{load\-Attributes\-From\-Xml\-File}!Constructor@{Constructor}}
+\subsubsection[{load\-Attributes\-From\-Xml\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Constructor\-::load\-Attributes\-From\-Xml\-File (
+\begin{DoxyParamCaption}
+\item[{const File \&}]{xml\-File}
+\end{DoxyParamCaption}
+)}}\label{class_constructor_aa276e1e035578f7964780a2f3453395f}
+
+
+Function called within \hyperlink{class_j_u_c_e___designer}{J\-U\-C\-E\-\_\-\-Designer} constructor. 
+
+Loads all parameters from a list of attribute types in a X\-M\-L file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml\-File} & File object that points to X\-M\-L file in disc. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{class_constructor_ab34f1e9062445681a508550415ff18ef}{get\-Attribute\-Of} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Designer/Constructor.\-h\item 
+Designer/Constructor.\-cpp\end{DoxyCompactItemize}

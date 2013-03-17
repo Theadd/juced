@@ -17,6 +17,11 @@
 #include "../Modules/juced_Window.h"
 #include "../Modules/juced_MainComponent.h"
 
+/** Struct to hold all parameters of a given attribute identifier.
+
+	@see getAttributeOf
+	@see Attributes
+*/
 struct Attribute
 {
 	Identifier name;
@@ -27,13 +32,40 @@ struct Attribute
 	Identifier valueType;
 };
 
+/**
+    Object required to build components and show its properties.
+
+    Only one instance of this object is allowed.
+
+    To use, simply get an instance of this class using the getInstance() static method.
+	Example: Constructor *constructor = Constructor::getInstance();
+*/
 class Constructor {
 public:
 	Array<Attribute*> _attributes;
-	int numAttributes;
 
+	/** This function is called to create an instance of the class.
+
+		Calling the constructor publicly is not allowed. The constructor
+		is private and is only called by this Instance function.
+	*/
 	static Constructor* getInstance();
+
+	/** Function called within JUCE_Designer constructor.
+		
+		Loads all parameters from a list of attribute types in a XML file.
+
+		@param xmlFile File object that points to XML file in disc.
+		@see getAttributeOf
+	*/
 	void loadAttributesFromXmlFile(const File &xmlFile);
+
+	/** Returns a struct pointer of attribute parameters given it's Identifier.
+
+		@param _name Attribute identifier.
+		@see Attribute
+		@see Attributes
+	*/
 	Attribute* getAttributeOf(Identifier _name);
 
 private:

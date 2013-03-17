@@ -100,7 +100,6 @@ public:
 			setSelectionBounds(getX() + _boxSize, getY() + _boxSize, size.getX() - _boxSize, size.getY() - _boxSize); 
 		} else if (event.originalComponent->getName().equalsIgnoreCase("bottomLeft")) {
 			Point<int> size = event.getScreenPosition() - this->getScreenPosition();
-			//setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - size.getX() - _boxSize, size.getY() - _boxSize);
 			setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - (_boxSize * 2) - size.getX(), size.getY() - (_boxSize * 2));
 		}
 	}
