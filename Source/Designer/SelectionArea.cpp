@@ -17,34 +17,69 @@ public:
 	SelectionArea() : Component()
 	{
 		isComponentSelection = false;
+		ready = false;
 	}
 
 	SelectionArea(bool _isComponentSelection) : Component() {
 		isComponentSelection = _isComponentSelection;
+		setBoxSize(6);
+		if (isComponentSelection) {
+			MiniBox *box = new MiniBox("upperLeft");
+			addAndMakeVisible(box);
+			box->addMouseListener(this, false);
+			box->setMouseCursor(MouseCursor::TopLeftCornerResizeCursor);
+			miniBoxes.add(box);
+
+			box = new MiniBox("upperRight");
+			addAndMakeVisible(box);
+			box->addMouseListener(this, false);
+			box->setMouseCursor(MouseCursor::TopRightCornerResizeCursor);
+			miniBoxes.add(box);
+
+			box = new MiniBox("bottomLeft");
+			addAndMakeVisible(box);
+			box->addMouseListener(this, false);
+			box->setMouseCursor(MouseCursor::BottomLeftCornerResizeCursor);
+			miniBoxes.add(box);
+
+			box = new MiniBox("bottomRight");
+			addAndMakeVisible(box);
+			box->addMouseListener(this, false);
+			box->setMouseCursor(MouseCursor::BottomRightCornerResizeCursor);
+			miniBoxes.add(box);
+		}
+		ready = false;
+	}
+
+	~SelectionArea()
+	{
+		if (isComponentSelection) {
+			for (int i = miniBoxes.size(); --i >= 0;) {
+				miniBoxes[i]->removeMouseListener(this);
+			}
+		}
 	}
 
 	void setSelectionBounds(int x, int y, int width, int height) {
-		setBounds(x - 5, y - 5, width + 10, height + 10);
-		MiniBox *box;
-		box = new MiniBox("upperLeft");
-		addAndMakeVisible(box);
-		box->setBounds(0, 0, 5, 5);
-		miniBoxes.add(box);
+		//ready = false;
+		setBounds(x - _boxSize, y - _boxSize, width + (_boxSize*2), height + (_boxSize*2));
 
-		box = new MiniBox("upperRight");
-		addAndMakeVisible(box);
-		box->setBounds(x + width, 0, 5, 5);
-		miniBoxes.add(box);
+		miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
+		miniBoxes[1]->setBounds(width + _boxSize, 0, _boxSize, _boxSize);
+		miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);
+		miniBoxes[3]->setBounds(width + _boxSize,height + _boxSize, _boxSize, _boxSize);
+		ready = true;
+	}
 
-		box = new MiniBox("bottomLeft");
-		addAndMakeVisible(box);
-		box->setBounds(0, y + height, 5, 5);
-		miniBoxes.add(box);
+	void setVisible(bool shouldBeVisible)
+	{
+		Component::setVisible(shouldBeVisible);
+		ready = shouldBeVisible;
+	}
 
-		box = new MiniBox("bottomRight");
-		addAndMakeVisible(box);
-		box->setBounds(x + width, y + height, 5, 5);
-		miniBoxes.add(box);
+	bool isReady()
+	{
+		return ready;
 	}
 
 	void paint (Graphics& g)
@@ -54,26 +89,43 @@ public:
 			setAlpha(0.3f);
 		} else {
 			g.fillAll (Colours::grey);
-			setAlpha(0.3f);
+			setAlpha(0.2f);
 		}
+	}
+
+	void mouseDrag (const MouseEvent& event)
+	{
+		if (event.originalComponent->getName().equalsIgnoreCase("bottomRight")) {
+			Point<int> size = event.getScreenPosition() - this->getScreenPosition();
+			setSelectionBounds(getX() + _boxSize, getY() + _boxSize, size.getX() - _boxSize, size.getY() - _boxSize); 
+		} else if (event.originalComponent->getName().equalsIgnoreCase("bottomLeft")) {
+			Point<int> size = event.getScreenPosition() - this->getScreenPosition();
+			//setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - size.getX() - _boxSize, size.getY() - _boxSize);
+			setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - (_boxSize * 2) - size.getX(), size.getY() - (_boxSize * 2));
+		}
+	}
+
+	void setBoxSize(int newSize) {
+		_boxSize = newSize;
+	}
+
+	int getBoxSize() {
+		return _boxSize;
 	}
 
 private:
 	ScopedPointer<Component> selectedComponent;
+	int _boxSize;
 	bool isComponentSelection;
+	bool ready;
 
 	class MiniBox : public Component
 	{
 	public:
-		String name;
-
-		MiniBox(String _name) : Component() {
-			setSize(5, 5);
-			name = _name;
-		}
-
-		String getName() {
-			return name;
+		int _boxSize;
+		MiniBox(String _name) : Component(_name) {
+			_boxSize = 6;
+			setSize(_boxSize, _boxSize);
 		}
 
 		void paint (Graphics& g) {

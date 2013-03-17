@@ -13,8 +13,8 @@
 juced_MainComponent::juced_MainComponent()
 {
     //setSize (500, 400);
-	setName("component");
-	setProperty(Attributes::objectType, "Component");
+	setName("Container");
+	setProperty(Attributes::objectType, Modules::Component.toString());
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
@@ -29,7 +29,7 @@ juced_MainComponent::~juced_MainComponent()
 
 void juced_MainComponent::paint (Graphics& g)
 {
-    g.fillAll (Colours::white);
+    g.fillAll (Colours::transparentWhite);
 
 }
 

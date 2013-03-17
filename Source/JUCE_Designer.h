@@ -29,6 +29,7 @@ public:
 	void deselectTool ();
     void addWindow (Component *parent, int x, int y, int width, int height);
 	void writeXmlToFile (String _filename);
+	void selectComponent (Component *componentToSelect);
 
     void paint (Graphics& g);
     void resized();
@@ -42,6 +43,7 @@ public:
     bool keyPressed (const KeyPress& key);
     void focusOfChildComponentChanged (FocusChangeType cause);
 	void focusGained (FocusChangeType cause);
+	void childBoundsChanged (Component * child);
 
 	class Grid : public Component
 	{
@@ -60,7 +62,10 @@ private:
 	ScopedPointer<SelectionArea> selectionArea;
 	ScopedPointer<SelectionArea> selectionBox;
 	Component *selectedComponent;
+	ValueTree *selectedComponentTree;
+	Point<int> selectedComponentPositionDifference;
 	ScopedPointer<BigTree> bigTree;
+	PropertyGroup *activePropertyGroup;
 	//ScopedPointer<ComponentBuilder> builder;
 	
 	ScopedPointer<PropertyView> propertyView;

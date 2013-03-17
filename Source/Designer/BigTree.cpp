@@ -19,7 +19,7 @@ class BigTree : public ValueTree,
 {
 public:
     //==============================================================================
-	BigTree() : ValueTree(Modules::Unknown.toString())
+	BigTree() : ValueTree()	//Modules::Unknown.toString())
 	{
 
 	}
@@ -53,8 +53,15 @@ public:
 				if (property == Attributes::height) {
 					int height = treeWhosePropertyHasChanged.getProperty(property);
 					obj->setSize(obj->getWidth(), height);
+				} else if (property == Attributes::width) {
+					int width = treeWhosePropertyHasChanged.getProperty(property);
+					obj->setSize(width, obj->getHeight());
 				} else if (property == Attributes::name) {
 					obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
+				} else if (property == Attributes::backgroundColour) {
+					obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
+					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
+					obj->setColour(DocumentWindow::backgroundColourId, newColour);
 				}
 			} else {
 				//deal with other type of components since its not a window
@@ -87,6 +94,9 @@ public:
 					} else {
 						propertyChanged = false;
 					}
+				} else if (this->getProperty(Attributes::objectType) == Modules::Component) {
+					//deal with Component specific properties (obviously is empty)
+					propertyChanged = false;
 				}
 				if (!propertyChanged) {
 					//deal with common component properties
@@ -136,6 +146,42 @@ public:
 	{
 		if (*this == treeWhichHasBeenChanged) {}	//useless - to avoid warnings
 	}
+	
+	BigTree& getChildWithProperty(const Identifier &propertyName, const var &propertyValue, bool recursive)
+	{
+		//checking root node first
+		if (hasProperty(propertyName))
+			if (getProperty(propertyName) == propertyValue)
+				return *this;
+
+		BigTree bTree(ValueTree::getChildWithProperty(propertyName, propertyValue));
+		if (bTree.isValid()) {
+			return bTree;
+		} else if (!recursive) {
+			return (BigTree());
+		}
+
+		for (int i = getNumChildren(); --i >= 0;) {
+			BigTree cTree(getChild(i).getChildWithProperty(propertyName, propertyValue, recursive));
+			if (cTree.isValid()) {
+				return cTree;
+			}
+		}
+		return (BigTree());
+	}
+
+	/*
+	ValueTree getChildWithProperty (const Identifier& propertyName, const var& propertyValue) const
+    {
+        for (int i = 0; i < children.size(); ++i)
+        {
+            SharedObject* const s = children.getObjectPointerUnchecked (i);
+            if (s->getProperty (propertyName) == propertyValue)
+                return ValueTree (s);
+        }
+
+        return ValueTree::invalid;
+    }*/
 
 	BigTree getChild(int index) const
 	{
