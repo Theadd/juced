@@ -9,6 +9,7 @@
 */
 
 #include "Globals.h"
+#include "Constructor.h"
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
@@ -118,6 +119,10 @@ public:
 					}
 				}
 			}
+			//Set current transaction description of UndoManager and start a new one
+			Attribute *t = Constructor::getInstance()->getAttributeOf(property);
+			Constructor::getInstance()->getUndoManager()->setCurrentTransactionName("Set " + t->display + " on " + getProperty(Attributes::name).toString());
+			Constructor::getInstance()->getUndoManager()->beginNewTransaction();
 		}
 	}
 

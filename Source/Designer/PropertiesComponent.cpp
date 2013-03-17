@@ -156,9 +156,9 @@ public:
 						//get propertycomponent object of specified type
 						PropertyComponent *comp;
 						if (attrib->type == AttributeType::colour) {
-							comp = new ColourPropertyComponent(tree->getPropertyAsValue(t, 0), attrib->display);
+							comp = new ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
 						} else {
-							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, 0), attrib->display, 96, false);
+							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 96, false);
 						}
 						//add object to specified group
 						if (attrib->group.equalsIgnoreCase("General")) {

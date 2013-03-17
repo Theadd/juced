@@ -68,11 +68,18 @@ public:
 	*/
 	Attribute* getAttributeOf(Identifier _name);
 
+	/** Returns a pointer to an UndoManager.
+
+		@see UndoManager, BigTree, ValueTree
+	*/
+	UndoManager* getUndoManager();
+
 private:
-   Constructor(){};  // Private so that it can  not be called
-   Constructor(Constructor const&){};             // copy constructor is private
-   Constructor& operator=(Constructor const&){};  // assignment operator is private
-   static Constructor* m_pInstance;
+	ScopedPointer<UndoManager> undoManager;
+	Constructor(){};  // Private so that it can  not be called
+	Constructor(Constructor const&){};             // copy constructor is private
+	Constructor& operator=(Constructor const&){};  // assignment operator is private
+	static Constructor* m_pInstance;
 };
 
 

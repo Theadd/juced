@@ -133,6 +133,8 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 		selectionBox->setVisible(false);
 		PropertyGroup *properties = new PropertyGroup();
 		propertyView->setViewedComponent(properties);
+		//bring properties view to front (just in case)
+		propertyView->toFront(false);
 	}
 }
 
@@ -248,7 +250,12 @@ void JUCE_Designer::mouseDoubleClick (const MouseEvent& event)
 
 bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
-	if (key.isCurrentlyDown()) {}	//useless - to avoid warnings
+	if (key.getKeyCode() == 90) {
+		Constructor::getInstance()->getUndoManager()->undo();
+	} else if (key.getKeyCode() == 89) {
+		Constructor::getInstance()->getUndoManager()->redo();
+	}
+	mousePositionLabel.setText(String(key.getKeyCode()), 0);
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
 }
 
@@ -268,10 +275,10 @@ void JUCE_Designer::childBoundsChanged (Component * child)
 		if (selectedComponent != nullptr && selectionBox->isReady()) {
 
 			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
-			valueTree.setProperty(Attributes::width, child->getWidth() - (selectionBox->getBoxSize() * 2), 0);
-			valueTree.setProperty(Attributes::height, child->getHeight() - (selectionBox->getBoxSize() * 2), 0);
-			valueTree.setProperty(Attributes::x, child->getX() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getX(), 0);
-			valueTree.setProperty(Attributes::y, child->getY() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getY(), 0);
+			valueTree.setProperty(Attributes::width, child->getWidth() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::height, child->getHeight() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::x, child->getX() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getX(), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::y, child->getY() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getY(), Constructor::getInstance()->getUndoManager());
 
 		}
 	} else if (child == selectedComponent) {

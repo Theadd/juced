@@ -51,3 +51,10 @@ Attribute* Constructor::getAttributeOf(Identifier _name)
 
 	return nullptr;
 }
+
+UndoManager* Constructor::getUndoManager() {
+	if (undoManager == nullptr)
+		undoManager = new UndoManager();
+	
+	return undoManager;
+}
