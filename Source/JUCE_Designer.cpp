@@ -16,6 +16,15 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setFont(Font(12.0f));
 	mousePositionLabel.setBounds(getWidth() - 80, getHeight() - 25, 80, 25);
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
+	
+	Constructor *constructor = Constructor::getInstance();
+	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
+
+	selectionBox = new SelectionArea(true);
+	addAndMakeVisible(selectionBox);
+	selectionBox->setAlwaysOnTop(true);
+	selectionBox->setInterceptsMouseClicks(false, true);
+	selectionBox->setVisible(false);
 }
 
 JUCE_Designer::~JUCE_Designer() { }
@@ -55,7 +64,9 @@ void JUCE_Designer::deselectTool () {
 	}
 }
 
-void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int height) {
+void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int height)
+{
+	if (parent == this && bigTree != nullptr) return;	//only one main window allowed
 
 	juced_Window *win = new juced_Window();
 	parent->addAndMakeVisible(win);
@@ -66,16 +77,28 @@ void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int h
 	win->setProperty(Attributes::width, (width >= win->minWidth) ? width : win->minWidth);
 	win->setProperty(Attributes::height, (height >= win->minHeight) ? height : win->minHeight);
 
-	bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
+	
 
 	juced_MainComponent *comp = new juced_MainComponent();
+	comp->setProperty(Attributes::x, 0);
+	comp->setProperty(Attributes::y, 0);
+	comp->setProperty(Attributes::width, win->getWidth());
+	comp->setProperty(Attributes::height, win->getHeight() - win->getTitleBarHeight());
 	win->setContentOwned(comp, true);
-	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
-	bigTree->addChild(*compTree, -1, 0);
 	win->getContentComponent()->addMouseListener(this, true);
+	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
+	if (parent == this) {
+		bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
+		bigTree->addChild(*compTree, -1, 0);
+	} else {
+		BigTree *objTree = new BigTree(win, win->getProperty(Attributes::objectType));
+		BigTree parentTree(bigTree->getChildWithProperty(Attributes::ID, parent->getComponentID(), true));
+		jassert (parentTree.isValid());		//this should not happen
+		parentTree.addChild(*objTree, -1, 0);
+		objTree->addChild(*compTree, -1, 0);
+	}
 
-	PropertyGroup *properties = new PropertyGroup(bigTree);
-	propertyView->setViewedComponent(properties);
+	selectComponent(comp);
 
 }
 
@@ -87,9 +110,33 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 	File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
 	file.create();
 	obj_xml->writeToFile(file, "");
-	//file.revealToUser();
+	file.revealToUser();
 }
 
+void JUCE_Designer::selectComponent (Component *componentToSelect)
+{
+	if (componentToSelect != this) {
+		selectionBox->setVisible(false);
+		Point<int> pos = componentToSelect->getScreenPosition() - this->getScreenPosition();
+		selectedComponentPositionDifference = pos - componentToSelect->getPosition();
+		selectionBox->setSelectionBounds(pos.getX(), pos.getY(), componentToSelect->getWidth(), componentToSelect->getHeight());
+		selectedComponent = componentToSelect;
+
+		BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+
+		PropertyGroup *properties = new PropertyGroup(&valueTree);
+		propertyView->setViewedComponent(properties);
+		selectionBox->setVisible(true);
+
+	} else {
+		//set selection box invisible and clean properties window since user clicked the editor itself
+		selectionBox->setVisible(false);
+		PropertyGroup *properties = new PropertyGroup();
+		propertyView->setViewedComponent(properties);
+		//bring properties view to front (just in case)
+		propertyView->toFront(false);
+	}
+}
 
 void JUCE_Designer::paint (Graphics& g)
 {
@@ -149,47 +196,48 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 	if (!event.mouseWasClicked()) {
 		if (selectedToolName->isNotEmpty()) {
 
-			ValueTree parentTree;
-			if (event.originalComponent != this)
-				parentTree = bigTree->getChildWithProperty(Attributes::ID, event.originalComponent->getComponentID());
+			BigTree parentTree;
+			if (event.originalComponent != this) {
+				BigTree bTree(bigTree->getChildWithProperty(Attributes::ID, event.originalComponent->getComponentID(), true));
+				if (bTree.isValid()) parentTree = bTree;
+			}
 
 			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
 
 			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
 				addWindow(event.originalComponent, relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
-			} else if (selectedToolName->equalsIgnoreCase("juced_Label")) {
-
-				juced_Label *label = new juced_Label();
-
-				event.originalComponent->addAndMakeVisible(label);
-				label->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
-				label->addMouseListener(this, false);
-
-				BigTree *labelTree = new BigTree(label, label->getProperty(Attributes::objectType));
+			} else {
+				//Create a component of the selected tool name unless it is placed outside a window
 				if (parentTree.isValid()) {
-					parentTree.addChild(*labelTree, -1, 0);
-				} else AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
+					DynamicObject *dynamicObj;
+					if ((dynamicObj = createObjectFromToolName(selectedToolName)) != nullptr) {
 
-				PropertyGroup *properties = new PropertyGroup(labelTree);
-				propertyView->setViewedComponent(properties);
+						event.originalComponent->addAndMakeVisible(dynamic_cast<Component *> (dynamicObj));
+						(dynamic_cast<Component *> (dynamicObj))->addMouseListener(this, false);
 
+						BigTree *objTree = new BigTree(dynamicObj, dynamicObj->getProperty(Attributes::objectType));
+					
+						parentTree.addChild(*objTree, -1, 0);
+
+						objTree->setProperty(Attributes::x, relativeEvent.getMouseDownX(), 0);
+						objTree->setProperty(Attributes::y, relativeEvent.getMouseDownY(), 0);
+						objTree->setProperty(Attributes::width, relativeEvent.getDistanceFromDragStartX(), 0);
+						objTree->setProperty(Attributes::height, relativeEvent.getDistanceFromDragStartY(), 0);
+
+						selectComponent(dynamic_cast<Component *> (dynamicObj));
+						//PropertyGroup *properties = new PropertyGroup(objTree);
+						//propertyView->setViewedComponent(properties);
+						//activePropertyGroup = properties;
+						//selectedComponentTree = objTree;
+					}
+				}
 			}
 			selectionArea = nullptr;
 		}
 	} else {
 		if (selectedToolName->isEmpty()) {
-			if (event.originalComponent != this) {
-				//Selecting a component
-				selectionArea = new SelectionArea(true);
-				addAndMakeVisible(selectionArea);
-				//MouseEvent relativeEvent = event.getEventRelativeTo(this);
-				//Point<int> p = event.originalComponent->getLocalPoint(this, event.originalComponent->getPosition());
-				selectionArea->setSelectionBounds(event.originalComponent->getX(), event.originalComponent->getY(), event.originalComponent->getWidth(), event.originalComponent->getHeight());
-				selectedComponent = event.originalComponent;
-			} else {
-				if (selectedComponent != nullptr)
-					selectedComponent = nullptr;
-			}
+			//Selecting an object
+			selectComponent(event.originalComponent);
 		}
 	}
 	deselectTool();
@@ -197,25 +245,73 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 
 void JUCE_Designer::mouseDoubleClick (const MouseEvent& event)
 {
-	Time e = event.eventTime;	//TODO: remove
+	Time e = event.eventTime;	//useless - to avoid warnings
 }
 
 bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
-	if (key.isCurrentlyDown()) {}	//TODO: remove
+	if (key.getKeyCode() == 90) {
+		Constructor::getInstance()->getUndoManager()->undo();
+	} else if (key.getKeyCode() == 89) {
+		Constructor::getInstance()->getUndoManager()->redo();
+	}
+	mousePositionLabel.setText(String(key.getKeyCode()), 0);
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
 }
 
 void JUCE_Designer::focusOfChildComponentChanged (FocusChangeType cause)
 {
-	if (cause == 1) {}	//TODO: remove
+	if (cause == 1) {}	//useless - to avoid warnings
 }
 
 void JUCE_Designer::focusGained (FocusChangeType cause)
 {
-	propertyView->grabKeyboardFocus();
+	if (cause == 1) {}	//useless - to avoid warnings
 }
 
+void JUCE_Designer::childBoundsChanged (Component * child)
+{
+	if (child == selectionBox) {
+		if (selectedComponent != nullptr && selectionBox->isReady()) {
+
+			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			valueTree.setProperty(Attributes::width, child->getWidth() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::height, child->getHeight() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::x, child->getX() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getX(), Constructor::getInstance()->getUndoManager());
+			valueTree.setProperty(Attributes::y, child->getY() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getY(), Constructor::getInstance()->getUndoManager());
+
+		}
+	} else if (child == selectedComponent) {
+		//selected component bounds changed, if it was not done using the selectionBox, update selectionBox bounds
+		/*bool resizeSelection = false;
+		if (abs((child->getX() + selectedComponentPositionDifference.getX()) - selectionBox->getX()) > 2 * selectionBox->getBoxSize())
+			resizeSelection = true;
+		if (abs((child->getY() + selectedComponentPositionDifference.getY()) - selectionBox->getY()) > 2 * selectionBox->getBoxSize())
+			resizeSelection = true;
+		if (abs(selectionBox->getWidth() - child->getWidth()) > 2 * selectionBox->getBoxSize())
+			resizeSelection = true;
+		if (abs(selectionBox->getHeight() - child->getHeight()) > 2 * selectionBox->getBoxSize())
+			resizeSelection = true;
+		if (resizeSelection)
+			selectComponent(child);*/
+	}
+
+}
+
+
+//====================private methods================================
+
+DynamicObject* JUCE_Designer::createObjectFromToolName (String *selectedToolName)
+{
+	if (selectedToolName->equalsIgnoreCase("juced_Label")) {
+		juced_Label *object = new juced_Label();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_TextButton")) {
+		juced_TextButton *object = new juced_TextButton();
+		return (DynamicObject *)object;
+	}
+	return nullptr;
+}
 
 //===================================================================
 

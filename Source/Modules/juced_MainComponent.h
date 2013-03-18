@@ -18,7 +18,7 @@ class juced_MainComponent : public Component,
 {
 public:
     
-	ValueTree *linkedValueTree;
+	//ValueTree *linkedValueTree;
 
     juced_MainComponent();
     ~juced_MainComponent();

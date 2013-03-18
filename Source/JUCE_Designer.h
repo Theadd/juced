@@ -6,10 +6,12 @@
 #include "Modules/juced_Window.h"
 #include "Modules/juced_MainComponent.h"
 #include "Modules/juced_Label.h"
+#include "Modules/juced_TextButton.h"
 #include "Designer/SelectionArea.cpp"
 #include "Designer/Toolbox.cpp"
 #include "Designer/PropertiesComponent.cpp"
 #include "Designer/BigTree.cpp"
+#include "Designer/Constructor.h"
 
 
 
@@ -27,6 +29,7 @@ public:
 	void deselectTool ();
     void addWindow (Component *parent, int x, int y, int width, int height);
 	void writeXmlToFile (String _filename);
+	void selectComponent (Component *componentToSelect);
 
     void paint (Graphics& g);
     void resized();
@@ -40,6 +43,7 @@ public:
     bool keyPressed (const KeyPress& key);
     void focusOfChildComponentChanged (FocusChangeType cause);
 	void focusGained (FocusChangeType cause);
+	void childBoundsChanged (Component * child);
 
 	class Grid : public Component
 	{
@@ -56,11 +60,17 @@ private:
 	//OwnedArray<juced_Label> juced_Labels;
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
+	ScopedPointer<SelectionArea> selectionBox;
 	Component *selectedComponent;
+	ValueTree *selectedComponentTree;
+	Point<int> selectedComponentPositionDifference;
 	ScopedPointer<BigTree> bigTree;
+	PropertyGroup *activePropertyGroup;
 	//ScopedPointer<ComponentBuilder> builder;
 	
 	ScopedPointer<PropertyView> propertyView;
+
+	DynamicObject* createObjectFromToolName (String *selectedToolName);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_Designer)
 };

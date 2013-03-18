@@ -9,6 +9,7 @@
 */
 
 #include "Globals.h"
+#include "Constructor.h"
 //#include "Properties\FontPropertyComponent.h"
 
 class TextWithButtonPropertyComponent  : public TextPropertyComponent,
@@ -18,12 +19,12 @@ public:
 	TextButton *button;
 	Label *textLabel;
 
-    TextWithButtonPropertyComponent (Value &ValueToControl, const String &propertyName) : TextPropertyComponent(ValueToControl, propertyName, 96, false)
+    TextWithButtonPropertyComponent (const Value &ValueToControl, const String &propertyName) : TextPropertyComponent(ValueToControl, propertyName, 96, false)
     {
 		textLabel = (Label *) this->getChildComponent(0);
 		button = new TextButton("...");
 		addAndMakeVisible(button);
-		button->setConnectedEdges(Button::ConnectedEdgeFlags::ConnectedOnRight | Button::ConnectedEdgeFlags::ConnectedOnLeft);
+		button->setConnectedEdges((int)(TextButton::ConnectedOnRight | TextButton::ConnectedOnLeft));
 		button->addListener(this);
 		resized();
     }
@@ -33,10 +34,10 @@ public:
 		button->removeListener(this);
 	}
 
-	void buttonClicked (Button *button)
+	/*void buttonClicked (Button *button)
 	{
 		//AlertWindow::showMessageBox(AlertWindow::NoIcon, "parent tree", "is not valid");
-	}
+	}*/
 
 	void resized()
 	{
@@ -55,7 +56,7 @@ class ColourPropertyComponent  : public TextWithButtonPropertyComponent,
 public:
 	Colour colour;
 
-	ColourPropertyComponent (Value &ValueToControl, const String &propertyName) : TextWithButtonPropertyComponent(ValueToControl, propertyName)
+	ColourPropertyComponent (const Value &ValueToControl, const String &propertyName) : TextWithButtonPropertyComponent(ValueToControl, propertyName)
     {
 		Colour colour = Colour::fromString(ValueToControl.toString());	//Misc::getColourFromStringDisplay(ValueToControl.toString());
 		textLabel->setColour(Label::backgroundColourId, colour);
@@ -68,8 +69,10 @@ public:
 
 	}
 
-	void buttonClicked (Button *button)
+	void buttonClicked (Button *buttonThatWasClicked)
 	{
+		if (buttonThatWasClicked != this->button) return;
+
         ColourSelector* colourSelector = new ColourSelector();
         colourSelector->setName ("background");
         colourSelector->setCurrentColour (colour);	//(TextButton::buttonColourId));
@@ -130,6 +133,60 @@ private:
 };
 
 
+class PropertyGroup : public PropertyPanel
+{
+public:
+	PropertyGroup () : PropertyPanel()
+    {
+		setName ("Properties View");
+    }
+
+	PropertyGroup (ValueTree *tree) : PropertyPanel()
+	{
+		setName ("Properties View");
+		if (tree != nullptr) {
+			setName((tree->hasProperty(Attributes::name)) ? tree->getProperty(Attributes::name) : "undefined");
+			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + tree->getProperty(Attributes::objectType.toString()) : getName());
+			Identifier t;
+			for (int i = tree->getNumProperties(); --i >= 0;) {
+				t = tree->getPropertyName(i);
+				Attribute *attrib;
+				if ((attrib = Constructor::getInstance()->getAttributeOf(t)) != nullptr) {
+					if (attrib->visible) {
+						//get propertycomponent object of specified type
+						PropertyComponent *comp;
+						if (attrib->type == AttributeType::colour) {
+							comp = new ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
+						} else {
+							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 96, false);
+						}
+						//add object to specified group
+						if (attrib->group.equalsIgnoreCase("General")) {
+							generalGroup.add(comp);
+						} else if (attrib->group.equalsIgnoreCase("Bounds")) {
+							boundsGroup.add(comp);
+						} else if (attrib->group.equalsIgnoreCase("Colours")) {
+							coloursGroup.add(comp);
+						}
+					}
+				}
+			}
+		}
+
+		if (generalGroup.size() > 0) addSection("General", generalGroup);
+		if (boundsGroup.size() > 0) addSection("Bounds", boundsGroup);
+		if (coloursGroup.size() > 0) addSection("Colours", coloursGroup);
+
+		refreshAll();
+	}
+
+private:
+	Array<PropertyComponent*> boundsGroup;
+	Array<PropertyComponent*> generalGroup;
+	Array<PropertyComponent*> coloursGroup;
+};
+
+/* This is the old PropertyGroup class we used before switching to PropertyPanel, which has sections.
 class PropertyGroup  : public Component
 {
 public:
@@ -143,16 +200,22 @@ public:
 	PropertyGroup (ValueTree *tree) {
 		setName ("Properties View");
 		if (tree != nullptr) {
+			//AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "...");
 			setName((tree->hasProperty(Attributes::name)) ? tree->getProperty(Attributes::name) : "undefined");
 			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + tree->getProperty(Attributes::objectType.toString()) : getName());
 			Identifier t;
 			for (int i = tree->getNumProperties(); --i >= 0;) {
 				t = tree->getPropertyName(i);
-				if (Attributes::isVisibleAsProperty(t)) {
-					if (Attributes::getAttributeType(t) == AttributeType::colour) {
-						properties.add (new ColourPropertyComponent(tree->getPropertyAsValue(t, 0), t.toString()));
-					} else {
-						properties.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false));
+				Attribute *attrib;
+				if ((attrib = Constructor::getInstance()->getAttributeOf(t)) != nullptr) {
+					//if (Attributes::isVisibleAsProperty(t)) {
+					if (attrib->visible) {
+						//AlertWindow::showMessageBox(AlertWindow::NoIcon, "is", "visible");
+						if (attrib->type == AttributeType::colour) {
+							properties.add (new ColourPropertyComponent(tree->getPropertyAsValue(t, 0), t.toString()));
+						} else {
+							properties.add (new TextPropertyComponent (tree->getPropertyAsValue(t, 0), t.toString(), 96, false));
+						}
 					}
 				}
 			}
@@ -201,7 +264,7 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
 };
-
+*/
 
 
 

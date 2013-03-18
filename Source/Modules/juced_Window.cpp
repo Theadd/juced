@@ -26,6 +26,7 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 	setProperty(Attributes::objectType, "Window");
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
+	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::name, getName());
 	setProperty(Attributes::className, "juced_Window");
 	setComponentID(Uuid().toString());

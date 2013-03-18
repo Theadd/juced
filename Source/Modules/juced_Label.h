@@ -20,7 +20,7 @@ class juced_Label    : public Label,
 {
 public:
 
-	ValueTree *linkedValueTree;
+	//ValueTree *linkedValueTree;
 
     juced_Label();
 
