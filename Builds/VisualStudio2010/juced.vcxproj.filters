@@ -2210,6 +2210,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\textbox.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
     <None Include="..\..\Source\BinaryData\button.png">
       <Filter>juced\Source\BinaryData</Filter>
     </None>
@@ -2223,9 +2226,6 @@
       <Filter>juced\Source\BinaryData</Filter>
     </None>
     <None Include="..\..\Source\BinaryData\tabs.png">
-      <Filter>juced\Source\BinaryData</Filter>
-    </None>
-    <None Include="..\..\Source\BinaryData\textbox.png">
       <Filter>juced\Source\BinaryData</Filter>
     </None>
     <None Include="..\..\Source\BinaryData\window.png">

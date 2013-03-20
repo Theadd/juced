@@ -9,6 +9,7 @@
 */
 
 #include "Globals.h"
+#include "Constructor.h"
 
 class SelectionArea : public Component
 {
@@ -27,18 +28,21 @@ public:
 			MiniBox *box = new MiniBox("upperLeft");
 			addAndMakeVisible(box);
 			box->addMouseListener(this, false);
+			box->setVisible(false);
 			box->setMouseCursor(MouseCursor::TopLeftCornerResizeCursor);
 			miniBoxes.add(box);
 
 			box = new MiniBox("upperRight");
 			addAndMakeVisible(box);
 			box->addMouseListener(this, false);
+			box->setVisible(false);
 			box->setMouseCursor(MouseCursor::TopRightCornerResizeCursor);
 			miniBoxes.add(box);
 
 			box = new MiniBox("bottomLeft");
 			addAndMakeVisible(box);
 			box->addMouseListener(this, false);
+			box->setVisible(false);
 			box->setMouseCursor(MouseCursor::BottomLeftCornerResizeCursor);
 			miniBoxes.add(box);
 
@@ -60,15 +64,27 @@ public:
 		}
 	}
 
-	void setSelectionBounds(int x, int y, int width, int height) {
-		//ready = false;
-		setBounds(x - _boxSize, y - _boxSize, width + (_boxSize*2), height + (_boxSize*2));
+	void setSelectionBounds(int x, int y, int width, int height, bool isModX = false, bool isModY = false, bool isModWidth = false, bool isModHeight = false) {
 
-		miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
-		miniBoxes[1]->setBounds(width + _boxSize, 0, _boxSize, _boxSize);
-		miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);
-		miniBoxes[3]->setBounds(width + _boxSize,height + _boxSize, _boxSize, _boxSize);
-		ready = true;
+		int gridSize = Constructor::getInstance()->getGridSize();
+
+		int modX = (isModX) ? x % gridSize : 0;
+		int modY = (isModY) ? y % gridSize : 0;
+		int modWidth = (isModWidth) ? (x - modX + width) % gridSize : 0;
+		int modHeight = (isModHeight) ? (y - modY + height) % gridSize : 0;
+		Constructor::getInstance()->setDrawBoundsMod(modX, modY, modWidth, modHeight);
+
+		if (!isComponentSelection) {
+			setBounds(x - modX, y - modY, width - modWidth, height - modHeight);
+		} else {
+			setBounds(x - _boxSize - modX, y - _boxSize - modY, width + (_boxSize*2) - modWidth, height + (_boxSize*2) - modHeight);
+
+			/*miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
+			miniBoxes[1]->setBounds(width + _boxSize, 0, _boxSize, _boxSize);
+			miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);*/
+			miniBoxes[3]->setBounds(getWidth() - _boxSize, getHeight() - _boxSize, _boxSize, _boxSize);
+			ready = true;
+		}
 	}
 
 	void setVisible(bool shouldBeVisible)
@@ -85,23 +101,31 @@ public:
 	void paint (Graphics& g)
 	{
 		if (!isComponentSelection) {
-			g.fillAll (Colours::grey);
+			g.fillAll (Colours::lightblue);
 			setAlpha(0.3f);
 		} else {
-			g.fillAll (Colours::grey);
-			setAlpha(0.2f);
+			g.setColour(Colours::black);
+			setAlpha(0.4f);
+			g.drawHorizontalLine((_boxSize - 2), (float)(_boxSize - 2), ((float) getWidth()) - (float)(_boxSize - 2));
+			g.drawVerticalLine((_boxSize - 2), (float)(_boxSize - 2), ((float) getHeight()) - (float)(_boxSize - 2));
+			g.drawHorizontalLine(getHeight() - _boxSize + 1, (float)(_boxSize - 2), ((float) getWidth()) - (float)(_boxSize - 2));
+			g.drawVerticalLine(getWidth() - _boxSize + 1, (float)(_boxSize - 2), ((float) getHeight()) - (float)(_boxSize - 2));
 		}
 	}
 
 	void mouseDrag (const MouseEvent& event)
 	{
+		bool ctrlKeyDown = event.mods.isCtrlDown();
+
 		if (event.originalComponent->getName().equalsIgnoreCase("bottomRight")) {
 			Point<int> size = event.getScreenPosition() - this->getScreenPosition();
-			setSelectionBounds(getX() + _boxSize, getY() + _boxSize, size.getX() - _boxSize, size.getY() - _boxSize); 
-		} else if (event.originalComponent->getName().equalsIgnoreCase("bottomLeft")) {
+			setSelectionBounds(getX() + _boxSize, getY() + _boxSize, size.getX() - _boxSize, size.getY() - _boxSize, false, false, !ctrlKeyDown, !ctrlKeyDown); 
+		
+		}/* else if (event.originalComponent->getName().equalsIgnoreCase("bottomLeft")) {
 			Point<int> size = event.getScreenPosition() - this->getScreenPosition();
-			setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - (_boxSize * 2) - size.getX(), size.getY() - (_boxSize * 2));
-		}
+			setSelectionBounds(getX() + _boxSize + size.getX(), getY() + _boxSize, getWidth() - (_boxSize * 2) - size.getX(), size.getY() - (_boxSize * 2), !ctrlKeyDown, false, false, !ctrlKeyDown);
+		
+		}*/
 	}
 
 	void setBoxSize(int newSize) {
@@ -128,7 +152,10 @@ private:
 		}
 
 		void paint (Graphics& g) {
+			//setAlpha(0.5f);
 			g.fillAll (Colours::black);
+			g.setColour(Colours::white);
+			g.fillRect(1.0f, 1.0f, (float) (_boxSize - 2), (float) (_boxSize - 2));
 		}
 	};
 

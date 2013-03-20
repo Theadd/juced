@@ -6,6 +6,9 @@
 
 namespace BinaryData
 {
+    extern const char*   textbox_png;
+    const int            textbox_pngSize = 505;
+
     extern const char*   button_png;
     const int            button_pngSize = 609;
 
@@ -20,9 +23,6 @@ namespace BinaryData
 
     extern const char*   tabs_png;
     const int            tabs_pngSize = 3672;
-
-    extern const char*   textbox_png;
-    const int            textbox_pngSize = 463;
 
     extern const char*   window_png;
     const int            window_pngSize = 9880;

@@ -15,8 +15,10 @@ Constructor* Constructor::m_pInstance = NULL;
 
 Constructor* Constructor::getInstance()
 {
-   if (!m_pInstance)   // Only allow one instance of class to be generated.
+   if (!m_pInstance) {   // Only allow one instance of class to be generated.
       m_pInstance = new Constructor;
+	  m_pInstance->setGridSize(5);
+   }
 
    return m_pInstance;
 }
@@ -57,4 +59,42 @@ UndoManager* Constructor::getUndoManager() {
 		undoManager = new UndoManager();
 	
 	return undoManager;
+}
+
+void Constructor::setDrawBoundsMod(int x, int y, int width, int height)
+{
+	_drawBoundsModX = x;
+	_drawBoundsModY = y;
+	_drawBoundsModWidth = width;
+	_drawBoundsModHeight = height;
+}
+
+int Constructor::getDrawBoundsModX()
+{
+	return _drawBoundsModX;
+}
+
+int Constructor::getDrawBoundsModY()
+{
+	return _drawBoundsModY;
+}
+
+int Constructor::getDrawBoundsModWidth()
+{
+	return _drawBoundsModWidth;
+}
+
+int Constructor::getDrawBoundsModHeight()
+{
+	return _drawBoundsModHeight;
+}
+
+void Constructor::setGridSize(int newGridSize)
+{
+	_gridSize = newGridSize;
+}
+
+int Constructor::getGridSize()
+{
+	return _gridSize;
 }

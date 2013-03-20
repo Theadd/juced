@@ -1305,12 +1305,12 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\textbox.png"/>
     <None Include="..\..\Source\BinaryData\button.png"/>
     <None Include="..\..\Source\BinaryData\combobox.png"/>
     <None Include="..\..\Source\BinaryData\label.png"/>
     <None Include="..\..\Source\BinaryData\listbox.png"/>
     <None Include="..\..\Source\BinaryData\tabs.png"/>
-    <None Include="..\..\Source\BinaryData\textbox.png"/>
     <None Include="..\..\Source\BinaryData\window.png"/>
     <None Include="..\..\Source\BinaryData\juced.png"/>
     <None Include="..\..\Source\BinaryData\juced.ico"/>

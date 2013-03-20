@@ -5,12 +5,12 @@
   <MAINGROUP id="PHxAmr" name="juced">
     <GROUP id="{28A7121C-2451-00DC-CECA-C9820136CEE0}" name="Source">
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="cWizpB" name="textbox.png" compile="0" resource="1" file="Source/BinaryData/textbox.png"/>
         <FILE id="ewv5Hh" name="button.png" compile="0" resource="1" file="Source/BinaryData/button.png"/>
         <FILE id="ZPZBPR" name="combobox.png" compile="0" resource="1" file="Source/BinaryData/combobox.png"/>
         <FILE id="QRniEe" name="label.png" compile="0" resource="1" file="Source/BinaryData/label.png"/>
         <FILE id="bUxPE5" name="listbox.png" compile="0" resource="1" file="Source/BinaryData/listbox.png"/>
         <FILE id="zCmQsx" name="tabs.png" compile="0" resource="1" file="Source/BinaryData/tabs.png"/>
-        <FILE id="l7NHO5" name="textbox.png" compile="0" resource="1" file="Source/BinaryData/textbox.png"/>
         <FILE id="Y58W3l" name="window.png" compile="0" resource="1" file="Source/BinaryData/window.png"/>
         <FILE id="AIae3g" name="juced.png" compile="0" resource="1" file="Source/BinaryData/juced.png"/>
         <FILE id="eSzrF7" name="juced.ico" compile="0" resource="1" file="Source/BinaryData/juced.ico"/>

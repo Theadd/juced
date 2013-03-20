@@ -74,8 +74,22 @@ public:
 	*/
 	UndoManager* getUndoManager();
 
+	void setDrawBoundsMod(int x, int y, int width, int height);
+	int getDrawBoundsModX();
+	int getDrawBoundsModY();
+	int getDrawBoundsModWidth();
+	int getDrawBoundsModHeight();
+
+	void setGridSize(int newGridSize);
+	int getGridSize();
+
 private:
 	ScopedPointer<UndoManager> undoManager;
+	int _gridSize;
+	int _drawBoundsModX;
+	int _drawBoundsModY;
+	int _drawBoundsModWidth;
+	int _drawBoundsModHeight;
 	Constructor(){};  // Private so that it can  not be called
 	Constructor(Constructor const&){};             // copy constructor is private
 	Constructor& operator=(Constructor const&){};  // assignment operator is private

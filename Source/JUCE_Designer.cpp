@@ -140,7 +140,7 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 
 void JUCE_Designer::paint (Graphics& g)
 {
-    g.fillAll (Colour((uint8) 245, (uint8) 245, (uint8) 245));
+    g.fillAll (Colour((uint8) 49, (uint8) 124, (uint8) 205));
 	#ifdef __JUCER_APPEARANCESETTINGS_H_34D762C7__
 		IntrojucerLookAndFeel::fillWithBackgroundTexture (*this, g);
 	#endif
@@ -171,12 +171,14 @@ void JUCE_Designer::mouseMove (const MouseEvent& event)
 
 void JUCE_Designer::mouseDown (const MouseEvent& event)
 {
-	
+	bool ctrlKeyDown = event.mods.isCtrlDown();
+
 	if (getSelectedToolName()->isNotEmpty()) {
 		selectionArea = new SelectionArea();
 		addAndMakeVisible(selectionArea);
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
-		selectionArea->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1);
+		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1, !ctrlKeyDown, !ctrlKeyDown);
+
 	}
 	
 }
@@ -184,8 +186,9 @@ void JUCE_Designer::mouseDown (const MouseEvent& event)
 void JUCE_Designer::mouseDrag (const MouseEvent& event)
 {
 	if (selectionArea != nullptr) {
+		bool ctrlKeyDown = event.mods.isCtrlDown();
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
-		selectionArea->setBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
+		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY(), !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown);
 
 	}
 }
@@ -196,6 +199,7 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 	if (!event.mouseWasClicked()) {
 		if (selectedToolName->isNotEmpty()) {
 
+			//If user draw inside a component, let's find it's associated BigTree of the parent component
 			BigTree parentTree;
 			if (event.originalComponent != this) {
 				BigTree bTree(bigTree->getChildWithProperty(Attributes::ID, event.originalComponent->getComponentID(), true));
@@ -203,9 +207,10 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 			}
 
 			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
+			Constructor *constructor = Constructor::getInstance();
 
 			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
-				addWindow(event.originalComponent, relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY());
+				addWindow(event.originalComponent, relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY() - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 			} else {
 				//Create a component of the selected tool name unless it is placed outside a window
 				if (parentTree.isValid()) {
@@ -219,10 +224,10 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 					
 						parentTree.addChild(*objTree, -1, 0);
 
-						objTree->setProperty(Attributes::x, relativeEvent.getMouseDownX(), 0);
-						objTree->setProperty(Attributes::y, relativeEvent.getMouseDownY(), 0);
-						objTree->setProperty(Attributes::width, relativeEvent.getDistanceFromDragStartX(), 0);
-						objTree->setProperty(Attributes::height, relativeEvent.getDistanceFromDragStartY(), 0);
+						objTree->setProperty(Attributes::x, relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), 0);
+						objTree->setProperty(Attributes::y, relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), 0);
+						objTree->setProperty(Attributes::width, relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), 0);
+						objTree->setProperty(Attributes::height, relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight(), 0);
 
 						selectComponent(dynamic_cast<Component *> (dynamicObj));
 						//PropertyGroup *properties = new PropertyGroup(objTree);
@@ -250,12 +255,18 @@ void JUCE_Designer::mouseDoubleClick (const MouseEvent& event)
 
 bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
-	if (key.getKeyCode() == 90) {
-		Constructor::getInstance()->getUndoManager()->undo();
-	} else if (key.getKeyCode() == 89) {
-		Constructor::getInstance()->getUndoManager()->redo();
-	}
 	mousePositionLabel.setText(String(key.getKeyCode()), 0);
+	if (key.getKeyCode() == 90 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->getUndoManager()->undo();
+	} else if (key.getKeyCode() == 89 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->getUndoManager()->redo();
+	} else if (key.getKeyCode() == 82 && key.getModifiers().isCtrlDown()) {
+		int rand = 0;
+		while ((rand = Random::getSystemRandom().nextInt() % 21) < 4);
+		Constructor::getInstance()->setGridSize(rand);
+		grid.repaint();
+		mousePositionLabel.setText(String(Constructor::getInstance()->getGridSize()), 0);
+	}
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
 }
 
@@ -317,13 +328,21 @@ DynamicObject* JUCE_Designer::createObjectFromToolName (String *selectedToolName
 
 void JUCE_Designer::Grid::paint (Graphics& g)
 {
-    g.fillAll (Colours::transparentWhite);
-    g.setColour (Colours::black);
-	float opacity = 0.1f;
-	for (float x = 10.0f; x < (float) getWidth(); x+=10.0f) {
-		opacity = (((int) x) % 40 == 0) ? 0.15f : 0.06f;
-		g.drawLine(x, 0.0f, x, (float) getHeight(), opacity);
-		g.drawLine(0.0f, x, (float) getWidth(), x, opacity);
+	float gridSize = (float) Constructor::getInstance()->getGridSize();
+	int doubleLineInterval = 85 - (85 % (int) gridSize);
+	g.fillAll (Colours::transparentWhite);
+    g.setColour (Colours::white);
+	for (float x = gridSize; x < (float) getWidth(); x += gridSize) {
+		g.setOpacity((((int) x) % doubleLineInterval == 0) ? 0.15f : 0.06f);
+		g.drawVerticalLine(x, 0.0f, (float) getHeight());
+		g.drawHorizontalLine(x, 0.0f, (float) getWidth());
+		if (((int) x) % doubleLineInterval == 0) {
+			g.setOpacity(0.35f);
+			for (float i = (float) (int)(getHeight() / doubleLineInterval + 1); --i > 0;) {
+				g.drawVerticalLine(x, ((float) doubleLineInterval) * i - 3.0f, ((float) doubleLineInterval) * i + 4.0f);
+				g.drawHorizontalLine(((float) doubleLineInterval) * i, x - 3.0f, x + 4.0f);
+			}
+		}
 	}
 }
 
