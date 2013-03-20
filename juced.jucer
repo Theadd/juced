@@ -17,17 +17,21 @@
       </GROUP>
       <GROUP id="{CD61A17A-EFAF-9E46-E500-10D885059D59}" name="Designer">
         <GROUP id="{D96D4016-5332-3C8E-B7B2-0C1D88D1B9A6}" name="Properties">
-          <FILE id="t1kRoO" name="FontPropertyComponent.cpp" compile="1" resource="0"
-                file="Source/Designer/Properties/FontPropertyComponent.cpp"/>
-          <FILE id="ZF3WYv" name="FontPropertyComponent.h" compile="0" resource="0"
-                file="Source/Designer/Properties/FontPropertyComponent.h"/>
+          <FILE id="jHcnJP" name="TextWithButtonPropertyComponent.cpp" compile="1"
+                resource="0" file="Source/Designer/Properties/TextWithButtonPropertyComponent.cpp"/>
+          <FILE id="lWTA3t" name="TextWithButtonPropertyComponent.h" compile="0"
+                resource="0" file="Source/Designer/Properties/TextWithButtonPropertyComponent.h"/>
+          <FILE id="tpTNy7" name="ColourPropertyComponent.cpp" compile="1" resource="0"
+                file="Source/Designer/Properties/ColourPropertyComponent.cpp"/>
         </GROUP>
+        <FILE id="JR4jSB" name="PropertyView.cpp" compile="1" resource="0"
+              file="Source/Designer/PropertyView.cpp"/>
+        <FILE id="mz1PvZ" name="PropertyGroup.cpp" compile="1" resource="0"
+              file="Source/Designer/PropertyGroup.cpp"/>
         <FILE id="HSLMsx" name="Constructor.cpp" compile="1" resource="0" file="Source/Designer/Constructor.cpp"/>
         <FILE id="m3Ii1r" name="Constructor.h" compile="0" resource="0" file="Source/Designer/Constructor.h"/>
         <FILE id="tWLmYr" name="Globals.h" compile="0" resource="0" file="Source/Designer/Globals.h"/>
         <FILE id="kDfdBj" name="BigTree.cpp" compile="1" resource="0" file="Source/Designer/BigTree.cpp"/>
-        <FILE id="L86rWX" name="PropertiesComponent.cpp" compile="1" resource="0"
-              file="Source/Designer/PropertiesComponent.cpp"/>
         <FILE id="f8Vzc2" name="SelectionArea.cpp" compile="1" resource="0"
               file="Source/Designer/SelectionArea.cpp"/>
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>

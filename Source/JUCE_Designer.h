@@ -9,7 +9,8 @@
 #include "Modules/juced_TextButton.h"
 #include "Designer/SelectionArea.cpp"
 #include "Designer/Toolbox.cpp"
-#include "Designer/PropertiesComponent.cpp"
+#include "Designer/PropertyGroup.cpp"
+#include "Designer/PropertyView.cpp"
 #include "Designer/BigTree.cpp"
 #include "Designer/Constructor.h"
 
