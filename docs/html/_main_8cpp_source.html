@@ -175,36 +175,37 @@ $(document).ready(function(){initNavTree('_main_8cpp_source.html','');});
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            setResizable(<span class="keyword">true</span>, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            centreWithSize (getWidth(), getHeight());</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            setVisible (<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span> closeButtonPressed()</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="comment">// This is called when the user tries to close this window. Here, we&#39;ll just</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="comment">// ask the app to quit when this happens, but you can change this to do</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">// whatever you need.</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            JUCEApplication::getInstance()-&gt;systemRequestedQuit();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (<a class="code" href="classjuced_application_1_1_main_window.html">MainWindow</a>)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    };</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    ScopedPointer&lt;MainWindow&gt; mainWindow;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//==============================================================================</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">// This macro generates the main() routine that launches the app.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;START_JUCE_APPLICATION (<a class="code" href="classjuced_application.html">jucedApplication</a>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> closeButtonPressed()</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="comment">// This is called when the user tries to close this window. Here, we&#39;ll just</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">// ask the app to quit when this happens, but you can change this to do</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// whatever you need.</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            JUCEApplication::getInstance()-&gt;systemRequestedQuit();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (<a class="code" href="classjuced_application_1_1_main_window.html">MainWindow</a>)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    };</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    ScopedPointer&lt;MainWindow&gt; mainWindow;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//==============================================================================</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// This macro generates the main() routine that launches the app.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;START_JUCE_APPLICATION (<a class="code" href="classjuced_application.html">jucedApplication</a>)</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b423d2037aab9cfd0e7364e2bc458880.html">juced</a></li><li class="navelem"><a class="el" href="dir_17ce93d9d1a6b136927b9e86b8e91681.html">Source</a></li><li class="navelem"><b>Main.cpp</b></li>
-    <li class="footer">Generated on Wed Mar 20 2013 14:22:31 for JUCE Designer by
+    <li class="footer">Generated on Thu Mar 21 2013 14:42:42 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

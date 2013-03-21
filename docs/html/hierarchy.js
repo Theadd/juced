@@ -46,6 +46,9 @@ var hierarchy =
     [ "TextPropertyComponent", null, [
       [ "TextWithButtonPropertyComponent", "class_text_with_button_property_component.html", null ]
     ] ],
+    [ "UndoableAction", null, [
+      [ "Constructor::Action", "class_constructor_1_1_action.html", null ]
+    ] ],
     [ "ValueTree", null, [
       [ "BigTree", "class_big_tree.html", null ]
     ] ],
