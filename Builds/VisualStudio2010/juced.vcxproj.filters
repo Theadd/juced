@@ -1170,6 +1170,9 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h">
       <Filter>juced\Source\Designer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Designer\BigTree.h">
+      <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_TextButton.h">
       <Filter>juced\Source\Modules</Filter>
     </ClInclude>

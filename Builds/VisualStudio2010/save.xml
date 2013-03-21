@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Window y="84" x="84" id="8793ffaadc25ab93251ae860771278a6" className="juced_Window"
+        name="window" backgroundColour="FFD3D3D3" width="420" height="336"
+        objectType="Window">
+  <Component y="0" x="0" id="1d329f80530a02838919ced227875e72" className="juced_MainComponent"
+             name="Container" width="420" height="310" objectType="Component">
+    <Label id="046af4feaf631f8aaa11f40e89a92f0c" className="juced_Label"
+           name="label" width="84" height="84" textColour="FF000000" backgroundColour="FFAC5C5C"
+           font="15.0 Regular" text="This is a Label containing a TextButton"
+           objectType="Label" x="83" y="57">
+      <TextButton id="a2d47b3138fae993bfc9b9930876983a" className="juced_TextButton"
+                  buttonText="Text Button" name="TextButton" width="60" height="24"
+                  buttonOnColour="FF4444FF" buttonColour="FFBBBBFF" font="0.1 Regular"
+                  objectType="TextButton" x="12" y="12"/>
+    </Label>
+    <TextButton id="dd0e250c24e37d6d213db26a9ff0acfe" className="juced_TextButton"
+                buttonText="Text Button 2" name="TextButton" width="60" height="24"
+                buttonOnColour="FF4444FF" buttonColour="FFBBBBFF" font="0.1 Regular"
+                objectType="TextButton" x="179" y="69"/>
+  </Component>
+</Window>

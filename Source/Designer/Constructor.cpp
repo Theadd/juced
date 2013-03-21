@@ -98,3 +98,21 @@ int Constructor::getGridSize()
 {
 	return _gridSize;
 }
+
+//======================================================
+
+/*Constructor::Action::Action (BigTree &tree)
+{
+
+}
+
+bool Constructor::Action::perform ()
+{
+	return false;
+}
+
+bool Constructor::Action::undo ()
+{
+	return false;
+}
+*/

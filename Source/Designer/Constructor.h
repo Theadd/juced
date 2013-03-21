@@ -12,6 +12,7 @@
 #define __CONSTRUCTOR_H_E78AE279__
 
 #include "Globals.h"
+#include "BigTree.h"
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
@@ -83,8 +84,21 @@ public:
 	void setGridSize(int newGridSize);
 	int getGridSize();
 
+	/*
+	class Action : public UndoableAction
+	{
+	public:
+		Action (BigTree &tree);
+		bool perform ();
+		bool undo ();
+	private:
+		int _id;
+		int _valid;
+	};*/
+
 private:
 	ScopedPointer<UndoManager> undoManager;
+	//OwnedArray<Action> _actions;
 	int _gridSize;
 	int _drawBoundsModX;
 	int _drawBoundsModY;

@@ -266,6 +266,32 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 		Constructor::getInstance()->setGridSize(rand);
 		grid.repaint();
 		mousePositionLabel.setText(String(Constructor::getInstance()->getGridSize()), 0);
+	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
+		this->writeXmlToFile("save.xml");
+	} else if (key.getKeyCode() == key.leftKey) {
+		if (selectedComponent != nullptr) {
+			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			int currentPosX = valueTree.getProperty(Attributes::x);
+			valueTree.setProperty(Attributes::x, currentPosX - 1, Constructor::getInstance()->getUndoManager());
+		}
+	} else if (key.getKeyCode() == key.rightKey) {
+		if (selectedComponent != nullptr) {
+			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			int currentPosX = valueTree.getProperty(Attributes::x);
+			valueTree.setProperty(Attributes::x, currentPosX + 1, Constructor::getInstance()->getUndoManager());
+		}
+	} else if (key.getKeyCode() == key.upKey) {
+		if (selectedComponent != nullptr) {
+			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			int currentPosY = valueTree.getProperty(Attributes::y);
+			valueTree.setProperty(Attributes::y, currentPosY - 1, Constructor::getInstance()->getUndoManager());
+		}
+	} else if (key.getKeyCode() == key.downKey) {
+		if (selectedComponent != nullptr) {
+			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			int currentPosY = valueTree.getProperty(Attributes::y);
+			valueTree.setProperty(Attributes::y, currentPosY + 1, Constructor::getInstance()->getUndoManager());
+		}
 	}
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.
 }
