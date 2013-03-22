@@ -12,7 +12,9 @@
 #define __CONSTRUCTOR_H_E78AE279__
 
 #include "Globals.h"
+#include "SelectionArea.h"
 #include "BigTree.h"
+
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
@@ -33,6 +35,7 @@ struct Attribute
 	Identifier valueType;
 };
 
+class SelectionArea;
 /**
     Object required to build components and show its properties.
 
@@ -74,6 +77,7 @@ public:
 		@see UndoManager, BigTree, ValueTree
 	*/
 	UndoManager* getUndoManager();
+	SelectionArea* getSelectionBox();
 
 	void setDrawBoundsMod(int x, int y, int width, int height);
 	int getDrawBoundsModX();
@@ -83,6 +87,11 @@ public:
 
 	void setGridSize(int newGridSize);
 	int getGridSize();
+
+	
+
+	void setDesigner(Component *juce_designer);
+	Component* getDesigner();
 
 	/*
 	class Action : public UndoableAction
@@ -98,6 +107,11 @@ public:
 
 private:
 	ScopedPointer<UndoManager> undoManager;
+
+	friend class SelectionArea;
+	ScopedPointer<SelectionArea> _selectionBox;
+
+	Component *_designer;
 	//OwnedArray<Action> _actions;
 	int _gridSize;
 	int _drawBoundsModX;

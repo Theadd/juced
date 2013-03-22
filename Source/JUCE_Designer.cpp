@@ -3,6 +3,7 @@
 
 JUCE_Designer::JUCE_Designer ()
 {
+	//AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "commented alert for copy & paste");
 	setSize (800, 600);
 
 	addAndMakeVisible(&grid, 10);
@@ -19,11 +20,10 @@ JUCE_Designer::JUCE_Designer ()
 	
 	Constructor *constructor = Constructor::getInstance();
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
+	constructor->setDesigner(this);
 
-	selectionBox = new SelectionArea(true);
+	SelectionArea *selectionBox = constructor->getSelectionBox();
 	addAndMakeVisible(selectionBox);
-	selectionBox->setAlwaysOnTop(true);
-	selectionBox->setInterceptsMouseClicks(false, true);
 	selectionBox->setVisible(false);
 }
 
@@ -115,8 +115,16 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 
 void JUCE_Designer::selectComponent (Component *componentToSelect)
 {
+	SelectionArea *selectionBox = Constructor::getInstance()->getSelectionBox();
+
 	if (componentToSelect != this) {
 		selectionBox->setVisible(false);
+
+		/*AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "...");
+		if (selectedComponent != nullptr)
+			selectedComponent->removeComponentListener(selectionBox);
+		AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "done");*/
+
 		Point<int> pos = componentToSelect->getScreenPosition() - this->getScreenPosition();
 		selectedComponentPositionDifference = pos - componentToSelect->getPosition();
 		selectionBox->setSelectionBounds(pos.getX(), pos.getY(), componentToSelect->getWidth(), componentToSelect->getHeight());
@@ -128,9 +136,16 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 		propertyView->setViewedComponent(properties);
 		selectionBox->setVisible(true);
 
+		
+		componentToSelect->addComponentListener(selectionBox);
+
 	} else {
 		//set selection box invisible and clean properties window since user clicked the editor itself
 		selectionBox->setVisible(false);
+
+		/*if (selectedComponent != nullptr)
+			selectedComponent->removeComponentListener(selectionBox);*/
+
 		PropertyGroup *properties = new PropertyGroup();
 		propertyView->setViewedComponent(properties);
 		//bring properties view to front (just in case)
@@ -308,6 +323,8 @@ void JUCE_Designer::focusGained (FocusChangeType cause)
 
 void JUCE_Designer::childBoundsChanged (Component * child)
 {
+	SelectionArea *selectionBox = Constructor::getInstance()->getSelectionBox();
+
 	if (child == selectionBox) {
 		if (selectedComponent != nullptr && selectionBox->isReady()) {
 

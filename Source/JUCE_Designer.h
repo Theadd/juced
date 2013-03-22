@@ -7,14 +7,12 @@
 #include "Modules/juced_MainComponent.h"
 #include "Modules/juced_Label.h"
 #include "Modules/juced_TextButton.h"
-#include "Designer/SelectionArea.cpp"
+#include "Designer/SelectionArea.h"
 #include "Designer/Toolbox.cpp"
 #include "Designer/PropertyGroup.cpp"
 #include "Designer/PropertyView.cpp"
 #include "Designer/BigTree.h"
 #include "Designer/Constructor.h"
-
-
 
 class JUCE_Designer  : public Component
 {
@@ -61,7 +59,7 @@ private:
 	//OwnedArray<juced_Label> juced_Labels;
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
-	ScopedPointer<SelectionArea> selectionBox;
+	
 	Component *selectedComponent;
 	ValueTree *selectedComponentTree;
 	Point<int> selectedComponentPositionDifference;

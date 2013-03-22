@@ -99,6 +99,29 @@ int Constructor::getGridSize()
 	return _gridSize;
 }
 
+SelectionArea* Constructor::getSelectionBox()
+{
+	if (_selectionBox == nullptr) {
+		_selectionBox = new SelectionArea(true);
+		_selectionBox->setAlwaysOnTop(true);
+		_selectionBox->setInterceptsMouseClicks(false, true);
+	}
+
+	return _selectionBox;
+}
+
+void Constructor::setDesigner(Component* juce_designer)
+{
+	_designer = juce_designer;
+}
+
+Component* Constructor::getDesigner()
+{
+	jassert (_designer != nullptr);
+	return _designer;
+}
+
+
 //======================================================
 
 /*Constructor::Action::Action (BigTree &tree)

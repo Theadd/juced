@@ -958,6 +958,7 @@
     <ClInclude Include="..\..\Source\Designer\Constructor.h"/>
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
+    <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_TextButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Label.h"/>

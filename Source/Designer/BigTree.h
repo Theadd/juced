@@ -14,6 +14,7 @@
 
 #include "Globals.h"
 #include "Constructor.h"
+#include "SelectionArea.h"
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
