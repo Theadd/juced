@@ -17,6 +17,8 @@
       </GROUP>
       <GROUP id="{CD61A17A-EFAF-9E46-E500-10D885059D59}" name="Designer">
         <GROUP id="{D96D4016-5332-3C8E-B7B2-0C1D88D1B9A6}" name="Properties">
+          <FILE id="Lg0t4W" name="EnumerationPropertyComponent.cpp" compile="1"
+                resource="0" file="Source/Designer/Properties/EnumerationPropertyComponent.cpp"/>
           <FILE id="jHcnJP" name="TextWithButtonPropertyComponent.cpp" compile="1"
                 resource="0" file="Source/Designer/Properties/TextWithButtonPropertyComponent.cpp"/>
           <FILE id="lWTA3t" name="TextWithButtonPropertyComponent.h" compile="0"

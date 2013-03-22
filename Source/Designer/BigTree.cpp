@@ -84,6 +84,9 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else if (property == Attributes::buttonOnColour) {
 					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
 					cObject->setColour(TextButton::buttonOnColourId, newColour);
+				} else if (property == Attributes::connectedEdges) {
+					int value = treeWhosePropertyHasChanged.getProperty(property);
+					cObject->setConnectedEdges(value);
 				} else {
 					propertyChanged = false;
 				}

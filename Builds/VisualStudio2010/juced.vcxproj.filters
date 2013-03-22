@@ -226,6 +226,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp">
+      <Filter>juced\Source\Designer\Properties</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.cpp">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClCompile>

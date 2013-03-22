@@ -13,6 +13,13 @@
 #ifndef __GLOBALS_H_4F86195D__
 #define __GLOBALS_H_4F86195D__
 
+struct Enumeration
+{
+	String name;
+	String display;
+	int value;
+};
+
 namespace ValueType
 {
 	const Identifier text		("text");
@@ -31,10 +38,11 @@ namespace Modules
 
 namespace AttributeType
 {
-    const Identifier text       ("text");
-    const Identifier textarea    ("textarea");
-	const Identifier font        ("font");
-    const Identifier colour	  ("colour");
+    const Identifier text			("text");
+    const Identifier textarea		("textarea");
+	const Identifier font			("font");
+    const Identifier colour			("colour");
+	const Identifier enumeration	("enumeration");
 }
 
 namespace Attributes
@@ -55,6 +63,7 @@ namespace Attributes
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);
 	DECLARE_ID (buttonOnColour);
+	DECLARE_ID (connectedEdges);
 	DECLARE_ID (className);
     DECLARE_ID (classDesc);
 	DECLARE_ID (objectType);

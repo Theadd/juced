@@ -35,7 +35,10 @@ struct Attribute
 	Identifier valueType;
 };
 
+
+
 class SelectionArea;
+//struct Enumeration;
 /**
     Object required to build components and show its properties.
 
@@ -64,6 +67,8 @@ public:
 	*/
 	void loadAttributesFromXmlFile(const File &xmlFile);
 
+	void loadEnumerationsFromXmlFile(const File &xmlFile);
+
 	/** Returns a struct pointer of attribute parameters given it's Identifier.
 
 		@param _name Attribute identifier.
@@ -71,6 +76,8 @@ public:
 		@see Attributes
 	*/
 	Attribute* getAttributeOf(Identifier _name);
+
+	Array< Enumeration* >* getEnumerationsOf(Identifier _name);
 
 	/** Returns a pointer to an UndoManager.
 
@@ -110,6 +117,12 @@ private:
 
 	friend class SelectionArea;
 	ScopedPointer<SelectionArea> _selectionBox;
+	
+	struct _Enumerations {
+		Identifier name;
+		Array< Enumeration* >* enumerations;
+	};
+	Array< _Enumerations > _enumerations;
 
 	Component *_designer;
 	//OwnedArray<Action> _actions;

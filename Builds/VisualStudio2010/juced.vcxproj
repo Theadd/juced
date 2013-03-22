@@ -125,6 +125,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\ColourPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\PropertyView.cpp"/>

@@ -20,6 +20,7 @@ JUCE_Designer::JUCE_Designer ()
 	
 	Constructor *constructor = Constructor::getInstance();
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
+	constructor->loadEnumerationsFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "enumerations.xml"));
 	constructor->setDesigner(this);
 
 	SelectionArea *selectionBox = constructor->getSelectionBox();

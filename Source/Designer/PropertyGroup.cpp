@@ -12,6 +12,7 @@
 #include "Constructor.h"
 #include "Properties/TextWithButtonPropertyComponent.h"
 #include "Properties/ColourPropertyComponent.cpp"
+#include "Properties/EnumerationPropertyComponent.cpp"
 
 
 class PropertyGroup : public PropertyPanel
@@ -38,6 +39,8 @@ public:
 						PropertyComponent *comp;
 						if (attrib->type == AttributeType::colour) {
 							comp = new ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
+						} else if (attrib->type == AttributeType::enumeration) {
+							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
 						} else {
 							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 96, false);
 						}
@@ -48,6 +51,8 @@ public:
 							boundsGroup.add(comp);
 						} else if (attrib->group.equalsIgnoreCase("Colours")) {
 							coloursGroup.add(comp);
+						} else if (attrib->group.equalsIgnoreCase("Behaviour")) {
+							behaviourGroup.add(comp);
 						}
 					}
 				}
@@ -57,6 +62,7 @@ public:
 		if (generalGroup.size() > 0) addSection("General", generalGroup);
 		if (boundsGroup.size() > 0) addSection("Bounds", boundsGroup);
 		if (coloursGroup.size() > 0) addSection("Colours", coloursGroup);
+		if (behaviourGroup.size() > 0) addSection("Behaviour", behaviourGroup);
 
 		refreshAll();
 	}
@@ -65,6 +71,7 @@ private:
 	Array<PropertyComponent*> boundsGroup;
 	Array<PropertyComponent*> generalGroup;
 	Array<PropertyComponent*> coloursGroup;
+	Array<PropertyComponent*> behaviourGroup;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
 };

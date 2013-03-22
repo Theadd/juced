@@ -45,11 +45,49 @@ void Constructor::loadAttributesFromXmlFile(const File &xmlFile)
 
 }
 
+void Constructor::loadEnumerationsFromXmlFile(const File &xmlFile)
+{
+
+	XmlElement *xml = XmlDocument::parse(xmlFile)->getFirstChildElement();
+
+	while (xml != nullptr)
+	{
+		_Enumerations *e = new _Enumerations;
+		e->name = xml->getStringAttribute("name");
+		e->enumerations = new Array< Enumeration* >;
+
+		XmlElement *child = xml->getFirstChildElement();
+
+		while (child != nullptr)
+		{
+			Enumeration *t = new Enumeration;
+			t->name = child->getStringAttribute("name");
+			t->display = child->getStringAttribute("display");
+			t->value = child->getIntAttribute("value");
+			e->enumerations->add(t);
+			child = child->getNextElement();
+		}
+		_enumerations.add(*e);
+
+		xml = xml->getNextElement();
+	}
+
+}
+
 Attribute* Constructor::getAttributeOf(Identifier _name)
 {
 	for (int i = _attributes.size(); --i >= 0;)
 		if (_attributes[i]->name == _name)
 			return _attributes[i];
+
+	return nullptr;
+}
+
+Array< Enumeration* >* Constructor::getEnumerationsOf(Identifier _name)
+{
+	for (int i = _enumerations.size(); --i >= 0;)
+		if (_enumerations[i].name == _name)
+			return _enumerations[i].enumerations;
 
 	return nullptr;
 }

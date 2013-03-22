@@ -12,4 +12,5 @@
   <Attribute name="width" group="Bounds" visible="1" type="text" display="Width" valueType="integer"/>
   <Attribute name="backgroundColour" group="Colours" visible="1" type="colour" display="Background colour" valueType="rgba"/>
   <Attribute name="textColour" group="Colours" visible="1" type="colour" display="Text colour" valueType="rgba"/>
+  <Attribute name="connectedEdges" group="Behaviour" visible="1" type="enumeration" display="Connected edges" valueType="integer"/>
 </Attributes>
