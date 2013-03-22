@@ -42,11 +42,16 @@ public:
 
 	void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized);
 
+	void setListenToChanges(bool shouldBeListeningToChanges);
+
+	bool isListeningToChanges();
+
 private:
 	ScopedPointer<Component> selectedComponent;
 	int _boxSize;
 	bool isComponentSelection;
 	bool ready;
+	bool _isListeningToChanges;
 
 	class MiniBox : public Component
 	{

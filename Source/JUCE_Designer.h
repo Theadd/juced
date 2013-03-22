@@ -63,6 +63,7 @@ private:
 	Component *selectedComponent;
 	ValueTree *selectedComponentTree;
 	Point<int> selectedComponentPositionDifference;
+	Point<int> componentPositionOnDragStart;
 	ScopedPointer<BigTree> bigTree;
 	PropertyGroup *activePropertyGroup;
 	//ScopedPointer<ComponentBuilder> builder;

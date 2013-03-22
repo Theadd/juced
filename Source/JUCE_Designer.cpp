@@ -195,6 +195,11 @@ void JUCE_Designer::mouseDown (const MouseEvent& event)
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
 		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1, !ctrlKeyDown, !ctrlKeyDown);
 
+	} else {
+		if (event.originalComponent == selectedComponent) {
+			//user is going to move the component using drag & drop
+			componentPositionOnDragStart = event.originalComponent->getScreenPosition() - this->getScreenPosition();
+		}
 	}
 	
 }
@@ -202,15 +207,24 @@ void JUCE_Designer::mouseDown (const MouseEvent& event)
 void JUCE_Designer::mouseDrag (const MouseEvent& event)
 {
 	if (selectionArea != nullptr) {
+		//creating a new component
 		bool ctrlKeyDown = event.mods.isCtrlDown();
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
 		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY(), !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown);
 
+	} else if (event.originalComponent == selectedComponent) {
+		//moving an existing component
+		bool ctrlKeyDown = event.mods.isCtrlDown();
+		Constructor::getInstance()->getSelectionBox()->setListenToChanges(false);
+		
+		Constructor::getInstance()->getSelectionBox()->setSelectionBounds(componentPositionOnDragStart.getX() + event.getDistanceFromDragStartX(), componentPositionOnDragStart.getY() + event.getDistanceFromDragStartY(), selectedComponent->getWidth(), selectedComponent->getHeight(), !ctrlKeyDown, !ctrlKeyDown);
 	}
 }
 
 void JUCE_Designer::mouseUp (const MouseEvent& event)
 {
+	Constructor::getInstance()->getSelectionBox()->setListenToChanges(true);
+
 	String *selectedToolName = getSelectedToolName();
 	if (!event.mouseWasClicked()) {
 		if (selectedToolName->isNotEmpty()) {

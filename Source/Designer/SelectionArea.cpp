@@ -14,10 +14,12 @@ SelectionArea::SelectionArea() : Component("Selection")
 {
 	isComponentSelection = false;
 	ready = false;
+	setListenToChanges(false);
 }
 
 SelectionArea::SelectionArea(bool _isComponentSelection) : Component("Selection") {
 	isComponentSelection = _isComponentSelection;
+	setListenToChanges(_isComponentSelection);
 	setBoxSize(6);
 	if (isComponentSelection) {
 		MiniBox *box = new MiniBox("upperLeft");
@@ -133,14 +135,24 @@ int SelectionArea::getBoxSize() {
 
 void SelectionArea::componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)
 {
-	if (isVisible()) {
+	if (isVisible() && isListeningToChanges()) {
 		if (wasMoved || wasResized) {
 			Point<int> pos = component.getScreenPosition() - Constructor::getInstance()->getDesigner()->getScreenPosition();
-			//selectedComponentPositionDifference = pos - componentToSelect->getPosition();
+
 			setSelectionBounds(pos.getX(), pos.getY(), component.getWidth(), component.getHeight());
-			//selectedComponent = componentToSelect;
+
 		}
 	}
+}
+
+void SelectionArea::setListenToChanges(bool shouldBeListeningToChanges)
+{
+	_isListeningToChanges = shouldBeListeningToChanges;
+}
+
+bool SelectionArea::isListeningToChanges()
+{
+	return _isListeningToChanges;
 }
 
 //================================================
