@@ -14,6 +14,7 @@
 #include "Globals.h"
 #include "SelectionArea.h"
 #include "BigTree.h"
+#include "PlaceableComponent.h"
 
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
@@ -38,6 +39,7 @@ struct Attribute
 
 
 class SelectionArea;
+class BigTree;
 //struct Enumeration;
 /**
     Object required to build components and show its properties.
@@ -100,22 +102,17 @@ public:
 	void setDesigner(Component *juce_designer);
 	Component* getDesigner();
 
-	/*
-	class Action : public UndoableAction
-	{
-	public:
-		Action (BigTree &tree);
-		bool perform ();
-		bool undo ();
-	private:
-		int _id;
-		int _valid;
-	};*/
+	void setBigTreeRoot(BigTree *bigTreeRoot);
+	BigTree* getBigTreeRoot();
+
+	Component* createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds);
+
 
 private:
 	ScopedPointer<UndoManager> undoManager;
 
 	friend class SelectionArea;
+	friend class BigTree;
 	ScopedPointer<SelectionArea> _selectionBox;
 	
 	struct _Enumerations {
@@ -125,6 +122,7 @@ private:
 	Array< _Enumerations > _enumerations;
 
 	Component *_designer;
+	BigTree* _bigTreeRoot;
 	//OwnedArray<Action> _actions;
 	int _gridSize;
 	int _drawBoundsModX;

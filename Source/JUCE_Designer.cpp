@@ -90,6 +90,7 @@ void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int h
 	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
 	if (parent == this) {
 		bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
+		Constructor::getInstance()->setBigTreeRoot(bigTree);
 		bigTree->addChild(*compTree, -1, 0);
 	} else {
 		BigTree *objTree = new BigTree(win, win->getProperty(Attributes::objectType));
@@ -244,6 +245,11 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 			} else {
 				//Create a component of the selected tool name unless it is placed outside a window
 				if (parentTree.isValid()) {
+					Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
+					Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
+					selectComponent(newComponent);
+				}
+				/*if (parentTree.isValid()) {
 					DynamicObject *dynamicObj;
 					if ((dynamicObj = createObjectFromToolName(selectedToolName)) != nullptr) {
 
@@ -265,7 +271,7 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 						//activePropertyGroup = properties;
 						//selectedComponentTree = objTree;
 					}
-				}
+				}*/
 			}
 			selectionArea = nullptr;
 		}
@@ -350,19 +356,6 @@ void JUCE_Designer::childBoundsChanged (Component * child)
 			valueTree.setProperty(Attributes::y, child->getY() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getY(), Constructor::getInstance()->getUndoManager());
 
 		}
-	} else if (child == selectedComponent) {
-		//selected component bounds changed, if it was not done using the selectionBox, update selectionBox bounds
-		/*bool resizeSelection = false;
-		if (abs((child->getX() + selectedComponentPositionDifference.getX()) - selectionBox->getX()) > 2 * selectionBox->getBoxSize())
-			resizeSelection = true;
-		if (abs((child->getY() + selectedComponentPositionDifference.getY()) - selectionBox->getY()) > 2 * selectionBox->getBoxSize())
-			resizeSelection = true;
-		if (abs(selectionBox->getWidth() - child->getWidth()) > 2 * selectionBox->getBoxSize())
-			resizeSelection = true;
-		if (abs(selectionBox->getHeight() - child->getHeight()) > 2 * selectionBox->getBoxSize())
-			resizeSelection = true;
-		if (resizeSelection)
-			selectComponent(child);*/
 	}
 
 }

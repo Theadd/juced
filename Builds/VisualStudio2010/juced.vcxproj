@@ -131,6 +131,7 @@
     <ClCompile Include="..\..\Source\Designer\PropertyView.cpp"/>
     <ClCompile Include="..\..\Source\Designer\PropertyGroup.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Constructor.cpp"/>
+    <ClCompile Include="..\..\Source\Designer\PlaceableComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
@@ -957,6 +958,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\Constructor.h"/>
+    <ClInclude Include="..\..\Source\Designer\PlaceableComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>

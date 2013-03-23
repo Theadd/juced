@@ -39,6 +39,8 @@ public:
 	/** Creates an unnamed BigTree that holds a DynamicObject. */
 	BigTree(DynamicObject *object);
 
+	void setDynamicObject(DynamicObject *object);
+
 	/** Deals with property changes on a determinated object. */
 	void valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, const Identifier &property);
 

@@ -214,3 +214,8 @@ void BigTree::getDynamicObjectProperties(DynamicObject *object) {
 	}
 		
 }
+
+void BigTree::setDynamicObject(DynamicObject *object)
+{
+	getDynamicObjectProperties(object);
+}

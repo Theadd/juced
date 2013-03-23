@@ -244,6 +244,9 @@
     <ClCompile Include="..\..\Source\Designer\Constructor.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Designer\PlaceableComponent.cpp">
+      <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
@@ -1168,6 +1171,9 @@
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Constructor.h">
+      <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Designer\PlaceableComponent.h">
       <Filter>juced\Source\Designer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Globals.h">

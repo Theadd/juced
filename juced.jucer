@@ -32,6 +32,10 @@
               file="Source/Designer/PropertyGroup.cpp"/>
         <FILE id="HSLMsx" name="Constructor.cpp" compile="1" resource="0" file="Source/Designer/Constructor.cpp"/>
         <FILE id="m3Ii1r" name="Constructor.h" compile="0" resource="0" file="Source/Designer/Constructor.h"/>
+        <FILE id="i65Rav" name="PlaceableComponent.cpp" compile="1" resource="0"
+              file="Source/Designer/PlaceableComponent.cpp"/>
+        <FILE id="BNcZKy" name="PlaceableComponent.h" compile="0" resource="0"
+              file="Source/Designer/PlaceableComponent.h"/>
         <FILE id="tWLmYr" name="Globals.h" compile="0" resource="0" file="Source/Designer/Globals.h"/>
         <FILE id="kDfdBj" name="BigTree.cpp" compile="1" resource="0" file="Source/Designer/BigTree.cpp"/>
         <FILE id="XEXE0O" name="BigTree.h" compile="0" resource="0" file="Source/Designer/BigTree.h"/>

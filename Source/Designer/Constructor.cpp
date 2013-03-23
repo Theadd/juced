@@ -159,21 +159,22 @@ Component* Constructor::getDesigner()
 	return _designer;
 }
 
-
-//======================================================
-
-/*Constructor::Action::Action (BigTree &tree)
+void Constructor::setBigTreeRoot(BigTree *bigTreeRoot)
 {
-
+	_bigTreeRoot = bigTreeRoot;
 }
 
-bool Constructor::Action::perform ()
+BigTree* Constructor::getBigTreeRoot()
 {
-	return false;
+	if (_bigTreeRoot != nullptr)
+		return _bigTreeRoot;
+
+	return nullptr;
 }
 
-bool Constructor::Action::undo ()
+Component* Constructor::createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds)
 {
-	return false;
+	PlaceableComponent *newComponent = new PlaceableComponent(selectedToolName, parentComponentID, bounds);
+	getUndoManager()->perform(newComponent, "Create new " + selectedToolName);
+	return newComponent->getComponent();
 }
-*/
