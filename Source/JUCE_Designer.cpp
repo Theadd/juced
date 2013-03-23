@@ -17,6 +17,8 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setFont(Font(12.0f));
 	mousePositionLabel.setBounds(getWidth() - 80, getHeight() - 25, 80, 25);
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
+
+
 	
 	Constructor *constructor = Constructor::getInstance();
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
@@ -230,16 +232,28 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 	if (!event.mouseWasClicked()) {
 		if (selectedToolName->isNotEmpty()) {
 
-			//If user draw inside a component, let's find it's associated BigTree of the parent component
+			/*If user draw inside a component, let's find it's associated BigTree of the parent component
 			BigTree parentTree;
 			if (event.originalComponent != this) {
 				BigTree bTree(bigTree->getChildWithProperty(Attributes::ID, event.originalComponent->getComponentID(), true));
 				if (bTree.isValid()) parentTree = bTree;
-			}
+			}*/
 
 			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
 			Constructor *constructor = Constructor::getInstance();
 
+			Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
+			Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
+			
+			if (bigTree == nullptr)
+				bigTree = constructor->getBigTreeRoot();
+				//*objTree = BigTree(*_componentTree);
+
+			if (newComponent != nullptr)
+				selectComponent(newComponent);
+
+
+			/*
 			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
 				addWindow(event.originalComponent, relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY() - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 			} else {
@@ -248,7 +262,7 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 					Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 					Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
 					selectComponent(newComponent);
-				}
+				}*/
 				/*if (parentTree.isValid()) {
 					DynamicObject *dynamicObj;
 					if ((dynamicObj = createObjectFromToolName(selectedToolName)) != nullptr) {
@@ -272,7 +286,6 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 						//selectedComponentTree = objTree;
 					}
 				}*/
-			}
 			selectionArea = nullptr;
 		}
 	} else {

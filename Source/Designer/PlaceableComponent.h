@@ -38,7 +38,7 @@ private:
 	String _selectedToolName;
 	String _parentComponentID;
 	Rectangle<int> _bounds;
-	Component* _component;
+	DynamicObject* _dynamicObject;
 	String _componentID;
 
 	friend class BigTree;

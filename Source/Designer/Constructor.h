@@ -26,15 +26,7 @@
 	@see getAttributeOf
 	@see Attributes
 */
-struct Attribute
-{
-	Identifier name;
-	String group;
-	bool visible;
-	Identifier type;
-	String display;
-	Identifier valueType;
-};
+
 
 
 
@@ -97,7 +89,7 @@ public:
 	void setGridSize(int newGridSize);
 	int getGridSize();
 
-	
+	static void displayMsg(String msg);
 
 	void setDesigner(Component *juce_designer);
 	Component* getDesigner();
@@ -110,8 +102,10 @@ public:
 
 private:
 	ScopedPointer<UndoManager> undoManager;
+	ScopedPointer<TextEditor> _msgDisplay;
 
 	friend class SelectionArea;
+	friend class JUCE_Designer;
 	friend class BigTree;
 	ScopedPointer<SelectionArea> _selectionBox;
 	

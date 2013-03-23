@@ -20,6 +20,16 @@ struct Enumeration
 	int value;
 };
 
+struct Attribute
+{
+	Identifier name;
+	String group;
+	bool visible;
+	Identifier type;
+	String display;
+	Identifier valueType;
+};
+
 namespace ValueType
 {
 	const Identifier text		("text");

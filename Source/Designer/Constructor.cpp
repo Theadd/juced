@@ -18,6 +18,7 @@ Constructor* Constructor::getInstance()
    if (!m_pInstance) {   // Only allow one instance of class to be generated.
       m_pInstance = new Constructor;
 	  m_pInstance->setGridSize(5);
+	  m_pInstance->_bigTreeRoot = nullptr;
    }
 
    return m_pInstance;
@@ -146,6 +147,27 @@ SelectionArea* Constructor::getSelectionBox()
 	}
 
 	return _selectionBox;
+}
+
+void Constructor::displayMsg(String msg)
+{
+	//dynamic_cast<JUCE_Designer *> (Constructor::getInstance()->getDesigner())->displayMsg(msg);
+	Constructor *instance = Constructor::getInstance();
+	if (instance->_msgDisplay == nullptr) {
+		instance->_msgDisplay = new TextEditor("Display");
+		instance->getDesigner()->addAndMakeVisible(instance->_msgDisplay);
+		instance->_msgDisplay->setMultiLine(true);
+		instance->_msgDisplay->setAlwaysOnTop(true);
+		instance->_msgDisplay->setFont(Font(12.0f));
+		instance->_msgDisplay->setBounds(0, instance->getDesigner()->getHeight() - 150, 800, 150);
+		instance->_msgDisplay->setInterceptsMouseClicks(false, false);
+		instance->_msgDisplay->setColour(TextEditor::backgroundColourId, Colours::transparentBlack);
+		instance->_msgDisplay->setScrollbarsShown(false);
+		BorderSize<int> border(0);
+		instance->_msgDisplay->setBorder(border);
+	}
+	instance->_msgDisplay->setText(instance->_msgDisplay->getText() + "\n" + msg);
+	instance->_msgDisplay->moveCaretToEnd();
 }
 
 void Constructor::setDesigner(Component* juce_designer)
