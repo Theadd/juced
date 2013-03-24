@@ -8,6 +8,7 @@ var class_big_tree =
     [ "getChild", "class_big_tree.html#ac2c384997bb5faf0d18e6852c3eb2941", null ],
     [ "getChildWithProperty", "class_big_tree.html#a43410dde861fd776b9e61a86e6a1e950", null ],
     [ "recursive_removeProperty", "class_big_tree.html#a47a9f19b49792e570174ff0773ba1d78", null ],
+    [ "setDynamicObject", "class_big_tree.html#a680c4c7320e99047a9d56d01bbb959a6", null ],
     [ "valueTreeChildAdded", "class_big_tree.html#acc87d5d7c4737291733c5b8d2e5b02d4", null ],
     [ "valueTreeChildOrderChanged", "class_big_tree.html#a062315a1f47244573a8c68555fa61e26", null ],
     [ "valueTreeChildRemoved", "class_big_tree.html#ae82fe163ef2366682c39fb54e42d952a", null ],
