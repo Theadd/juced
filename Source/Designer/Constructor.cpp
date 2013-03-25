@@ -18,7 +18,7 @@ Constructor* Constructor::getInstance()
    if (!m_pInstance) {   // Only allow one instance of class to be generated.
       m_pInstance = new Constructor;
 	  m_pInstance->setGridSize(5);
-	  m_pInstance->_bigTreeRoot = nullptr;
+	  m_pInstance->_bigTreeRoot = new BigTree();
    }
 
    return m_pInstance;
@@ -149,25 +149,32 @@ SelectionArea* Constructor::getSelectionBox()
 	return _selectionBox;
 }
 
-void Constructor::displayMsg(String msg)
+void Constructor::log(String msg)
 {
-	//dynamic_cast<JUCE_Designer *> (Constructor::getInstance()->getDesigner())->displayMsg(msg);
-	Constructor *instance = Constructor::getInstance();
-	if (instance->_msgDisplay == nullptr) {
-		instance->_msgDisplay = new TextEditor("Display");
-		instance->getDesigner()->addAndMakeVisible(instance->_msgDisplay);
-		instance->_msgDisplay->setMultiLine(true);
-		instance->_msgDisplay->setAlwaysOnTop(true);
-		instance->_msgDisplay->setFont(Font(12.0f));
-		instance->_msgDisplay->setBounds(0, instance->getDesigner()->getHeight() - 150, 800, 150);
-		instance->_msgDisplay->setInterceptsMouseClicks(false, false);
-		instance->_msgDisplay->setColour(TextEditor::backgroundColourId, Colours::transparentBlack);
-		instance->_msgDisplay->setScrollbarsShown(false);
-		BorderSize<int> border(0);
-		instance->_msgDisplay->setBorder(border);
+	File logFile(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "designer.log");
+	//Create log file if it does not exists
+	if (!logFile.exists())
+		logFile.create();
+	//Apply format
+	String::CharPointerType pointer(msg.getCharPointer());
+	for (; !pointer.isDigit(); pointer++);
+	int logType = (int)(pointer[0]) - 48;
+	switch (logType) {
+	case 0:
+		msg = Time::getCurrentTime().formatted("%M:%S") + ": " + msg;
+		break;
+	case 1:
+		msg = "\t[INFO] " + Time::getCurrentTime().formatted("%M:%S") + ": " + msg;
+		break;
+	case 2:
+		msg = "\t[WARNING] " + Time::getCurrentTime().formatted("%M:%S") + ": " + msg;
+		break;
+	case 3:
+		msg = "\t[ERROR] " + Time::getCurrentTime().formatted("%M:%S") + ": " + msg;
+		break;
 	}
-	instance->_msgDisplay->setText(instance->_msgDisplay->getText() + "\n" + msg);
-	instance->_msgDisplay->moveCaretToEnd();
+	//Append msg to log file
+	logFile.appendText(msg + "\n");
 }
 
 void Constructor::setDesigner(Component* juce_designer)
@@ -183,12 +190,17 @@ Component* Constructor::getDesigner()
 
 void Constructor::setBigTreeRoot(BigTree *bigTreeRoot)
 {
-	_bigTreeRoot = bigTreeRoot;
+	//_bigTreeRoot = bigTreeRoot;
+	if (bigTreeRoot != nullptr) {
+		*_bigTreeRoot = BigTree(*bigTreeRoot);
+	} else {
+		_bigTreeRoot = new BigTree();
+	}
 }
 
 BigTree* Constructor::getBigTreeRoot()
 {
-	if (_bigTreeRoot != nullptr)
+	if (_bigTreeRoot != nullptr && _bigTreeRoot->isValid())
 		return _bigTreeRoot;
 
 	return nullptr;
@@ -198,5 +210,34 @@ Component* Constructor::createComponent(String selectedToolName, String parentCo
 {
 	PlaceableComponent *newComponent = new PlaceableComponent(selectedToolName, parentComponentID, bounds);
 	getUndoManager()->perform(newComponent, "Create new " + selectedToolName);
+	//getUndoManager()->setCurrentTransactionName("Create new " + selectedToolName);
+	if (selectedToolName == "juced_Window") {
+		bounds.setX(0);
+		bounds.setY(0);
+		bounds.setHeight(bounds.getHeight() - (dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->getTitleBarHeight());
+		PlaceableComponent *childComponent = new PlaceableComponent("juced_MainComponent", newComponent->getComponent()->getComponentID(), bounds);
+		getUndoManager()->perform(childComponent);
+		(dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->setContentOwned(childComponent->getComponent(), true);
+	}
+	getUndoManager()->beginNewTransaction();
 	return newComponent->getComponent();
 }
+/*	juced_MainComponent *comp = new juced_MainComponent();
+	comp->setProperty(Attributes::x, 0);
+	comp->setProperty(Attributes::y, 0);
+	comp->setProperty(Attributes::width, win->getWidth());
+	comp->setProperty(Attributes::height, win->getHeight() - win->getTitleBarHeight());
+	win->setContentOwned(comp, true);
+	win->getContentComponent()->addMouseListener(this, true);
+	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
+	if (parent == this) {
+		bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
+		Constructor::getInstance()->setBigTreeRoot(bigTree);
+		bigTree->addChild(*compTree, -1, 0);
+	} else {
+		BigTree *objTree = new BigTree(win, win->getProperty(Attributes::objectType));
+		BigTree parentTree(bigTree->getChildWithProperty(Attributes::ID, parent->getComponentID(), true));
+		jassert (parentTree.isValid());		//this should not happen
+		parentTree.addChild(*objTree, -1, 0);
+		objTree->addChild(*compTree, -1, 0);
+	}*/

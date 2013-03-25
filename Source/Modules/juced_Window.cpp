@@ -40,6 +40,17 @@ void juced_Window::closeButtonPressed ()
 
 }
 
+void juced_Window::minimizeButtonPressed ()
+{
+
+}
+
+void juced_Window::maximizeButtonPressed ()
+{
+	AlertWindow::showMessageBox(AlertWindow::NoIcon, "Crash!", "Don't do this");
+	return;
+}
+
 void juced_Window::setContentOwned (Component *newContentComponent, bool resizeToFitWhenContentChangesSize)
 {
 	Rectangle<int> r (getLocalBounds());

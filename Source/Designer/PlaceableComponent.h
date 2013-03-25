@@ -22,16 +22,29 @@
 
 class BigTree;
 
+/** This class represents the actions for create, undo and redo of components creation. 
+
+	@see Constructor::createComponent
+*/
 class PlaceableComponent : public UndoableAction
 {
 public:
-	
+	/** Creates a PlaceableComponent object.
+		
+		@param selectedToolName String containing the name of the component class to represent.
+		@param parentComponentID parent's component ID
+		@param bounds Rectangle<int> containing the bounds that will occupy the new component.
+		@param componentID Optional String that will set component's ID to this value when creating it.
+	*/
 	PlaceableComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID = String());
 
+	/** Method called by the UndoManager to create the specified component (redo also). */
 	bool perform ();
 
+	/** Method called by the UndoManager to undo the creation of the represented component. */
 	bool undo ();
 
+	/** Returns a pointer to the component being represented by this object. */
 	Component* getComponent();
 
 private:

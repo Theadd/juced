@@ -67,45 +67,6 @@ void JUCE_Designer::deselectTool () {
 	}
 }
 
-void JUCE_Designer::addWindow (Component *parent, int x, int y, int width, int height)
-{
-	if (parent == this && bigTree != nullptr) return;	//only one main window allowed
-
-	juced_Window *win = new juced_Window();
-	parent->addAndMakeVisible(win);
-	win->setBounds(x, y, (width >= win->minWidth) ? width : win->minWidth, (height >= win->minHeight) ? height : win->minHeight);
-	
-	win->setProperty(Attributes::x, x);
-	win->setProperty(Attributes::y, y);
-	win->setProperty(Attributes::width, (width >= win->minWidth) ? width : win->minWidth);
-	win->setProperty(Attributes::height, (height >= win->minHeight) ? height : win->minHeight);
-
-	
-
-	juced_MainComponent *comp = new juced_MainComponent();
-	comp->setProperty(Attributes::x, 0);
-	comp->setProperty(Attributes::y, 0);
-	comp->setProperty(Attributes::width, win->getWidth());
-	comp->setProperty(Attributes::height, win->getHeight() - win->getTitleBarHeight());
-	win->setContentOwned(comp, true);
-	win->getContentComponent()->addMouseListener(this, true);
-	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
-	if (parent == this) {
-		bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
-		Constructor::getInstance()->setBigTreeRoot(bigTree);
-		bigTree->addChild(*compTree, -1, 0);
-	} else {
-		BigTree *objTree = new BigTree(win, win->getProperty(Attributes::objectType));
-		BigTree parentTree(bigTree->getChildWithProperty(Attributes::ID, parent->getComponentID(), true));
-		jassert (parentTree.isValid());		//this should not happen
-		parentTree.addChild(*objTree, -1, 0);
-		objTree->addChild(*compTree, -1, 0);
-	}
-
-	selectComponent(comp);
-
-}
-
 void JUCE_Designer::writeXmlToFile (String _filename)
 {
 	XmlElement *obj_xml = bigTree->createXml();
@@ -232,60 +193,17 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 	if (!event.mouseWasClicked()) {
 		if (selectedToolName->isNotEmpty()) {
 
-			/*If user draw inside a component, let's find it's associated BigTree of the parent component
-			BigTree parentTree;
-			if (event.originalComponent != this) {
-				BigTree bTree(bigTree->getChildWithProperty(Attributes::ID, event.originalComponent->getComponentID(), true));
-				if (bTree.isValid()) parentTree = bTree;
-			}*/
-
 			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
 			Constructor *constructor = Constructor::getInstance();
 
 			Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 			Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
 			
-			if (bigTree == nullptr)
-				bigTree = constructor->getBigTreeRoot();
-				//*objTree = BigTree(*_componentTree);
+			bigTree = constructor->getBigTreeRoot();
 
 			if (newComponent != nullptr)
 				selectComponent(newComponent);
 
-
-			/*
-			if (selectedToolName->equalsIgnoreCase("juced_Window")) {
-				addWindow(event.originalComponent, relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY() - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
-			} else {
-				//Create a component of the selected tool name unless it is placed outside a window
-				if (parentTree.isValid()) {
-					Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
-					Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
-					selectComponent(newComponent);
-				}*/
-				/*if (parentTree.isValid()) {
-					DynamicObject *dynamicObj;
-					if ((dynamicObj = createObjectFromToolName(selectedToolName)) != nullptr) {
-
-						event.originalComponent->addAndMakeVisible(dynamic_cast<Component *> (dynamicObj));
-						(dynamic_cast<Component *> (dynamicObj))->addMouseListener(this, false);
-
-						BigTree *objTree = new BigTree(dynamicObj, dynamicObj->getProperty(Attributes::objectType));
-					
-						parentTree.addChild(*objTree, -1, 0);
-
-						objTree->setProperty(Attributes::x, relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), 0);
-						objTree->setProperty(Attributes::y, relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), 0);
-						objTree->setProperty(Attributes::width, relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), 0);
-						objTree->setProperty(Attributes::height, relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight(), 0);
-
-						selectComponent(dynamic_cast<Component *> (dynamicObj));
-						//PropertyGroup *properties = new PropertyGroup(objTree);
-						//propertyView->setViewedComponent(properties);
-						//activePropertyGroup = properties;
-						//selectedComponentTree = objTree;
-					}
-				}*/
 			selectionArea = nullptr;
 		}
 	} else {
@@ -306,9 +224,15 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 {
 	mousePositionLabel.setText(String(key.getKeyCode()), 0);
 	if (key.getKeyCode() == 90 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->getSelectionBox()->setVisible(false);
+		Constructor::getInstance()->getSelectionBox()->setListenToChanges(false);
 		Constructor::getInstance()->getUndoManager()->undo();
+		Constructor::getInstance()->getSelectionBox()->setListenToChanges(true);
 	} else if (key.getKeyCode() == 89 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->getSelectionBox()->setVisible(false);
+		Constructor::getInstance()->getSelectionBox()->setListenToChanges(false);
 		Constructor::getInstance()->getUndoManager()->redo();
+		Constructor::getInstance()->getSelectionBox()->setListenToChanges(true);
 	} else if (key.getKeyCode() == 82 && key.getModifiers().isCtrlDown()) {
 		int rand = 0;
 		while ((rand = Random::getSystemRandom().nextInt() % 21) < 4);

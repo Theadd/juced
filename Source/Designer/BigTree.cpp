@@ -12,7 +12,7 @@
 
 #include "BigTree.h"
 
-BigTree::BigTree() : ValueTree()	//Modules::Unknown.toString())
+BigTree::BigTree() : ValueTree()
 {
 
 }
@@ -49,6 +49,12 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 			} else if (property == Attributes::width) {
 				int width = treeWhosePropertyHasChanged.getProperty(property);
 				obj->setSize(width, obj->getHeight());
+			} else if (property == Attributes::x) {
+				int x = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setTopLeftPosition(x, obj->getY());
+			} else if (property == Attributes::y) {
+				int y = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setTopLeftPosition(obj->getX(), y);
 			} else if (property == Attributes::name) {
 				obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
 			} else if (property == Attributes::backgroundColour) {

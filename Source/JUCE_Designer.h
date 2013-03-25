@@ -26,7 +26,6 @@ public:
 	Viewport* getPropertyView ();
 	String* getSelectedToolName ();
 	void deselectTool ();
-    void addWindow (Component *parent, int x, int y, int width, int height);
 	void writeXmlToFile (String _filename);
 	void selectComponent (Component *componentToSelect);
 

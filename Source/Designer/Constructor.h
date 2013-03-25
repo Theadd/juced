@@ -89,7 +89,7 @@ public:
 	void setGridSize(int newGridSize);
 	int getGridSize();
 
-	static void displayMsg(String msg);
+	static void log(String msg);
 
 	void setDesigner(Component *juce_designer);
 	Component* getDesigner();
@@ -102,7 +102,6 @@ public:
 
 private:
 	ScopedPointer<UndoManager> undoManager;
-	ScopedPointer<TextEditor> _msgDisplay;
 
 	friend class SelectionArea;
 	friend class JUCE_Designer;
