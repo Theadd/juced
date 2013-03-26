@@ -44,6 +44,6 @@ public:
     }
 
 private:
-	ScopedPointer<Component> content;
+	//ScopedPointer<Component> content;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyView)
 };

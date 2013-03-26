@@ -15,15 +15,25 @@
 #include "Properties/EnumerationPropertyComponent.cpp"
 
 
-class PropertyGroup : public PropertyPanel
+class JUCED_PropertyGroup : public PropertyPanel
 {
 public:
-	PropertyGroup () : PropertyPanel()
+	JUCED_PropertyGroup () : PropertyPanel()
     {
 		setName ("Properties View");
     }
 
-	PropertyGroup (ValueTree *tree) : PropertyPanel()
+	~JUCED_PropertyGroup()
+	{
+		Constructor::log("PG001 - ~JUCED_PropertyGroup() call");
+		boundsGroup.clear();
+		generalGroup.clear();
+		coloursGroup.clear();
+		behaviourGroup.clear();
+		Constructor::log("PG101 - done");
+	}
+
+	JUCED_PropertyGroup (ValueTree *tree) : PropertyPanel()
 	{
 		setName ("Properties View");
 		if (tree != nullptr) {
@@ -38,7 +48,7 @@ public:
 						//get propertycomponent object of specified type
 						PropertyComponent *comp;
 						if (attrib->type == AttributeType::colour) {
-							comp = new ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
+							comp = new JUCED_ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
 						} else if (attrib->type == AttributeType::enumeration) {
 							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
 						} else {
@@ -73,5 +83,5 @@ private:
 	Array<PropertyComponent*> coloursGroup;
 	Array<PropertyComponent*> behaviourGroup;
 	
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PropertyGroup)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCED_PropertyGroup)
 };

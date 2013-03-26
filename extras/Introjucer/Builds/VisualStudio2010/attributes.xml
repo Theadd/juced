@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Attributes>
+  <Attribute name="name" group="General" visible="1" type="text" display="Name" valueType="text"/>
+  <Attribute name="text" group="General" visible="1" type="text" display="Text" valueType="text"/>
+  <Attribute name="object" group="General" visible="0" type="text" display="" valueType="undefined"/>
+  <Attribute name="objectType" group="General" visible="0" type="text" display="" valueType="undefined"/>
+  <Attribute name="buttonText" group="General" visible="1" type="text" display="Button text" valueType="text"/>
+  <Attribute name="x" group="Bounds" visible="1" type="text" display="X" valueType="integer"/>
+  <Attribute name="y" group="Bounds" visible="1" type="text" display="Y" valueType="integer"/>
+  <Attribute name="height" group="Bounds" visible="1" type="text" display="Height" valueType="integer"/>
+  <Attribute name="width" group="Bounds" visible="1" type="text" display="Width" valueType="integer"/>
+  <Attribute name="backgroundColour" group="Colours" visible="1" type="colour" display="Background colour" valueType="rgba"/>
+  <Attribute name="textColour" group="Colours" visible="1" type="colour" display="Text colour" valueType="rgba"/>
+  <Attribute name="connectedEdges" group="Behaviour" visible="1" type="enumeration" display="Connected edges" valueType="integer"/>
+</Attributes>

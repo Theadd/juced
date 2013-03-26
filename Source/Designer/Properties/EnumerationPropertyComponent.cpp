@@ -20,6 +20,7 @@
 
 #include "../Globals.h"
 #include "TextWithButtonPropertyComponent.h"
+#include "../Constructor.h"
 
 /** PropertyComponent that shows a multiple selection popup.
 
@@ -42,6 +43,17 @@ public:
 	EnumerationPropertyComponent (const Value &ValueToControl, const String &propertyName, Array<Enumeration*> *enumerations) : TextWithButtonPropertyComponent(ValueToControl, propertyName), _enumerations(enumerations)
     {
 
+	}
+
+	~EnumerationPropertyComponent ()
+    {
+		Constructor::log("EPC001 - ~EnumerationPropertyComponent() call");
+		for (int i = _enumerations->size(); --i >= 0;) {
+			Enumeration* e = _enumerations->getUnchecked(i);
+			delete e;
+		}
+		Constructor::log("EPC101 - _enumerations->clear()");
+		_enumerations->clear();
 	}
 
 	/** Called when the user clicks the button. 

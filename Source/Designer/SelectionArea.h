@@ -63,6 +63,7 @@ private:
 	};
 
 	OwnedArray<MiniBox> miniBoxes;
+	JUCE_LEAK_DETECTOR (SelectionArea)
 };
 
 

@@ -38,6 +38,8 @@ public:
 	*/
 	PlaceableComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID = String());
 
+	~PlaceableComponent();
+
 	/** Method called by the UndoManager to create the specified component (redo also). */
 	bool perform ();
 
@@ -51,16 +53,15 @@ private:
 	String _selectedToolName;
 	String _parentComponentID;
 	Rectangle<int> _bounds;
-	DynamicObject* _dynamicObject;
+	ScopedPointer<DynamicObject> _dynamicObject;
 	String _componentID;
 
 	friend class BigTree;
 	BigTree* _componentTree;
 
-	
-
 	DynamicObject* createObjectFromToolName (String *selectedToolName);
 
+	JUCE_LEAK_DETECTOR (PlaceableComponent)
 };
 
 

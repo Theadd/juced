@@ -12,6 +12,7 @@
 #define __TEXTWITHBUTTONPROPERTYCOMPONENT_H_E68AF029__
 
 #include "../Globals.h"
+#include "../Constructor.h"
 
 /** Virtual PropertyComponent with small TextButton on the right.
 
@@ -45,6 +46,9 @@ public:
 	If reimplemented, use TextWithButtonPropertyComponent::resized() to inherit default resizing.
 	*/
 	void resized();
+	
+private:
+	JUCE_LEAK_DETECTOR (TextWithButtonPropertyComponent)
 };
 
 #endif  // __TEXTWITHBUTTONPROPERTYCOMPONENT_H_E68AF029__

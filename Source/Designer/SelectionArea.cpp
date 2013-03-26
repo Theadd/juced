@@ -59,6 +59,7 @@ SelectionArea::~SelectionArea()
 			miniBoxes[i]->removeMouseListener(this);
 		}
 	}
+	miniBoxes.clear(true);
 }
 
 void SelectionArea::setSelectionBounds(int x, int y, int width, int height, bool isModX, bool isModY, bool isModWidth, bool isModHeight)

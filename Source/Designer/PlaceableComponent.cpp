@@ -16,6 +16,33 @@ PlaceableComponent::PlaceableComponent(String selectedToolName, String parentCom
 	_dynamicObject = nullptr;
 }
 
+PlaceableComponent::~PlaceableComponent()
+{
+	Constructor::log("PC003 - ~PlaceableComponent() call");
+
+	(dynamic_cast<Component *> (_dynamicObject.get()))->removeMouseListener(Constructor::getInstance()->getDesigner());
+
+	Constructor::log("PC103 - Delete _componentTree");
+	//_componentTree->removeAllProperties(0);
+	delete _componentTree;
+	/*
+	Constructor::log("PC103 - Delete _dynamicObject, reference count: " + String(_dynamicObject->getReferenceCount()));
+	while (_dynamicObject != nullptr && _dynamicObject->getReferenceCount()) {
+		if (_dynamicObject != nullptr) Constructor::log("PC103 - _dynamicObject != nullptr");
+		Constructor::log("PC103 - Reference count: " + String(_dynamicObject->getReferenceCount()));
+		_dynamicObject->decReferenceCount();
+		Constructor::log("PC103 - [2] _dynamicObject != nullptr: " + String(_dynamicObject != nullptr));
+	}
+	Constructor::log("PC103 - Delete _dynamicObject pointer");
+	_dynamicObject = nullptr;*/
+	Constructor::log("PC103 - Delete _dynamicObject pointer");
+	DynamicObject *temp = _dynamicObject.release();
+	temp = nullptr;
+	delete temp;
+	
+	Constructor::log("PC103 - Done");
+}
+
 bool PlaceableComponent::perform ()
 {
 	Constructor::log("PC001 - Perform init");
@@ -56,8 +83,8 @@ bool PlaceableComponent::perform ()
 	
 	Constructor::log("PC101 - Place component inside parent component and add its mouse listener");
 	//Place component inside parent component and add its mouse listener
-	parentComponent->addAndMakeVisible(dynamic_cast<Component *> (_dynamicObject));
-	(dynamic_cast<Component *> (_dynamicObject))->addMouseListener(Constructor::getInstance()->getDesigner(), false);
+	parentComponent->addAndMakeVisible(dynamic_cast<Component *> (_dynamicObject.get()));
+	(dynamic_cast<Component *> (_dynamicObject.get()))->addMouseListener(Constructor::getInstance()->getDesigner(), false);
 	/*if (isBeingCreated) {
 		Constructor::log("PC101 - Set component bounds");
 		(dynamic_cast<Component *> (_dynamicObject))->setBounds(_bounds);
@@ -74,6 +101,7 @@ bool PlaceableComponent::perform ()
 	BigTree *objTree = new BigTree();
 	if (!_componentTree->isValid()) {
 		//current component's BigTree is invalid, create a new one
+		delete _componentTree;
 		objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
 		*_componentTree = BigTree(*objTree);
 	} else {
@@ -131,8 +159,8 @@ bool PlaceableComponent::undo ()
 
 	//remove component from it's parent and remove mouse listener
 	Constructor::log("PC102 - Remove component from parent and remove it's mouse listener");
-	parentComponent->removeChildComponent(dynamic_cast<Component *> (_dynamicObject));
-	dynamic_cast<Component *> (_dynamicObject)->removeMouseListener(Constructor::getInstance()->getDesigner());
+	parentComponent->removeChildComponent(dynamic_cast<Component *> (_dynamicObject.get()));
+	dynamic_cast<Component *> (_dynamicObject.get())->removeMouseListener(Constructor::getInstance()->getDesigner());
 
 	if (parentTree.isValid()) {
 		//remove this component's BigTree from it's parent
@@ -171,5 +199,5 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 Component* PlaceableComponent::getComponent()
 {
 	if (_dynamicObject == nullptr) return nullptr;
-	return dynamic_cast<Component *> (_dynamicObject);
+	return dynamic_cast<Component *> (_dynamicObject.get());
 }

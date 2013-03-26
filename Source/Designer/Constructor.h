@@ -32,6 +32,7 @@
 
 class SelectionArea;
 class BigTree;
+class PlaceableComponent;
 //struct Enumeration;
 /**
     Object required to build components and show its properties.
@@ -43,7 +44,6 @@ class BigTree;
 */
 class Constructor {
 public:
-	Array<Attribute*> _attributes;
 
 	/** This function is called to create an instance of the class.
 
@@ -51,6 +51,10 @@ public:
 		is private and is only called by this Instance function.
 	*/
 	static Constructor* getInstance();
+
+	static void destroy();
+
+	~Constructor();
 
 	/** Function called within JUCE_Designer constructor.
 		
@@ -89,6 +93,9 @@ public:
 	void setGridSize(int newGridSize);
 	int getGridSize();
 
+	Component* getSelectedComponent();
+	void setSelectedComponent(Component *selectedComponent);
+
 	static void log(String msg);
 
 	void setDesigner(Component *juce_designer);
@@ -102,17 +109,22 @@ public:
 
 private:
 	ScopedPointer<UndoManager> undoManager;
+	Component *_selectedComponent;
+	
 
 	friend class SelectionArea;
 	friend class JUCE_Designer;
 	friend class BigTree;
+	friend class PlaceableComponent;
 	ScopedPointer<SelectionArea> _selectionBox;
+	OwnedArray<PlaceableComponent> _placeableComponents;
 	
 	struct _Enumerations {
 		Identifier name;
 		Array< Enumeration* >* enumerations;
 	};
 	Array< _Enumerations > _enumerations;
+	Array<Attribute*> _attributes;
 
 	Component *_designer;
 	BigTree* _bigTreeRoot;
@@ -125,7 +137,9 @@ private:
 	Constructor(){};  // Private so that it can  not be called
 	Constructor(Constructor const&){};             // copy constructor is private
 	Constructor& operator=(Constructor const&){};  // assignment operator is private
-	static Constructor* m_pInstance;
+	static ScopedPointer<Constructor> m_pInstance;
+
+	JUCE_LEAK_DETECTOR (Constructor)
 };
 
 

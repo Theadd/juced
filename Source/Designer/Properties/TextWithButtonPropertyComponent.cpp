@@ -22,7 +22,9 @@ TextWithButtonPropertyComponent::TextWithButtonPropertyComponent (const Value &V
 
 TextWithButtonPropertyComponent::~TextWithButtonPropertyComponent()
 {
+	Constructor::log("TWBPC001 - ~TextWithButtonPropertyComponent() call");
 	button->removeListener(this);
+	delete button;
 }
 
 void TextWithButtonPropertyComponent::resized()

@@ -39,6 +39,8 @@ public:
 	/** Creates an unnamed BigTree that holds a DynamicObject. */
 	BigTree(DynamicObject *object);
 
+	~BigTree();
+
 	void setDynamicObject(DynamicObject *object);
 
 	/** Deals with property changes on a determinated object. */
@@ -63,7 +65,7 @@ public:
 	@param propertyValue var containing the value to look for.
 	@param recursive bool set to look into children's children and so on.
 	*/
-	BigTree& getChildWithProperty(const Identifier &propertyName, const var &propertyValue, bool recursive);
+	BigTree getChildWithProperty(const Identifier &propertyName, const var &propertyValue, bool recursive);
 
 	/** Returns a BigTree that references a child BigTree on the given index. */
 	BigTree getChild(int index) const;
@@ -77,6 +79,9 @@ public:
 private:
 
 	void getDynamicObjectProperties(DynamicObject *object);
+
+	JUCE_LEAK_DETECTOR (BigTree)
+	//JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BigTree)
 };
 
 

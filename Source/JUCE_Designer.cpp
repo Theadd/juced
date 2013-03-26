@@ -8,7 +8,7 @@ JUCE_Designer::JUCE_Designer ()
 
 	addAndMakeVisible(&grid, 10);
 	
-	PropertyGroup *properties = new PropertyGroup();
+	JUCED_PropertyGroup *properties = new JUCED_PropertyGroup();
 	propertyView = new PropertyView(properties);
 	propertyView->setBounds(100, 100, 200, 400);
 
@@ -17,8 +17,6 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setFont(Font(12.0f));
 	mousePositionLabel.setBounds(getWidth() - 80, getHeight() - 25, 80, 25);
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
-
-
 	
 	Constructor *constructor = Constructor::getInstance();
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
@@ -30,7 +28,21 @@ JUCE_Designer::JUCE_Designer ()
 	selectionBox->setVisible(false);
 }
 
-JUCE_Designer::~JUCE_Designer() { }
+JUCE_Designer::~JUCE_Designer()
+{
+	Constructor::log("D002 - ~JUCE_Designer() call");
+	toolboxes.clear(true);
+	selectionArea = nullptr;
+	Constructor::log("D102 - Set viewed component of property view to null");
+	propertyView->setViewedComponent(new JUCED_PropertyGroup());
+	Constructor::log("D102 - Delete property view");
+	propertyView = nullptr;
+	Constructor::log("D102 - Remove all children");
+	removeAllChildren();
+	Constructor::log("D102 - Constructor::destroy()");
+	Constructor::destroy();
+	Constructor::log("D002 - Done (~JUCE_Designer())");
+}
 
 Component* JUCE_Designer::createToolbox (int itemsPerRow, int itemSize, int itemPadding) {
 	Toolbox *toolbox = new Toolbox(itemsPerRow, itemSize, itemPadding);
@@ -41,7 +53,7 @@ Component* JUCE_Designer::createToolbox (int itemsPerRow, int itemSize, int item
 }
 
 void JUCE_Designer::addToolboxItem (Component* _toolbox, const String& name, const String& toolTip, const char* image, int imageSize) {
-	Toolbox *toolbox = (Toolbox*) _toolbox;
+	Toolbox *toolbox = dynamic_cast<Toolbox*> (_toolbox);
 	toolbox->addItem(name, toolTip, image, imageSize);
 }
 
@@ -69,13 +81,18 @@ void JUCE_Designer::deselectTool () {
 
 void JUCE_Designer::writeXmlToFile (String _filename)
 {
-	XmlElement *obj_xml = bigTree->createXml();
+	Constructor::log("D001 - Export component's structure in XML format to " + _filename);
+	if (Constructor::getInstance()->getBigTreeRoot() != nullptr) {
+		XmlElement *obj_xml = Constructor::getInstance()->getBigTreeRoot()->createXml();
 
-	//Create xml file from XmlElement
-	File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
-	file.create();
-	obj_xml->writeToFile(file, "");
-	file.revealToUser();
+		//Create xml file from XmlElement
+		File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
+		file.create();
+		obj_xml->writeToFile(file, "");
+		file.revealToUser();
+
+		delete obj_xml;
+	}
 }
 
 void JUCE_Designer::selectComponent (Component *componentToSelect)
@@ -86,18 +103,18 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 		selectionBox->setVisible(false);
 
 		/*AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "...");
-		if (selectedComponent != nullptr)
-			selectedComponent->removeComponentListener(selectionBox);
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr)
+			Constructor::getInstance()->getSelectedComponent()->removeComponentListener(selectionBox);
 		AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "done");*/
 
 		Point<int> pos = componentToSelect->getScreenPosition() - this->getScreenPosition();
 		selectedComponentPositionDifference = pos - componentToSelect->getPosition();
 		selectionBox->setSelectionBounds(pos.getX(), pos.getY(), componentToSelect->getWidth(), componentToSelect->getHeight());
-		selectedComponent = componentToSelect;
+		Constructor::getInstance()->setSelectedComponent(componentToSelect);
 
-		BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+		BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, componentToSelect->getComponentID(), true));
 
-		PropertyGroup *properties = new PropertyGroup(&valueTree);
+		JUCED_PropertyGroup *properties = new JUCED_PropertyGroup(&valueTree);
 		propertyView->setViewedComponent(properties);
 		selectionBox->setVisible(true);
 
@@ -111,7 +128,7 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 		/*if (selectedComponent != nullptr)
 			selectedComponent->removeComponentListener(selectionBox);*/
 
-		PropertyGroup *properties = new PropertyGroup();
+		JUCED_PropertyGroup *properties = new JUCED_PropertyGroup();
 		propertyView->setViewedComponent(properties);
 		//bring properties view to front (just in case)
 		propertyView->toFront(false);
@@ -160,7 +177,7 @@ void JUCE_Designer::mouseDown (const MouseEvent& event)
 		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), 1, 1, !ctrlKeyDown, !ctrlKeyDown);
 
 	} else {
-		if (event.originalComponent == selectedComponent) {
+		if (event.originalComponent == Constructor::getInstance()->getSelectedComponent()) {
 			//user is going to move the component using drag & drop
 			componentPositionOnDragStart = event.originalComponent->getScreenPosition() - this->getScreenPosition();
 		}
@@ -176,12 +193,12 @@ void JUCE_Designer::mouseDrag (const MouseEvent& event)
 		MouseEvent relativeEvent = event.getEventRelativeTo(this);
 		selectionArea->setSelectionBounds(relativeEvent.getMouseDownX(), relativeEvent.getMouseDownY(), relativeEvent.getDistanceFromDragStartX(), relativeEvent.getDistanceFromDragStartY(), !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown, !ctrlKeyDown);
 
-	} else if (event.originalComponent == selectedComponent) {
+	} else if (event.originalComponent == Constructor::getInstance()->getSelectedComponent()) {
 		//moving an existing component
 		bool ctrlKeyDown = event.mods.isCtrlDown();
 		Constructor::getInstance()->getSelectionBox()->setListenToChanges(false);
 		
-		Constructor::getInstance()->getSelectionBox()->setSelectionBounds(componentPositionOnDragStart.getX() + event.getDistanceFromDragStartX(), componentPositionOnDragStart.getY() + event.getDistanceFromDragStartY(), selectedComponent->getWidth(), selectedComponent->getHeight(), !ctrlKeyDown, !ctrlKeyDown);
+		Constructor::getInstance()->getSelectionBox()->setSelectionBounds(componentPositionOnDragStart.getX() + event.getDistanceFromDragStartX(), componentPositionOnDragStart.getY() + event.getDistanceFromDragStartY(), Constructor::getInstance()->getSelectedComponent()->getWidth(), Constructor::getInstance()->getSelectedComponent()->getHeight(), !ctrlKeyDown, !ctrlKeyDown);
 	}
 }
 
@@ -198,8 +215,6 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 
 			Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 			Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
-			
-			bigTree = constructor->getBigTreeRoot();
 
 			if (newComponent != nullptr)
 				selectComponent(newComponent);
@@ -242,26 +257,26 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
 		this->writeXmlToFile("save.xml");
 	} else if (key.getKeyCode() == key.leftKey) {
-		if (selectedComponent != nullptr) {
-			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
+			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			int currentPosX = valueTree.getProperty(Attributes::x);
 			valueTree.setProperty(Attributes::x, currentPosX - 1, Constructor::getInstance()->getUndoManager());
 		}
 	} else if (key.getKeyCode() == key.rightKey) {
-		if (selectedComponent != nullptr) {
-			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
+			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			int currentPosX = valueTree.getProperty(Attributes::x);
 			valueTree.setProperty(Attributes::x, currentPosX + 1, Constructor::getInstance()->getUndoManager());
 		}
 	} else if (key.getKeyCode() == key.upKey) {
-		if (selectedComponent != nullptr) {
-			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
+			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			int currentPosY = valueTree.getProperty(Attributes::y);
 			valueTree.setProperty(Attributes::y, currentPosY - 1, Constructor::getInstance()->getUndoManager());
 		}
 	} else if (key.getKeyCode() == key.downKey) {
-		if (selectedComponent != nullptr) {
-			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
+			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			int currentPosY = valueTree.getProperty(Attributes::y);
 			valueTree.setProperty(Attributes::y, currentPosY + 1, Constructor::getInstance()->getUndoManager());
 		}
@@ -284,9 +299,9 @@ void JUCE_Designer::childBoundsChanged (Component * child)
 	SelectionArea *selectionBox = Constructor::getInstance()->getSelectionBox();
 
 	if (child == selectionBox) {
-		if (selectedComponent != nullptr && selectionBox->isReady()) {
+		if (Constructor::getInstance()->getSelectedComponent() != nullptr && selectionBox->isReady()) {
 
-			BigTree valueTree(bigTree->getChildWithProperty(Attributes::ID, selectedComponent->getComponentID(), true));
+			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			valueTree.setProperty(Attributes::width, child->getWidth() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
 			valueTree.setProperty(Attributes::height, child->getHeight() - (selectionBox->getBoxSize() * 2), Constructor::getInstance()->getUndoManager());
 			valueTree.setProperty(Attributes::x, child->getX() + selectionBox->getBoxSize() - selectedComponentPositionDifference.getX(), Constructor::getInstance()->getUndoManager());
@@ -295,21 +310,6 @@ void JUCE_Designer::childBoundsChanged (Component * child)
 		}
 	}
 
-}
-
-
-//====================private methods================================
-
-DynamicObject* JUCE_Designer::createObjectFromToolName (String *selectedToolName)
-{
-	if (selectedToolName->equalsIgnoreCase("juced_Label")) {
-		juced_Label *object = new juced_Label();
-		return (DynamicObject *)object;
-	} else if (selectedToolName->equalsIgnoreCase("juced_TextButton")) {
-		juced_TextButton *object = new juced_TextButton();
-		return (DynamicObject *)object;
-	}
-	return nullptr;
 }
 
 //===================================================================
@@ -322,13 +322,13 @@ void JUCE_Designer::Grid::paint (Graphics& g)
     g.setColour (Colours::white);
 	for (float x = gridSize; x < (float) getWidth(); x += gridSize) {
 		g.setOpacity((((int) x) % doubleLineInterval == 0) ? 0.15f : 0.06f);
-		g.drawVerticalLine(x, 0.0f, (float) getHeight());
-		g.drawHorizontalLine(x, 0.0f, (float) getWidth());
+		g.drawVerticalLine((int)x, 0.0f, (float) getHeight());
+		g.drawHorizontalLine((int)x, 0.0f, (float) getWidth());
 		if (((int) x) % doubleLineInterval == 0) {
 			g.setOpacity(0.35f);
 			for (float i = (float) (int)(getHeight() / doubleLineInterval + 1); --i > 0;) {
-				g.drawVerticalLine(x, ((float) doubleLineInterval) * i - 3.0f, ((float) doubleLineInterval) * i + 4.0f);
-				g.drawHorizontalLine(((float) doubleLineInterval) * i, x - 3.0f, x + 4.0f);
+				g.drawVerticalLine((int)x, ((float) doubleLineInterval) * i - 3.0f, ((float) doubleLineInterval) * i + 4.0f);
+				g.drawHorizontalLine(doubleLineInterval * ((int) i), x - 3.0f, x + 4.0f);
 			}
 		}
 	}

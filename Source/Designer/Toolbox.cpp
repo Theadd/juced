@@ -22,6 +22,13 @@ public:
 		deselectTool();		//don't remove
 	};
 
+	~Toolbox()
+	{
+		selectedToolName = nullptr;
+		tooltipWindow = nullptr;
+		tools.clear(true);
+	}
+
 	void setBounds (int x, int y, int width, int height) {
 		width = (width < (itemSize * itemsPerRow)) ? itemSize * itemsPerRow : width;
 		height = (height < (itemSize * ((tools.size() + 1) / itemsPerRow))) ? itemSize * ((tools.size() + 1) / itemsPerRow) : height;
@@ -91,4 +98,6 @@ private:
 	ScopedPointer<TooltipWindow> tooltipWindow;
 	ScopedPointer<String> selectedToolName;
 	int itemSize, itemPadding, itemsPerRow;
+
+	JUCE_LEAK_DETECTOR (Toolbox)
 };

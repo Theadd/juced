@@ -33,6 +33,11 @@ BigTree::BigTree(DynamicObject *object) : ValueTree(Modules::Unknown.toString())
 	addListener(this);
 }
 
+BigTree::~BigTree()
+{
+	//removeAllProperties(0);
+}
+
 void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, const Identifier &property)
 {
 	//Deal with changes on this ValueTree only, not their childs.
@@ -153,7 +158,7 @@ void BigTree::valueTreeRedirected (ValueTree& treeWhichHasBeenChanged)
 	if (*this == treeWhichHasBeenChanged) {}	//useless - to avoid warnings
 }
 	
-BigTree& BigTree::getChildWithProperty(const Identifier &propertyName, const var &propertyValue, bool recursive)
+BigTree BigTree::getChildWithProperty(const Identifier &propertyName, const var &propertyValue, bool recursive)
 {
 	//checking root node first
 	if (hasProperty(propertyName))

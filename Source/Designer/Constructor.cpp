@@ -11,7 +11,7 @@
 #include "Constructor.h"
 
 // Global static pointer used to ensure a single instance of the class.
-Constructor* Constructor::m_pInstance = NULL; 
+ScopedPointer<Constructor> Constructor::m_pInstance = nullptr; 
 
 Constructor* Constructor::getInstance()
 {
@@ -19,60 +19,100 @@ Constructor* Constructor::getInstance()
       m_pInstance = new Constructor;
 	  m_pInstance->setGridSize(5);
 	  m_pInstance->_bigTreeRoot = new BigTree();
+	  m_pInstance->setSelectedComponent(nullptr);
    }
 
    return m_pInstance;
 }
 
+void Constructor::destroy()
+{
+	Constructor::log("C004 - Constructor::destroy() call");
+	m_pInstance = nullptr;
+}
+
+Constructor::~Constructor()
+{
+	Constructor::log("C003 - ~Constructor() call");
+	_selectedComponent = nullptr;
+	Constructor::log("C103 - 1");
+	
+	Constructor::log("C103 - 2");
+	_selectionBox = nullptr;
+	Constructor::log("C103 - 3");
+	_bigTreeRoot = nullptr;
+	
+	Constructor::log("C103 - 5");
+	_enumerations.clear();
+	Constructor::log("C103 - 6");
+	_attributes.clear();
+	Constructor::log("C103 - Clear PlaceableComponent OwnedArray");
+	if (getBigTreeRoot() != nullptr)
+		getBigTreeRoot()->recursive_removeProperty(Attributes::object, 0);
+	_placeableComponents.clear(false);
+	//if (getBigTreeRoot() != nullptr)
+		//delete getBigTreeRoot();
+	Constructor::log("C103 - 7");
+	undoManager = nullptr;
+	Constructor::log("C103 - 4");
+	_designer = nullptr;
+	Constructor::log("C103 - Done");
+}
+
 
 void Constructor::loadAttributesFromXmlFile(const File &xmlFile)
 {
+	Constructor::log("C001 - Load attributes from XML file: " + xmlFile.getFullPathName());
+	XmlElement *xml = XmlDocument::parse(xmlFile);//->getFirstChildElement();
 
-	XmlElement *xml = XmlDocument::parse(xmlFile)->getFirstChildElement();
-
-	while (xml != nullptr)
+	//while (xml != nullptr)
+	forEachXmlChildElement (*xml, e)
 	{
 		Attribute *t = new Attribute;
-		t->name = xml->getStringAttribute("name");
-		t->group = xml->getStringAttribute("group");
-		t->visible = xml->getBoolAttribute("visible");
-		t->type = xml->getStringAttribute("type");
-		t->display = xml->getStringAttribute("display");
-		t->valueType = xml->getStringAttribute("valueType");
+		t->name = e->getStringAttribute("name");
+		t->group = e->getStringAttribute("group");
+		t->visible = e->getBoolAttribute("visible");
+		t->type = e->getStringAttribute("type");
+		t->display = e->getStringAttribute("display");
+		t->valueType = e->getStringAttribute("valueType");
 		_attributes.add(t);
 
-		xml = xml->getNextElement();
+		//xml = xml->getNextElement();
 	}
 
+	delete xml;
 }
 
 void Constructor::loadEnumerationsFromXmlFile(const File &xmlFile)
 {
+	Constructor::log("C002 - Load enumerations from XML file: " + xmlFile.getFullPathName());
+	XmlElement *xml = XmlDocument::parse(xmlFile);//->getFirstChildElement();
 
-	XmlElement *xml = XmlDocument::parse(xmlFile)->getFirstChildElement();
-
-	while (xml != nullptr)
+	//while (xml != nullptr)
+	forEachXmlChildElement (*xml, xmlnode)
 	{
 		_Enumerations *e = new _Enumerations;
-		e->name = xml->getStringAttribute("name");
+		e->name = xmlnode->getStringAttribute("name");
 		e->enumerations = new Array< Enumeration* >;
 
-		XmlElement *child = xml->getFirstChildElement();
+		//XmlElement *child = xmlnode->getFirstChildElement();
 
-		while (child != nullptr)
+		//(while (child != nullptr)
+		forEachXmlChildElement (*xmlnode, child)
 		{
 			Enumeration *t = new Enumeration;
 			t->name = child->getStringAttribute("name");
 			t->display = child->getStringAttribute("display");
 			t->value = child->getIntAttribute("value");
 			e->enumerations->add(t);
-			child = child->getNextElement();
+			//child = child->getNextElement();
 		}
 		_enumerations.add(*e);
-
-		xml = xml->getNextElement();
+		//child = nullptr;
+		//xml = xml->getNextElement();
 	}
 
+	delete xml;
 }
 
 Attribute* Constructor::getAttributeOf(Identifier _name)
@@ -136,6 +176,16 @@ void Constructor::setGridSize(int newGridSize)
 int Constructor::getGridSize()
 {
 	return _gridSize;
+}
+
+Component* Constructor::getSelectedComponent()
+{
+	return _selectedComponent;
+}
+
+void Constructor::setSelectedComponent(Component *selectedComponent)
+{
+	_selectedComponent = selectedComponent;
 }
 
 SelectionArea* Constructor::getSelectionBox()
@@ -209,6 +259,7 @@ BigTree* Constructor::getBigTreeRoot()
 Component* Constructor::createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds)
 {
 	PlaceableComponent *newComponent = new PlaceableComponent(selectedToolName, parentComponentID, bounds);
+	_placeableComponents.add(newComponent);
 	getUndoManager()->perform(newComponent, "Create new " + selectedToolName);
 	//getUndoManager()->setCurrentTransactionName("Create new " + selectedToolName);
 	if (selectedToolName == "juced_Window") {
@@ -216,28 +267,10 @@ Component* Constructor::createComponent(String selectedToolName, String parentCo
 		bounds.setY(0);
 		bounds.setHeight(bounds.getHeight() - (dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->getTitleBarHeight());
 		PlaceableComponent *childComponent = new PlaceableComponent("juced_MainComponent", newComponent->getComponent()->getComponentID(), bounds);
+		_placeableComponents.add(childComponent);
 		getUndoManager()->perform(childComponent);
 		(dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->setContentOwned(childComponent->getComponent(), true);
 	}
 	getUndoManager()->beginNewTransaction();
 	return newComponent->getComponent();
 }
-/*	juced_MainComponent *comp = new juced_MainComponent();
-	comp->setProperty(Attributes::x, 0);
-	comp->setProperty(Attributes::y, 0);
-	comp->setProperty(Attributes::width, win->getWidth());
-	comp->setProperty(Attributes::height, win->getHeight() - win->getTitleBarHeight());
-	win->setContentOwned(comp, true);
-	win->getContentComponent()->addMouseListener(this, true);
-	BigTree *compTree = new BigTree(comp, comp->getProperty(Attributes::objectType));
-	if (parent == this) {
-		bigTree = new BigTree(win, win->getProperty(Attributes::objectType));
-		Constructor::getInstance()->setBigTreeRoot(bigTree);
-		bigTree->addChild(*compTree, -1, 0);
-	} else {
-		BigTree *objTree = new BigTree(win, win->getProperty(Attributes::objectType));
-		BigTree parentTree(bigTree->getChildWithProperty(Attributes::ID, parent->getComponentID(), true));
-		jassert (parentTree.isValid());		//this should not happen
-		parentTree.addChild(*objTree, -1, 0);
-		objTree->addChild(*compTree, -1, 0);
-	}*/

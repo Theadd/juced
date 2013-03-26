@@ -54,22 +54,16 @@ public:
 
 private:
 	Label mousePositionLabel;
-	//OwnedArray<juced_Window> juced_Windows;
-	//OwnedArray<juced_Label> juced_Labels;
+
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;
 	
-	Component *selectedComponent;
-	ValueTree *selectedComponentTree;
+	//Component *selectedComponent;
+
 	Point<int> selectedComponentPositionDifference;
 	Point<int> componentPositionOnDragStart;
-	ScopedPointer<BigTree> bigTree;
-	PropertyGroup *activePropertyGroup;
-	//ScopedPointer<ComponentBuilder> builder;
-	
-	ScopedPointer<PropertyView> propertyView;
 
-	DynamicObject* createObjectFromToolName (String *selectedToolName);
+	ScopedPointer<PropertyView> propertyView;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCE_Designer)
 };
