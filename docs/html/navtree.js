@@ -1,6 +1,14 @@
 var NAVTREE =
 [
   [ "JUCE Designer", "index.html", [
+    [ "JUCE GUI Designer Index Page", "index.html", [
+      [ "Introduction", "index.html#intro_sec", null ],
+      [ "Installation", "index.html#install_sec", [
+        [ "Step 1: Copy the code somewhere into your project.", "index.html#step1", null ],
+        [ "Step 2: Place attributes.xml and enumerations.xml into your application working directory.", "index.html#step2", null ],
+        [ "Step 3: Add #include \"***SOMEWHERE***./JUCE_Designer.h\" and type in this code:", "index.html#step3", null ]
+      ] ]
+    ] ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],

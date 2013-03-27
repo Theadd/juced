@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_big_tree.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,6 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4084e1b33ee27cddda808349c85aa351"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_big_tree.html#a4084e1b33ee27cddda808349c85aa351">BigTree</a> (DynamicObject *object)</td></tr>
 <tr class="memdesc:a4084e1b33ee27cddda808349c85aa351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an unnamed <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> that holds a DynamicObject.  <a href="#a4084e1b33ee27cddda808349c85aa351"></a><br/></td></tr>
 <tr class="separator:a4084e1b33ee27cddda808349c85aa351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb6a71a3bcc5d5e22008ccb56657eee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefb6a71a3bcc5d5e22008ccb56657eee"></a>
+<a class="el" href="class_big_tree.html">BigTree</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_big_tree.html">BigTree</a> &amp;other)</td></tr>
+<tr class="separator:aefb6a71a3bcc5d5e22008ccb56657eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a680c4c7320e99047a9d56d01bbb959a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a680c4c7320e99047a9d56d01bbb959a6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setDynamicObject</b> (DynamicObject *object)</td></tr>
 <tr class="separator:a680c4c7320e99047a9d56d01bbb959a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,9 +159,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeParentChange
 <tr class="memitem:ad51b3c047e9d1106943193818825a288"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad51b3c047e9d1106943193818825a288"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</b> (ValueTree &amp;treeWhichHasBeenChanged)</td></tr>
 <tr class="separator:ad51b3c047e9d1106943193818825a288"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43410dde861fd776b9e61a86e6a1e950"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_big_tree.html">BigTree</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_big_tree.html#a43410dde861fd776b9e61a86e6a1e950">getChildWithProperty</a> (const Identifier &amp;propertyName, const var &amp;propertyValue, bool recursive)</td></tr>
-<tr class="memdesc:a43410dde861fd776b9e61a86e6a1e950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks for any <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> within it's childs, recursive or not, that has the named property with specified value.  <a href="#a43410dde861fd776b9e61a86e6a1e950"></a><br/></td></tr>
-<tr class="separator:a43410dde861fd776b9e61a86e6a1e950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6cf1596fbfe60c9d7f2ed758c9845b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_big_tree.html">BigTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_big_tree.html#aea6cf1596fbfe60c9d7f2ed758c9845b">getChildWithProperty</a> (const Identifier &amp;propertyName, const var &amp;propertyValue, bool recursive)</td></tr>
+<tr class="memdesc:aea6cf1596fbfe60c9d7f2ed758c9845b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks for any <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> within it's childs, recursive or not, that has the named property with specified value.  <a href="#aea6cf1596fbfe60c9d7f2ed758c9845b"></a><br/></td></tr>
+<tr class="separator:aea6cf1596fbfe60c9d7f2ed758c9845b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2c384997bb5faf0d18e6852c3eb2941"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_big_tree.html">BigTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_big_tree.html#ac2c384997bb5faf0d18e6852c3eb2941">getChild</a> (int index) const </td></tr>
 <tr class="memdesc:ac2c384997bb5faf0d18e6852c3eb2941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> that references a child <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> on the given index.  <a href="#ac2c384997bb5faf0d18e6852c3eb2941"></a><br/></td></tr>
 <tr class="separator:ac2c384997bb5faf0d18e6852c3eb2941"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,7 +175,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class holds all object hierarchy and property modification. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8h_source.html#l00024">24</a> of file <a class="el" href="_big_tree_8h_source.html">BigTree.h</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8h_source.html#l00018">18</a> of file <a class="el" href="_big_tree_8h_source.html">BigTree.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a51e3dd18a0bc72c35a3b273a617dcd21"></a>
 <div class="memitem">
@@ -190,9 +193,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 <p>Creates an invalid <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>. </p>
 <dl class="section see"><dt>See Also</dt><dd>ValueTree </dd></dl>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00015">15</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00021">21</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00199">createXml()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00186">getChild()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00150">getChildWithProperty()</a>.</p>
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
+
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00229">createXml()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00216">getChild()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00179">getChildWithProperty()</a>.</p>
 
 </div>
 </div>
@@ -212,7 +217,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Creates a reference to another <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00020">20</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00026">26</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
 
 </div>
 </div>
@@ -242,7 +249,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Creates a named type <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> that holds a DynamicObject. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00025">25</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00031">31</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
 
 </div>
 </div>
@@ -262,7 +271,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Creates an unnamed <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> that holds a DynamicObject. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00030">30</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00037">37</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
 
 </div>
 </div>
@@ -282,11 +293,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Returns an XmlElement containing the representation of the current <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> and all it's children. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00199">199</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00229">229</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00015">BigTree()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00199">createXml()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00191">recursive_removeProperty()</a>.</p>
+<p>References <a class="el" href="_big_tree_8cpp_source.html#l00021">BigTree()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00229">createXml()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00221">recursive_removeProperty()</a>.</p>
 
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00199">createXml()</a>.</p>
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00229">createXml()</a>.</p>
 
 </div>
 </div>
@@ -306,20 +317,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Returns a <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> that references a child <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> on the given index. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00186">186</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00216">216</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00015">BigTree()</a>.</p>
+<p>References <a class="el" href="_big_tree_8cpp_source.html#l00021">BigTree()</a>.</p>
 
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00150">getChildWithProperty()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00191">recursive_removeProperty()</a>.</p>
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00179">getChildWithProperty()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00221">recursive_removeProperty()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a43410dde861fd776b9e61a86e6a1e950"></a>
+<a class="anchor" id="aea6cf1596fbfe60c9d7f2ed758c9845b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_big_tree.html">BigTree</a> &amp; BigTree::getChildWithProperty </td>
+          <td class="memname"><a class="el" href="class_big_tree.html">BigTree</a> BigTree::getChildWithProperty </td>
           <td>(</td>
           <td class="paramtype">const Identifier &amp;&#160;</td>
           <td class="paramname"><em>propertyName</em>, </td>
@@ -350,7 +361,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 <dd>
 <a class="el" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef" title="Returns a struct pointer of attribute parameters given it&#39;s Identifier.">Constructor::getAttributeOf</a> </dd>
 <dd>
-<a class="el" href="struct_attribute.html">Attribute</a> </dd></dl>
+<a class="el" href="struct_attribute.html" title="Struct to hold all parameters of a given attribute identifier.">Attribute</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">propertyName</td><td>Identifier matching a property name. </td></tr>
@@ -360,11 +371,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00150">150</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00179">179</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00015">BigTree()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00186">getChild()</a>.</p>
+<p>References <a class="el" href="_big_tree_8cpp_source.html#l00021">BigTree()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00216">getChild()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
 
-<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00019">PlaceableComponent::perform()</a>, and <a class="el" href="_placeable_component_8cpp_source.html#l00097">PlaceableComponent::undo()</a>.</p>
+<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00141">PlaceableComponent::undo()</a>.</p>
 
 </div>
 </div>
@@ -394,11 +405,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Recursive function to remove a named property from this <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> and all it's children. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00191">191</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00221">221</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00186">getChild()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00191">recursive_removeProperty()</a>.</p>
+<p>References <a class="el" href="_big_tree_8cpp_source.html#l00216">getChild()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00221">recursive_removeProperty()</a>.</p>
 
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00199">createXml()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00191">recursive_removeProperty()</a>.</p>
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00229">createXml()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00221">recursive_removeProperty()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00034">Constructor::~Constructor()</a>.</p>
 
 </div>
 </div>
@@ -428,9 +439,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 
 <p>Deals with property changes on a determinated object. </p>
 
-<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00036">36</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_big_tree_8cpp_source.html#l00058">58</a> of file <a class="el" href="_big_tree_8cpp_source.html">BigTree.cpp</a>.</p>
 
-<p>References <a class="el" href="_constructor_8cpp_source.html#l00078">Constructor::getAttributeOf()</a>, <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00096">Constructor::getUndoManager()</a>.</p>
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00119">Constructor::getAttributeOf()</a>, <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>, <a class="el" href="_constructor_8cpp_source.html#l00137">Constructor::getUndoManager()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>.</p>
 
 </div>
 </div>
@@ -444,7 +455,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>valueTreeRedirected</
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_big_tree.html">BigTree</a></li>
-    <li class="footer">Generated on Sun Mar 24 2013 21:15:35 for JUCE Designer by
+    <li class="footer">Generated on Wed Mar 27 2013 22:15:43 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

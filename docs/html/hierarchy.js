@@ -2,7 +2,7 @@ var hierarchy =
 [
     [ "Attribute", "struct_attribute.html", null ],
     [ "ChangeListener", null, [
-      [ "ColourPropertyComponent", "class_colour_property_component.html", null ]
+      [ "JUCED_ColourPropertyComponent", "class_j_u_c_e_d___colour_property_component.html", null ]
     ] ],
     [ "Component", null, [
       [ "JUCE_Designer", "class_j_u_c_e___designer.html", null ],
@@ -35,15 +35,15 @@ var hierarchy =
     ] ],
     [ "Listener", null, [
       [ "TextWithButtonPropertyComponent", "class_text_with_button_property_component.html", [
-        [ "ColourPropertyComponent", "class_colour_property_component.html", null ],
-        [ "EnumerationPropertyComponent", "class_enumeration_property_component.html", null ]
+        [ "EnumerationPropertyComponent", "class_enumeration_property_component.html", null ],
+        [ "JUCED_ColourPropertyComponent", "class_j_u_c_e_d___colour_property_component.html", null ]
       ] ]
     ] ],
     [ "Listener", null, [
       [ "BigTree", "class_big_tree.html", null ]
     ] ],
     [ "PropertyPanel", null, [
-      [ "PropertyGroup", "class_property_group.html", null ]
+      [ "JUCED_PropertyGroup", "class_j_u_c_e_d___property_group.html", null ]
     ] ],
     [ "TextButton", null, [
       [ "juced_TextButton", "classjuced___text_button.html", null ]

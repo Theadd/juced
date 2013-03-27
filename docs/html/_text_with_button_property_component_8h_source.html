@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('_text_with_button_property_component_8
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,31 +117,35 @@ $(document).ready(function(){initNavTree('_text_with_button_property_component_8
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __TEXTWITHBUTTONPROPERTYCOMPONENT_H_E68AF029__</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../Globals.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text_with_button_property_component.html" title="Virtual PropertyComponent with small TextButton on the right.">TextWithButtonPropertyComponent</a>  : <span class="keyword">public</span> TextPropertyComponent,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                         <span class="keyword">public</span> Button::Listener</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b">   29</a></span>&#160;    TextButton *<a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b" title="Pointer to TextButton object.">button</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html#a55480a356c71b7ed5b81fcbf0e390a68">   31</a></span>&#160;    Label *<a class="code" href="class_text_with_button_property_component.html#a55480a356c71b7ed5b81fcbf0e390a68" title="Pointer to Label object.">textLabel</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_text_with_button_property_component.html#a6e0602af61cefd723f2de39afc30bbdd" title="Creates a PropertyComponent with an editable Label and a TextButton on the right.">TextWithButtonPropertyComponent</a> (<span class="keyword">const</span> Value &amp;ValueToControl, <span class="keyword">const</span> String &amp;propertyName);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~<a class="code" href="class_text_with_button_property_component.html" title="Virtual PropertyComponent with small TextButton on the right.">TextWithButtonPropertyComponent</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_text_with_button_property_component.html#a7dba795846d40985dd8b19b93d57136d" title="Virtual function called when the user clicks the TextButton.">buttonClicked</a> (Button *<a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b" title="Pointer to TextButton object.">button</a>) = 0;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_with_button_property_component.html#a8c9ffa8ad1454bff3af84d58133b7c0c" title="Called automatically to resize child components.">resized</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif  // __TEXTWITHBUTTONPROPERTYCOMPONENT_H_E68AF029__</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../Constructor.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text_with_button_property_component.html" title="Virtual PropertyComponent with small TextButton on the right.">TextWithButtonPropertyComponent</a>  : <span class="keyword">public</span> TextPropertyComponent,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                         <span class="keyword">public</span> Button::Listener</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b">   30</a></span>&#160;    TextButton *<a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b" title="Pointer to TextButton object.">button</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="class_text_with_button_property_component.html#a55480a356c71b7ed5b81fcbf0e390a68">   32</a></span>&#160;    Label *<a class="code" href="class_text_with_button_property_component.html#a55480a356c71b7ed5b81fcbf0e390a68" title="Pointer to Label object.">textLabel</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_text_with_button_property_component.html#a6e0602af61cefd723f2de39afc30bbdd" title="Creates a PropertyComponent with an editable Label and a TextButton on the right.">TextWithButtonPropertyComponent</a> (<span class="keyword">const</span> Value &amp;ValueToControl, <span class="keyword">const</span> String &amp;propertyName);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ~<a class="code" href="class_text_with_button_property_component.html" title="Virtual PropertyComponent with small TextButton on the right.">TextWithButtonPropertyComponent</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_text_with_button_property_component.html#a7dba795846d40985dd8b19b93d57136d" title="Virtual function called when the user clicks the TextButton.">buttonClicked</a> (Button *<a class="code" href="class_text_with_button_property_component.html#a82ee855aed4a255728c610dda7f7821b" title="Pointer to TextButton object.">button</a>) = 0;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_with_button_property_component.html#a8c9ffa8ad1454bff3af84d58133b7c0c" title="Called automatically to resize child components.">resized</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    JUCE_LEAK_DETECTOR (<a class="code" href="class_text_with_button_property_component.html" title="Virtual PropertyComponent with small TextButton on the right.">TextWithButtonPropertyComponent</a>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif  // __TEXTWITHBUTTONPROPERTYCOMPONENT_H_E68AF029__</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b423d2037aab9cfd0e7364e2bc458880.html">juced</a></li><li class="navelem"><a class="el" href="dir_17ce93d9d1a6b136927b9e86b8e91681.html">Source</a></li><li class="navelem"><a class="el" href="dir_06bffe3af63c05acd06c3e854f1471dc.html">Designer</a></li><li class="navelem"><a class="el" href="dir_db8bd305bad3be09580e7d7e79a9db28.html">Properties</a></li><li class="navelem"><b>TextWithButtonPropertyComponent.h</b></li>
-    <li class="footer">Generated on Sun Mar 24 2013 21:15:35 for JUCE Designer by
+    <li class="footer">Generated on Wed Mar 27 2013 22:15:43 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

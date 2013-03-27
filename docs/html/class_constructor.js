@@ -1,8 +1,9 @@
 var class_constructor =
 [
+    [ "~Constructor", "class_constructor.html#a4ad4d817192fadf79f16b2a4b72d86a9", null ],
     [ "createComponent", "class_constructor.html#a0f3ec34b180a1d4f104712d50cb14e43", null ],
     [ "getAttributeOf", "class_constructor.html#ab34f1e9062445681a508550415ff18ef", null ],
-    [ "getBigTreeRoot", "class_constructor.html#aaa60cf2b7c17ba0a752f9c5b7880eb5e", null ],
+    [ "getBigTreeRoot", "class_constructor.html#ab069bf462919ffdddadb51453795d1ad", null ],
     [ "getDesigner", "class_constructor.html#a93e5c1a597e8f5dd4d54f89db16cdcaf", null ],
     [ "getDrawBoundsModHeight", "class_constructor.html#ae6cefdd6768938290aefa927dc916dca", null ],
     [ "getDrawBoundsModWidth", "class_constructor.html#a814a224a76b8a3557b5dbfdcba694671", null ],
@@ -10,16 +11,18 @@ var class_constructor =
     [ "getDrawBoundsModY", "class_constructor.html#ae2b5aeaa20c44e5867f1f45684c8600e", null ],
     [ "getEnumerationsOf", "class_constructor.html#a01e93de94d8be5532e650cddaeda480e", null ],
     [ "getGridSize", "class_constructor.html#a900f4c6d494c239238809adf2afc290e", null ],
+    [ "getSelectedComponent", "class_constructor.html#a60c3ff2ca4ceb08dfd8a2c728a382c0a", null ],
     [ "getSelectionBox", "class_constructor.html#ad561d0bb14ee460677882a74d768114d", null ],
     [ "getUndoManager", "class_constructor.html#ab8c30bd6317d7f2b158f8462a630a3d6", null ],
     [ "loadAttributesFromXmlFile", "class_constructor.html#aa276e1e035578f7964780a2f3453395f", null ],
     [ "loadEnumerationsFromXmlFile", "class_constructor.html#a7010d09e0a7b5d97cd861beeb74121b9", null ],
-    [ "setBigTreeRoot", "class_constructor.html#a4d72b5eb1a86816be436cca2f754a10c", null ],
+    [ "setBigTreeRoot", "class_constructor.html#a2930ea7190b6a6252d036de6a2b8c636", null ],
     [ "setDesigner", "class_constructor.html#a3281de76b822b8bf5919245f1366f581", null ],
     [ "setDrawBoundsMod", "class_constructor.html#a83ffdce2edec86fb7b0dd4850bfcdecc", null ],
     [ "setGridSize", "class_constructor.html#ab3f9b48d6ad94eb610447ce94ea4ae1d", null ],
-    [ "BigTree", "class_constructor.html#abfffb516c1c009fbf9953d75d260d121", null ],
+    [ "setSelectedComponent", "class_constructor.html#aa3ed52a1e6608e639a1dd4801a406ea4", null ],
     [ "JUCE_Designer", "class_constructor.html#a2c4615173c3eb48f45a6682bac0b2405", null ],
+    [ "PlaceableComponent", "class_constructor.html#a8cf8dfc31c3ef40dbaae0fbb592fd6b2", null ],
     [ "SelectionArea", "class_constructor.html#a20f629dbd2279d1ffa4db4307fcc1029", null ],
-    [ "_attributes", "class_constructor.html#ae5d823f5aaef582e23842ee45a001c12", null ]
+    [ "_bigTreeRoot", "class_constructor.html#a292bcc54668e3f7d018355aeccda8f79", null ]
 ];

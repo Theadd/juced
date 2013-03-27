@@ -4,7 +4,6 @@ var class_j_u_c_e___designer =
     [ "JUCE_Designer", "class_j_u_c_e___designer.html#a98aa62d5b5f76831f7f5fdcfe1ab716e", null ],
     [ "~JUCE_Designer", "class_j_u_c_e___designer.html#aa5fe2987ac45563a66d70d6c8ca7c8a0", null ],
     [ "addToolboxItem", "class_j_u_c_e___designer.html#afc5109b1e779cab9a2c1dcab7a041dd0", null ],
-    [ "addWindow", "class_j_u_c_e___designer.html#a5f66c79ae9ce9831feacf2501d7b07f8", null ],
     [ "childBoundsChanged", "class_j_u_c_e___designer.html#a4d55152c47af6e35064ed000f2504d2d", null ],
     [ "childrenChanged", "class_j_u_c_e___designer.html#aea4edd064ca6d1c7d0f8bd2ccdefceba", null ],
     [ "createToolbox", "class_j_u_c_e___designer.html#a99543579daf52cfa413726bb360d2149", null ],

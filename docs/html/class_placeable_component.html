@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_placeable_component.html','');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,14 +104,14 @@ $(document).ready(function(){initNavTree('class_placeable_component.html','');})
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_placeable_component-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PlaceableComponent Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class represents the actions for create, delete, copy, paste, undo and redo of components.  
+<p>This class represents the actions for create, undo and redo of components creation.  
  <a href="class_placeable_component.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for PlaceableComponent:</div>
@@ -125,7 +125,7 @@ Inheritance diagram for PlaceableComponent:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9fbf67d873a6d83cf1ca9d9783aab25d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_placeable_component.html#a9fbf67d873a6d83cf1ca9d9783aab25d">PlaceableComponent</a> (String selectedToolName, String parentComponentID, Rectangle&lt; int &gt; bounds, String componentID=String())</td></tr>
-<tr class="memdesc:a9fbf67d873a6d83cf1ca9d9783aab25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_placeable_component.html" title="This class represents the actions for create, delete, copy, paste, undo and redo of components...">PlaceableComponent</a> object.  <a href="#a9fbf67d873a6d83cf1ca9d9783aab25d"></a><br/></td></tr>
+<tr class="memdesc:a9fbf67d873a6d83cf1ca9d9783aab25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a> object.  <a href="#a9fbf67d873a6d83cf1ca9d9783aab25d"></a><br/></td></tr>
 <tr class="separator:a9fbf67d873a6d83cf1ca9d9783aab25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6dcf52a48390ed9a236ae3a00d4314c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_placeable_component.html#af6dcf52a48390ed9a236ae3a00d4314c">perform</a> ()</td></tr>
 <tr class="memdesc:af6dcf52a48390ed9a236ae3a00d4314c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method called by the UndoManager to create the specified component (redo also).  <a href="#af6dcf52a48390ed9a236ae3a00d4314c"></a><br/></td></tr>
@@ -137,17 +137,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a047abd0e11bb1c02b38898ef09b873b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the component being represented by this object.  <a href="#a047abd0e11bb1c02b38898ef09b873b1"></a><br/></td></tr>
 <tr class="separator:a047abd0e11bb1c02b38898ef09b873b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:abfffb516c1c009fbf9953d75d260d121"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abfffb516c1c009fbf9953d75d260d121"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr>
-<tr class="separator:abfffb516c1c009fbf9953d75d260d121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a8bde6cb042d64d3254fe90b637065204"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bde6cb042d64d3254fe90b637065204"></a>
+<a class="el" href="class_big_tree.html">BigTree</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_componentTree</b></td></tr>
+<tr class="separator:a8bde6cb042d64d3254fe90b637065204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class represents the actions for create, delete, copy, paste, undo and redo of components. </p>
-<dl class="section see"><dt>See Also</dt><dd>Constructor::createComponent </dd></dl>
+<div class="textblock"><p>This class represents the actions for create, undo and redo of components creation. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_constructor.html#a0f3ec34b180a1d4f104712d50cb14e43" title="Create and add a component to the editor.">Constructor::createComponent</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_placeable_component_8h_source.html#l00029">29</a> of file <a class="el" href="_placeable_component_8h_source.html">PlaceableComponent.h</a>.</p>
+<p>Definition at line <a class="el" href="_placeable_component_8h_source.html#l00030">30</a> of file <a class="el" href="_placeable_component_8h_source.html">PlaceableComponent.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9fbf67d873a6d83cf1ca9d9783aab25d"></a>
 <div class="memitem">
@@ -185,7 +185,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="class_placeable_component.html" title="This class represents the actions for create, delete, copy, paste, undo and redo of components...">PlaceableComponent</a> object. </p>
+<p>Creates a <a class="el" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">selectedToolName</td><td>String containing the name of the component class to represent. </td></tr>
@@ -216,7 +216,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr
 
 <p>Returns a pointer to the component being represented by this object. </p>
 
-<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00149">149</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00203">203</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_constructor_8cpp_source.html#l00263">Constructor::createComponent()</a>.</p>
 
 </div>
 </div>
@@ -235,9 +237,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr
 
 <p>Method called by the UndoManager to create the specified component (redo also). </p>
 
-<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00019">19</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00046">46</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00150">BigTree::getChildWithProperty()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>.</p>
+<p>References <a class="el" href="_constructor_8cpp_source.html#l00255">Constructor::getBigTreeRoot()</a>, <a class="el" href="_constructor_8cpp_source.html#l00236">Constructor::getDesigner()</a>, <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>, <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00242">Constructor::setBigTreeRoot()</a>.</p>
 
 </div>
 </div>
@@ -256,9 +258,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr
 
 <p>Method called by the UndoManager to undo the creation of the represented component. </p>
 
-<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00097">97</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_placeable_component_8cpp_source.html#l00141">141</a> of file <a class="el" href="_placeable_component_8cpp_source.html">PlaceableComponent.cpp</a>.</p>
 
-<p>References <a class="el" href="_big_tree_8cpp_source.html#l00150">BigTree::getChildWithProperty()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>.</p>
+<p>References <a class="el" href="_big_tree_8cpp_source.html#l00179">BigTree::getChildWithProperty()</a>, <a class="el" href="_constructor_8cpp_source.html#l00236">Constructor::getDesigner()</a>, <a class="el" href="_constructor_8cpp_source.html#l00016">Constructor::getInstance()</a>, <a class="el" href="_constructor_8cpp_source.html#l00203">Constructor::log()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00242">Constructor::setBigTreeRoot()</a>.</p>
 
 </div>
 </div>
@@ -272,7 +274,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_placeable_component.html">PlaceableComponent</a></li>
-    <li class="footer">Generated on Sun Mar 24 2013 21:15:35 for JUCE Designer by
+    <li class="footer">Generated on Wed Mar 27 2013 22:15:44 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

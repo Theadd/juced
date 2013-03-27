@@ -1,6 +1,7 @@
 var class_toolbox =
 [
     [ "Toolbox", "class_toolbox.html#a70c729ee9d13e2006dde37d6d3799b5e", null ],
+    [ "~Toolbox", "class_toolbox.html#aa6cff9a25ac2314faadb9a801dd398d2", null ],
     [ "addItem", "class_toolbox.html#a132ff7cc3572441f2d1d79ae92b13d7c", null ],
     [ "deselectTool", "class_toolbox.html#a65107fbc493085353192613880d66b5e", null ],
     [ "getSelectedToolName", "class_toolbox.html#a7a983d8c084a6ba37039cbcce4d4248e", null ],
