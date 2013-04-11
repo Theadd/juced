@@ -29,16 +29,21 @@ public:
 		boundsGroup.clear();
 		generalGroup.clear();
 		coloursGroup.clear();
-		behaviourGroup.clear();
+		appearanceGroup.clear();
 		Constructor::log("PG101 - done");
 	}
 
 	JUCED_PropertyGroup (ValueTree *tree) : PropertyPanel()
 	{
 		setName ("Properties View");
+		bool allowTransform = true;
 		if (tree != nullptr) {
 			setName((tree->hasProperty(Attributes::name)) ? tree->getProperty(Attributes::name) : "undefined");
 			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + tree->getProperty(Attributes::objectType.toString()) : getName());
+			//if we are not allowed to transform this component, some properties groups will be hidden
+			if (tree->hasProperty(Attributes::allowTransform))
+				allowTransform = tree->getProperty(Attributes::allowTransform);
+
 			Identifier t;
 			for (int i = tree->getNumProperties(); --i >= 0;) {
 				t = tree->getPropertyName(i);
@@ -51,6 +56,8 @@ public:
 							comp = new JUCED_ColourPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
 						} else if (attrib->type == AttributeType::enumeration) {
 							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
+						} else if (attrib->type == AttributeType::boolean) {
+							comp = new BooleanPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, "Enable");
 						} else {
 							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 96, false);
 						}
@@ -61,8 +68,8 @@ public:
 							boundsGroup.add(comp);
 						} else if (attrib->group.equalsIgnoreCase("Colours")) {
 							coloursGroup.add(comp);
-						} else if (attrib->group.equalsIgnoreCase("Behaviour")) {
-							behaviourGroup.add(comp);
+						} else if (attrib->group.equalsIgnoreCase("Appearance")) {
+							appearanceGroup.add(comp);
 						}
 					}
 				}
@@ -70,9 +77,9 @@ public:
 		}
 
 		if (generalGroup.size() > 0) addSection("General", generalGroup);
-		if (boundsGroup.size() > 0) addSection("Bounds", boundsGroup);
+		if (boundsGroup.size() > 0 && allowTransform) addSection("Bounds", boundsGroup);
+		if (appearanceGroup.size() > 0) addSection("Appearance", appearanceGroup);
 		if (coloursGroup.size() > 0) addSection("Colours", coloursGroup);
-		if (behaviourGroup.size() > 0) addSection("Behaviour", behaviourGroup);
 
 		refreshAll();
 	}
@@ -81,7 +88,7 @@ private:
 	Array<PropertyComponent*> boundsGroup;
 	Array<PropertyComponent*> generalGroup;
 	Array<PropertyComponent*> coloursGroup;
-	Array<PropertyComponent*> behaviourGroup;
+	Array<PropertyComponent*> appearanceGroup;
 	
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JUCED_PropertyGroup)
 };

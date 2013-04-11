@@ -7,4 +7,9 @@
 	<Item name="ConnectedOnTop" display="Connected on top" value="4"/>
 	<Item name="ConnectedOnBottom" display="Connected on bottom" value="8"/>
   </Enumeration>
+  <Enumeration name="titleBarButtons">
+	<Item name="minimizeButton" display="Minimize" value="1"/>
+    <Item name="maximizeButton" display="Maximize" value="2"/>
+	<Item name="closeButton" display="Close" value="4"/>
+  </Enumeration>
 </Enumerations>

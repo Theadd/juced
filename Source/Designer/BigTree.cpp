@@ -45,7 +45,7 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 
 		jassert (this->hasProperty(Attributes::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
 
-		//since Windows don't inherit from Component class we deal with it separately
+		//[WRONG STATEMENT] since Windows don't inherit from Component class we deal with it separately
 		if (this->getProperty(Attributes::objectType) == Modules::Window) {
 			juced_Window *obj = (juced_Window *)this->getProperty(Attributes::object).getDynamicObject();
 			if (property == Attributes::height) {
@@ -62,6 +62,20 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				obj->setTopLeftPosition(obj->getX(), y);
 			} else if (property == Attributes::name) {
 				obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
+			} else if (property == Attributes::titleBarHeight) {
+				int height = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setTitleBarHeight(height);
+			} else if (property == Attributes::titleBarTextCentered) {
+				bool centered = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setTitleBarTextCentred(centered);
+			} else if (property == Attributes::titleBarButtons) {
+				int buttons = treeWhosePropertyHasChanged.getProperty(property);
+				bool buttonsOnLeft = treeWhosePropertyHasChanged.getProperty(Attributes::titleBarButtonsOnLeft);
+				obj->setTitleBarButtonsRequired(buttons, buttonsOnLeft);
+			} else if (property == Attributes::titleBarButtonsOnLeft) {
+				int buttons = treeWhosePropertyHasChanged.getProperty(Attributes::titleBarButtons);
+				bool buttonsOnLeft = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setTitleBarButtonsRequired(buttons, buttonsOnLeft);
 			} else if (property == Attributes::backgroundColour) {
 				obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
 				Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());

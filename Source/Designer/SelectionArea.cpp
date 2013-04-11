@@ -15,6 +15,7 @@ SelectionArea::SelectionArea() : Component("Selection")
 	isComponentSelection = false;
 	ready = false;
 	setListenToChanges(false);
+	setAllowTransform(true);
 }
 
 SelectionArea::SelectionArea(bool _isComponentSelection) : Component("Selection") {
@@ -22,7 +23,7 @@ SelectionArea::SelectionArea(bool _isComponentSelection) : Component("Selection"
 	setListenToChanges(_isComponentSelection);
 	setBoxSize(6);
 	if (isComponentSelection) {
-		MiniBox *box = new MiniBox("upperLeft");
+		/*MiniBox *box = new MiniBox("upperLeft");
 		addAndMakeVisible(box);
 		box->addMouseListener(this, false);
 		box->setVisible(false);
@@ -41,14 +42,15 @@ SelectionArea::SelectionArea(bool _isComponentSelection) : Component("Selection"
 		box->addMouseListener(this, false);
 		box->setVisible(false);
 		box->setMouseCursor(MouseCursor::BottomLeftCornerResizeCursor);
-		miniBoxes.add(box);
+		miniBoxes.add(box);*/
 
-		box = new MiniBox("bottomRight");
+		MiniBox *box = new MiniBox("bottomRight");
 		addAndMakeVisible(box);
 		box->addMouseListener(this, false);
 		box->setMouseCursor(MouseCursor::BottomRightCornerResizeCursor);
 		miniBoxes.add(box);
 	}
+	setAllowTransform(true);
 	ready = false;
 }
 
@@ -64,24 +66,26 @@ SelectionArea::~SelectionArea()
 
 void SelectionArea::setSelectionBounds(int x, int y, int width, int height, bool isModX, bool isModY, bool isModWidth, bool isModHeight)
 {
-	int gridSize = Constructor::getInstance()->getGridSize();
+	if (_allowTransform) {
+		int gridSize = Constructor::getInstance()->getGridSize();
 
-	int modX = (isModX) ? x % gridSize : 0;
-	int modY = (isModY) ? y % gridSize : 0;
-	int modWidth = (isModWidth) ? (x - modX + width) % gridSize : 0;
-	int modHeight = (isModHeight) ? (y - modY + height) % gridSize : 0;
-	Constructor::getInstance()->setDrawBoundsMod(modX, modY, modWidth, modHeight);
+		int modX = (isModX) ? x % gridSize : 0;
+		int modY = (isModY) ? y % gridSize : 0;
+		int modWidth = (isModWidth) ? (x - modX + width) % gridSize : 0;
+		int modHeight = (isModHeight) ? (y - modY + height) % gridSize : 0;
+		Constructor::getInstance()->setDrawBoundsMod(modX, modY, modWidth, modHeight);
 
-	if (!isComponentSelection) {
-		setBounds(x - modX, y - modY, width - modWidth, height - modHeight);
-	} else {
-		setBounds(x - _boxSize - modX, y - _boxSize - modY, width + (_boxSize*2) - modWidth, height + (_boxSize*2) - modHeight);
+		if (!isComponentSelection) {
+			setBounds(x - modX, y - modY, width - modWidth, height - modHeight);
+		} else {
+			setBounds(x - _boxSize - modX, y - _boxSize - modY, width + (_boxSize*2) - modWidth, height + (_boxSize*2) - modHeight);
 
-		/*miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
-		miniBoxes[1]->setBounds(width + _boxSize, 0, _boxSize, _boxSize);
-		miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);*/
-		miniBoxes[3]->setBounds(getWidth() - _boxSize, getHeight() - _boxSize, _boxSize, _boxSize);
-		ready = true;
+			/*miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
+			miniBoxes[1]->setBounds(width + _boxSize, 0, _boxSize, _boxSize);
+			miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);*/
+			miniBoxes[0]->setBounds(getWidth() - _boxSize, getHeight() - _boxSize, _boxSize, _boxSize);
+			ready = true;
+		}
 	}
 }
 
@@ -154,6 +158,17 @@ void SelectionArea::setListenToChanges(bool shouldBeListeningToChanges)
 bool SelectionArea::isListeningToChanges()
 {
 	return _isListeningToChanges;
+}
+
+void SelectionArea::setAllowTransform(bool shouldBeAllowedToTransform)
+{
+	_allowTransform = shouldBeAllowedToTransform;
+	if (isComponentSelection) {
+		for (int i = miniBoxes.size(); --i >= 0;) {
+			miniBoxes[i]->setVisible(shouldBeAllowedToTransform);
+		}
+	}
+	setListenToChanges(shouldBeAllowedToTransform);
 }
 
 //================================================

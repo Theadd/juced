@@ -21,6 +21,7 @@ juced_MainComponent::juced_MainComponent()
 	setProperty(Attributes::className, "juced_MainComponent");
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
+	setProperty(Attributes::allowTransform, false);
 }
 
 juced_MainComponent::~juced_MainComponent()

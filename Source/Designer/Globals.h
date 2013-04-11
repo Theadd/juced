@@ -53,6 +53,7 @@ namespace AttributeType
 	const Identifier font			("font");
     const Identifier colour			("colour");
 	const Identifier enumeration	("enumeration");
+	const Identifier boolean		("boolean");
 }
 
 namespace Attributes
@@ -60,6 +61,7 @@ namespace Attributes
     #define DECLARE_ID(name)      const Identifier name (#name)
 
     DECLARE_ID (name);
+	DECLARE_ID (varName);
     DECLARE_ID (file);
     DECLARE_ID (text);
 	DECLARE_ID (buttonText);
@@ -70,10 +72,17 @@ namespace Attributes
 	DECLARE_ID (font);
 	DECLARE_ID (backgroundColour);
 	//const Identifier backgroundColour ("Background colour");
+
+	DECLARE_ID (allowTransform);
+
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);
 	DECLARE_ID (buttonOnColour);
 	DECLARE_ID (connectedEdges);
+	DECLARE_ID (titleBarButtons);
+	DECLARE_ID (titleBarButtonsOnLeft);
+	DECLARE_ID (titleBarHeight);
+	DECLARE_ID (titleBarTextCentered);
 	DECLARE_ID (className);
     DECLARE_ID (classDesc);
 	DECLARE_ID (objectType);

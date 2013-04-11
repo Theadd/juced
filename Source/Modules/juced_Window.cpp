@@ -28,7 +28,12 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::className, "juced_Window");
+	setProperty(Attributes::varName, getName());
+	setProperty(Attributes::className, "DocumentWindow");
+	setProperty(Attributes::titleBarHeight, getTitleBarHeight());
+	setProperty(Attributes::titleBarButtons, 7);
+	setProperty(Attributes::titleBarButtonsOnLeft, false);
+	setProperty(Attributes::titleBarTextCentered, true);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 

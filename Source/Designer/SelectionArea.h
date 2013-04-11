@@ -46,12 +46,15 @@ public:
 
 	bool isListeningToChanges();
 
+	void setAllowTransform(bool shouldBeAllowedToTransform);
+
 private:
 	ScopedPointer<Component> selectedComponent;
 	int _boxSize;
 	bool isComponentSelection;
 	bool ready;
 	bool _isListeningToChanges;
+	bool _allowTransform;
 
 	class MiniBox : public Component
 	{

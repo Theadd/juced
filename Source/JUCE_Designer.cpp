@@ -95,7 +95,7 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 	}
 }
 
-void JUCE_Designer::selectComponent (Component *componentToSelect)
+void JUCE_Designer::selectComponent (Component *componentToSelect, bool isSelectedTwice = false)
 {
 	SelectionArea *selectionBox = Constructor::getInstance()->getSelectionBox();
 
@@ -114,12 +114,23 @@ void JUCE_Designer::selectComponent (Component *componentToSelect)
 
 		BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, componentToSelect->getComponentID(), true));
 
+		bool allowTransform = true;
+		if (valueTree.hasProperty(Attributes::allowTransform))
+				allowTransform = valueTree.getProperty(Attributes::allowTransform);
+
+		selectionBox->setAllowTransform(allowTransform);
+
+		//AlertWindow::showMessageBox(AlertWindow::NoIcon, "SELECTED COMPONENT ID", valueTree.getProperty(Attributes::ID).toString());
+
 		JUCED_PropertyGroup *properties = new JUCED_PropertyGroup(&valueTree);
 		propertyView->setViewedComponent(properties);
 		selectionBox->setVisible(true);
 
 		
 		componentToSelect->addComponentListener(selectionBox);
+
+		if (valueTree.getProperty(Attributes::objectType).toString().equalsIgnoreCase("Window") && !isSelectedTwice)
+			selectComponent(componentToSelect, true);
 
 	} else {
 		//set selection box invisible and clean properties window since user clicked the editor itself

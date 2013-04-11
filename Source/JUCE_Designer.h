@@ -27,7 +27,7 @@ public:
 	String* getSelectedToolName ();
 	void deselectTool ();
 	void writeXmlToFile (String _filename);
-	void selectComponent (Component *componentToSelect);
+	void selectComponent (Component *componentToSelect, bool isSelectedTwice);
 
     void paint (Graphics& g);
     void resized();
