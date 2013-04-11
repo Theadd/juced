@@ -104,6 +104,8 @@ public:
 	void setBigTreeRoot(BigTree *bigTreeRoot);
 	BigTree* getBigTreeRoot();
 
+	String getTemplatesDir();
+
 	Component* createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds);
 
 

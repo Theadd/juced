@@ -95,6 +95,20 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 	}
 }
 
+void JUCE_Designer::writeCodeToFile (String _filename)
+{
+	Constructor::log("D003 - Generate code structure and save to " + _filename);
+	if (Constructor::getInstance()->getBigTreeRoot() != nullptr) {
+		CodeGenerator codeGenerator(Constructor::getInstance()->getBigTreeRoot());
+		Constructor::log("D103 - Code generated");
+		//Create xml file from XmlElement
+		File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
+		file.create();
+		file.replaceWithText(codeGenerator.getCode());
+		file.revealToUser();
+	}
+}
+
 void JUCE_Designer::selectComponent (Component *componentToSelect, bool isSelectedTwice = false)
 {
 	SelectionArea *selectionBox = Constructor::getInstance()->getSelectionBox();
@@ -267,6 +281,8 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 		mousePositionLabel.setText(String(Constructor::getInstance()->getGridSize()), 0);
 	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
 		this->writeXmlToFile("save.xml");
+	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
+		this->writeCodeToFile("code.cpp");
 	} else if (key.getKeyCode() == key.leftKey) {
 		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
 			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));

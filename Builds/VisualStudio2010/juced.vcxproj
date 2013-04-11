@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\ColourPropertyComponent.cpp"/>
+    <ClCompile Include="..\..\Source\Designer\CodeGenerator.cpp"/>
     <ClCompile Include="..\..\Source\Designer\PropertyView.cpp"/>
     <ClCompile Include="..\..\Source\Designer\PropertyGroup.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Constructor.cpp"/>
@@ -957,6 +958,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.h"/>
+    <ClInclude Include="..\..\Source\Designer\CodeGenerator.h"/>
     <ClInclude Include="..\..\Source\Designer\Constructor.h"/>
     <ClInclude Include="..\..\Source\Designer\PlaceableComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>

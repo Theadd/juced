@@ -22,7 +22,9 @@ juced_Label::juced_Label()  : Label ()
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::className, "juced_Label");
+	setProperty(Attributes::varName, getName());
+	setProperty(Attributes::className, "Label");
+	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 }

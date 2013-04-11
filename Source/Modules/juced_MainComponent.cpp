@@ -13,12 +13,14 @@
 juced_MainComponent::juced_MainComponent()
 {
     //setSize (500, 400);
-	setName("Container");
+	setName("container");
 	setProperty(Attributes::objectType, Modules::Component.toString());
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::className, "juced_MainComponent");
+	setProperty(Attributes::varName, getName());
+	setProperty(Attributes::className, "Component");
+	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 	setProperty(Attributes::allowTransform, false);

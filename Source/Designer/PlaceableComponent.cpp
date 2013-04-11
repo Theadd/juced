@@ -118,6 +118,7 @@ bool PlaceableComponent::perform ()
 	} else {
 		//There was no parent BigTree so we assume this is going to be the main component container
 		Constructor::log("PC101 - Set BigTree root as this component's BigTree");
+		objTree->setProperty(Attributes::declareExtended, true, 0);
 		Constructor::getInstance()->setBigTreeRoot(objTree);
 	}
 	

@@ -28,6 +28,7 @@ struct Attribute
 	Identifier type;
 	String display;
 	Identifier valueType;
+	String syntax;
 };
 
 namespace ValueType
@@ -35,6 +36,7 @@ namespace ValueType
 	const Identifier text		("text");
 	const Identifier integer	("integer");
 	const Identifier rgba		("rgba");
+	const Identifier undefined		("undefined");
 }
 
 namespace Modules
@@ -74,6 +76,7 @@ namespace Attributes
 	//const Identifier backgroundColour ("Background colour");
 
 	DECLARE_ID (allowTransform);
+	DECLARE_ID (declareExtended);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);

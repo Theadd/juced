@@ -12,7 +12,7 @@
 
 juced_TextButton::juced_TextButton()  : TextButton ()
 {
-	setName("TextButton");
+	setName("textButton");
 	setButtonText("Text Button");
 	setProperty(Attributes::objectType, Modules::TextButton.toString());
 	setProperty(Attributes::font, getFont().toString());
@@ -21,9 +21,11 @@ juced_TextButton::juced_TextButton()  : TextButton ()
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
+	setProperty(Attributes::varName, getName());
 	setProperty(Attributes::buttonText, getButtonText());
 	setProperty(Attributes::connectedEdges, getConnectedEdgeFlags());
-	setProperty(Attributes::className, "juced_TextButton");
+	setProperty(Attributes::className, "TextButton");
+	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 }

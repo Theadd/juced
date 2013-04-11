@@ -13,6 +13,7 @@
 #include "Designer/PropertyView.cpp"
 #include "Designer/BigTree.h"
 #include "Designer/Constructor.h"
+#include "Designer/CodeGenerator.h"
 
 class JUCE_Designer  : public Component
 {
@@ -27,6 +28,7 @@ public:
 	String* getSelectedToolName ();
 	void deselectTool ();
 	void writeXmlToFile (String _filename);
+	void writeCodeToFile (String _filename);
 	void selectComponent (Component *componentToSelect, bool isSelectedTwice);
 
     void paint (Graphics& g);

@@ -5,14 +5,10 @@ public:
 									Colours::lightgrey,
 									DocumentWindow::allButtons)
 	{
-		setContentOwned (new Component(), true);
-		//Component *container = getContentComponent();
-		//container->setSize(%width%, %height%);
+		%definitions%
 		setResizable(true, true);
 		centreWithSize (%width%, %height%);
 		setVisible (true);
-		
-		%initialization_code%
 	}
 
 	void closeButtonPressed()
@@ -21,5 +17,7 @@ public:
 	}
 
 private:
+	%declarations%
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (%varName%)
 };
+

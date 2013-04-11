@@ -75,6 +75,7 @@ void Constructor::loadAttributesFromXmlFile(const File &xmlFile)
 		t->type = e->getStringAttribute("type");
 		t->display = e->getStringAttribute("display");
 		t->valueType = e->getStringAttribute("valueType");
+		t->syntax = e->getStringAttribute("syntax");
 		_attributes.add(t);
 
 		//xml = xml->getNextElement();
@@ -273,4 +274,9 @@ Component* Constructor::createComponent(String selectedToolName, String parentCo
 	}
 	getUndoManager()->beginNewTransaction();
 	return newComponent->getComponent();
+}
+
+String Constructor::getTemplatesDir()
+{
+	return File::addTrailingSeparator(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "Templates");
 }

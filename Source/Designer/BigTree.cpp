@@ -77,7 +77,6 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				bool buttonsOnLeft = treeWhosePropertyHasChanged.getProperty(property);
 				obj->setTitleBarButtonsRequired(buttons, buttonsOnLeft);
 			} else if (property == Attributes::backgroundColour) {
-				obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
 				Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
 				obj->setColour(DocumentWindow::backgroundColourId, newColour);
 			}

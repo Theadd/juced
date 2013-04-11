@@ -1,17 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Window y="70" x="140" id="5d6aaae3806c9b36d7e59b7816e8e9c3" className="juced_Window"
-        name="window" backgroundColour="FFD3D3D3" width="395" height="310"
-        objectType="Window">
-  <Component y="0" x="0" id="26c228c881f6c690065341a279f49eba" className="juced_MainComponent"
-             name="Container" width="395" height="284" objectType="Component">
-    <Label id="e8db92d69c2818107d2f3bcadb3d88c8" className="juced_Label"
-           name="label" width="140" height="115" textColour="FF000000" backgroundColour="FF663232"
-           font="15.0 Regular" text="Text label" objectType="Label" x="34"
-           y="33"/>
-    <TextButton id="ca6ba379b8b48b5e1ef6e753fe7f128b" className="juced_TextButton"
-                connectedEdges="0" buttonText="Text Button" name="TextButton"
-                width="90" height="115" buttonOnColour="FF4444FF" buttonColour="FFBBBBFF"
-                font="0.1 Regular" objectType="TextButton" x="199" y="63"/>
+<Window id="f770e6cdd58b00fff054a4a538d321ea" declareExtended="1" titleBarTextCentered="0"
+        titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
+        className="DocumentWindow" varName="MainWindow" name="There will be bugs"
+        backgroundColour="FF006BA7" width="455" height="390" objectType="Window"
+        x="100" y="30">
+  <Component allowTransform="0" id="416b091f1e60b71f35b4c3bd5c429d9a" declareExtended="0"
+             className="Component" varName="container" name="container" width="455"
+             height="364" objectType="Component" x="0" y="0">
+    <Window id="c538412178d2bd8ba4a395e137f1b2b2" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="1" titleBarButtons="4" titleBarHeight="50"
+            className="DocumentWindow" varName="MiniWindow" name="Mini" backgroundColour="FF00A96D"
+            width="180" height="170" objectType="Window" x="224" y="78">
+      <Component allowTransform="0" id="de22937e157a2285b6d7f92d27278c8e" declareExtended="0"
+                 className="Component" varName="container" name="container" width="180"
+                 height="144" objectType="Component" x="0" y="0">
+        <Label id="062f7fa5d8ecc8435843b2602bd91e49" declareExtended="0" className="Label"
+               varName="label1" name="label" width="70" height="45" textColour="EE68140D"
+               backgroundColour="FF018C90" font="15.0 Regular" text="Text label"
+               objectType="Label" x="64" y="14"/>
+        <Window id="f83b5226532a203f7ae65696f8788d7a" declareExtended="1" titleBarTextCentered="1"
+                titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
+                className="DocumentWindow" varName="InnerWindow" name="Inner"
+                backgroundColour="FFFFFFFF" width="135" height="120" objectType="Window"
+                x="19" y="44">
+          <Component allowTransform="0" id="bbe0734542f5e4591ba875814d6e5844" declareExtended="0"
+                     className="Component" varName="container" name="container" width="135"
+                     height="94" objectType="Component" x="0" y="0">
+            <TextButton id="ec9f664beaef3eb941faba1226176c6a" declareExtended="0" className="TextButton"
+                        connectedEdges="0" buttonText="Text Button" varName="textButton"
+                        name="textButton" width="50" height="25" buttonOnColour="FF4444FF"
+                        buttonColour="FFBBBBFF" font="0.1 Regular" objectType="TextButton"
+                        x="39" y="8"/>
+          </Component>
+        </Window>
+      </Component>
+    </Window>
+    <TextButton id="89a5e35a62f4975d8168a2b25e19c038" declareExtended="0" className="TextButton"
+                connectedEdges="6" buttonText="1" varName="textButton1" name="textButton"
+                width="30" height="30" buttonOnColour="FF4444FF" buttonColour="FFBBBBFF"
+                font="0.1 Regular" objectType="TextButton" x="9" y="0"/>
+    <TextButton id="c863d429ef02a4ad274448693ef0d514" declareExtended="0" className="TextButton"
+                connectedEdges="3" buttonText="2" varName="textButton2" name="textButton"
+                width="55" height="30" buttonOnColour="FF4444FF" buttonColour="FFBBBBFF"
+                font="0.1 Regular" objectType="TextButton" x="39" y="0"/>
+    <TextButton id="83ba18da21817d15cd4faf8b56f01a15" declareExtended="0" className="TextButton"
+                connectedEdges="5" buttonText="3" varName="textButton3" name="textButton"
+                width="30" height="30" buttonOnColour="FF4444FF" buttonColour="FFBBBBFF"
+                font="0.1 Regular" objectType="TextButton" x="94" y="0"/>
+    <Window id="908945c66280d514bdd60156d3c312e5" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
+            className="DocumentWindow" varName="PepeWindow" name="Pepe" backgroundColour="FFA20000"
+            width="110" height="105" objectType="Window" x="89" y="83">
+      <Component allowTransform="0" id="74712fcbfc2726a9ae13819caabae76d" declareExtended="0"
+                 className="Component" varName="container" name="container" width="110"
+                 height="79" objectType="Component" x="0" y="0">
+        <TextButton id="220f7d76086fe338dae3f0f15bcb900c" declareExtended="0" className="TextButton"
+                    connectedEdges="0" buttonText="FFS!" varName="textButton4" name="textButton"
+                    width="45" height="40" buttonOnColour="FF4444FF" buttonColour="FFBBBBFF"
+                    font="0.1 Regular" objectType="TextButton" x="29" y="18"/>
+      </Component>
+    </Window>
+    <Window id="9d13dda8163ae3cea9104c202968e88d" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="0" titleBarButtons="1" titleBarHeight="26"
+            className="DocumentWindow" varName="PequeWindow" name="Peque"
+            backgroundColour="FFCFDA00" width="115" height="120" objectType="Window"
+            x="39" y="108">
+      <Component allowTransform="0" id="a7e9c21c757c899067612a5c75fd5137" declareExtended="0"
+                 className="Component" varName="container3" name="container" width="115"
+                 height="94" objectType="Component" x="0" y="0"/>
+    </Window>
   </Component>
 </Window>

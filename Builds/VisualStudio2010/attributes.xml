@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Attributes>
-  <Attribute name="name" group="General" visible="1" type="text" display="Name" valueType="text"/>
-  <Attribute name="varName" group="General" visible="1" type="text" display="Variable name" valueType="text"/>
-  <Attribute name="text" group="General" visible="1" type="text" display="Text" valueType="text"/>
-  <Attribute name="object" group="General" visible="0" type="text" display="" valueType="undefined"/>
-  <Attribute name="objectType" group="General" visible="0" type="text" display="" valueType="undefined"/>
-  <Attribute name="buttonText" group="General" visible="1" type="text" display="Button text" valueType="text"/>
-  <Attribute name="x" group="Bounds" visible="1" type="text" display="X" valueType="integer"/>
-  <Attribute name="y" group="Bounds" visible="1" type="text" display="Y" valueType="integer"/>
-  <Attribute name="height" group="Bounds" visible="1" type="text" display="Height" valueType="integer"/>
-  <Attribute name="width" group="Bounds" visible="1" type="text" display="Width" valueType="integer"/>
-  <Attribute name="backgroundColour" group="Colours" visible="1" type="colour" display="Background colour" valueType="rgba"/>
-  <Attribute name="textColour" group="Colours" visible="1" type="colour" display="Text colour" valueType="rgba"/>
-  <Attribute name="connectedEdges" group="Appearance" visible="1" type="enumeration" display="Connected edges" valueType="integer"/>
-  <Attribute name="titleBarButtons" group="Appearance" visible="1" type="enumeration" display="Titlebar buttons" valueType="integer"/>
-  <Attribute name="titleBarHeight" group="Appearance" visible="1" type="text" display="Titlebar height" valueType="integer"/>
-  <Attribute name="titleBarButtonsOnLeft" group="Appearance" visible="1" type="boolean" display="Titlebar buttons on left" valueType="text"/>
-  <Attribute name="titleBarTextCentered" group="Appearance" visible="1" type="boolean" display="Titlebar text centered" valueType="text"/>
+  <Attribute name="name" group="General" visible="1" type="text" display="Name" valueType="text" syntax='setName("%name%")'/>
+  <Attribute name="varName" group="General" visible="1" type="text" display="Variable name" valueType="text" syntax=''/>
+  <Attribute name="text" group="General" visible="1" type="text" display="Text" valueType="text" syntax='setText("%text%", false)'/>
+  <Attribute name="object" group="General" visible="0" type="text" display="" valueType="undefined" syntax=''/>
+  <Attribute name="objectType" group="General" visible="0" type="text" display="" valueType="undefined" syntax=''/>
+  <Attribute name="className" group="General" visible="0" type="text" display="Class name" valueType="text" syntax=''/>
+  <Attribute name="buttonText" group="General" visible="1" type="text" display="Button text" valueType="text" syntax='setButtonText("%buttonText%")'/>
+  <Attribute name="x" group="Bounds" visible="1" type="text" display="X" valueType="integer" syntax="setBounds(%x%, %y%, %width%, %height%)"/>
+  <Attribute name="y" group="Bounds" visible="1" type="text" display="Y" valueType="integer" syntax=''/>
+  <Attribute name="height" group="Bounds" visible="1" type="text" display="Height" valueType="integer" syntax=''/>
+  <Attribute name="width" group="Bounds" visible="1" type="text" display="Width" valueType="integer" syntax=''/>
+  <Attribute name="backgroundColour" group="Colours" visible="1" type="colour" display="Background colour" valueType="rgba" syntax='setColour(%className%::backgroundColourId, Colour::fromString("%backgroundColour%"))'/>
+  <Attribute name="textColour" group="Colours" visible="1" type="colour" display="Text colour" valueType="rgba" syntax='setColour(%className%::textColourId, Colour::fromString("%textColour%"))'/>
+  <Attribute name="connectedEdges" group="Appearance" visible="1" type="enumeration" display="Connected edges" valueType="integer" syntax='setConnectedEdges(%connectedEdges%)'/>
+  <Attribute name="titleBarButtons" group="Appearance" visible="1" type="enumeration" display="Titlebar buttons" valueType="integer" syntax='setTitleBarButtonsRequired(%titleBarButtons%, %titleBarButtonsOnLeft%)'/>
+  <Attribute name="titleBarHeight" group="Appearance" visible="1" type="text" display="Titlebar height" valueType="integer" syntax='setTitleBarHeight(%titleBarHeight%)'/>
+  <Attribute name="titleBarButtonsOnLeft" group="Appearance" visible="1" type="boolean" display="Titlebar buttons on left" valueType="text" syntax=''/>
+  <Attribute name="titleBarTextCentered" group="Appearance" visible="1" type="boolean" display="Titlebar text centered" valueType="text" syntax='setTitleBarTextCentred(%titleBarTextCentered%)'/>
+  <Attribute name="declareExtended" group="General" visible="1" type="boolean" display="Declare as an extended class" valueType="text" syntax=''/>
 </Attributes>
