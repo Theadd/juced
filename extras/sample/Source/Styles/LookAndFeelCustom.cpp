@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-#include "../Designer/Globals.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "LookAndFeelCustom.h"
 
 
@@ -19,7 +19,12 @@ LookAndFeelCustom* LookAndFeelCustom::getInstance()
       m_pInstance = new LookAndFeelCustom;
    }
 
-   return m_pInstance;
+   return m_pInstance.get();
+}
+
+void LookAndFeelCustom::destroy()
+{
+	m_pInstance = nullptr;
 }
 
 //==============================================================================

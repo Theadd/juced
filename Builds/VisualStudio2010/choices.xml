@@ -3,7 +3,7 @@
 <Choices>
   <Choice name="lookAndFeel">
 	<Item name="Inherit" display="Inherit" value="Inherit"/>
-    <Item name="Custom" display="Custom" value="Custom"/>
+    <Item name="Custom" display="Custom" value="LookAndFeelCustom"/>
   </Choice>
   <Choice name="textEntryBoxPosition">
 	<Item name="NoTextBox" display="None" value="NoTextBox"/>

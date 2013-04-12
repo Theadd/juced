@@ -75,24 +75,31 @@ void CodeGenerator::refresh()
 			Constructor::log("CG102 - Template retrieved successfully");
 			_code = replaceKeywords(_code);
 			Constructor::log("CG102 - Keywords replaced successfully");
+			//add attributes if its syntax is specified
 			for (int i = _tree.getNumProperties();	--i >= 0;) {
 				Attribute *attrib = constructor->getAttributeOf(_tree.getPropertyName(i));
 				if (attrib != nullptr && !attrib->syntax.isEmpty()) {
 					_definition += replaceKeywords(attrib->syntax) + ";\n";
 				}
 			}
+			//set specific properties
+			if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
+				_definition += "setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
 		}
 	}
 	if (!declareExtended) {
 		//get declaration code
 		_declaration = _tree.getProperty(Attributes::className).toString() + " " + _tree.getProperty(Attributes::varName).toString() + ";\n";
-		//get definition code
+		//get definition code adding attributes if its syntax is specified
 		for (int i = _tree.getNumProperties();	--i >= 0;) {
 			Attribute *attrib = constructor->getAttributeOf(_tree.getPropertyName(i));
 			if (attrib != nullptr && !attrib->syntax.isEmpty()) {
 				_definition += _tree.getProperty(Attributes::varName).toString() + "." + replaceKeywords(attrib->syntax) + ";\n";
 			}
 		}
+		//set specific properties
+		if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
+			_definition += _tree.getProperty(Attributes::varName).toString() + ".setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
 		//if parent component is a window, this component must be owned by the window
 		if (_parentCodeGenerator->isContentOwner()) {
 			//if parent window is not an extended DocumentWindow class, set to modify its corresponding object

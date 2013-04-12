@@ -45,6 +45,17 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 
 		jassert (this->hasProperty(Attributes::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
 
+		/*avoid crashing if size < 0
+		if (property == Attributes::height) {
+			int tempHeight = getProperty(Attributes::height);
+			if (tempHeight <= 0) setProperty(Attributes::height, 1, 0);
+			return;
+		} else if (property == Attributes::width) {
+			int tempWidth = getProperty(Attributes::width);
+			if (tempWidth <= 0) setProperty(Attributes::width, 1, 0);
+			return;
+		}*/
+
 		//[WRONG STATEMENT] since Windows don't inherit from Component class we deal with it separately
 		if (this->getProperty(Attributes::objectType) == Modules::Window) {
 			juced_Window *obj = (juced_Window *)this->getProperty(Attributes::object).getDynamicObject();

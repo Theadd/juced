@@ -1,34 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Window id="85f96b3269e2dea0160fd2658e697ca7" declareExtended="1" titleBarTextCentered="1"
+<Window id="f770e6cdd58b00fff054a4a538d321ea" declareExtended="1" titleBarTextCentered="0"
         titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
         contentOwner="1" toolName="juced_Window" className="DocumentWindow"
-        varName="MainWindow" name="window" backgroundColour="FFD3D3D3"
-        width="360" height="405" objectType="Window" x="100" y="55" lookAndFeel="Inherit">
-  <Component allowTransform="0" id="38a8b7d81eed4705ae78f3d43eb39cc0" declareExtended="0"
+        varName="MainWindow" name="There will be bugs" backgroundColour="FF006BA7"
+        width="455" height="390" objectType="Window" x="100" y="30" lookAndFeel="Inherit">
+  <Component allowTransform="0" id="416b091f1e60b71f35b4c3bd5c429d9a" declareExtended="0"
              toolName="juced_MainComponent" className="Component" varName="container"
-             name="container" width="360" height="379" objectType="Component"
+             name="container" width="455" height="364" objectType="Component"
              x="0" y="0" lookAndFeel="Inherit">
-    <Label id="b81df81e5cc07b8962376b7f01950264" declareExtended="0" toolName="juced_Label"
-           className="Label" varName="label" name="label" width="185" height="90"
+    <Window id="c538412178d2bd8ba4a395e137f1b2b2" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="1" titleBarButtons="4" titleBarHeight="50"
+            contentOwner="1" toolName="juced_Window" className="DocumentWindow"
+            varName="MiniWindow" name="Mini" backgroundColour="FF00A96D"
+            width="180" height="170" objectType="Window" x="224" y="78" lookAndFeel="Inherit">
+      <Component allowTransform="0" id="de22937e157a2285b6d7f92d27278c8e" declareExtended="0"
+                 toolName="juced_MainComponent" className="Component" varName="container"
+                 name="container" width="180" height="144" objectType="Component"
+                 x="0" y="0" lookAndFeel="Inherit">
+        <Label id="062f7fa5d8ecc8435843b2602bd91e49" declareExtended="0" toolName="juced_Label"
+               className="Label" varName="label1" name="label" width="70" height="45"
+               textColour="EE68140D" backgroundColour="FF018C90" font="15.0 Regular"
+               text="Text label" objectType="Label" x="64" y="14" lookAndFeel="Inherit"/>
+        <Window id="f83b5226532a203f7ae65696f8788d7a" declareExtended="1" titleBarTextCentered="1"
+                titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
+                contentOwner="1" toolName="juced_Window" className="DocumentWindow"
+                varName="InnerWindow" name="Inner" backgroundColour="FFFFFFFF"
+                width="137" height="122" objectType="Window" x="85" y="60" lookAndFeel="Inherit">
+          <Component allowTransform="0" id="bbe0734542f5e4591ba875814d6e5844" declareExtended="0"
+                     toolName="juced_MainComponent" className="Component" varName="container"
+                     name="container" width="135" height="94" objectType="Component"
+                     x="0" y="0" lookAndFeel="Inherit">
+            <TextButton id="ec9f664beaef3eb941faba1226176c6a" declareExtended="0" toolName="juced_TextButton"
+                        className="TextButton" connectedEdges="0" buttonText="Text Button"
+                        varName="textButton" name="textButton" width="50" height="25"
+                        buttonOnColour="FF4444FF" buttonColour="FFBBBBFF" font="0.1 Regular"
+                        objectType="TextButton" x="39" y="8" lookAndFeel="Inherit"/>
+          </Component>
+        </Window>
+        <Slider id="ec64cdab889a2070f039ff37e1aac344" sliderStyle="Rotary" textEntryBoxPosition="TextBoxAbove"
+                textBoxReadOnly="0" textEntryBoxHeight="20" textEntryBoxWidth="80"
+                value="18.435" interval="0" maximum="25" minimum="0" declareExtended="0"
+                toolName="juced_Slider" className="Slider" varName="slider4"
+                name="slider" width="74" height="85" backgroundColour="00000000"
+                objectType="Slider" x="14" y="44" lookAndFeel="Inherit"/>
+      </Component>
+    </Window>
+    <TextButton id="89a5e35a62f4975d8168a2b25e19c038" declareExtended="0" toolName="juced_TextButton"
+                className="TextButton" connectedEdges="6" buttonText="1" varName="textButton1"
+                name="textButton" width="30" height="30" buttonOnColour="FF4444FF"
+                buttonColour="FFBBBBFF" font="0.1 Regular" objectType="TextButton"
+                x="9" y="0" lookAndFeel="Inherit"/>
+    <TextButton id="c863d429ef02a4ad274448693ef0d514" declareExtended="0" toolName="juced_TextButton"
+                className="TextButton" connectedEdges="3" buttonText="2" varName="textButton2"
+                name="textButton" width="55" height="30" buttonOnColour="FF4444FF"
+                buttonColour="FFBBBBFF" font="0.1 Regular" objectType="TextButton"
+                x="39" y="0" lookAndFeel="Inherit"/>
+    <TextButton id="83ba18da21817d15cd4faf8b56f01a15" declareExtended="0" toolName="juced_TextButton"
+                className="TextButton" connectedEdges="5" buttonText="3" varName="textButton3"
+                name="textButton" width="30" height="30" buttonOnColour="FF4444FF"
+                buttonColour="FFBBBBFF" font="0.1 Regular" objectType="TextButton"
+                x="94" y="0" lookAndFeel="Inherit"/>
+    <Window id="908945c66280d514bdd60156d3c312e5" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="0" titleBarButtons="7" titleBarHeight="26"
+            contentOwner="1" toolName="juced_Window" className="DocumentWindow"
+            varName="PepeWindow" name="Pepe" backgroundColour="FFA20000"
+            width="110" height="105" objectType="Window" x="89" y="83" lookAndFeel="Inherit">
+      <Component allowTransform="0" id="74712fcbfc2726a9ae13819caabae76d" declareExtended="0"
+                 toolName="juced_MainComponent" className="Component" varName="container"
+                 name="container" width="110" height="79" objectType="Component"
+                 x="0" y="0" lookAndFeel="Inherit">
+        <TextButton id="220f7d76086fe338dae3f0f15bcb900c" declareExtended="0" toolName="juced_TextButton"
+                    className="TextButton" connectedEdges="0" buttonText="FFS!" varName="textButton4"
+                    name="textButton" width="45" height="40" buttonOnColour="FF4444FF"
+                    buttonColour="FFBBBBFF" font="0.1 Regular" objectType="TextButton"
+                    x="29" y="18" lookAndFeel="Inherit"/>
+      </Component>
+    </Window>
+    <Window id="9d13dda8163ae3cea9104c202968e88d" declareExtended="1" titleBarTextCentered="1"
+            titleBarButtonsOnLeft="0" titleBarButtons="1" titleBarHeight="26"
+            contentOwner="1" toolName="juced_Window" className="DocumentWindow"
+            varName="PequeWindow" name="Peque" backgroundColour="FFCFDA00"
+            width="128" height="128" objectType="Window" x="24" y="158" lookAndFeel="Inherit">
+      <Component allowTransform="0" id="a7e9c21c757c899067612a5c75fd5137" declareExtended="0"
+                 toolName="juced_MainComponent" className="Component" varName="container3"
+                 name="container" width="115" height="94" objectType="Component"
+                 x="0" y="0" lookAndFeel="Inherit">
+        <Slider id="5024933cf7f968ccb5088fc7beffa19a" sliderStyle="RotaryHorizontalVerticalDrag"
+                textEntryBoxPosition="NoTextBox" textBoxReadOnly="0" textEntryBoxHeight="20"
+                textEntryBoxWidth="80" value="4" interval="0" maximum="10" minimum="0"
+                declareExtended="0" toolName="juced_Slider" className="Slider"
+                varName="slider5" name="slider" width="60" height="60" backgroundColour="00000000"
+                objectType="Slider" x="24" y="13" lookAndFeel="LookAndFeelCustom"/>
+      </Component>
+    </Window>
+    <Slider id="1e8428c7439c1c2a5e8966c00aace075" sliderStyle="LinearHorizontal"
+            textEntryBoxPosition="TextBoxRight" textBoxReadOnly="0" textEntryBoxHeight="20"
+            textEntryBoxWidth="80" value="25" interval="5" maximum="80" minimum="0"
+            declareExtended="0" toolName="juced_Slider" className="Slider"
+            varName="slider3" name="slider" width="290" height="25" backgroundColour="00000000"
+            objectType="Slider" x="134" y="3" lookAndFeel="Inherit"/>
+    <Label id="7d147d308d2148e6a2305a216e17cfb5" declareExtended="0" toolName="juced_Label"
+           className="Label" varName="label2" name="label" width="95" height="50"
            textColour="FF000000" backgroundColour="00000000" font="15.0 Regular"
-           text="Text label" objectType="Label" x="84" y="33" lookAndFeel="Inherit">
-      <TextButton id="9c6fae2e2d66259c0ab3623b7c0efbce" declareExtended="0" toolName="juced_TextButton"
-                  className="TextButton" connectedEdges="0" buttonText="Text Button"
-                  varName="textButton" name="textButton" width="45" height="35"
-                  buttonOnColour="FF4444FF" buttonColour="FFBBBBFF" font="0.1 Regular"
-                  objectType="TextButton" x="40" y="30" lookAndFeel="Inherit"/>
-    </Label>
-    <Slider id="58cee1978da08ee9b7f2e180624894d0" sliderStyle="LinearHorizontal"
+           text="Wololo!!!" objectType="Label" x="99" y="303" lookAndFeel="Inherit"/>
+    <Label id="33f144393e0228c19543847d7fe54d1b" declareExtended="0" toolName="juced_Label"
+           className="Label" varName="label3" name="label" width="155" height="55"
+           textColour="FFFFFFFF" backgroundColour="00000000" font="15.0 Regular"
+           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius, metus nec accumsan pelle"
+           objectType="Label" x="239" y="278" lookAndFeel="Inherit"/>
+    <Slider id="ef0f0999316c74c9763eef4a980c899b" sliderStyle="ThreeValueVertical"
+            textEntryBoxPosition="NoTextBox" textBoxReadOnly="0" textEntryBoxHeight="20"
+            textEntryBoxWidth="80" value="35" interval="0" maximum="100"
+            minimum="0" declareExtended="0" toolName="juced_Slider" className="Slider"
+            varName="slider2" name="slider" width="35" height="310" backgroundColour="00000000"
+            objectType="Slider" x="409" y="38" lookAndFeel="Inherit"/>
+    <Slider id="09a911df1e6d6ba35b86649c4e9e9c07" sliderStyle="IncDecButtons"
             textEntryBoxPosition="NoTextBox" textBoxReadOnly="0" textEntryBoxHeight="20"
             textEntryBoxWidth="80" value="0" interval="0" maximum="10" minimum="0"
             declareExtended="0" toolName="juced_Slider" className="Slider"
-            varName="slider" name="slider" width="140" height="115" backgroundColour="00000000"
-            objectType="Slider" x="114" y="168" lookAndFeel="Inherit"/>
-    <TextButton id="62d2d174e43252d9a13ef54c8164766f" declareExtended="0" toolName="juced_TextButton"
-                className="TextButton" connectedEdges="0" buttonText="Text Button"
-                varName="textButton" name="textButton" width="60" height="60"
-                buttonOnColour="FF4444FF" buttonColour="FFBBBBFF" font="0.1 Regular"
-                objectType="TextButton" x="34" y="153" lookAndFeel="Inherit"/>
+            varName="slider" name="slider" width="25" height="105" backgroundColour="00000000"
+            objectType="Slider" x="24" y="38" lookAndFeel="Inherit"/>
+    <Slider id="8998f160bf2cb88917467f1ff58b128a" sliderStyle="TwoValueVertical"
+            textEntryBoxPosition="NoTextBox" textBoxReadOnly="0" textEntryBoxHeight="20"
+            textEntryBoxWidth="80" value="0" interval="0" maximum="10" minimum="0"
+            declareExtended="0" toolName="juced_Slider" className="Slider"
+            varName="slider6" name="slider" width="25" height="125" backgroundColour="00000000"
+            objectType="Slider" x="169" y="203" lookAndFeel="LookAndFeelCustom"/>
   </Component>
 </Window>

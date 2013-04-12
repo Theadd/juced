@@ -125,6 +125,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp"/>
     <ClCompile Include="..\..\Source\GeneratedCode.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_core\text\juce_CharacterFunctions.cpp">
@@ -907,6 +908,7 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_core\juce_core.cpp"/>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_data_structures\juce_data_structures.cpp"/>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_events\juce_events.cpp"/>
@@ -915,6 +917,7 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Styles\LookAndFeelCustom.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_core\text\juce_CharacterFunctions.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_core\text\juce_CharPointer_ASCII.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_core\text\juce_CharPointer_UTF16.h"/>
@@ -1232,9 +1235,11 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\juce_gui_extra.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\knobstrip.png"/>
     <None Include="..\..\..\..\..\juce\modules\juce_core\juce_module_info"/>
     <None Include="..\..\..\..\..\juce\modules\juce_data_structures\juce_module_info"/>
     <None Include="..\..\..\..\..\juce\modules\juce_events\juce_module_info"/>

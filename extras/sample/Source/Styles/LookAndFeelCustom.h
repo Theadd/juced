@@ -12,23 +12,19 @@
 #define __LOOKANDFEELCUSTOM_H_61F5A105__
 
 
-
-//==============================================================================
-/**
-    The original Juce look-and-feel.
-
-*/
-class /*JUCE_API*/  LookAndFeelCustom    : public LookAndFeel
+class LookAndFeelCustom    : public LookAndFeel
 {
 public:
     //==============================================================================
-    /** Creates the default JUCE look and feel. */
+
     LookAndFeelCustom();
 
     /** Destructor. */
     virtual ~LookAndFeelCustom();
 
 	static LookAndFeelCustom* getInstance();
+
+	static void destroy();
 
 	virtual void drawRotarySlider	(	Graphics & 	g,
 									 int 	x,

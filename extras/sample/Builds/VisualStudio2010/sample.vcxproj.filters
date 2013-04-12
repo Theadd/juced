@@ -8,6 +8,12 @@
     <Filter Include="sample\Source">
       <UniqueIdentifier>{7CF444E1-C496-71C5-603F-A9CCEF3F9358}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sample\Source\BinaryData">
+      <UniqueIdentifier>{C5A999D5-EB60-88F0-9736-9694B6E60080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sample\Source\Styles">
+      <UniqueIdentifier>{04948AFE-3199-CE35-D1B8-F7428F0E7C4B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -205,6 +211,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp">
+      <Filter>sample\Source\Styles</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\GeneratedCode.cpp">
       <Filter>sample\Source</Filter>
     </ClCompile>
@@ -1051,6 +1060,9 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_core\juce_core.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
@@ -1071,6 +1083,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Styles\LookAndFeelCustom.h">
+      <Filter>sample\Source\Styles</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_core\text\juce_CharacterFunctions.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
@@ -2022,11 +2037,17 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\knobstrip.png">
+      <Filter>sample\Source\BinaryData</Filter>
+    </None>
     <None Include="..\..\..\..\..\juce\modules\juce_core\juce_module_info">
       <Filter>Juce Modules\juce_core</Filter>
     </None>

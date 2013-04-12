@@ -9,8 +9,7 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
-
+#include "Styles/LookAndFeelCustom.h"
 
 class InnerWindow    : public DocumentWindow
 {
@@ -19,7 +18,7 @@ public:
 									Colours::lightgrey,
 									DocumentWindow::allButtons)
 	{
-		setBounds(19, 44, 135, 120);
+		setBounds(85, 60, 137, 122);
 setColour(DocumentWindow::backgroundColourId, Colour::fromString("FFFFFFFF"));
 setName("Inner");
 setTitleBarHeight(26);
@@ -35,7 +34,7 @@ textButton.setConnectedEdges(0);
 container.addAndMakeVisible(&textButton);
 
 		setResizable(true, true);
-		//centreWithSize (135, 120);
+		//centreWithSize (137, 122);
 		setVisible (true);
 	}
 
@@ -74,6 +73,14 @@ label1.setColour(Label::textColourId, Colour::fromString("EE68140D"));
 label1.setName("label");
 container.addAndMakeVisible(&label1);
 container.addAndMakeVisible(&innerwindow);
+slider4.setBounds(14, 44, 74, 85);
+slider4.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider4.setName("slider");
+slider4.setRange(0, 25, 0);
+slider4.setValue(18.435);
+slider4.setTextBoxStyle(Slider::TextBoxAbove, 0, 80, 20);
+slider4.setSliderStyle(Slider::Rotary);
+container.addAndMakeVisible(&slider4);
 
 		setResizable(true, true);
 		//centreWithSize (180, 170);
@@ -88,7 +95,8 @@ container.addAndMakeVisible(&innerwindow);
 private:
 	Component container;
 Label label1;
-InnerWindow innerwindow;
+InnerWindow innerwindow;Slider slider4;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MiniWindow)
 };
 
@@ -138,7 +146,7 @@ public:
 									Colours::lightgrey,
 									DocumentWindow::allButtons)
 	{
-		setBounds(39, 108, 115, 120);
+		setBounds(24, 158, 128, 128);
 setColour(DocumentWindow::backgroundColourId, Colour::fromString("FFCFDA00"));
 setName("Peque");
 setTitleBarHeight(26);
@@ -147,9 +155,18 @@ setTitleBarTextCentred(1);
 container3.setBounds(0, 0, 115, 94);
 container3.setName("container");
 setContentOwned (&container3, true);
+slider5.setBounds(24, 13, 60, 60);
+slider5.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider5.setName("slider");
+slider5.setRange(0, 10, 0);
+slider5.setValue(4);
+slider5.setTextBoxStyle(Slider::NoTextBox, 0, 80, 20);
+slider5.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+slider5.setLookAndFeel(LookAndFeelCustom::getInstance());
+container3.addAndMakeVisible(&slider5);
 
 		setResizable(true, true);
-		//centreWithSize (115, 120);
+		//centreWithSize (128, 128);
 		setVisible (true);
 	}
 
@@ -160,6 +177,7 @@ setContentOwned (&container3, true);
 
 private:
 	Component container3;
+Slider slider5;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PequeWindow)
 };
@@ -198,9 +216,54 @@ textButton3.setConnectedEdges(5);
 container.addAndMakeVisible(&textButton3);
 container.addAndMakeVisible(&pepewindow);
 container.addAndMakeVisible(&pequewindow);
+slider3.setBounds(134, 3, 290, 25);
+slider3.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider3.setName("slider");
+slider3.setRange(0, 80, 5);
+slider3.setValue(25);
+slider3.setTextBoxStyle(Slider::TextBoxRight, 0, 80, 20);
+slider3.setSliderStyle(Slider::LinearHorizontal);
+container.addAndMakeVisible(&slider3);
+label2.setBounds(99, 303, 95, 50);
+label2.setText("Wololo!!!", false);
+label2.setColour(Label::backgroundColourId, Colour::fromString("00000000"));
+label2.setColour(Label::textColourId, Colour::fromString("FF000000"));
+label2.setName("label");
+container.addAndMakeVisible(&label2);
+label3.setBounds(239, 278, 155, 55);
+label3.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius, metus nec accumsan pelle", false);
+label3.setColour(Label::backgroundColourId, Colour::fromString("00000000"));
+label3.setColour(Label::textColourId, Colour::fromString("FFFFFFFF"));
+label3.setName("label");
+container.addAndMakeVisible(&label3);
+slider2.setBounds(409, 38, 35, 310);
+slider2.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider2.setName("slider");
+slider2.setRange(0, 100, 0);
+slider2.setValue(35);
+slider2.setTextBoxStyle(Slider::NoTextBox, 0, 80, 20);
+slider2.setSliderStyle(Slider::ThreeValueVertical);
+container.addAndMakeVisible(&slider2);
+slider.setBounds(24, 38, 25, 105);
+slider.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider.setName("slider");
+slider.setRange(0, 10, 0);
+slider.setValue(0);
+slider.setTextBoxStyle(Slider::NoTextBox, 0, 80, 20);
+slider.setSliderStyle(Slider::IncDecButtons);
+container.addAndMakeVisible(&slider);
+slider6.setBounds(169, 203, 25, 125);
+slider6.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
+slider6.setName("slider");
+slider6.setRange(0, 10, 0);
+slider6.setValue(0);
+slider6.setTextBoxStyle(Slider::NoTextBox, 0, 80, 20);
+slider6.setSliderStyle(Slider::TwoValueVertical);
+slider6.setLookAndFeel(LookAndFeelCustom::getInstance());
+container.addAndMakeVisible(&slider6);
 
 		setResizable(true, true);
-		centreWithSize (455, 390);
+		//centreWithSize (455, 390);
 		setVisible (true);
 	}
 
@@ -214,9 +277,16 @@ private:
 MiniWindow miniwindow;TextButton textButton1;
 TextButton textButton2;
 TextButton textButton3;
-PepeWindow pepewindow;PequeWindow pequewindow;
+PepeWindow pepewindow;PequeWindow pequewindow;Slider slider3;
+Label label2;
+Label label3;
+Slider slider2;
+Slider slider;
+Slider slider6;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
 };
+
 
 
 

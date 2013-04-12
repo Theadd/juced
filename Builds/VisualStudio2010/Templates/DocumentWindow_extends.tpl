@@ -7,7 +7,7 @@ public:
 	{
 		%definitions%
 		setResizable(true, true);
-		centreWithSize (%width%, %height%);
+		//centreWithSize (%width%, %height%);
 		setVisible (true);
 	}
 

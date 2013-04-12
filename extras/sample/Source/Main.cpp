@@ -28,13 +28,14 @@ public:
     {
         // This method is where you should put your application's initialisation code..
 
+		
         mainWindow = new MainWindow();
     }
 
     void shutdown()
     {
         // Add your application's shutdown code here..
-
+		LookAndFeelCustom::destroy();
         mainWindow = nullptr; // (deletes our window)
     }
 

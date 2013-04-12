@@ -310,7 +310,7 @@ String Constructor::getTemplatesDir()
 LookAndFeel* Constructor::getNamedLookAndFeel(String name)
 {
 	Constructor::log("C005 - getNamedLookAndFeel(" + name + ")");
-	if (name.equalsIgnoreCase("Custom")) {
+	if (name.equalsIgnoreCase("LookAndFeelCustom")) {
 		Constructor::log("C105 - Set custom LookAndFeel");
 		return static_cast<LookAndFeel*> (&customLookAndFeel);
 	} else {
