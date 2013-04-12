@@ -25,6 +25,7 @@ juced_TextButton::juced_TextButton()  : TextButton ()
 	setProperty(Attributes::buttonText, getButtonText());
 	setProperty(Attributes::connectedEdges, getConnectedEdgeFlags());
 	setProperty(Attributes::className, "TextButton");
+	setProperty(Attributes::toolName, "juced_TextButton");
 	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());

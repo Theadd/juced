@@ -37,7 +37,7 @@ public:
 		@param bounds Rectangle<int> containing the bounds that will occupy the new component.
 		@param componentID Optional String that will set component's ID to this value when creating it.
 	*/
-	PlaceableComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID = String());
+	PlaceableComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID = String::empty);
 
 	~PlaceableComponent();
 

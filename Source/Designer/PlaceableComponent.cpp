@@ -20,11 +20,13 @@ PlaceableComponent::~PlaceableComponent()
 {
 	Constructor::log("PC003 - ~PlaceableComponent() call");
 
-	(dynamic_cast<Component *> (_dynamicObject.get()))->removeMouseListener(Constructor::getInstance()->getDesigner());
+	if (_dynamicObject != nullptr)
+		(dynamic_cast<Component *> (_dynamicObject.get()))->removeMouseListener(Constructor::getInstance()->getDesigner());
 
 	Constructor::log("PC103 - Delete _componentTree");
 	//_componentTree->removeAllProperties(0);
-	delete _componentTree;
+	if (_componentTree != nullptr)
+		delete _componentTree;
 	/*
 	Constructor::log("PC103 - Delete _dynamicObject, reference count: " + String(_dynamicObject->getReferenceCount()));
 	while (_dynamicObject != nullptr && _dynamicObject->getReferenceCount()) {
@@ -36,16 +38,18 @@ PlaceableComponent::~PlaceableComponent()
 	Constructor::log("PC103 - Delete _dynamicObject pointer");
 	_dynamicObject = nullptr;*/
 	Constructor::log("PC103 - Delete _dynamicObject pointer");
-	DynamicObject *temp = _dynamicObject.release();
-	temp = nullptr;
-	delete temp;
+	if (_dynamicObject != nullptr) {
+		DynamicObject *temp = _dynamicObject.release();
+		temp = nullptr;
+		delete temp;
+	}
 	
 	Constructor::log("PC103 - Done");
 }
 
 bool PlaceableComponent::perform ()
 {
-	Constructor::log("PC001 - Perform init");
+	Constructor::log("PC001 - Perform init (" + _selectedToolName + ")");
 	bool isBeingCreated = false;
 	Constructor::log("PC101 - Find associated BigTree of the parent component");
 	//If user draw inside a component, let's find it's associated BigTree of the parent component
@@ -93,6 +97,7 @@ bool PlaceableComponent::perform ()
 	Constructor::log("PC101 - Update component's ID if specified");
 	//update component's ID if specified
 	if (_componentID.isNotEmpty()) {
+		(dynamic_cast<Component *> (_dynamicObject.get()))->setComponentID(_componentID);
 		_dynamicObject->setProperty(Attributes::ID, _componentID);
 	} else _componentID = _dynamicObject->getProperty(Attributes::ID);
 
@@ -133,6 +138,15 @@ bool PlaceableComponent::perform ()
 	
 	if (!objTree->hasProperty(Attributes::lookAndFeel))
 		objTree->setProperty(Attributes::lookAndFeel, String("Inherit"), 0);
+
+	//if parent component is a component owner (must own its child), specify it
+	if  (parentTree.isValid() && parentTree.hasProperty(Attributes::contentOwner)) {
+		bool contentOwner = parentTree.getProperty(Attributes::contentOwner);
+		if (contentOwner) {
+			ResizableWindow *parentWindow = dynamic_cast<ResizableWindow *> (parentTree.getProperty(Attributes::object).getDynamicObject());
+			parentWindow->setContentOwned(dynamic_cast<Component *> (_dynamicObject.get()), true);
+		}
+	}
 	
 	Constructor::log("PC101 - Perform done");
 	return true;

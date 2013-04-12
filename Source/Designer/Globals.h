@@ -88,6 +88,8 @@ namespace Attributes
 	DECLARE_ID (declareExtended);
 
 	DECLARE_ID (lookAndFeel);
+	DECLARE_ID (toolName);	//specific property of the editor to be able to import an exported object from this tool name
+	DECLARE_ID (contentOwner);	//set whether or not the component must own it child component
 
 	DECLARE_ID (textEntryBoxPosition);
 	DECLARE_ID (sliderStyle);

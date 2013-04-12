@@ -241,6 +241,9 @@
     <ClCompile Include="..\..\Source\Designer\Properties\ColourPropertyComponent.cpp">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Designer\Importer.cpp">
+      <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\CodeGenerator.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
@@ -1184,6 +1187,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.h">
       <Filter>juced\Source\Designer\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Designer\Importer.h">
+      <Filter>juced\Source\Designer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\CodeGenerator.h">
       <Filter>juced\Source\Designer</Filter>

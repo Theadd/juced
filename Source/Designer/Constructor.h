@@ -15,6 +15,7 @@
 #include "SelectionArea.h"
 #include "BigTree.h"
 #include "PlaceableComponent.h"
+#include "Importer.h"
 
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
@@ -110,12 +111,13 @@ public:
 
 	String getTemplatesDir();
 
-	Component* createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds);
+	Component* createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID = String::empty, bool addDependencies = true);
 
 	LookAndFeel* getNamedLookAndFeel(String name);
 
 	void setWorkingDirectory(String path);
 
+	void importFromXml(File xmlFile);
 
 private:
 	ScopedPointer<UndoManager> undoManager;

@@ -20,6 +20,7 @@ juced_MainComponent::juced_MainComponent()
 	setProperty(Attributes::name, getName());
 	setProperty(Attributes::varName, getName());
 	setProperty(Attributes::className, "Component");
+	setProperty(Attributes::toolName, "juced_MainComponent");
 	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());

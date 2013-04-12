@@ -282,6 +282,8 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 		mousePositionLabel.setText(String(Constructor::getInstance()->getGridSize()), 0);
 	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
 		this->writeXmlToFile("save.xml");
+	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->importFromXml(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "save.xml"));
 	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
 		this->writeCodeToFile("code.cpp");
 	} else if (key.getKeyCode() == key.leftKey) {

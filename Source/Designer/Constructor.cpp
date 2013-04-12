@@ -283,20 +283,20 @@ BigTree* Constructor::getBigTreeRoot()
 	return nullptr;
 }
 
-Component* Constructor::createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds)
+Component* Constructor::createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds, String componentID, bool addDependencies)
 {
-	PlaceableComponent *newComponent = new PlaceableComponent(selectedToolName, parentComponentID, bounds);
+	PlaceableComponent *newComponent = new PlaceableComponent(selectedToolName, parentComponentID, bounds, componentID);
 	_placeableComponents.add(newComponent);
 	getUndoManager()->perform(newComponent, "Create new " + selectedToolName);
 	//getUndoManager()->setCurrentTransactionName("Create new " + selectedToolName);
-	if (selectedToolName == "juced_Window") {
+	if (selectedToolName == "juced_Window" && addDependencies) {
 		bounds.setX(0);
 		bounds.setY(0);
 		bounds.setHeight(bounds.getHeight() - (dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->getTitleBarHeight());
 		PlaceableComponent *childComponent = new PlaceableComponent("juced_MainComponent", newComponent->getComponent()->getComponentID(), bounds);
 		_placeableComponents.add(childComponent);
 		getUndoManager()->perform(childComponent);
-		(dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->setContentOwned(childComponent->getComponent(), true);
+		//(dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->setContentOwned(childComponent->getComponent(), true);
 	}
 	getUndoManager()->beginNewTransaction();
 	return newComponent->getComponent();
@@ -321,4 +321,9 @@ LookAndFeel* Constructor::getNamedLookAndFeel(String name)
 void Constructor::setWorkingDirectory(String path)
 {
 	_workingDirectory = path;
+}
+
+void Constructor::importFromXml(File xmlFile)
+{
+	Importer importer(xmlFile);
 }

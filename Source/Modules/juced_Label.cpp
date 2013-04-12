@@ -24,6 +24,7 @@ juced_Label::juced_Label()  : Label ()
 	setProperty(Attributes::name, getName());
 	setProperty(Attributes::varName, getName());
 	setProperty(Attributes::className, "Label");
+	setProperty(Attributes::toolName, "juced_Label");
 	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());

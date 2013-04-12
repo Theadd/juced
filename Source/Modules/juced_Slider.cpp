@@ -20,6 +20,7 @@ juced_Slider::juced_Slider()  : Slider ()
 	setProperty(Attributes::name, getName());
 	setProperty(Attributes::varName, getName());
 	setProperty(Attributes::className, "Slider");
+	setProperty(Attributes::toolName, "juced_Slider");
 	setProperty(Attributes::declareExtended, false);
 
 	setRange (0, 10, 0);

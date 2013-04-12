@@ -30,4 +30,7 @@
   <Attribute name="maximum" group="General" visible="1" type="text" display="Max value" valueType="integer" syntax=''/>
   <Attribute name="interval" group="General" visible="1" type="text" display="Interval" valueType="integer" syntax=''/>
   <Attribute name="value" group="General" visible="1" type="text" display="Value" valueType="integer" syntax='setValue(%value%)'/>
+  <Attribute name="toolName" group="General" visible="0" type="text" display="Tool Name" valueType="text" syntax=''/>
+  <Attribute name="allowTransform" group="General" visible="0" type="boolean" display="Allow transform(components owned by windows are not allowed)" valueType="text" syntax=''/>
+  <Attribute name="contentOwner" group="General" visible="0" type="boolean" display="Sets if object should have another component owned" valueType="text" syntax=''/>
 </Attributes>

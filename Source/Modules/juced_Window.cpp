@@ -30,6 +30,8 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 	setProperty(Attributes::name, getName());
 	setProperty(Attributes::varName, "MainWindow");
 	setProperty(Attributes::className, "DocumentWindow");
+	setProperty(Attributes::toolName, "juced_Window");
+	setProperty(Attributes::contentOwner, true);
 	setProperty(Attributes::titleBarHeight, getTitleBarHeight());
 	setProperty(Attributes::titleBarButtons, 7);
 	setProperty(Attributes::titleBarButtonsOnLeft, false);

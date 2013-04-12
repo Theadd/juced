@@ -34,6 +34,8 @@
           <FILE id="tpTNy7" name="ColourPropertyComponent.cpp" compile="1" resource="0"
                 file="Source/Designer/Properties/ColourPropertyComponent.cpp"/>
         </GROUP>
+        <FILE id="kgJcgf" name="Importer.h" compile="0" resource="0" file="Source/Designer/Importer.h"/>
+        <FILE id="rpg3q1" name="Importer.cpp" compile="1" resource="0" file="Source/Designer/Importer.cpp"/>
         <FILE id="xF19k7" name="CodeGenerator.cpp" compile="1" resource="0"
               file="Source/Designer/CodeGenerator.cpp"/>
         <FILE id="DgO9PM" name="CodeGenerator.h" compile="0" resource="0" file="Source/Designer/CodeGenerator.h"/>
