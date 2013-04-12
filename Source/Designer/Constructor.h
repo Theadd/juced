@@ -21,6 +21,8 @@
 #include "../Modules/juced_Window.h"
 #include "../Modules/juced_MainComponent.h"
 
+#include "../Styles/LookAndFeelCustom.h"
+
 /** Struct to hold all parameters of a given attribute identifier.
 
 	@see getAttributeOf
@@ -77,6 +79,8 @@ public:
 
 	Array< Enumeration* >* getEnumerationsOf(Identifier _name);
 
+	Choices getChoicesOf(Identifier _name);
+
 	/** Returns a pointer to an UndoManager.
 
 		@see UndoManager, BigTree, ValueTree
@@ -108,11 +112,16 @@ public:
 
 	Component* createComponent(String selectedToolName, String parentComponentID, Rectangle<int> bounds);
 
+	LookAndFeel* getNamedLookAndFeel(String name);
+
+	void setWorkingDirectory(String path);
+
 
 private:
 	ScopedPointer<UndoManager> undoManager;
 	Component *_selectedComponent;
 	
+	String _workingDirectory;
 
 	friend class SelectionArea;
 	friend class JUCE_Designer;
@@ -136,6 +145,9 @@ private:
 	int _drawBoundsModY;
 	int _drawBoundsModWidth;
 	int _drawBoundsModHeight;
+
+	LookAndFeelCustom customLookAndFeel;
+
 	Constructor(){};  // Private so that it can  not be called
 	Constructor(Constructor const&){};             // copy constructor is private
 	Constructor& operator=(Constructor const&){};  // assignment operator is private

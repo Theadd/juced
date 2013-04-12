@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Choices>
+  <Choice name="lookAndFeel">
+	<Item name="Inherit" display="Inherit" value="Inherit"/>
+    <Item name="Custom" display="Custom" value="Custom"/>
+  </Choice>
+</Choices>

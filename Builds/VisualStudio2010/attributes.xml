@@ -20,4 +20,5 @@
   <Attribute name="titleBarButtonsOnLeft" group="Appearance" visible="1" type="boolean" display="Titlebar buttons on left" valueType="text" syntax=''/>
   <Attribute name="titleBarTextCentered" group="Appearance" visible="1" type="boolean" display="Titlebar text centered" valueType="text" syntax='setTitleBarTextCentred(%titleBarTextCentered%)'/>
   <Attribute name="declareExtended" group="General" visible="1" type="boolean" display="Declare as an extended class" valueType="text" syntax=''/>
+  <Attribute name="lookAndFeel" group="Appearance" visible="1" type="choice" display="LookAndFeel" valueType="text" syntax=''/>
 </Attributes>

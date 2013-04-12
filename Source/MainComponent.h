@@ -10,7 +10,6 @@
 #define __MAINCOMPONENT_H_865F8056__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Styles\LookAndFeelCustom.h"
 #include "JUCE_Designer.h"
 //#include "Interface/Toolbox.cpp"
 
@@ -33,7 +32,6 @@ public:
 private:
     //==============================================================================
 	ScopedPointer<JUCE_Designer> juced;
-	LookAndFeelCustom customLookAndFeel;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
 

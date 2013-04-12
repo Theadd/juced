@@ -19,6 +19,7 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
 	
 	Constructor *constructor = Constructor::getInstance();
+	constructor->setWorkingDirectory(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()));
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
 	constructor->loadEnumerationsFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "enumerations.xml"));
 	constructor->setDesigner(this);

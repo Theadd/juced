@@ -13,6 +13,13 @@
 #ifndef __GLOBALS_H_4F86195D__
 #define __GLOBALS_H_4F86195D__
 
+struct Choices
+{
+	StringArray names;
+	StringArray display;
+	Array<var> values;
+};
+
 struct Enumeration
 {
 	String name;
@@ -56,6 +63,7 @@ namespace AttributeType
     const Identifier colour			("colour");
 	const Identifier enumeration	("enumeration");
 	const Identifier boolean		("boolean");
+	const Identifier choice			("choice");
 }
 
 namespace Attributes
@@ -77,6 +85,8 @@ namespace Attributes
 
 	DECLARE_ID (allowTransform);
 	DECLARE_ID (declareExtended);
+
+	DECLARE_ID (lookAndFeel);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);

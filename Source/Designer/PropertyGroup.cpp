@@ -58,6 +58,9 @@ public:
 							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
 						} else if (attrib->type == AttributeType::boolean) {
 							comp = new BooleanPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, "Enable");
+						} else if (attrib->type == AttributeType::choice) {
+							Choices choices = Constructor::getInstance()->getChoicesOf(attrib->name);
+							comp = new ChoicePropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, choices.display, choices.values);
 						} else {
 							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 96, false);
 						}

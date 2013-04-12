@@ -20,6 +20,7 @@ Constructor* Constructor::getInstance()
 	  m_pInstance->setGridSize(5);
 	  m_pInstance->_bigTreeRoot = new BigTree();
 	  m_pInstance->setSelectedComponent(nullptr);
+	  //customLookAndFeel = new LookAndFeelCustom();
    }
 
    return m_pInstance;
@@ -114,6 +115,31 @@ void Constructor::loadEnumerationsFromXmlFile(const File &xmlFile)
 	}
 
 	delete xml;
+}
+
+Choices Constructor::getChoicesOf(Identifier _name)
+{
+	File xmlFile(_workingDirectory + "choices.xml");
+
+	XmlElement *xml = XmlDocument::parse(xmlFile);
+	Choices choices;
+
+	forEachXmlChildElement (*xml, xmlnode)
+	{
+		//if we are not looking for this choices, skip
+		if (!xmlnode->getStringAttribute("name").equalsIgnoreCase(_name.toString())) continue;
+
+		forEachXmlChildElement (*xmlnode, child)
+		{
+			choices.names.add(child->getStringAttribute("name"));
+			choices.display.add(child->getStringAttribute("display"));
+			choices.values.add(child->getStringAttribute("value"));
+		}
+		break;
+	}
+
+	delete xml;
+	return choices;
 }
 
 Attribute* Constructor::getAttributeOf(Identifier _name)
@@ -279,4 +305,20 @@ Component* Constructor::createComponent(String selectedToolName, String parentCo
 String Constructor::getTemplatesDir()
 {
 	return File::addTrailingSeparator(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "Templates");
+}
+
+LookAndFeel* Constructor::getNamedLookAndFeel(String name)
+{
+	Constructor::log("C005 - getNamedLookAndFeel(" + name + ")");
+	if (name.equalsIgnoreCase("Custom")) {
+		Constructor::log("C105 - Set custom LookAndFeel");
+		return static_cast<LookAndFeel*> (&customLookAndFeel);
+	} else {
+		return nullptr;
+	}
+}
+
+void Constructor::setWorkingDirectory(String path)
+{
+	_workingDirectory = path;
 }

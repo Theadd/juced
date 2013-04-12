@@ -79,6 +79,8 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 			} else if (property == Attributes::backgroundColour) {
 				Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
 				obj->setColour(DocumentWindow::backgroundColourId, newColour);
+			} else if (property == Attributes::lookAndFeel) {
+				obj->setLookAndFeel(Constructor::getInstance()->getNamedLookAndFeel(treeWhosePropertyHasChanged.getProperty(property).toString()));
 			}
 		} else {
 			//deal with other type of components since its not a window
@@ -135,6 +137,8 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 					obj->setBounds(obj->getX(), obj->getY(), obj->getWidth(), value);
 				} else if (property == Attributes::name) {
 					obj->setName(treeWhosePropertyHasChanged.getProperty(property).toString());
+				} else if (property == Attributes::lookAndFeel) {
+					obj->setLookAndFeel(Constructor::getInstance()->getNamedLookAndFeel(treeWhosePropertyHasChanged.getProperty(property).toString()));
 				}
 			}
 		}

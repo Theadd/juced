@@ -131,6 +131,8 @@ bool PlaceableComponent::perform ()
 		objTree->setProperty(Attributes::height, _bounds.getHeight(), 0);
 	}
 	
+	if (!objTree->hasProperty(Attributes::lookAndFeel))
+		objTree->setProperty(Attributes::lookAndFeel, String("Inherit"), 0);
 	
 	Constructor::log("PC101 - Perform done");
 	return true;
