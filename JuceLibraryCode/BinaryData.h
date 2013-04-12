@@ -6,11 +6,14 @@
 
 namespace BinaryData
 {
+    extern const char*   slider_png;
+    const int            slider_pngSize = 3381;
+
+    extern const char*   window_png;
+    const int            window_pngSize = 513;
+
     extern const char*   knobstrip_png;
     const int            knobstrip_pngSize = 160459;
-
-    extern const char*   slider_png;
-    const int            slider_pngSize = 454;
 
     extern const char*   textbox_png;
     const int            textbox_pngSize = 505;
@@ -29,9 +32,6 @@ namespace BinaryData
 
     extern const char*   tabs_png;
     const int            tabs_pngSize = 3672;
-
-    extern const char*   window_png;
-    const int            window_pngSize = 9880;
 
     extern const char*   juced_png;
     const int            juced_pngSize = 21284;
