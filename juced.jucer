@@ -4,7 +4,15 @@
               jucerVersion="3.0.0" userNotes="JUCE GUI Designer">
   <MAINGROUP id="PHxAmr" name="juced">
     <GROUP id="{28A7121C-2451-00DC-CECA-C9820136CEE0}" name="Source">
+      <GROUP id="{89244D1A-FB64-710E-1DF6-D1C3432E67CC}" name="Styles">
+        <FILE id="ie5rzY" name="LookAndFeelCustom.cpp" compile="1" resource="0"
+              file="Source/Styles/LookAndFeelCustom.cpp"/>
+        <FILE id="TEwci7" name="LookAndFeelCustom.h" compile="0" resource="0"
+              file="Source/Styles/LookAndFeelCustom.h"/>
+      </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="IaM00Y" name="knobstrip.png" compile="0" resource="1" file="Source/BinaryData/knobstrip.png"/>
+        <FILE id="SXvPkp" name="slider.png" compile="0" resource="1" file="Source/BinaryData/slider.png"/>
         <FILE id="cWizpB" name="textbox.png" compile="0" resource="1" file="Source/BinaryData/textbox.png"/>
         <FILE id="ewv5Hh" name="button.png" compile="0" resource="1" file="Source/BinaryData/button.png"/>
         <FILE id="ZPZBPR" name="combobox.png" compile="0" resource="1" file="Source/BinaryData/combobox.png"/>
@@ -48,6 +56,9 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="DtKJ1M" name="juced_Slider.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_Slider.cpp"/>
+        <FILE id="oOjLcT" name="juced_Slider.h" compile="0" resource="0" file="Source/Modules/juced_Slider.h"/>
         <FILE id="XeWAZG" name="juced_TextButton.cpp" compile="1" resource="0"
               file="Source/Modules/juced_TextButton.cpp"/>
         <FILE id="ZxjZ2z" name="juced_TextButton.h" compile="0" resource="0"

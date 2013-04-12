@@ -8,6 +8,9 @@
     <Filter Include="juced\Source">
       <UniqueIdentifier>{326768F5-EB74-94AB-13EE-3C2E1885B701}</UniqueIdentifier>
     </Filter>
+    <Filter Include="juced\Source\Styles">
+      <UniqueIdentifier>{DD0DD5AA-7344-669F-4EAC-658B49621584}</UniqueIdentifier>
+    </Filter>
     <Filter Include="juced\Source\BinaryData">
       <UniqueIdentifier>{1C65CF2D-15C3-C234-299D-50C7B559F348}</UniqueIdentifier>
     </Filter>
@@ -226,6 +229,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp">
+      <Filter>juced\Source\Styles</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClCompile>
@@ -258,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp">
       <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Modules\juced_Slider.cpp">
+      <Filter>juced\Source\Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Modules\juced_TextButton.cpp">
       <Filter>juced\Source\Modules</Filter>
@@ -1170,6 +1179,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Styles\LookAndFeelCustom.h">
+      <Filter>juced\Source\Styles</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.h">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClInclude>
@@ -1190,6 +1202,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_Slider.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_TextButton.h">
       <Filter>juced\Source\Modules</Filter>
@@ -2231,6 +2246,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\knobstrip.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
+    <None Include="..\..\Source\BinaryData\slider.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
     <None Include="..\..\Source\BinaryData\textbox.png">
       <Filter>juced\Source\BinaryData</Filter>
     </None>

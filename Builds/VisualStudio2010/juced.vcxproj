@@ -125,6 +125,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\ColourPropertyComponent.cpp"/>
@@ -136,6 +137,7 @@
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_Slider.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_TextButton.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Label.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_MainComponent.cpp"/>
@@ -957,6 +959,7 @@
     <ClCompile Include="..\..\..\JUCE\modules\juce_opengl\juce_opengl.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Styles\LookAndFeelCustom.h"/>
     <ClInclude Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.h"/>
     <ClInclude Include="..\..\Source\Designer\CodeGenerator.h"/>
     <ClInclude Include="..\..\Source\Designer\Constructor.h"/>
@@ -964,6 +967,7 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_Slider.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_TextButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Label.h"/>
@@ -1312,6 +1316,8 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\knobstrip.png"/>
+    <None Include="..\..\Source\BinaryData\slider.png"/>
     <None Include="..\..\Source\BinaryData\textbox.png"/>
     <None Include="..\..\Source\BinaryData\button.png"/>
     <None Include="..\..\Source\BinaryData\combobox.png"/>
