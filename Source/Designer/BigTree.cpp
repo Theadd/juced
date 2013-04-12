@@ -116,6 +116,85 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else {
 					propertyChanged = false;
 				}
+			} else if (this->getProperty(Attributes::objectType) == Modules::Slider) {
+				//deal with Slider specific properties
+				juced_Slider *cObject = (juced_Slider *)this->getProperty(Attributes::object).getDynamicObject();
+				bool updateTextBoxStyle = false;
+				if (property == Attributes::sliderStyle) {
+					if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("Rotary")) {
+						cObject->setSliderStyle(Slider::Rotary);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("LinearHorizontal")) {
+						cObject->setSliderStyle(Slider::LinearHorizontal);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("LinearVertical")) {
+						cObject->setSliderStyle(Slider::LinearVertical);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("LinearBar")) {
+						cObject->setSliderStyle(Slider::LinearBar);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("LinearBarVertical")) {
+						cObject->setSliderStyle(Slider::LinearBarVertical);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("RotaryHorizontalDrag")) {
+						cObject->setSliderStyle(Slider::RotaryHorizontalDrag);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("RotaryVerticalDrag")) {
+						cObject->setSliderStyle(Slider::RotaryVerticalDrag);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("RotaryHorizontalVerticalDrag")) {
+						cObject->setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("IncDecButtons")) {
+						cObject->setSliderStyle(Slider::IncDecButtons);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("TwoValueHorizontal")) {
+						cObject->setSliderStyle(Slider::TwoValueHorizontal);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("TwoValueVertical")) {
+						cObject->setSliderStyle(Slider::TwoValueVertical);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("ThreeValueHorizontal")) {
+						cObject->setSliderStyle(Slider::ThreeValueHorizontal);
+					} else if (treeWhosePropertyHasChanged.getProperty(property).toString().equalsIgnoreCase("ThreeValueVertical")) {
+						cObject->setSliderStyle(Slider::ThreeValueVertical);
+					}
+					
+				} else if (property == Attributes::textEntryBoxPosition) {
+					updateTextBoxStyle = true;
+				} else if (property == Attributes::textEntryBoxWidth) {
+					updateTextBoxStyle = true;
+				} else if (property == Attributes::textEntryBoxHeight) {
+					updateTextBoxStyle = true;
+				} else if (property == Attributes::textBoxReadOnly) {
+					updateTextBoxStyle = true;
+				} else if (property == Attributes::minimum) {
+					double minimum = getProperty(Attributes::minimum);
+					double maximum = getProperty(Attributes::maximum);
+					double interval = getProperty(Attributes::interval);
+					cObject->setRange(minimum, maximum, interval);
+				} else if (property == Attributes::maximum) {
+					double minimum = getProperty(Attributes::minimum);
+					double maximum = getProperty(Attributes::maximum);
+					double interval = getProperty(Attributes::interval);
+					cObject->setRange(minimum, maximum, interval);
+				} else if (property == Attributes::interval) {
+					double minimum = getProperty(Attributes::minimum);
+					double maximum = getProperty(Attributes::maximum);
+					double interval = getProperty(Attributes::interval);
+					cObject->setRange(minimum, maximum, interval);
+				} else if (property == Attributes::value) {
+					double value = getProperty(Attributes::value);
+					cObject->setValue(value);
+				} else {
+					propertyChanged = false;
+				}
+				if (updateTextBoxStyle) {
+					int textBoxWidth = getProperty(Attributes::textEntryBoxWidth);
+					int textBoxHeight = getProperty(Attributes::textEntryBoxHeight);
+					bool readOnly = getProperty(Attributes::textBoxReadOnly);
+					String textBoxPosition = getProperty(Attributes::textEntryBoxPosition);
+					if (textBoxPosition.equalsIgnoreCase("NoTextBox")) {
+						cObject->setTextBoxStyle (Slider::NoTextBox, readOnly, textBoxWidth, textBoxHeight);
+					} else if (textBoxPosition.equalsIgnoreCase("TextBoxLeft")) {
+						cObject->setTextBoxStyle (Slider::TextBoxLeft, readOnly, textBoxWidth, textBoxHeight);
+					} else if (textBoxPosition.equalsIgnoreCase("TextBoxRight")) {
+						cObject->setTextBoxStyle (Slider::TextBoxRight, readOnly, textBoxWidth, textBoxHeight);
+					} else if (textBoxPosition.equalsIgnoreCase("TextBoxAbove")) {
+						cObject->setTextBoxStyle (Slider::TextBoxAbove, readOnly, textBoxWidth, textBoxHeight);
+					} else if (textBoxPosition.equalsIgnoreCase("TextBoxBelow")) {
+						cObject->setTextBoxStyle (Slider::TextBoxBelow, readOnly, textBoxWidth, textBoxHeight);
+					}
+				}
 			} else if (this->getProperty(Attributes::objectType) == Modules::Component) {
 				//deal with Component specific properties (obviously is empty)
 				propertyChanged = false;

@@ -13,7 +13,7 @@
 juced_Slider::juced_Slider()  : Slider ()
 {
 	setName("slider");
-	setProperty(Attributes::objectType, Modules::Label.toString());
+	setProperty(Attributes::objectType, Modules::Slider.toString());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
@@ -23,8 +23,17 @@ juced_Slider::juced_Slider()  : Slider ()
 	setProperty(Attributes::declareExtended, false);
 
 	setRange (0, 10, 0);
-    setSliderStyle (Slider::Rotary);
-    setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+	setProperty(Attributes::minimum, 0);
+	setProperty(Attributes::maximum, 10);
+	setProperty(Attributes::interval, 0);
+	setProperty(Attributes::value, getValue());
+    setSliderStyle (Slider::LinearHorizontal);
+    setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
+	setProperty(Attributes::textEntryBoxWidth, 80);
+	setProperty(Attributes::textEntryBoxHeight, 20);
+	setProperty(Attributes::textBoxReadOnly, false);
+	setProperty(Attributes::textEntryBoxPosition, "NoTextBox");
+	setProperty(Attributes::sliderStyle, "LinearHorizontal");
 
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());

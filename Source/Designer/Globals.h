@@ -52,6 +52,7 @@ namespace Modules
     const Identifier Component    ("Component");
 	const Identifier Label        ("Label");
 	const Identifier TextButton   ("TextButton");
+	const Identifier Slider		  ("Slider");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -87,6 +88,16 @@ namespace Attributes
 	DECLARE_ID (declareExtended);
 
 	DECLARE_ID (lookAndFeel);
+
+	DECLARE_ID (textEntryBoxPosition);
+	DECLARE_ID (sliderStyle);
+	DECLARE_ID (textEntryBoxWidth);
+	DECLARE_ID (textEntryBoxHeight);
+	DECLARE_ID (textBoxReadOnly);
+	DECLARE_ID (minimum);
+	DECLARE_ID (maximum);
+	DECLARE_ID (interval);
+	DECLARE_ID (value);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);
