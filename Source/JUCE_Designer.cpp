@@ -106,6 +106,7 @@ void JUCE_Designer::writeCodeToFile (String _filename)
 		File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
 		file.create();
 		file.replaceWithText(codeGenerator.getCode());
+		system("AStyle.exe code.cpp");
 		file.revealToUser();
 	}
 }

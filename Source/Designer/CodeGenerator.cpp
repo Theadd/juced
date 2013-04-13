@@ -85,6 +85,9 @@ void CodeGenerator::refresh()
 			//set specific properties
 			if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
 				_definition += "setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
+			bool castMouseEvents = _tree.getProperty(Attributes::castMouseEvents);
+			if (castMouseEvents)
+				_definition += "addMouseListener(this, false);\n";
 		}
 	}
 	if (!declareExtended) {
@@ -100,6 +103,9 @@ void CodeGenerator::refresh()
 		//set specific properties
 		if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
 			_definition += _tree.getProperty(Attributes::varName).toString() + ".setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
+		bool castMouseEvents = _tree.getProperty(Attributes::castMouseEvents);
+		if (castMouseEvents)
+			_definition +=  _tree.getProperty(Attributes::varName).toString() + ".addMouseListener(this, false);\n";
 		//if parent component is a window, this component must be owned by the window
 		if (_parentCodeGenerator->isContentOwner()) {
 			//if parent window is not an extended DocumentWindow class, set to modify its corresponding object

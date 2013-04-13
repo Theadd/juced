@@ -136,8 +136,11 @@ bool PlaceableComponent::perform ()
 		objTree->setProperty(Attributes::height, _bounds.getHeight(), 0);
 	}
 	
+	//set common value properties
 	if (!objTree->hasProperty(Attributes::lookAndFeel))
 		objTree->setProperty(Attributes::lookAndFeel, String("Inherit"), 0);
+	if (!objTree->hasProperty(Attributes::castMouseEvents))
+		objTree->setProperty(Attributes::castMouseEvents, false, 0);
 
 	//if parent component is a component owner (must own its child), specify it
 	if  (parentTree.isValid() && parentTree.hasProperty(Attributes::contentOwner)) {
@@ -211,6 +214,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 		return (DynamicObject *)object;
 	} else if (selectedToolName->equalsIgnoreCase("juced_Slider")) {
 		juced_Slider *object = new juced_Slider();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ImageButton")) {
+		juced_ImageButton *object = new juced_ImageButton();
 		return (DynamicObject *)object;
 	}
 	return nullptr;

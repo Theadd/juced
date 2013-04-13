@@ -1,19 +1,36 @@
 class %varName%    : public DocumentWindow
 {
 public:
-	%varName%()  : DocumentWindow ("%name%",
+	%varName%()  : %className% ("%name%",
 									Colours::lightgrey,
 									DocumentWindow::allButtons)
 	{
 		%definitions%
 		setResizable(true, true);
-		//centreWithSize (%width%, %height%);
 		setVisible (true);
 	}
 
 	void closeButtonPressed()
 	{
-		JUCEApplication::getInstance()->systemRequestedQuit();	
+		//JUCEApplication::getInstance()->systemRequestedQuit();	
+	}
+	
+	void mouseUp (const MouseEvent& event)
+	{
+		if (event.eventComponent == this)
+			%className%::mouseUp(event);
+	}
+
+	void mouseDrag (const MouseEvent& event)
+	{
+		if (event.eventComponent == this)
+			%className%::mouseDrag(event);
+	}
+
+	void mouseDoubleClick (const MouseEvent& event)
+	{
+		if (event.eventComponent == this)
+			%className%::mouseDoubleClick(event);
 	}
 
 private:

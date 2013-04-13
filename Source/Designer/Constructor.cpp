@@ -228,7 +228,9 @@ SelectionArea* Constructor::getSelectionBox()
 
 void Constructor::log(String msg)
 {
-	File logFile(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "designer.log");
+	DBG((msg));
+	return;
+	/*File logFile(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "designer.log");
 	//Create log file if it does not exists
 	if (!logFile.exists())
 		logFile.create();
@@ -251,7 +253,7 @@ void Constructor::log(String msg)
 		break;
 	}
 	//Append msg to log file
-	logFile.appendText(msg + "\n");
+	logFile.appendText(msg + "\n");*/
 }
 
 void Constructor::setDesigner(Component* juce_designer)

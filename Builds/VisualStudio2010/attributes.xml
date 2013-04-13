@@ -33,4 +33,8 @@
   <Attribute name="toolName" group="General" visible="0" type="text" display="Tool Name" valueType="text" syntax=''/>
   <Attribute name="allowTransform" group="General" visible="0" type="boolean" display="Allow transform(components owned by windows are not allowed)" valueType="text" syntax=''/>
   <Attribute name="contentOwner" group="General" visible="0" type="boolean" display="Sets if object should have another component owned" valueType="text" syntax=''/>
+  <Attribute name="normalImage" group="Appearance" visible="1" type="file" display="Normal image" valueType="text" syntax=''/>
+  <Attribute name="overImage" group="Appearance" visible="1" type="file" display="Over image" valueType="text" syntax=''/>
+  <Attribute name="downImage" group="Appearance" visible="1" type="file" display="Down image" valueType="text" syntax=''/>
+  <Attribute name="castMouseEvents" group="General" visible="1" type="boolean" display="Cast mouse events" valueType="text" syntax=''/>
 </Attributes>
