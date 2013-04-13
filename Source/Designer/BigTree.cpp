@@ -206,10 +206,36 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 						cObject->setTextBoxStyle (Slider::TextBoxBelow, readOnly, textBoxWidth, textBoxHeight);
 					}
 				}
+			} else if (this->getProperty(Attributes::objectType) == Modules::ImageButton) {
+				//deal with TextButton specific properties
+				juced_ImageButton *cObject = (juced_ImageButton *)this->getProperty(Attributes::object).getDynamicObject();
+				bool updateImage = false;
+				if (property == Attributes::normalImage) {
+					updateImage = true;
+				} else if (property == Attributes::overImage) {
+					updateImage = true;
+				} else if (property == Attributes::downImage) {
+					updateImage = true;
+				} else {
+					propertyChanged = false;
+				}
+				if (updateImage) {
+					Image normalImage = (File::isAbsolutePath(getProperty(Attributes::normalImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::normalImage).toString())) : Image();
+					Image overImage = (File::isAbsolutePath(getProperty(Attributes::overImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::overImage).toString())) : Image();
+					Image downImage = (File::isAbsolutePath(getProperty(Attributes::downImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::downImage).toString())) : Image();
+					cObject->setImages (false, true, true,
+                          normalImage,
+						  0.6000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f),
+                          overImage,
+						  1.0000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f),
+                          downImage,
+						  1.0000f, Colour((uint8) 150, (uint8) 150, (uint8) 150, 0.3f));
+				}
 			} else if (this->getProperty(Attributes::objectType) == Modules::Component) {
 				//deal with Component specific properties (obviously is empty)
 				propertyChanged = false;
 			}
+			//[CUSTOM MODULES HERE]
 			if (!propertyChanged) {
 				//deal with common component properties
 				Component *obj = dynamic_cast<Component *> (this->getProperty(Attributes::object).getDynamicObject());

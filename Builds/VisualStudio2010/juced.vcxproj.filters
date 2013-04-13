@@ -232,6 +232,9 @@
     <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp">
       <Filter>juced\Source\Styles</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Designer\Properties\FilePropertyComponent.cpp">
+      <Filter>juced\Source\Designer\Properties</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp">
       <Filter>juced\Source\Designer\Properties</Filter>
     </ClCompile>
@@ -267,6 +270,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp">
       <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Modules\juced_ImageButton.cpp">
+      <Filter>juced\Source\Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Modules\juced_Slider.cpp">
       <Filter>juced\Source\Modules</Filter>
@@ -1208,6 +1214,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_ImageButton.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_Slider.h">
       <Filter>juced\Source\Modules</Filter>
@@ -2252,6 +2261,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\image.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
+    <None Include="..\..\Source\BinaryData\imagebutton.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
     <None Include="..\..\Source\BinaryData\slider.png">
       <Filter>juced\Source\BinaryData</Filter>
     </None>

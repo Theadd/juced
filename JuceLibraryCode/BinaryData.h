@@ -6,6 +6,12 @@
 
 namespace BinaryData
 {
+    extern const char*   image_png;
+    const int            image_pngSize = 1136;
+
+    extern const char*   imagebutton_png;
+    const int            imagebutton_pngSize = 1215;
+
     extern const char*   slider_png;
     const int            slider_pngSize = 3381;
 

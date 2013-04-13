@@ -212,6 +212,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 	} else if (selectedToolName->equalsIgnoreCase("juced_Slider")) {
 		juced_Slider *object = new juced_Slider();
 		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ImageButton")) {
+		juced_ImageButton *object = new juced_ImageButton();
+		return (DynamicObject *)object;
 	}
 	return nullptr;
 }

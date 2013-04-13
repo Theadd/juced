@@ -13,6 +13,7 @@
 #include "Properties/TextWithButtonPropertyComponent.h"
 #include "Properties/ColourPropertyComponent.cpp"
 #include "Properties/EnumerationPropertyComponent.cpp"
+#include "Properties/FilePropertyComponent.cpp"
 
 
 class JUCED_PropertyGroup : public PropertyPanel
@@ -58,6 +59,8 @@ public:
 							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
 						} else if (attrib->type == AttributeType::boolean) {
 							comp = new BooleanPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, "Enable");
+						} else if (attrib->type == AttributeType::file) {
+							comp = new FilePropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
 						} else if (attrib->type == AttributeType::choice) {
 							Choices choices = Constructor::getInstance()->getChoicesOf(attrib->name);
 							comp = new ChoicePropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, choices.display, choices.values);
