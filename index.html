@@ -28,32 +28,105 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>Welcome to GitHub Pages.</h3>
+          <h3>Welcome to JUCE Interface Designer Page.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>This rapid application development tool is designed to allow the users design a graphical user interface in JUCE library within a few mouse clicks.</p>
+          
+<img src="http://188.165.195.47/public/captura.png">
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+          <h3>How to add a new component to the editor.</h3>
+          <p>To add a new component you need to create a juced_ComponentName.h/cpp into Modules folder as it was done with the Label component.</p>
+          juced_Label.h
+<pre><code>#include "../Designer/Globals.h"
+
+class juced_Label : public Label, public DynamicObject
+{
+public:
+    juced_Label();
+
+private:
+};
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>It must inherit from the component you want to add into the editor and the DynamicObject component.</p>
 
-<h3>Designer Templates</h3>
+          juced_Label.cpp
+          <pre><code>#include "juced_Label.h"
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+juced_Label::juced_Label()  : Label ()
+{
+    setName("label");
 
-<h3>Rather Drive Stick?</h3>
+    //REQUIRED PROPERTIES
+    setProperty(Attributes::name, getName());
+    setProperty(Attributes::objectType, Modules::Label.toString());
+    setProperty(Attributes::name, getName());
+    setProperty(Attributes::varName, getName());
+    setProperty(Attributes::className, "Label");
+    setProperty(Attributes::toolName, "juced_Label");
+    setComponentID(Uuid().toString());
+    setProperty(Attributes::ID, getComponentID());
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+    //OPTIONAL PROPERTIES
+    setProperty(Attributes::height, getHeight());
+    setProperty(Attributes::width, getWidth());
+}</code></pre>
+          <p>Your IDE will probably tell you that Modules::YourComponent does not exists, let's create it.</p>
+          
+          <p>Open Designer/globals.h and add your component name into Modules namespace.</p>
+          <p>Now open Designer/PlaceableComponent.h and Designer/BigTree.h and include your .h file there just like we did with Label.</p>
+          <pre><code>#include "../Modules/juced_Label.h"</code></pre>
+          
+          <p>Open Designer/PlaceableComponent.cpp and allow it to instance objects of your class.</p>
+          Look for this code:
+          <pre><code>DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToolName)
+{
+    if (selectedToolName->equalsIgnoreCase("juced_Label")) {
+        juced_Label *object = new juced_Label();
+        return (DynamicObject *)object;
+    } else if ...
+        
+    ... return nullptr;
+}</code></pre>
+          
+        <p>It's easy, just copy this lines at the end of the if block and replace COMPONENT for your component's name.</p>
+          <pre><code>... else if (selectedToolName->equalsIgnoreCase("juced_COMPONENT")) {
+        juced_COMPONENT *object = new juced_COMPONENT();
+        return (DynamicObject *)object;
+    }</code></pre>
+          
+          <p>Well, you have added a component to the editor, but it does not even appear into the toolbox. If you are not using the editor as an standalone component you have to edit the MainComponent.cpp file as follows, otherwise, you should already know how to do it as you did it when you added the toolbox into your editor.</p>
+          
+          <p>Just add a line like we did with Label somewhere into the MainComponent constructor.</p>
+          <pre><code>juced->addToolboxItem(toolbox, "juced_Label", "Text label", BinaryData::label_png, BinaryData::label_pngSize);</code></pre>
+          <p>The BinaryData tool image should be added opening the juced.jucer with Introjucer and add an image into the BinaryData projects folder as with any other JUCE project.</p>
+          
+          <p>Thats all about adding a component although it won't look very well if you can't even use it. You need to add properties and its behaviour when edited.</p>
+          
+<h3>How to add a property to an existing component.</h3>
 
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+          <p>We'll be adding the property "name" into your component in this how-to. First of all, let's have a look at attributes.xml</p>
+          <pre><code>&lt;Attribute name="name" group="General" visible="1" type="text" display="Name" valueType="text" syntax='setName("%name%")'/>
+... a lot of them.</code></pre>
+          <p>So, you can see here that the property name (which your component will probably have) is already defined in the xml file. If you need some property that is not there, just add it. By the way, if you want to specify a non-existent group you will have to deal with it at Designer/PropertyGroup.cpp which is not covered in this how-to.</p>
+          <p>You have to add the corresponding addProperty() line into the juced_COMPONENT.cpp to tell the editor that this component has "name" property.</p>
+          <pre><code>setName("label");  //This sets the component's name
+setProperty(Attributes::name, getName());  //This tells the editor that this component has a property named "name".</code></pre>
+          <p>Now look for the following line into Designer/BigTree.cpp</p>
+          <pre><code>//[CUSTOM MODULES HERE]</code></pre>
+          <p>And add below, the code to handle the property changes of your component</p>
+          <pre><code>else if (this->getProperty(Attributes::objectType) == Modules::COMPONENT) {
+  juced_COMPONENT *cObject = (juced_COMPONENT *)this->getProperty(Attributes::object).getDynamicObject();
+  if (property == Attributes::name) {
+    cObject->setName(getProperty(property).toString());
+  } else {
+    //This is set for the common component properties, just like name and its bounds.
+    //You can remove the handling of name property we just added just because
+    //it will be handled anyway some lines below.
+    propertyChanged = false;
+  }
+}</code></pre>
+          <p>Also, you have to make sure your property is listed in Designer/Globals.h within the namespace "Attributes". That's all!</p>
         </section>
 
         <aside id="sidebar">
