@@ -198,11 +198,6 @@ setTitleBarTextCentred(0);
 container.setBounds(0, 0, 455, 364);
 container.setName("container");
 setContentOwned (&container, true);
-
-//concertina
-concertina.setBounds(500, 0, 150, 300);
-container.addAndMakeVisible(&concertina);
-
 container.addAndMakeVisible(&miniwindow);
 textButton1.setBounds(9, 0, 30, 30);
 textButton1.setName("textButton");
@@ -234,18 +229,13 @@ label2.setText("Wololo!!!", false);
 label2.setColour(Label::backgroundColourId, Colour::fromString("00000000"));
 label2.setColour(Label::textColourId, Colour::fromString("FF000000"));
 label2.setName("label");
-//container.addAndMakeVisible(&label2);
-concertina.addPanel(0, &label2, false);
-
+container.addAndMakeVisible(&label2);
 label3.setBounds(239, 278, 155, 55);
 label3.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius, metus nec accumsan pelle", false);
 label3.setColour(Label::backgroundColourId, Colour::fromString("00000000"));
 label3.setColour(Label::textColourId, Colour::fromString("FFFFFFFF"));
 label3.setName("label");
-//container.addAndMakeVisible(&label3);
-concertina.addPanel(1, &label3, false);
-
-
+container.addAndMakeVisible(&label3);
 slider2.setBounds(409, 38, 35, 310);
 slider2.setColour(Slider::backgroundColourId, Colour::fromString("00000000"));
 slider2.setName("slider");
@@ -284,19 +274,15 @@ container.addAndMakeVisible(&slider6);
 
 private:
 	Component container;
-MiniWindow miniwindow;
-TextButton textButton1;
+MiniWindow miniwindow;TextButton textButton1;
 TextButton textButton2;
 TextButton textButton3;
-PepeWindow pepewindow;
-PequeWindow pequewindow;
-Slider slider3;
+PepeWindow pepewindow;PequeWindow pequewindow;Slider slider3;
 Label label2;
 Label label3;
 Slider slider2;
 Slider slider;
 Slider slider6;
-ConcertinaPanel concertina;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
 };

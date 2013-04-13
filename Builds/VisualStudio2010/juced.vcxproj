@@ -126,7 +126,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Styles\LookAndFeelCustom.cpp"/>
-    <ClCompile Include="..\..\Source\Designer\Properties\FilePropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\EnumerationPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\TextWithButtonPropertyComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Properties\ColourPropertyComponent.cpp"/>
@@ -139,7 +138,6 @@
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
-    <ClCompile Include="..\..\Source\Modules\juced_ImageButton.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Slider.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_TextButton.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Label.cpp"/>
@@ -971,7 +969,6 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
-    <ClInclude Include="..\..\Source\Modules\juced_ImageButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Slider.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_TextButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Window.h"/>
@@ -1321,8 +1318,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Source\BinaryData\image.png"/>
-    <None Include="..\..\Source\BinaryData\imagebutton.png"/>
     <None Include="..\..\Source\BinaryData\slider.png"/>
     <None Include="..\..\Source\BinaryData\window.png"/>
     <None Include="..\..\Source\BinaryData\knobstrip.png"/>

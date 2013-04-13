@@ -20,7 +20,6 @@
 #include "../Modules/juced_Window.h"
 #include "../Modules/juced_MainComponent.h"
 #include "../Modules/juced_Slider.h"
-#include "../Modules/juced_ImageButton.h"
 
 class BigTree;
 

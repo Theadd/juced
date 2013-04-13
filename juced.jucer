@@ -11,8 +11,6 @@
               file="Source/Styles/LookAndFeelCustom.h"/>
       </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
-        <FILE id="QLO7oZ" name="image.png" compile="0" resource="1" file="Source/BinaryData/image.png"/>
-        <FILE id="E6RJLL" name="imagebutton.png" compile="0" resource="1" file="Source/BinaryData/imagebutton.png"/>
         <FILE id="T3SAX2" name="slider.png" compile="0" resource="1" file="Source/BinaryData/slider.png"/>
         <FILE id="m1hip3" name="window.png" compile="0" resource="1" file="Source/BinaryData/window.png"/>
         <FILE id="IaM00Y" name="knobstrip.png" compile="0" resource="1" file="Source/BinaryData/knobstrip.png"/>
@@ -27,8 +25,6 @@
       </GROUP>
       <GROUP id="{CD61A17A-EFAF-9E46-E500-10D885059D59}" name="Designer">
         <GROUP id="{D96D4016-5332-3C8E-B7B2-0C1D88D1B9A6}" name="Properties">
-          <FILE id="cfe5bM" name="FilePropertyComponent.cpp" compile="1" resource="0"
-                file="Source/Designer/Properties/FilePropertyComponent.cpp"/>
           <FILE id="Lg0t4W" name="EnumerationPropertyComponent.cpp" compile="1"
                 resource="0" file="Source/Designer/Properties/EnumerationPropertyComponent.cpp"/>
           <FILE id="jHcnJP" name="TextWithButtonPropertyComponent.cpp" compile="1"
@@ -62,10 +58,6 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
-        <FILE id="BKLab6" name="juced_ImageButton.cpp" compile="1" resource="0"
-              file="Source/Modules/juced_ImageButton.cpp"/>
-        <FILE id="H9fKr6" name="juced_ImageButton.h" compile="0" resource="0"
-              file="Source/Modules/juced_ImageButton.h"/>
         <FILE id="DtKJ1M" name="juced_Slider.cpp" compile="1" resource="0"
               file="Source/Modules/juced_Slider.cpp"/>
         <FILE id="oOjLcT" name="juced_Slider.h" compile="0" resource="0" file="Source/Modules/juced_Slider.h"/>

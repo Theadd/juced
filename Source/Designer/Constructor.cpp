@@ -228,8 +228,6 @@ SelectionArea* Constructor::getSelectionBox()
 
 void Constructor::log(String msg)
 {
-	DBG((msg));
-	return;
 	File logFile(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "designer.log");
 	//Create log file if it does not exists
 	if (!logFile.exists())

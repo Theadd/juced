@@ -53,7 +53,6 @@ namespace Modules
 	const Identifier Label        ("Label");
 	const Identifier TextButton   ("TextButton");
 	const Identifier Slider		  ("Slider");
-	const Identifier ImageButton  ("ImageButton");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -66,7 +65,6 @@ namespace AttributeType
 	const Identifier enumeration	("enumeration");
 	const Identifier boolean		("boolean");
 	const Identifier choice			("choice");
-	const Identifier file			("file");
 }
 
 namespace Attributes
@@ -85,9 +83,6 @@ namespace Attributes
 	DECLARE_ID (font);
 	DECLARE_ID (backgroundColour);
 	//const Identifier backgroundColour ("Background colour");
-	DECLARE_ID (normalImage);
-	DECLARE_ID (overImage);
-	DECLARE_ID (downImage);
 
 	DECLARE_ID (allowTransform);
 	DECLARE_ID (declareExtended);
