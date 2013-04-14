@@ -66,6 +66,7 @@ SelectionArea::~SelectionArea()
 
 void SelectionArea::setSelectionBounds(int x, int y, int width, int height, bool isModX, bool isModY, bool isModWidth, bool isModHeight)
 {
+	
 	if (_allowTransform) {
 		int gridSize = Constructor::getInstance()->getGridSize();
 
@@ -78,6 +79,7 @@ void SelectionArea::setSelectionBounds(int x, int y, int width, int height, bool
 		if (!isComponentSelection) {
 			setBounds(x - modX, y - modY, width - modWidth, height - modHeight);
 		} else {
+			Constructor::log("SA101 - setSelectionBounds("+String(x - _boxSize - modX) + ","+String(y - _boxSize - modY)+","+String(width + (_boxSize*2) - modWidth)+","+String(height + (_boxSize*2) - modHeight)+")");
 			setBounds(x - _boxSize - modX, y - _boxSize - modY, width + (_boxSize*2) - modWidth, height + (_boxSize*2) - modHeight);
 
 			/*miniBoxes[0]->setBounds(0, 0, _boxSize, _boxSize);
@@ -85,6 +87,7 @@ void SelectionArea::setSelectionBounds(int x, int y, int width, int height, bool
 			miniBoxes[2]->setBounds(0, height + _boxSize, _boxSize, _boxSize);*/
 			miniBoxes[0]->setBounds(getWidth() - _boxSize, getHeight() - _boxSize, _boxSize, _boxSize);
 			ready = true;
+			Constructor::log("SA101 - done");
 		}
 	}
 }
@@ -120,6 +123,7 @@ void SelectionArea::mouseDrag (const MouseEvent& event)
 	bool ctrlKeyDown = event.mods.isCtrlDown();
 
 	if (event.originalComponent->getName().equalsIgnoreCase("bottomRight")) {
+		Constructor::log("SA103 - mouseDrag()");
 		Point<int> size = event.getScreenPosition() - this->getScreenPosition();
 		setSelectionBounds(getX() + _boxSize, getY() + _boxSize, size.getX() - _boxSize, size.getY() - _boxSize, false, false, !ctrlKeyDown, !ctrlKeyDown); 
 		
@@ -143,7 +147,7 @@ void SelectionArea::componentMovedOrResized (Component &component, bool wasMoved
 	if (isVisible() && isListeningToChanges()) {
 		if (wasMoved || wasResized) {
 			Point<int> pos = component.getScreenPosition() - Constructor::getInstance()->getDesigner()->getScreenPosition();
-
+			Constructor::log("SA102 - componentMovedOrResized(" + component.getName() + ", " + String(wasMoved) + ", " + String(wasResized) + ")");
 			setSelectionBounds(pos.getX(), pos.getY(), component.getWidth(), component.getHeight());
 
 		}

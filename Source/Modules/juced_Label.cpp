@@ -30,3 +30,11 @@ juced_Label::juced_Label()  : Label ()
 	setProperty(Attributes::ID, getComponentID());
 }
 
+void juced_Label::mouseUp (const MouseEvent& event) {}
+void juced_Label::mouseDrag (const MouseEvent& event) {}
+void juced_Label::mouseDoubleClick (const MouseEvent& event) {}
+void juced_Label::mouseMove (const MouseEvent& event) {}
+void juced_Label::mouseDown (const MouseEvent& event) {}
+void juced_Label::mouseEnter (const MouseEvent& event) {}
+void juced_Label::mouseExit (const MouseEvent& event) {}
+void juced_Label::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

@@ -23,8 +23,17 @@ public:
     juced_MainComponent();
     ~juced_MainComponent();
 
-    void paint(Graphics&);
+    //void paint(Graphics&);
     void resized();
+
+	void mouseUp (const MouseEvent& event);
+	void mouseDrag (const MouseEvent& event);
+	void mouseDoubleClick (const MouseEvent& event);
+	void mouseMove (const MouseEvent& event);
+	void mouseDown (const MouseEvent& event);
+	void mouseEnter (const MouseEvent& event);
+	void mouseExit (const MouseEvent& event);
+	void mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel);
 
 private:
 

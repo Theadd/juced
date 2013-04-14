@@ -21,6 +21,7 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 		
     centreWithSize (getWidth(), getHeight());
     setVisible (true);
+	removeMouseListener(this);
 
 	setName("window");
 	setProperty(Attributes::objectType, "Window");
@@ -55,8 +56,7 @@ void juced_Window::minimizeButtonPressed ()
 
 void juced_Window::maximizeButtonPressed ()
 {
-	AlertWindow::showMessageBox(AlertWindow::NoIcon, "Crash!", "Don't do this");
-	return;
+
 }
 
 void juced_Window::setContentOwned (Component *newContentComponent, bool resizeToFitWhenContentChangesSize)
@@ -66,3 +66,11 @@ void juced_Window::setContentOwned (Component *newContentComponent, bool resizeT
 	DocumentWindow::setContentOwned(newContentComponent, resizeToFitWhenContentChangesSize);
 }
 
+void juced_Window::mouseUp (const MouseEvent& event) {}
+void juced_Window::mouseDrag (const MouseEvent& event) {}
+void juced_Window::mouseDoubleClick (const MouseEvent& event) {}
+void juced_Window::mouseMove (const MouseEvent& event) {}
+void juced_Window::mouseDown (const MouseEvent& event) {}
+void juced_Window::mouseEnter (const MouseEvent& event) {}
+void juced_Window::mouseExit (const MouseEvent& event) {}
+void juced_Window::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

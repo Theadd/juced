@@ -21,6 +21,15 @@ public:
 
     juced_TextButton();
 
+	void mouseUp (const MouseEvent& event);
+	void mouseDrag (const MouseEvent& event);
+	void mouseDoubleClick (const MouseEvent& event);
+	void mouseMove (const MouseEvent& event);
+	void mouseDown (const MouseEvent& event);
+	void mouseEnter (const MouseEvent& event);
+	void mouseExit (const MouseEvent& event);
+	void mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel);
+
 private:
 
 };

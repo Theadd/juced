@@ -31,11 +31,11 @@ juced_MainComponent::~juced_MainComponent()
 {
 }
 
-void juced_MainComponent::paint (Graphics& g)
+/*void juced_MainComponent::paint (Graphics& g)
 {
     g.fillAll (Colours::transparentWhite);
 
-}
+}*/
 
 void juced_MainComponent::resized()
 {
@@ -43,3 +43,12 @@ void juced_MainComponent::resized()
     // If you add any child components, this is where you should
     // update their positions.
 }
+
+void juced_MainComponent::mouseUp (const MouseEvent& event) {}
+void juced_MainComponent::mouseDrag (const MouseEvent& event) {}
+void juced_MainComponent::mouseDoubleClick (const MouseEvent& event) {}
+void juced_MainComponent::mouseMove (const MouseEvent& event) {}
+void juced_MainComponent::mouseDown (const MouseEvent& event) {}
+void juced_MainComponent::mouseEnter (const MouseEvent& event) {}
+void juced_MainComponent::mouseExit (const MouseEvent& event) {}
+void juced_MainComponent::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

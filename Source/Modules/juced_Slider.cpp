@@ -40,3 +40,11 @@ juced_Slider::juced_Slider()  : Slider ()
 	setProperty(Attributes::ID, getComponentID());
 }
 
+void juced_Slider::mouseUp (const MouseEvent& event) {}
+void juced_Slider::mouseDrag (const MouseEvent& event) {}
+void juced_Slider::mouseDoubleClick (const MouseEvent& event) {}
+void juced_Slider::mouseMove (const MouseEvent& event) {}
+void juced_Slider::mouseDown (const MouseEvent& event) {}
+void juced_Slider::mouseEnter (const MouseEvent& event) {}
+void juced_Slider::mouseExit (const MouseEvent& event) {}
+void juced_Slider::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

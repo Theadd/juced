@@ -30,3 +30,12 @@ juced_TextButton::juced_TextButton()  : TextButton ()
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 }
+
+void juced_TextButton::mouseUp (const MouseEvent& event) {}
+void juced_TextButton::mouseDrag (const MouseEvent& event) {}
+void juced_TextButton::mouseDoubleClick (const MouseEvent& event) {}
+void juced_TextButton::mouseMove (const MouseEvent& event) {}
+void juced_TextButton::mouseDown (const MouseEvent& event) {}
+void juced_TextButton::mouseEnter (const MouseEvent& event) {}
+void juced_TextButton::mouseExit (const MouseEvent& event) {}
+void juced_TextButton::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

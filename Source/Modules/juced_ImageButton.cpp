@@ -27,3 +27,12 @@ juced_ImageButton::juced_ImageButton()  : ImageButton ()
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 }
+
+void juced_ImageButton::mouseUp (const MouseEvent& event) {}
+void juced_ImageButton::mouseDrag (const MouseEvent& event) {}
+void juced_ImageButton::mouseDoubleClick (const MouseEvent& event) {}
+void juced_ImageButton::mouseMove (const MouseEvent& event) {}
+void juced_ImageButton::mouseDown (const MouseEvent& event) {}
+void juced_ImageButton::mouseEnter (const MouseEvent& event) {}
+void juced_ImageButton::mouseExit (const MouseEvent& event) {}
+void juced_ImageButton::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

@@ -118,10 +118,9 @@ void JUCE_Designer::selectComponent (Component *componentToSelect, bool isSelect
 	if (componentToSelect != this) {
 		selectionBox->setVisible(false);
 
-		/*AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "...");
+		Constructor::log("D104 - removeComponentListener(selectionBox)");
 		if (Constructor::getInstance()->getSelectedComponent() != nullptr)
 			Constructor::getInstance()->getSelectedComponent()->removeComponentListener(selectionBox);
-		AlertWindow::showMessageBox(AlertWindow::NoIcon, "here we go", "done");*/
 
 		Point<int> pos = componentToSelect->getScreenPosition() - this->getScreenPosition();
 		selectedComponentPositionDifference = pos - componentToSelect->getPosition();
