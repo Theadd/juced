@@ -56,6 +56,7 @@ public:
 
 private:
 	Label mousePositionLabel;
+	Label infoLabel;
 
 	OwnedArray<Toolbox> toolboxes;
 	ScopedPointer<SelectionArea> selectionArea;

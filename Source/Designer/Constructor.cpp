@@ -329,3 +329,26 @@ void Constructor::importFromXml(File xmlFile)
 {
 	Importer importer(xmlFile);
 }
+
+void Constructor::resetCurrentState()
+{
+	log("C10? - resetCurrentState()");
+	setSelectedComponent(nullptr);
+	//_selectionBox = nullptr;
+
+	//_bigTreeRoot = nullptr;
+
+	//if (getBigTreeRoot() != nullptr)
+	//	getBigTreeRoot()->recursive_removeProperty(Attributes::object, 0);
+	log("C10? - resetCurrentState() clear placeable components");
+	_placeableComponents.clear(false);
+	log("C10? - resetCurrentState() delete undoManager");
+	undoManager = nullptr;
+	if (getBigTreeRoot() != nullptr) {
+		Component *rootComponent = dynamic_cast<Component *> (getBigTreeRoot()->getProperty(Attributes::object).getDynamicObject());
+		getDesigner()->removeChildComponent(rootComponent);
+	}
+	setBigTreeRoot(nullptr);
+	getSelectionBox()->setVisible(false);
+	log("C10? - resetCurrentState() done.");
+}

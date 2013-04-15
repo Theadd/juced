@@ -147,7 +147,7 @@ bool PlaceableComponent::perform ()
 		bool contentOwner = parentTree.getProperty(Attributes::contentOwner);
 		if (contentOwner) {
 			ResizableWindow *parentWindow = dynamic_cast<ResizableWindow *> (parentTree.getProperty(Attributes::object).getDynamicObject());
-			parentWindow->setContentOwned(dynamic_cast<Component *> (_dynamicObject.get()), true);
+			parentWindow->setContentOwned(dynamic_cast<Component *> (_dynamicObject.get()), false);
 		}
 	}
 	

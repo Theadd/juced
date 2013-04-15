@@ -17,7 +17,16 @@ JUCE_Designer::JUCE_Designer ()
 	mousePositionLabel.setFont(Font(12.0f));
 	mousePositionLabel.setBounds(getWidth() - 80, getHeight() - 25, 80, 25);
 	mousePositionLabel.setInterceptsMouseClicks(false, false);
-	
+
+	addAndMakeVisible(&infoLabel);
+	infoLabel.setAlwaysOnTop(true);
+	infoLabel.setFont(Font(12.0f));
+	infoLabel.setBounds(5, getHeight() - 102, 350, 102);
+	infoLabel.setInterceptsMouseClicks(false, false);
+	infoLabel.setText("[Ctrl + R] Randomly resize grid\n[Ctrl + Z] Undo change history\n[Ctrl + Y] Redo change history\n[Ctrl + S] Save current state to save.xml\n[Ctrl + O] Open saved state from save.xml\n[Ctrl + G] Generate a JUCE project from current state\n[Hold Ctrl] Don't snap to grid when editing/drawing", false);
+	infoLabel.setColour(Label::textColourId, Colours::white);
+	infoLabel.setComponentEffect(new DropShadowEffect());
+
 	Constructor *constructor = Constructor::getInstance();
 	constructor->setWorkingDirectory(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()));
 	constructor->loadAttributesFromXmlFile(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "attributes.xml"));
@@ -195,7 +204,7 @@ void JUCE_Designer::resized()
 {
 	grid.setBounds(0, 0, getWidth(), getHeight());
 	mousePositionLabel.setBounds(getWidth() - mousePositionLabel.getWidth(), getHeight() - mousePositionLabel.getHeight(), mousePositionLabel.getWidth(), mousePositionLabel.getHeight());
-	
+	infoLabel.setBounds(5, getHeight() - infoLabel.getHeight(), 350, infoLabel.getHeight());
 }
 
 void JUCE_Designer::lookAndFeelChanged()
@@ -305,6 +314,7 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
 		this->writeXmlToFile("save.xml");
 	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {
+		Constructor::getInstance()->resetCurrentState();
 		Constructor::getInstance()->importFromXml(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "save.xml"));
 	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
 		this->generateCode();

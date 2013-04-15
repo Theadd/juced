@@ -119,6 +119,8 @@ public:
 
 	void importFromXml(File xmlFile);
 
+	void resetCurrentState();
+
 private:
 	ScopedPointer<UndoManager> undoManager;
 	Component *_selectedComponent;

@@ -3,6 +3,12 @@
 
 - ImageButton component lacks a lot of properties
 
+- Fix destructor of Constructor class
+
+- Fix destructor of PlaceableComponent class
+
+- Fix resetCurrentState method of Constructor class
+
 Components to be added:
 
 	ConcertinaPanel
