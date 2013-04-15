@@ -33,54 +33,22 @@
 <p>This rapid application development tool is designed to draw a graphical user interface using JUCE library within a few mouse clicks.</p>
           <h3>Features</h3>
           <ul>
-            <li>Easy to use</li>
+            <li>Easy to use (Click and draw style)</li>
             <li>Undo/redo support</li>
-            <li>Extensive editable properties</li>
+            <li>Extensive editable component properties</li>
             <li>Export/Import to save.xml (Ctrl+s / Ctrl+o)</li>
-            <li>C++ code generation to code.cpp (Ctrl+g)</li>
+            <li>C++ JUCE project generation with designed GUI generated source (Ctrl+g)</li>
             <li>Custom LookAndFeel (As a component property)</li>
-            <li>Some bug crashes! (Save often)</li>
+            <li>And some bugs! (Save often)</li>
           </ul>
 <img src="http://188.165.195.47/public/captura.png">
 
           <h3>How to add a new component to the editor.</h3>
-          <p>To add a new component you need to create a juced_ComponentName.h/cpp into Modules folder as it was done with the Label component.</p>
-          juced_Label.h
-<pre><code>#include "../Designer/Globals.h"
+          <p>To add a new component you need to create a juced_COMPONENT.h/cpp into Modules folder using Introjucer (open juced.jucer) and copy there the content of juced_Label.h/cpp to get started. Edit code to fit your new component needs.</p>
 
-class juced_Label : public Label, public DynamicObject
-{
-public:
-    juced_Label();
+		  <p>It must inherit from the component you want to add into the editor and the DynamicObject component to be able to use it within the editor.</p>
 
-private:
-};
-</code></pre>
-
-<p>It must inherit from the component you want to add into the editor and the DynamicObject component.</p>
-
-          juced_Label.cpp
-          <pre><code>#include "juced_Label.h"
-
-juced_Label::juced_Label()  : Label ()
-{
-    setName("label");
-
-    //REQUIRED PROPERTIES
-    setProperty(Attributes::name, getName());
-    setProperty(Attributes::objectType, Modules::Label.toString());
-    setProperty(Attributes::name, getName());
-    setProperty(Attributes::varName, getName());
-    setProperty(Attributes::className, "Label");
-    setProperty(Attributes::toolName, "juced_Label");
-    setComponentID(Uuid().toString());
-    setProperty(Attributes::ID, getComponentID());
-
-    //OPTIONAL PROPERTIES
-    setProperty(Attributes::height, getHeight());
-    setProperty(Attributes::width, getWidth());
-}</code></pre>
-          <p>Your IDE will probably tell you that Modules::YourComponent does not exists, let's create it.</p>
+          <p>While editing your new .cpp file, your IDE will probably tell you that Modules::YourComponent does not exists, let's create it.</p>
           
           <p>Open Designer/globals.h and add your component name into Modules namespace.</p>
           <p>Now open Designer/PlaceableComponent.h and Designer/BigTree.h and include your .h file there just like we did with Label.</p>
