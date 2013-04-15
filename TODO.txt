@@ -1,8 +1,6 @@
 
 - If there are multiple instances of toolbox we have to deselect other toolboxes selected item when selecting any tool in any toolbox.
 
-- Messed up something on resizing a window after selecting it again after creation when allowTransform was added in SelectionArea
-
 - ImageButton component lacks a lot of properties
 
 Components to be added:

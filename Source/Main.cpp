@@ -29,6 +29,7 @@ public:
         // This method is where you should put your application's initialisation code..
 		if (commandLine.isNotEmpty()) {}	//TODO: remove
         mainWindow = new MainWindow();
+		mainWindow->setFullScreen(true);
     }
 
     void shutdown()

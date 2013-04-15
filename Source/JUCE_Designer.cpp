@@ -96,18 +96,40 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 	}
 }
 
-void JUCE_Designer::writeCodeToFile (String _filename)
+void JUCE_Designer::generateCode ()
 {
-	Constructor::log("D003 - Generate code structure and save to " + _filename);
+	Constructor::log("D003 - Generate code structure");
 	if (Constructor::getInstance()->getBigTreeRoot() != nullptr) {
+
+		File savePath;
+		FileChooser myChooser ("Please select a directory to save the generated project", File::getSpecialLocation (File::userHomeDirectory), "*.*");
+		if (myChooser.browseForDirectory()) {
+			savePath = myChooser.getResult().getFullPathName();
+		} else return;
+
 		CodeGenerator codeGenerator(Constructor::getInstance()->getBigTreeRoot());
+		String generatedCodeString = codeGenerator.getCode();
 		Constructor::log("D103 - Code generated");
 		//Create xml file from XmlElement
-		File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
-		file.create();
-		file.replaceWithText(codeGenerator.getCode());
-		system("AStyle.exe code.cpp");
-		file.revealToUser();
+		ZipFile defaultTemplateZip(File(File::addTrailingSeparator(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "Templates") + "default.zip"));
+		defaultTemplateZip.uncompressTo(savePath, true);
+		Constructor::log("D103 - Uncompressed template");
+		File generatedCodeFile(File::addTrailingSeparator(savePath.getFullPathName()) + "Source" + File::separatorString + "GeneratedCode.cpp");
+		String code(generatedCodeFile.loadFileAsString());
+		code = code.replace("%generatedCode%", generatedCodeString);
+		generatedCodeFile.replaceWithText(code);
+		Constructor::log("D103 - Replaced GeneratedCode.cpp : " + generatedCodeFile.getFullPathName() + " SIZE: " + String(code.length()));
+
+		//Main.cpp
+		File mainFile(File::addTrailingSeparator(savePath.getFullPathName()) + "Source" + File::separatorString + "Main.cpp");
+		String mainFileCode(mainFile.loadFileAsString());
+		mainFileCode = mainFileCode.replace("%varName%", codeGenerator.getVarName());
+		mainFile.replaceWithText(mainFileCode);
+		//File file = File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + _filename);
+		//file.create();
+		//file.replaceWithText(codeGenerator.getCode());
+		system(String("AStyle.exe -n --style=allman " + File::addTrailingSeparator(savePath.getFullPathName()) + "Source" + File::separatorString + "GeneratedCode.cpp").getCharPointer());
+		savePath.revealToUser();
 	}
 }
 
@@ -285,7 +307,7 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {
 		Constructor::getInstance()->importFromXml(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "save.xml"));
 	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
-		this->writeCodeToFile("code.cpp");
+		this->generateCode();
 	} else if (key.getKeyCode() == key.leftKey) {
 		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
 			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));

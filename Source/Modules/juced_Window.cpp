@@ -10,7 +10,7 @@
 
 #include "juced_Window.h"
 
-
+int juced_Window::_numObjects = 0;
 
 juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
                                 Colours::lightgrey,
@@ -23,13 +23,14 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
     setVisible (true);
 	removeMouseListener(this);
 
-	setName("window");
+	setName("Window");
 	setProperty(Attributes::objectType, "Window");
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, "MainWindow");
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::className, "DocumentWindow");
 	setProperty(Attributes::toolName, "juced_Window");
 	setProperty(Attributes::contentOwner, true);

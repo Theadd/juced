@@ -30,7 +30,7 @@ public:
 	void mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel);
 
 private:
-
+	static int _numObjects;
 };
 
 #endif  // __JUCED_IMAGEBUTTON_H_FF5FFB74__

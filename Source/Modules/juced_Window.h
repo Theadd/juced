@@ -38,7 +38,7 @@ public:
 	void mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel);
 	
 private:
-
+	static int _numObjects;
 };
 
 #endif  // __JUCED_WINDOW_H_4F81997D__

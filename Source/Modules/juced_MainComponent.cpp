@@ -10,15 +10,18 @@
 
 #include "juced_MainComponent.h"
 
+int juced_MainComponent::_numObjects = 0; 
+
 juced_MainComponent::juced_MainComponent()
 {
     //setSize (500, 400);
-	setName("container");
+	setName("Container");
 	setProperty(Attributes::objectType, Modules::Component.toString());
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, getName());
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::className, "Component");
 	setProperty(Attributes::toolName, "juced_MainComponent");
 	setProperty(Attributes::declareExtended, false);

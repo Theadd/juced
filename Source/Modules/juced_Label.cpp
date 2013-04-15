@@ -10,10 +10,12 @@
 
 #include "juced_Label.h"
 
+int juced_Label::_numObjects = 0; 
+
 juced_Label::juced_Label()  : Label ()
 {
 	setText("Text label", false);
-	setName("label");
+	setName("Label");
 	setProperty(Attributes::objectType, Modules::Label.toString());
 	setProperty(Attributes::text, getText());
 	setProperty(Attributes::font, getFont().toString());
@@ -22,7 +24,8 @@ juced_Label::juced_Label()  : Label ()
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, getName());
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::className, "Label");
 	setProperty(Attributes::toolName, "juced_Label");
 	setProperty(Attributes::declareExtended, false);

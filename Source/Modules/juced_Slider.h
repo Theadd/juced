@@ -33,7 +33,7 @@ public:
 	void mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel);
 
 private:
-
+	static int _numObjects;
 };
 
 

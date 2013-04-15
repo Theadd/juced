@@ -10,15 +10,18 @@
 
 #include "juced_Slider.h"
 
+int juced_Slider::_numObjects = 0; 
+
 juced_Slider::juced_Slider()  : Slider ()
 {
-	setName("slider");
+	setName("Slider");
 	setProperty(Attributes::objectType, Modules::Slider.toString());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, getName());
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::className, "Slider");
 	setProperty(Attributes::toolName, "juced_Slider");
 	setProperty(Attributes::declareExtended, false);

@@ -10,9 +10,11 @@
 
 #include "juced_TextButton.h"
 
+int juced_TextButton::_numObjects = 0;
+
 juced_TextButton::juced_TextButton()  : TextButton ()
 {
-	setName("textButton");
+	setName("TextButton");
 	setButtonText("Text Button");
 	setProperty(Attributes::objectType, Modules::TextButton.toString());
 	setProperty(Attributes::font, getFont().toString());
@@ -21,7 +23,8 @@ juced_TextButton::juced_TextButton()  : TextButton ()
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, getName());
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::buttonText, getButtonText());
 	setProperty(Attributes::connectedEdges, getConnectedEdgeFlags());
 	setProperty(Attributes::className, "TextButton");

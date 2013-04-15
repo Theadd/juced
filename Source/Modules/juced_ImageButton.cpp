@@ -10,14 +10,17 @@
 
 #include "juced_ImageButton.h"
 
+int juced_ImageButton::_numObjects = 0; 
+
 juced_ImageButton::juced_ImageButton()  : ImageButton ()
 {
-	setName("imageButton");
+	setName("ImageButton");
 	setProperty(Attributes::objectType, Modules::ImageButton.toString());
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());
-	setProperty(Attributes::varName, getName());
+	++_numObjects;
+	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::normalImage, "Image()");
 	setProperty(Attributes::overImage, "Image()");
 	setProperty(Attributes::downImage, "Image()");

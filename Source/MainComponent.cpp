@@ -28,13 +28,19 @@ MainContentComponent::MainContentComponent()
 	//juced->addToolboxItem(toolbox, "juced_TabPanel", "Tab panel", BinaryData::tabs_png, BinaryData::tabs_pngSize);
 	toolbox->setAlwaysOnTop(true);
 	juced->addAndMakeVisible(toolbox, 11);
+	juced->addComponentListener(this);
 
-	Viewport *propertyView = juced->getPropertyView();
+	constrainer = new ComponentBoundsConstrainer();
+	constrainer->setMinimumOnscreenAmounts(0,0,0,200);	//TODO: not working
+	resizableBorder = new ResizableEdgeComponent(juced, constrainer, ResizableEdgeComponent::rightEdge);
+	juced->addAndMakeVisible(resizableBorder);
+
+	propertyView = juced->getPropertyView();
 	addAndMakeVisible(propertyView);
-	propertyView->setBounds(100, 100, 200, 400);
-	propertyView->setOpaque(true);
+	propertyView->setBounds(100, 100, 250, 400);
+	//propertyView->setOpaque(true);
 	//int style = (ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable);
-	propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
+	//propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
 }
 
 MainContentComponent::~MainContentComponent()
@@ -49,6 +55,21 @@ void MainContentComponent::paint (Graphics& g)
 void MainContentComponent::resized()
 {
     Rectangle<int> r (getLocalBounds());
-	if (juced != nullptr)
-		juced->setBounds(0, 0, r.getWidth(), r.getHeight());
+	if (juced != nullptr) {
+		juced->setBounds(0, 0, r.getWidth() - propertyView->getWidth(), r.getHeight());
+		Rectangle<int> jr (juced->getLocalBounds());
+		resizableBorder->setBounds(jr.getWidth() - 5, 0, 5, jr.getHeight());
+		propertyView->setBounds(r.getWidth() - propertyView->getWidth(), 0, propertyView->getWidth(), r.getHeight());
+	}
+}
+
+void MainContentComponent::componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)
+{
+	if (isVisible() && &component == juced) {
+		if (wasResized) {
+			Rectangle<int> jr (juced->getLocalBounds());
+			resizableBorder->setBounds(jr.getWidth() - 5, 0, 5, jr.getHeight());
+			propertyView->setBounds(jr.getWidth(), 0, getWidth() - jr.getWidth(), jr.getHeight());
+		}
+	}
 }
