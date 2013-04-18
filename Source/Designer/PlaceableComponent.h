@@ -21,6 +21,7 @@
 #include "../Modules/juced_MainComponent.h"
 #include "../Modules/juced_Slider.h"
 #include "../Modules/juced_ImageButton.h"
+#include "../Modules/juced_ComboBox.h"
 
 class BigTree;
 

@@ -25,7 +25,7 @@ LookAndFeelCustom* LookAndFeelCustom::getInstance()
 //==============================================================================
 LookAndFeelCustom::LookAndFeelCustom()
 {
-    setColour (TextButton::buttonColourId,          Colour (0xffbbbbff));
+    setColour (TextButton::buttonColourId,          Colour (0xccaabbff)); //0xffbbbbff
     setColour (ListBox::outlineColourId,            findColour (ComboBox::outlineColourId));
     setColour (ScrollBar::thumbColourId,            Colour (0xffbbbbdd));
     setColour (ScrollBar::backgroundColourId,       Colours::transparentBlack);
