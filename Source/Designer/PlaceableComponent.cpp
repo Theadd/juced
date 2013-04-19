@@ -106,15 +106,22 @@ bool PlaceableComponent::perform ()
 	BigTree *objTree = new BigTree();
 	if (!_componentTree->isValid()) {
 		//current component's BigTree is invalid, create a new one
+		Constructor::log("PC101 - current component's BigTree is invalid, create a new one");
 		delete _componentTree;
+		Constructor::log("PC101 - deleted");
 		objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
+		Constructor::log("PC101 - created, valid: " + String(objTree->isValid()) + " @" + String((int)&_componentTree));
+		//DBG((static_cast<void *> (&_componentTree)));
 		*_componentTree = BigTree(*objTree);
+		Constructor::log("PC101 - copied");
 	} else {
+		Constructor::log("PC101 - else!! wtf");
 		//get current component's BigTree
 		*objTree = BigTree(*_componentTree);
 		//objTree->setDynamicObject(_dynamicObject);
 		jassert  (objTree->isValid());
 	}
+	Constructor::log("PC101 - done getting component's bigtree");
 	
 	//Add component's BigTree as a child of parent's BigTree
 	if (parentTree.isValid()) {

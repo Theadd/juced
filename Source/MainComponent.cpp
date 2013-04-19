@@ -41,6 +41,7 @@ MainContentComponent::MainContentComponent()
 	//propertyView->setOpaque(true);
 	//int style = (ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable);
 	//propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
+	resized();
 }
 
 MainContentComponent::~MainContentComponent()
