@@ -256,6 +256,7 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 					propertyChanged = false;
 				}
 			}
+                 
 			//[CUSTOM MODULES HERE]
 			if (!propertyChanged) {
 				//deal with common component properties
