@@ -787,55 +787,51 @@ Image juce_loadWithCoreImage (InputStream& input)
     MemoryBlock data;
     input.readIntoMemoryBlock (data, -1);
 
-   #if JUCE_IOS
+  #if JUCE_IOS
     JUCE_AUTORELEASEPOOL
-   #endif
+    if (UIImage* uiImage = [UIImage imageWithData: [NSData dataWithBytesNoCopy: data.getData()
+                                                                        length: data.getSize()
+                                                                  freeWhenDone: NO]])
     {
-      #if JUCE_IOS
-        if (UIImage* uiImage = [UIImage imageWithData: [NSData dataWithBytesNoCopy: data.getData()
-                                                                            length: data.getSize()
-                                                                      freeWhenDone: NO]])
+        CGImageRef loadedImage = uiImage.CGImage;
+
+  #else
+    CGDataProviderRef provider = CGDataProviderCreateWithData (0, data.getData(), data.getSize(), 0);
+    CGImageSourceRef imageSource = CGImageSourceCreateWithDataProvider (provider, 0);
+    CGDataProviderRelease (provider);
+
+    if (imageSource != 0)
+    {
+        CGImageRef loadedImage = CGImageSourceCreateImageAtIndex (imageSource, 0, 0);
+        CFRelease (imageSource);
+  #endif
+
+        if (loadedImage != 0)
         {
-            CGImageRef loadedImage = uiImage.CGImage;
+            CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo (loadedImage);
+            const bool hasAlphaChan = (alphaInfo != kCGImageAlphaNone
+                                         && alphaInfo != kCGImageAlphaNoneSkipLast
+                                         && alphaInfo != kCGImageAlphaNoneSkipFirst);
 
-      #else
-        CGDataProviderRef provider = CGDataProviderCreateWithData (0, data.getData(), data.getSize(), 0);
-        CGImageSourceRef imageSource = CGImageSourceCreateWithDataProvider (provider, 0);
-        CGDataProviderRelease (provider);
+            Image image (NativeImageType().create (Image::ARGB, // (CoreImage doesn't work with 24-bit images)
+                                                   (int) CGImageGetWidth (loadedImage),
+                                                   (int) CGImageGetHeight (loadedImage),
+                                                   hasAlphaChan));
 
-        if (imageSource != 0)
-        {
-            CGImageRef loadedImage = CGImageSourceCreateImageAtIndex (imageSource, 0, 0);
-            CFRelease (imageSource);
-      #endif
+            CoreGraphicsImage* const cgImage = dynamic_cast<CoreGraphicsImage*> (image.getPixelData());
+            jassert (cgImage != nullptr); // if USE_COREGRAPHICS_RENDERING is set, the CoreGraphicsImage class should have been used.
 
-            if (loadedImage != 0)
-            {
-                CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo (loadedImage);
-                const bool hasAlphaChan = (alphaInfo != kCGImageAlphaNone
-                                             && alphaInfo != kCGImageAlphaNoneSkipLast
-                                             && alphaInfo != kCGImageAlphaNoneSkipFirst);
+            CGContextDrawImage (cgImage->context, convertToCGRect (image.getBounds()), loadedImage);
+            CGContextFlush (cgImage->context);
 
-                Image image (NativeImageType().create (Image::ARGB, // (CoreImage doesn't work with 24-bit images)
-                                                       (int) CGImageGetWidth (loadedImage),
-                                                       (int) CGImageGetHeight (loadedImage),
-                                                       hasAlphaChan));
+           #if ! JUCE_IOS
+            CFRelease (loadedImage);
+           #endif
 
-                CoreGraphicsImage* const cgImage = dynamic_cast<CoreGraphicsImage*> (image.getPixelData());
-                jassert (cgImage != nullptr); // if USE_COREGRAPHICS_RENDERING is set, the CoreGraphicsImage class should have been used.
-
-                CGContextDrawImage (cgImage->context, convertToCGRect (image.getBounds()), loadedImage);
-                CGContextFlush (cgImage->context);
-
-               #if ! JUCE_IOS
-                CFRelease (loadedImage);
-               #endif
-
-                // Because it's impossible to create a truly 24-bit CG image, this flag allows a user
-                // to find out whether the file they just loaded the image from had an alpha channel or not.
-                image.getProperties()->set ("originalImageHadAlpha", hasAlphaChan);
-                return image;
-            }
+            // Because it's impossible to create a truly 24-bit CG image, this flag allows a user
+            // to find out whether the file they just loaded the image from had an alpha channel or not.
+            image.getProperties()->set ("originalImageHadAlpha", hasAlphaChan);
+            return image;
         }
     }
 

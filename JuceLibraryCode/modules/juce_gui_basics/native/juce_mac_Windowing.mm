@@ -163,36 +163,35 @@ bool DragAndDropContainer::performExternalDragDropOfFiles (const StringArray& fi
     }
 
     JUCE_AUTORELEASEPOOL
-    {
-        NSView* view = (NSView*) sourceComp->getWindowHandle();
 
-        if (view == nil)
-            return false;
+    NSView* view = (NSView*) sourceComp->getWindowHandle();
 
-        NSPasteboard* pboard = [NSPasteboard pasteboardWithName: NSDragPboard];
-        [pboard declareTypes: [NSArray arrayWithObject: NSFilenamesPboardType]
-                       owner: nil];
+    if (view == nil)
+        return false;
 
-        NSMutableArray* filesArray = [NSMutableArray arrayWithCapacity: 4];
-        for (int i = 0; i < files.size(); ++i)
-            [filesArray addObject: juceStringToNS (files[i])];
+    NSPasteboard* pboard = [NSPasteboard pasteboardWithName: NSDragPboard];
+    [pboard declareTypes: [NSArray arrayWithObject: NSFilenamesPboardType]
+                   owner: nil];
 
-        [pboard setPropertyList: filesArray
-                        forType: NSFilenamesPboardType];
+    NSMutableArray* filesArray = [NSMutableArray arrayWithCapacity: 4];
+    for (int i = 0; i < files.size(); ++i)
+        [filesArray addObject: juceStringToNS (files[i])];
 
-        NSPoint dragPosition = [view convertPoint: [[[view window] currentEvent] locationInWindow]
-                                         fromView: nil];
-        dragPosition.x -= 16;
-        dragPosition.y -= 16;
+    [pboard setPropertyList: filesArray
+                    forType: NSFilenamesPboardType];
 
-        [view dragImage: [[NSWorkspace sharedWorkspace] iconForFile: juceStringToNS (files[0])]
-                     at: dragPosition
-                 offset: NSMakeSize (0, 0)
-                  event: [[view window] currentEvent]
-             pasteboard: pboard
-                 source: view
-              slideBack: YES];
-    }
+    NSPoint dragPosition = [view convertPoint: [[[view window] currentEvent] locationInWindow]
+                                     fromView: nil];
+    dragPosition.x -= 16;
+    dragPosition.y -= 16;
+
+    [view dragImage: [[NSWorkspace sharedWorkspace] iconForFile: juceStringToNS (files[0])]
+                 at: dragPosition
+             offset: NSMakeSize (0, 0)
+              event: [[view window] currentEvent]
+         pasteboard: pboard
+             source: view
+          slideBack: YES];
 
     return true;
 }
@@ -212,10 +211,8 @@ bool Desktop::canUseSemiTransparentWindows() noexcept
 Point<int> MouseInputSource::getCurrentMousePosition()
 {
     JUCE_AUTORELEASEPOOL
-    {
-        const NSPoint p ([NSEvent mouseLocation]);
-        return Point<int> (roundToInt (p.x), roundToInt ([[[NSScreen screens] objectAtIndex: 0] frame].size.height - p.y));
-    }
+    const NSPoint p ([NSEvent mouseLocation]);
+    return Point<int> (roundToInt (p.x), roundToInt ([[[NSScreen screens] objectAtIndex: 0] frame].size.height - p.y));
 }
 
 void Desktop::setMousePosition (const Point<int>& newPosition)
@@ -352,30 +349,29 @@ static Rectangle<int> convertDisplayRect (NSRect r, CGFloat mainScreenBottom)
 void Desktop::Displays::findDisplays()
 {
     JUCE_AUTORELEASEPOOL
+
+    DisplaySettingsChangeCallback::getInstance();
+
+    NSArray* screens = [NSScreen screens];
+    const CGFloat mainScreenBottom = [[screens objectAtIndex: 0] frame].size.height;
+
+    for (unsigned int i = 0; i < [screens count]; ++i)
     {
-        DisplaySettingsChangeCallback::getInstance();
+        NSScreen* s = (NSScreen*) [screens objectAtIndex: i];
 
-        NSArray* screens = [NSScreen screens];
-        const CGFloat mainScreenBottom = [[screens objectAtIndex: 0] frame].size.height;
+        Display d;
+        d.userArea  = convertDisplayRect ([s visibleFrame], mainScreenBottom);
+        d.totalArea = convertDisplayRect ([s frame], mainScreenBottom);
+        d.isMain = (i == 0);
 
-        for (unsigned int i = 0; i < [screens count]; ++i)
-        {
-            NSScreen* s = (NSScreen*) [screens objectAtIndex: i];
+       #if defined (MAC_OS_X_VERSION_10_7) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
+        if ([s respondsToSelector: @selector (backingScaleFactor)])
+            d.scale = s.backingScaleFactor;
+        else
+       #endif
+            d.scale = 1.0;
 
-            Display d;
-            d.userArea  = convertDisplayRect ([s visibleFrame], mainScreenBottom);
-            d.totalArea = convertDisplayRect ([s frame], mainScreenBottom);
-            d.isMain = (i == 0);
-
-           #if defined (MAC_OS_X_VERSION_10_7) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
-            if ([s respondsToSelector: @selector (backingScaleFactor)])
-                d.scale = s.backingScaleFactor;
-            else
-           #endif
-                d.scale = 1.0;
-
-            displays.add (d);
-        }
+        displays.add (d);
     }
 }
 
@@ -401,23 +397,22 @@ bool juce_areThereAnyAlwaysOnTopWindows()
 Image juce_createIconForFile (const File& file)
 {
     JUCE_AUTORELEASEPOOL
-    {
-        NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile: juceStringToNS (file.getFullPathName())];
 
-        Image result (Image::ARGB, (int) [image size].width, (int) [image size].height, true);
+    NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile: juceStringToNS (file.getFullPathName())];
 
-        [NSGraphicsContext saveGraphicsState];
-        [NSGraphicsContext setCurrentContext: [NSGraphicsContext graphicsContextWithGraphicsPort: juce_getImageContext (result) flipped: false]];
+    Image result (Image::ARGB, (int) [image size].width, (int) [image size].height, true);
 
-        [image drawAtPoint: NSMakePoint (0, 0)
-                  fromRect: NSMakeRect (0, 0, [image size].width, [image size].height)
-                 operation: NSCompositeSourceOver fraction: 1.0f];
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext: [NSGraphicsContext graphicsContextWithGraphicsPort: juce_getImageContext (result) flipped: false]];
 
-        [[NSGraphicsContext currentContext] flushGraphics];
-        [NSGraphicsContext restoreGraphicsState];
+    [image drawAtPoint: NSMakePoint (0, 0)
+              fromRect: NSMakeRect (0, 0, [image size].width, [image size].height)
+             operation: NSCompositeSourceOver fraction: 1.0f];
 
-        return result;
-    }
+    [[NSGraphicsContext currentContext] flushGraphics];
+    [NSGraphicsContext restoreGraphicsState];
+
+    return result;
 }
 
 //==============================================================================

@@ -83,7 +83,6 @@ private:
         {
             if (numObjects.value > 0)
             {
-				printf("*** Leaked objects detected: %d instance(s) of class %s", numObjects.value, getLeakedObjectClassName());
                 DBG ("*** Leaked objects detected: " << numObjects.value << " instance(s) of class " << getLeakedObjectClassName());
 
                 /** If you hit this, then you've leaked one or more objects of the type specified by

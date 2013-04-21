@@ -252,8 +252,8 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 					StringArray itemList;
 					itemList.addLines(strList);
 					obj->addItemList(itemList, 1);
-				} else if (property == Attributes::text) {
-					obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
+			/	} else if (property == Attributes::text) {
+			//		obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
 				} else {						
 					propertyChanged = false;
 				}

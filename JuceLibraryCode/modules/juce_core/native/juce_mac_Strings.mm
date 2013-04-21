@@ -46,9 +46,7 @@ String String::convertToPrecomposedUnicode() const
 {
    #if JUCE_IOS
     JUCE_AUTORELEASEPOOL
-    {
-        return nsStringToJuce ([juceStringToNS (*this) precomposedStringWithCanonicalMapping]);
-    }
+    return nsStringToJuce ([juceStringToNS (*this) precomposedStringWithCanonicalMapping]);
    #else
     UnicodeMapping map;
 

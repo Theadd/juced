@@ -55,16 +55,6 @@ namespace
 }
 
 //==============================================================================
-template <typename ObjectType>
-struct NSObjectRetainer
-{
-    inline NSObjectRetainer (ObjectType* o) : object (o)  { [object retain]; }
-    inline ~NSObjectRetainer()                            { [object release]; }
-
-    ObjectType* object;
-};
-
-//==============================================================================
 template <typename SuperclassType>
 struct ObjCClass
 {

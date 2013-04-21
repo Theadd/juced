@@ -32,20 +32,18 @@
 bool File::copyInternal (const File& dest) const
 {
     JUCE_AUTORELEASEPOOL
-    {
-        NSFileManager* fm = [NSFileManager defaultManager];
+    NSFileManager* fm = [NSFileManager defaultManager];
 
-        return [fm fileExistsAtPath: juceStringToNS (fullPath)]
-               #if defined (MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
-                && [fm copyItemAtPath: juceStringToNS (fullPath)
-                               toPath: juceStringToNS (dest.getFullPathName())
-                                error: nil];
-               #else
-                && [fm copyPath: juceStringToNS (fullPath)
-                         toPath: juceStringToNS (dest.getFullPathName())
-                        handler: nil];
-               #endif
-    }
+    return [fm fileExistsAtPath: juceStringToNS (fullPath)]
+           #if defined (MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
+            && [fm copyItemAtPath: juceStringToNS (fullPath)
+                           toPath: juceStringToNS (dest.getFullPathName())
+                            error: nil];
+           #else
+            && [fm copyPath: juceStringToNS (fullPath)
+                     toPath: juceStringToNS (dest.getFullPathName())
+                    handler: nil];
+           #endif
 }
 
 void File::findFileSystemRoots (Array<File>& destArray)
@@ -77,14 +75,12 @@ namespace FileHelpers
     {
        #if defined (MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6
         JUCE_AUTORELEASEPOOL
-        {
-            NSNumber* hidden = nil;
-            NSError* err = nil;
+        NSNumber* hidden = nil;
+        NSError* err = nil;
 
-            return [[NSURL fileURLWithPath: juceStringToNS (path)]
-                        getResourceValue: &hidden forKey: NSURLIsHiddenKey error: &err]
-                    && [hidden boolValue];
-        }
+        return [[NSURL fileURLWithPath: juceStringToNS (path)]
+                    getResourceValue: &hidden forKey: NSURLIsHiddenKey error: &err]
+                && [hidden boolValue];
        #elif JUCE_IOS
         return File (path).getFileName().startsWithChar ('.');
        #else
@@ -147,19 +143,17 @@ bool File::isOnRemovableDrive() const
     return false; // xxx is this possible?
    #else
     JUCE_AUTORELEASEPOOL
-    {
-        BOOL removable = false;
+    BOOL removable = false;
 
-        [[NSWorkspace sharedWorkspace]
-               getFileSystemInfoForPath: juceStringToNS (getFullPathName())
-                            isRemovable: &removable
-                             isWritable: nil
-                          isUnmountable: nil
-                            description: nil
-                                   type: nil];
+    [[NSWorkspace sharedWorkspace]
+           getFileSystemInfoForPath: juceStringToNS (getFullPathName())
+                        isRemovable: &removable
+                         isWritable: nil
+                      isUnmountable: nil
+                        description: nil
+                               type: nil];
 
-        return removable;
-    }
+    return removable;
    #endif
 }
 
@@ -175,83 +169,81 @@ int juce_argc = 0;
 File File::getSpecialLocation (const SpecialLocationType type)
 {
     JUCE_AUTORELEASEPOOL
+    String resultPath;
+
+    switch (type)
     {
-        String resultPath;
+        case userHomeDirectory:                 resultPath = nsStringToJuce (NSHomeDirectory()); break;
 
-        switch (type)
+      #if JUCE_IOS
+        case userDocumentsDirectory:            resultPath = FileHelpers::getIOSSystemLocation (NSDocumentDirectory); break;
+        case userDesktopDirectory:              resultPath = FileHelpers::getIOSSystemLocation (NSDesktopDirectory); break;
+
+        case tempDirectory:
         {
-            case userHomeDirectory:                 resultPath = nsStringToJuce (NSHomeDirectory()); break;
-
-          #if JUCE_IOS
-            case userDocumentsDirectory:            resultPath = FileHelpers::getIOSSystemLocation (NSDocumentDirectory); break;
-            case userDesktopDirectory:              resultPath = FileHelpers::getIOSSystemLocation (NSDesktopDirectory); break;
-
-            case tempDirectory:
-            {
-                File tmp (FileHelpers::getIOSSystemLocation (NSCachesDirectory));
-                tmp = tmp.getChildFile (juce_getExecutableFile().getFileNameWithoutExtension());
-                tmp.createDirectory();
-                return tmp.getFullPathName();
-            }
-
-          #else
-            case userDocumentsDirectory:            resultPath = "~/Documents"; break;
-            case userDesktopDirectory:              resultPath = "~/Desktop"; break;
-
-            case tempDirectory:
-            {
-                File tmp ("~/Library/Caches/" + juce_getExecutableFile().getFileNameWithoutExtension());
-                tmp.createDirectory();
-                return tmp.getFullPathName();
-            }
-          #endif
-            case userMusicDirectory:                resultPath = "~/Music"; break;
-            case userMoviesDirectory:               resultPath = "~/Movies"; break;
-            case userPicturesDirectory:             resultPath = "~/Pictures"; break;
-            case userApplicationDataDirectory:      resultPath = "~/Library"; break;
-            case commonApplicationDataDirectory:    resultPath = "/Library"; break;
-            case globalApplicationsDirectory:       resultPath = "/Applications"; break;
-
-            case invokedExecutableFile:
-                if (juce_argv != nullptr && juce_argc > 0)
-                    return File (CharPointer_UTF8 (juce_argv[0]));
-                // deliberate fall-through...
-
-            case currentExecutableFile:
-                return juce_getExecutableFile();
-
-            case currentApplicationFile:
-            {
-                const File exe (juce_getExecutableFile());
-                const File parent (exe.getParentDirectory());
-
-              #if JUCE_IOS
-                return parent;
-              #else
-                return parent.getFullPathName().endsWithIgnoreCase ("Contents/MacOS")
-                        ? parent.getParentDirectory().getParentDirectory()
-                        : exe;
-              #endif
-            }
-
-            case hostApplicationPath:
-            {
-                unsigned int size = 8192;
-                HeapBlock<char> buffer;
-                buffer.calloc (size + 8);
-
-                _NSGetExecutablePath (buffer.getData(), &size);
-                return String::fromUTF8 (buffer, (int) size);
-            }
-
-            default:
-                jassertfalse; // unknown type?
-                break;
+            File tmp (FileHelpers::getIOSSystemLocation (NSCachesDirectory));
+            tmp = tmp.getChildFile (juce_getExecutableFile().getFileNameWithoutExtension());
+            tmp.createDirectory();
+            return tmp.getFullPathName();
         }
 
-        if (resultPath.isNotEmpty())
-            return File (resultPath.convertToPrecomposedUnicode());
+      #else
+        case userDocumentsDirectory:            resultPath = "~/Documents"; break;
+        case userDesktopDirectory:              resultPath = "~/Desktop"; break;
+
+        case tempDirectory:
+        {
+            File tmp ("~/Library/Caches/" + juce_getExecutableFile().getFileNameWithoutExtension());
+            tmp.createDirectory();
+            return tmp.getFullPathName();
+        }
+      #endif
+        case userMusicDirectory:                resultPath = "~/Music"; break;
+        case userMoviesDirectory:               resultPath = "~/Movies"; break;
+        case userPicturesDirectory:             resultPath = "~/Pictures"; break;
+        case userApplicationDataDirectory:      resultPath = "~/Library"; break;
+        case commonApplicationDataDirectory:    resultPath = "/Library"; break;
+        case globalApplicationsDirectory:       resultPath = "/Applications"; break;
+
+        case invokedExecutableFile:
+            if (juce_argv != nullptr && juce_argc > 0)
+                return File (CharPointer_UTF8 (juce_argv[0]));
+            // deliberate fall-through...
+
+        case currentExecutableFile:
+            return juce_getExecutableFile();
+
+        case currentApplicationFile:
+        {
+            const File exe (juce_getExecutableFile());
+            const File parent (exe.getParentDirectory());
+
+          #if JUCE_IOS
+            return parent;
+          #else
+            return parent.getFullPathName().endsWithIgnoreCase ("Contents/MacOS")
+                    ? parent.getParentDirectory().getParentDirectory()
+                    : exe;
+          #endif
+        }
+
+        case hostApplicationPath:
+        {
+            unsigned int size = 8192;
+            HeapBlock<char> buffer;
+            buffer.calloc (size + 8);
+
+            _NSGetExecutablePath (buffer.getData(), &size);
+            return String::fromUTF8 (buffer, (int) size);
+        }
+
+        default:
+            jassertfalse; // unknown type?
+            break;
     }
+
+    if (resultPath.isNotEmpty())
+        return File (resultPath.convertToPrecomposedUnicode());
 
     return File::nonexistent;
 }
@@ -260,14 +252,24 @@ File File::getSpecialLocation (const SpecialLocationType type)
 String File::getVersion() const
 {
     JUCE_AUTORELEASEPOOL
+    String result;
+
+    NSBundle* bundle = [NSBundle bundleWithPath: juceStringToNS (getFullPathName())];
+
+    if (bundle != nil)
     {
-        if (NSBundle* bundle = [NSBundle bundleWithPath: juceStringToNS (getFullPathName())])
-            if (NSDictionary* info = [bundle infoDictionary])
-                if (NSString* name = [info valueForKey: nsStringLiteral ("CFBundleShortVersionString")])
-                    return nsStringToJuce (name);
+        NSDictionary* info = [bundle infoDictionary];
+
+        if (info != nil)
+        {
+            NSString* name = [info valueForKey: nsStringLiteral ("CFBundleShortVersionString")];
+
+            if (name != nil)
+                result = nsStringToJuce (name);
+        }
     }
 
-    return String::empty;
+    return result;
 }
 
 //==============================================================================
@@ -296,16 +298,15 @@ bool File::moveToTrash() const
     return deleteFile(); //xxx is there a trashcan on the iOS?
    #else
     JUCE_AUTORELEASEPOOL
-    {
-        NSString* p = juceStringToNS (getFullPathName());
 
-        return [[NSWorkspace sharedWorkspace]
-                    performFileOperation: NSWorkspaceRecycleOperation
-                                  source: [p stringByDeletingLastPathComponent]
-                             destination: nsEmptyString()
-                                   files: [NSArray arrayWithObject: [p lastPathComponent]]
-                                     tag: nil ];
-    }
+    NSString* p = juceStringToNS (getFullPathName());
+
+    return [[NSWorkspace sharedWorkspace]
+                performFileOperation: NSWorkspaceRecycleOperation
+                              source: [p stringByDeletingLastPathComponent]
+                         destination: nsEmptyString()
+                               files: [NSArray arrayWithObject: [p lastPathComponent]]
+                                 tag: nil ];
    #endif
 }
 
@@ -319,9 +320,8 @@ public:
           enumerator (nil)
     {
         JUCE_AUTORELEASEPOOL
-        {
-            enumerator = [[[NSFileManager defaultManager] enumeratorAtPath: juceStringToNS (directory.getFullPathName())] retain];
-        }
+
+        enumerator = [[[NSFileManager defaultManager] enumeratorAtPath: juceStringToNS (directory.getFullPathName())] retain];
     }
 
     ~Pimpl()
@@ -334,32 +334,30 @@ public:
                Time* const modTime, Time* const creationTime, bool* const isReadOnly)
     {
         JUCE_AUTORELEASEPOOL
+        const char* wildcardUTF8 = nullptr;
+
+        for (;;)
         {
-            const char* wildcardUTF8 = nullptr;
+            NSString* file;
+            if (enumerator == nil || (file = [enumerator nextObject]) == nil)
+                return false;
 
-            for (;;)
-            {
-                NSString* file;
-                if (enumerator == nil || (file = [enumerator nextObject]) == nil)
-                    return false;
+            [enumerator skipDescendents];
+            filenameFound = nsStringToJuce (file);
 
-                [enumerator skipDescendents];
-                filenameFound = nsStringToJuce (file);
+            if (wildcardUTF8 == nullptr)
+                wildcardUTF8 = wildCard.toUTF8();
 
-                if (wildcardUTF8 == nullptr)
-                    wildcardUTF8 = wildCard.toUTF8();
+            if (fnmatch (wildcardUTF8, filenameFound.toUTF8(), FNM_CASEFOLD) != 0)
+                continue;
 
-                if (fnmatch (wildcardUTF8, filenameFound.toUTF8(), FNM_CASEFOLD) != 0)
-                    continue;
+            const String fullPath (parentDir + filenameFound);
+            updateStatInfoForFile (fullPath, isDir, fileSize, modTime, creationTime, isReadOnly);
 
-                const String fullPath (parentDir + filenameFound);
-                updateStatInfoForFile (fullPath, isDir, fileSize, modTime, creationTime, isReadOnly);
+            if (isHidden != nullptr)
+                *isHidden = FileHelpers::isHiddenFile (fullPath);
 
-                if (isHidden != nullptr)
-                    *isHidden = FileHelpers::isHiddenFile (fullPath);
-
-                return true;
-            }
+            return true;
         }
     }
 
@@ -394,38 +392,37 @@ bool Process::openDocument (const String& fileName, const String& parameters)
     return [[UIApplication sharedApplication] openURL: [NSURL URLWithString: juceStringToNS (fileName)]];
   #else
     JUCE_AUTORELEASEPOOL
+
+    if (parameters.isEmpty())
     {
-        if (parameters.isEmpty())
-        {
-            return [[NSWorkspace sharedWorkspace] openFile: juceStringToNS (fileName)]
-                || [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: juceStringToNS (fileName)]];
-        }
-
-        bool ok = false;
-        const File file (fileName);
-
-        if (file.isBundle())
-        {
-            NSMutableArray* urls = [NSMutableArray array];
-
-            StringArray docs;
-            docs.addTokens (parameters, true);
-            for (int i = 0; i < docs.size(); ++i)
-                [urls addObject: juceStringToNS (docs[i])];
-
-            ok = [[NSWorkspace sharedWorkspace] openURLs: urls
-                                 withAppBundleIdentifier: [[NSBundle bundleWithPath: juceStringToNS (fileName)] bundleIdentifier]
-                                                 options: 0
-                          additionalEventParamDescriptor: nil
-                                       launchIdentifiers: nil];
-        }
-        else if (file.exists())
-        {
-            ok = FileHelpers::launchExecutable ("\"" + fileName + "\" " + parameters);
-        }
-
-        return ok;
+        return [[NSWorkspace sharedWorkspace] openFile: juceStringToNS (fileName)]
+            || [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: juceStringToNS (fileName)]];
     }
+
+    bool ok = false;
+    const File file (fileName);
+
+    if (file.isBundle())
+    {
+        NSMutableArray* urls = [NSMutableArray array];
+
+        StringArray docs;
+        docs.addTokens (parameters, true);
+        for (int i = 0; i < docs.size(); ++i)
+            [urls addObject: juceStringToNS (docs[i])];
+
+        ok = [[NSWorkspace sharedWorkspace] openURLs: urls
+                             withAppBundleIdentifier: [[NSBundle bundleWithPath: juceStringToNS (fileName)] bundleIdentifier]
+                                             options: 0
+                      additionalEventParamDescriptor: nil
+                                   launchIdentifiers: nil];
+    }
+    else if (file.exists())
+    {
+        ok = FileHelpers::launchExecutable ("\"" + fileName + "\" " + parameters);
+    }
+
+    return ok;
   #endif
 }
 
@@ -443,16 +440,15 @@ void File::revealToUser() const
 OSType File::getMacOSType() const
 {
     JUCE_AUTORELEASEPOOL
-    {
-       #if JUCE_IOS || (defined (MAC_OS_X_VERSION_10_5) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5)
-        NSDictionary* fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath: juceStringToNS (getFullPathName()) error: nil];
-       #else
-        // (the cast here avoids a deprecation warning)
-        NSDictionary* fileDict = [((id) [NSFileManager defaultManager]) fileAttributesAtPath: juceStringToNS (getFullPathName()) traverseLink: NO];
-       #endif
 
-        return [fileDict fileHFSTypeCode];
-    }
+   #if JUCE_IOS || (defined (MAC_OS_X_VERSION_10_5) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5)
+    NSDictionary* fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath: juceStringToNS (getFullPathName()) error: nil];
+   #else
+    // (the cast here avoids a deprecation warning)
+    NSDictionary* fileDict = [((id) [NSFileManager defaultManager]) fileAttributesAtPath: juceStringToNS (getFullPathName()) traverseLink: NO];
+   #endif
+
+    return [fileDict fileHFSTypeCode];
 }
 
 bool File::isBundle() const
@@ -461,9 +457,7 @@ bool File::isBundle() const
     return false; // xxx can't find a sensible way to do this without trying to open the bundle..
    #else
     JUCE_AUTORELEASEPOOL
-    {
-        return [[NSWorkspace sharedWorkspace] isFilePackageAtPath: juceStringToNS (getFullPathName())];
-    }
+    return [[NSWorkspace sharedWorkspace] isFilePackageAtPath: juceStringToNS (getFullPathName())];
    #endif
 }
 

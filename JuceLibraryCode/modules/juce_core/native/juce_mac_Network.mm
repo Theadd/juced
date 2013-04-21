@@ -61,40 +61,39 @@ bool Process::openEmailWithAttachments (const String& targetEmailAddress,
     return false;
   #else
     JUCE_AUTORELEASEPOOL
+
+    String script;
+    script << "tell application \"Mail\"\r\n"
+              "set newMessage to make new outgoing message with properties {subject:\""
+           << emailSubject.replace ("\"", "\\\"")
+           << "\", content:\""
+           << bodyText.replace ("\"", "\\\"")
+           << "\" & return & return}\r\n"
+              "tell newMessage\r\n"
+              "set visible to true\r\n"
+              "set sender to \"sdfsdfsdfewf\"\r\n"
+              "make new to recipient at end of to recipients with properties {address:\""
+           << targetEmailAddress
+           << "\"}\r\n";
+
+    for (int i = 0; i < filesToAttach.size(); ++i)
     {
-        String script;
-        script << "tell application \"Mail\"\r\n"
-                  "set newMessage to make new outgoing message with properties {subject:\""
-               << emailSubject.replace ("\"", "\\\"")
-               << "\", content:\""
-               << bodyText.replace ("\"", "\\\"")
-               << "\" & return & return}\r\n"
-                  "tell newMessage\r\n"
-                  "set visible to true\r\n"
-                  "set sender to \"sdfsdfsdfewf\"\r\n"
-                  "make new to recipient at end of to recipients with properties {address:\""
-               << targetEmailAddress
-               << "\"}\r\n";
-
-        for (int i = 0; i < filesToAttach.size(); ++i)
-        {
-            script << "tell content\r\n"
-                      "make new attachment with properties {file name:\""
-                   << filesToAttach[i].replace ("\"", "\\\"")
-                   << "\"} at after the last paragraph\r\n"
-                      "end tell\r\n";
-        }
-
-        script << "end tell\r\n"
+        script << "tell content\r\n"
+                  "make new attachment with properties {file name:\""
+               << filesToAttach[i].replace ("\"", "\\\"")
+               << "\"} at after the last paragraph\r\n"
                   "end tell\r\n";
-
-        NSAppleScript* s = [[NSAppleScript alloc] initWithSource: juceStringToNS (script)];
-        NSDictionary* error = nil;
-        const bool ok = [s executeAndReturnError: &error] != nil;
-        [s release];
-
-        return ok;
     }
+
+    script << "end tell\r\n"
+              "end tell\r\n";
+
+    NSAppleScript* s = [[NSAppleScript alloc] initWithSource: juceStringToNS (script)];
+    NSDictionary* error = nil;
+    const bool ok = [s executeAndReturnError: &error] != nil;
+    [s release];
+
+    return ok;
   #endif
 }
 
@@ -230,9 +229,7 @@ public:
         while (! threadShouldExit())
         {
             JUCE_AUTORELEASEPOOL
-            {
-                [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.01]];
-            }
+            [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.01]];
         }
     }
 
@@ -308,18 +305,16 @@ public:
         finished (false), isPost (isPost_), timeOutMs (timeOutMs_)
     {
         JUCE_AUTORELEASEPOOL
+        createConnection (progressCallback, progressCallbackContext);
+
+        if (responseHeaders != nullptr && connection != nullptr && connection->headers != nil)
         {
-            createConnection (progressCallback, progressCallbackContext);
+            NSEnumerator* enumerator = [connection->headers keyEnumerator];
+            NSString* key;
 
-            if (responseHeaders != nullptr && connection != nullptr && connection->headers != nil)
-            {
-                NSEnumerator* enumerator = [connection->headers keyEnumerator];
-                NSString* key;
-
-                while ((key = [enumerator nextObject]) != nil)
-                    responseHeaders->set (nsStringToJuce (key),
-                                          nsStringToJuce ((NSString*) [connection->headers objectForKey: key]));
-            }
+            while ((key = [enumerator nextObject]) != nil)
+                responseHeaders->set (nsStringToJuce (key),
+                                      nsStringToJuce ((NSString*) [connection->headers objectForKey: key]));
         }
     }
 
@@ -337,15 +332,14 @@ public:
             return 0;
 
         JUCE_AUTORELEASEPOOL
-        {
-            const int bytesRead = connection->read (static_cast <char*> (buffer), bytesToRead);
-            position += bytesRead;
 
-            if (bytesRead == 0)
-                finished = true;
+        const int bytesRead = connection->read (static_cast <char*> (buffer), bytesToRead);
+        position += bytesRead;
 
-            return bytesRead;
-        }
+        if (bytesRead == 0)
+            finished = true;
+
+        return bytesRead;
     }
 
     bool setPosition (int64 wantedPos)
