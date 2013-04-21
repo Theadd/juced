@@ -234,7 +234,10 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 			} else if (this->getProperty(Attributes::objectType) == Modules::Component) {
 				//deal with Component specific properties (obviously is empty)
 				propertyChanged = false;
+			} else if (this->getProperty(Attributes::objectType) == Modules::ComboBox) {
+                 propertyChanged = false;
 			}
+                 
 			//[CUSTOM MODULES HERE]
 			if (!propertyChanged) {
 				//deal with common component properties
