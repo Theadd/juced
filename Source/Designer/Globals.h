@@ -89,6 +89,11 @@ namespace Attributes
 	DECLARE_ID (normalImage);
 	DECLARE_ID (overImage);
 	DECLARE_ID (downImage);
+	//combobox
+	DECLARE_ID (itemList);
+	//label
+	DECLARE_ID (editable);
+	DECLARE_ID (showEditor);
 
 	DECLARE_ID (allowTransform);
 	DECLARE_ID (declareExtended);

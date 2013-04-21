@@ -57,6 +57,39 @@ String CodeGenerator::replaceKeywords(String code)
 	return code;
 }
 
+void CodeGenerator::setSpecificProperty(Identifier prop, String appliedTo)
+{
+	Attribute *attrib = Constructor::getInstance()->getAttributeOf(prop);
+	String value = replaceKeywords("%" + attrib->name.toString() + "%");
+	/*	prop = Property identifier
+		value = Property value as string
+		attrib = pointer to Attribute struct containing attribute.xml fields for specified property
+	*/
+	if (prop == Attributes::itemList) {
+		StringArray itemList;
+		itemList.addLines(value);
+		for (int i = 0; i < itemList.size(); ++i) {
+			_definition += appliedTo + "addItem(\"" + itemList[i] + "\", " + String(i + 1) + ");\n";
+		}
+	} else if (prop == Attributes::lookAndFeel) {
+		if (value != "Inherit") {
+			_definition += appliedTo + "setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
+		}
+	} else if (prop == Attributes::castMouseEvents) {
+		bool castMouseEvents = _tree.getProperty(Attributes::castMouseEvents);
+		if (castMouseEvents) {
+			_definition += appliedTo + "addMouseListener(this, false);\n";
+		}
+	} else if (prop == Attributes::showEditor) {
+		bool showEditor = _tree.getProperty(Attributes::showEditor);
+		if (showEditor) {
+			_definition += appliedTo + "showEditor();\n";
+		}
+	}
+	
+	
+}
+
 void CodeGenerator::refresh()
 {
 	Constructor::log("CG002 - CodeGenerator refresh call");
@@ -64,60 +97,47 @@ void CodeGenerator::refresh()
 	_code = "";
 
 	getKeywords();
-
 	Constructor *constructor = Constructor::getInstance();
 
 	bool declareExtended = false;
 	if (_tree.hasProperty(Attributes::declareExtended)) {
 		declareExtended = _tree.getProperty(Attributes::declareExtended);
-		if (declareExtended) {
-			_code = getTemplate();
-			Constructor::log("CG102 - Template retrieved successfully");
-			_code = replaceKeywords(_code);
-			Constructor::log("CG102 - Keywords replaced successfully");
-			//add attributes if its syntax is specified
-			for (int i = _tree.getNumProperties();	--i >= 0;) {
-				Attribute *attrib = constructor->getAttributeOf(_tree.getPropertyName(i));
-				if (attrib != nullptr && !attrib->syntax.isEmpty()) {
-					_definition += replaceKeywords(attrib->syntax) + ";\n";
-				}
+	}
+	String appliedTo = "";
+	if (declareExtended) {
+		//get respective template and replace its keywords
+		_code = getTemplate();
+		_code = replaceKeywords(_code);
+	} else {
+		_declaration = _tree.getProperty(Attributes::className).toString() + " " + _tree.getProperty(Attributes::varName).toString() + ";\n";
+		appliedTo = _tree.getProperty(Attributes::varName).toString() + ".";
+	}
+	//get definition code adding attributes if its syntax is specified
+	for (int i = _tree.getNumProperties();	--i >= 0;) {
+		Attribute *attrib = constructor->getAttributeOf(_tree.getPropertyName(i));
+		if (attrib != nullptr && !attrib->syntax.isEmpty()) {
+			if  (attrib->syntax == "#") {
+				setSpecificProperty(attrib->name, appliedTo);
+			} else {
+				_definition += appliedTo + replaceKeywords(attrib->syntax) + ";\n";
 			}
-			//set specific properties
-			if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
-				_definition += "setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
-			bool castMouseEvents = _tree.getProperty(Attributes::castMouseEvents);
-			if (castMouseEvents)
-				_definition += "addMouseListener(this, false);\n";
 		}
 	}
+
 	if (!declareExtended) {
-		//get declaration code
-		_declaration = _tree.getProperty(Attributes::className).toString() + " " + _tree.getProperty(Attributes::varName).toString() + ";\n";
-		//get definition code adding attributes if its syntax is specified
-		for (int i = _tree.getNumProperties();	--i >= 0;) {
-			Attribute *attrib = constructor->getAttributeOf(_tree.getPropertyName(i));
-			if (attrib != nullptr && !attrib->syntax.isEmpty()) {
-				_definition += _tree.getProperty(Attributes::varName).toString() + "." + replaceKeywords(attrib->syntax) + ";\n";
-			}
-		}
-		//set specific properties
-		if (_tree.getProperty(Attributes::lookAndFeel).toString() != "Inherit")
-			_definition += _tree.getProperty(Attributes::varName).toString() + ".setLookAndFeel(" + _tree.getProperty(Attributes::lookAndFeel).toString() + "::getInstance());\n";
-		bool castMouseEvents = _tree.getProperty(Attributes::castMouseEvents);
-		if (castMouseEvents)
-			_definition +=  _tree.getProperty(Attributes::varName).toString() + ".addMouseListener(this, false);\n";
 		//if parent component is a window, this component must be owned by the window
 		if (_parentCodeGenerator->isContentOwner()) {
 			//if parent window is not an extended DocumentWindow class, set to modify its corresponding object
-			if (!_parentCodeGenerator->isDeclaredAsExtended())
+			if (!_parentCodeGenerator->isDeclaredAsExtended()) {
 				_definition += _parentCodeGenerator->getVarName() + ".";
+			}
 			//set this component as owned by the parent window
 			_definition += "setContentOwned (&" + _tree.getProperty(Attributes::varName).toString() + ", true);\n";
 		} else {
 			//add and make visible this component into the parent component
-			if (!_parentCodeGenerator->isDeclaredAsExtended())
+			if (!_parentCodeGenerator->isDeclaredAsExtended()) {
 				_definition += _parentCodeGenerator->getVarName() + ".";
-
+			}
 			_definition += "addAndMakeVisible(&" + _tree.getProperty(Attributes::varName).toString() + ");\n";
 		}
 	}

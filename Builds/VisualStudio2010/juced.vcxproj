@@ -77,7 +77,6 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -119,7 +118,6 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>

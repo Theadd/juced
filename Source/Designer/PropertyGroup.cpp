@@ -59,6 +59,8 @@ public:
 							comp = new EnumerationPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, Constructor::getInstance()->getEnumerationsOf(attrib->name));
 						} else if (attrib->type == AttributeType::boolean) {
 							comp = new BooleanPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, "Enable");
+						} else if (attrib->type == AttributeType::textarea) {
+							comp = new TextPropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display, 1048576, true);
 						} else if (attrib->type == AttributeType::file) {
 							comp = new FilePropertyComponent(tree->getPropertyAsValue(t, Constructor::getInstance()->getUndoManager()), attrib->display);
 						} else if (attrib->type == AttributeType::choice) {

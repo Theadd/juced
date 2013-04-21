@@ -23,6 +23,7 @@ juced_ComboBox::juced_ComboBox()  : ComboBox ()
 	setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
+	setProperty(Attributes::itemList, "");
 	setProperty(Attributes::name, getName());
 	++_numObjects;
 	setProperty(Attributes::varName, getName() + String(_numObjects));

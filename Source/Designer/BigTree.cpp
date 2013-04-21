@@ -107,6 +107,16 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else if (property == Attributes::textColour) {
 					Colour newColour = Colour::fromString(treeWhosePropertyHasChanged.getProperty(property).toString());
 					cObject->setColour(Label::textColourId, newColour);
+				} else if (property == Attributes::editable) {
+					bool editable = getProperty(property);
+					cObject->setEditable(editable);
+				} else if (property == Attributes::showEditor) {
+					bool showEditor = getProperty(property);
+					if (showEditor) {
+						cObject->showEditor();
+					} else {
+						cObject->hideEditor(false);
+					}
 				} else {
 					propertyChanged = false;
 				}
@@ -234,6 +244,17 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 			} else if (this->getProperty(Attributes::objectType) == Modules::Component) {
 				//deal with Component specific properties (obviously is empty)
 				propertyChanged = false;
+			} else if (this->getProperty(Attributes::objectType) == Modules::ComboBox) {
+				//deal with ComboBox specific properties
+				juced_ComboBox *obj = dynamic_cast<juced_ComboBox *> (this->getProperty(Attributes::object).getDynamicObject());
+				if (property == Attributes::itemList) {
+					String strList = treeWhosePropertyHasChanged.getProperty(property);
+					StringArray itemList;
+					itemList.addLines(strList);
+					obj->addItemList(itemList, 1);
+				} else {
+					propertyChanged = false;
+				}
 			}
 			//[CUSTOM MODULES HERE]
 			if (!propertyChanged) {

@@ -21,6 +21,8 @@ juced_Label::juced_Label()  : Label ()
 	setProperty(Attributes::font, getFont().toString());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
+	setProperty(Attributes::showEditor, false);
+	setProperty(Attributes::editable, false);
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());

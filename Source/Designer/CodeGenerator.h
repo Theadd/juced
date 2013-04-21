@@ -59,6 +59,8 @@ private:
 
 	String replaceKeywords(String code);
 
+	void setSpecificProperty(Identifier prop, String appliedTo = String::empty);
+
 	OwnedArray<CodeGenerator> _childGenerators;
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CodeGenerator)
 };
