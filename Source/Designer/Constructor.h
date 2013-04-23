@@ -17,6 +17,7 @@
 #include "PlaceableComponent.h"
 #include "Importer.h"
 
+
 #include "../Modules/juced_Label.h"
 #include "../Modules/juced_TextButton.h"
 #include "../Modules/juced_Window.h"
@@ -47,6 +48,13 @@ class PlaceableComponent;
 */
 class Constructor {
 public:
+
+	String projectName;
+	String projectPath;
+	int projectType;
+	int resourceType;
+	String selectedTemplate;
+	String rootVarName;
 
 	/** This function is called to create an instance of the class.
 
@@ -120,6 +128,18 @@ public:
 	void importFromXml(File xmlFile);
 
 	void resetCurrentState();
+
+	bool createNewProject();
+
+	bool openProject();
+
+	void quickSave();
+
+	void updateRootVarName ();
+
+	ApplicationCommandManager* getCommandManager();
+
+	ApplicationCommandManager commandManager;
 
 private:
 	ScopedPointer<UndoManager> undoManager;

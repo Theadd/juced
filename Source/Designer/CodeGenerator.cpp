@@ -132,7 +132,7 @@ void CodeGenerator::refresh()
 				_definition += _parentCodeGenerator->getVarName() + ".";
 			}
 			//set this component as owned by the parent window
-			_definition += "setContentOwned (&" + _tree.getProperty(Attributes::varName).toString() + ", true);\n";
+			_definition += "setContentOwned (&" + _tree.getProperty(Attributes::varName).toString() + ", false);\n";
 		} else {
 			//add and make visible this component into the parent component
 			if (!_parentCodeGenerator->isDeclaredAsExtended()) {

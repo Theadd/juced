@@ -19,7 +19,9 @@
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainContentComponent   : public Component, ComponentListener
+class MainContentComponent   :	public Component, ComponentListener,
+								public MenuBarModel,
+								public ApplicationCommandTarget
 {
 public:
     //==============================================================================
@@ -30,6 +32,14 @@ public:
     void resized();
 	void componentMovedOrResized (Component &component, bool wasMoved, bool wasResized);
 
+	StringArray getMenuBarNames();
+	PopupMenu getMenuForIndex (int menuIndex, const String& /*menuName*/);
+	void menuItemSelected (int menuItemID, int /*topLevelMenuIndex*/);
+	ApplicationCommandTarget* getNextCommandTarget();
+	void getAllCommands (Array <CommandID>& commands);
+	void getCommandInfo (CommandID commandID, ApplicationCommandInfo& result);
+	bool perform (const InvocationInfo& info);
+
 private:
     //==============================================================================
 
@@ -37,6 +47,15 @@ private:
 	Viewport *propertyView;
 	ScopedPointer<ResizableEdgeComponent> resizableBorder;
 	ScopedPointer<ComponentBoundsConstrainer> constrainer;
+
+	enum CommandIDs
+    {
+        newProject              = 0x2000,
+		quickSave				= 0x2001,
+		quickLoad				= 0x2002,
+		openProject				= 0x2003
+    };
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
 

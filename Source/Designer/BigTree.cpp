@@ -45,6 +45,12 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 
 		jassert (this->hasProperty(Attributes::objectType));	//Object requires: setProperty(Ids::objectType, "object named type")
 
+		//If editing design root component's varName, update saved design file using new varName
+		if (property == Attributes::varName) {
+			if (getProperty(Attributes::ID) == Constructor::getInstance()->getBigTreeRoot()->getProperty(Attributes::ID)) {
+				Constructor::getInstance()->updateRootVarName();
+			}
+		}
 		/*avoid crashing if size < 0
 		if (property == Attributes::height) {
 			int tempHeight = getProperty(Attributes::height);
@@ -246,15 +252,15 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				propertyChanged = false;
 			} else if (this->getProperty(Attributes::objectType) == Modules::ComboBox) {
 				//deal with ComboBox specific properties
-				juced_ComboBox *obj = dynamic_cast<juced_ComboBox *> (this->getProperty(Attributes::object).getDynamicObject());
+				juced_ComboBox *cObject = dynamic_cast<juced_ComboBox *> (this->getProperty(Attributes::object).getDynamicObject());
 				if (property == Attributes::itemList) {
 					String strList = treeWhosePropertyHasChanged.getProperty(property);
 					StringArray itemList;
 					itemList.addLines(strList);
-					obj->addItemList(itemList, 1);
+					cObject->addItemList(itemList, 1);
 				} else if (property == Attributes::text) {
-					obj->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
-				} else {						
+					cObject->setText(treeWhosePropertyHasChanged.getProperty(property).toString(), false);
+				} else {
 					propertyChanged = false;
 				}
 			}

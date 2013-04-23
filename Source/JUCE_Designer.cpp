@@ -119,7 +119,7 @@ void JUCE_Designer::generateCode ()
 		CodeGenerator codeGenerator(Constructor::getInstance()->getBigTreeRoot());
 		String generatedCodeString = codeGenerator.getCode();
 		Constructor::log("D103 - Code generated");
-		//Create xml file from XmlElement
+		//uncompress default template
 		ZipFile defaultTemplateZip(File(File::addTrailingSeparator(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "Templates") + "default.zip"));
 		defaultTemplateZip.uncompressTo(savePath, true);
 		Constructor::log("D103 - Uncompressed template");
@@ -311,11 +311,12 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 		Constructor::getInstance()->setGridSize(rand);
 		grid.repaint();
 		mousePositionLabel.setText(String(Constructor::getInstance()->getGridSize()), 0);
-	} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {
+	/*} else if (key.getKeyCode() == 83 && key.getModifiers().isCtrlDown()) {	//export
 		this->writeXmlToFile("save.xml");
-	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {
+	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {	//import
 		Constructor::getInstance()->resetCurrentState();
 		Constructor::getInstance()->importFromXml(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "save.xml"));
+	*/
 	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
 		this->generateCode();
 	} else if (key.getKeyCode() == key.leftKey) {

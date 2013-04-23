@@ -6,6 +6,7 @@
   ==============================================================================
 */
 
+#include "Designer\Constructor.h"
 #include "MainComponent.h"
 
 
@@ -41,6 +42,8 @@ MainContentComponent::MainContentComponent()
 	//propertyView->setOpaque(true);
 	//int style = (ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable);
 	//propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
+	propertyView->setVisible(false);
+	juced->setVisible(false);
 	resized();
 }
 
@@ -73,4 +76,135 @@ void MainContentComponent::componentMovedOrResized (Component &component, bool w
 			propertyView->setBounds(jr.getWidth(), 0, getWidth() - jr.getWidth(), jr.getHeight());
 		}
 	}
+}
+
+StringArray MainContentComponent::getMenuBarNames()
+{
+    const char* const names[] = { "File", nullptr };
+
+    return StringArray (names);
+}
+
+PopupMenu MainContentComponent::getMenuForIndex (int menuIndex, const String& /*menuName*/)
+{
+    ApplicationCommandManager* commandManager = Constructor::getInstance()->getCommandManager();
+
+    PopupMenu menu;
+
+    if (menuIndex == 0)
+    {
+        menu.addCommandItem (commandManager, newProject);
+		menu.addCommandItem (commandManager, openProject);
+        menu.addSeparator();
+		menu.addCommandItem (commandManager, quickSave);
+		menu.addCommandItem (commandManager, quickLoad);
+		menu.addSeparator();
+        menu.addCommandItem (commandManager, StandardApplicationCommandIDs::quit);
+    }
+
+    return menu;
+}
+
+void MainContentComponent::menuItemSelected (int menuItemID, int /*topLevelMenuIndex*/)
+{
+    // most of our menu items are invoked automatically as commands, but we can handle the
+    // other special cases here..
+
+    DBG(("Selected menu item: " + String(menuItemID)));
+}
+
+
+//==============================================================================
+// The following methods implement the ApplicationCommandTarget interface, allowing
+// this window to publish a set of actions it can perform, and which can be mapped
+// onto menus, keypresses, etc.
+
+ApplicationCommandTarget* MainContentComponent::getNextCommandTarget()
+{
+    // this will return the next parent component that is an ApplicationCommandTarget (in this
+    // case, there probably isn't one, but it's best to use this method in your own apps).
+    return findFirstTargetParentComponent();
+}
+
+void MainContentComponent::getAllCommands (Array <CommandID>& commands)
+{
+    // this returns the set of all commands that this target can perform..
+    const CommandID ids[] = { newProject, quickSave, quickLoad, openProject};
+
+    commands.addArray (ids, numElementsInArray (ids));
+}
+
+// This method is used when something needs to find out the details about one of the commands
+// that this object can perform..
+void MainContentComponent::getCommandInfo (CommandID commandID, ApplicationCommandInfo& result)
+{
+    const String generalCategory ("General");
+
+    switch (commandID)
+    {
+    case newProject:
+        result.setInfo ("New Project", "Shows the new project wizard dialog", generalCategory, 0);
+        result.setTicked (false);
+        result.addDefaultKeypress ('n', ModifierKeys::ctrlModifier);
+        break;
+	case quickSave:
+        result.setInfo ("Quick Design Save", "Save current design", generalCategory, 0);
+        result.setTicked (false);
+        result.addDefaultKeypress ('s', ModifierKeys::ctrlModifier);
+        break;
+	case quickLoad:
+        result.setInfo ("Quick Design Load", "Load design from last quick save", generalCategory, 0);
+        result.setTicked (false);
+        result.addDefaultKeypress ('l', ModifierKeys::ctrlModifier);
+        break;
+	case openProject:
+        result.setInfo ("Open Project", "Load project from last quick save", generalCategory, 0);
+        result.setTicked (false);
+        result.addDefaultKeypress ('o', ModifierKeys::ctrlModifier);
+        break;
+
+    default:
+        break;
+    };
+}
+
+// this is the ApplicationCommandTarget method that is used to actually perform one of our commands..
+bool MainContentComponent::perform (const InvocationInfo& info)
+{
+    switch (info.commandID)
+    {
+    case newProject:
+
+        if (Constructor::getInstance()->createNewProject()) {
+			propertyView->setVisible(true);
+			juced->setVisible(true);
+		}
+        break;
+
+	case quickSave:
+
+        Constructor::getInstance()->quickSave();
+        break;
+
+	case quickLoad:
+
+        if (Constructor::getInstance()->createNewProject()) {
+			propertyView->setVisible(true);
+			juced->setVisible(true);
+		}
+        break;
+
+	case openProject:
+
+        if (Constructor::getInstance()->openProject()) {
+			propertyView->setVisible(true);
+			juced->setVisible(true);
+		}
+        break;
+
+    default:
+        return false;
+    };
+
+    return true;
 }

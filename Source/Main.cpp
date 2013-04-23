@@ -67,10 +67,27 @@ public:
                                         Colours::lightgrey,
                                         DocumentWindow::allButtons)
         {
-            setContentOwned (new MainContentComponent(), true);
+			MainContentComponent* contentComp = new MainContentComponent();
+            setContentOwned (contentComp, true);
 			setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
+
+			ApplicationCommandManager* commandManager = Constructor::getInstance()->getCommandManager();
+			commandManager->registerAllCommandsForTarget (contentComp);
+			commandManager->registerAllCommandsForTarget (JUCEApplication::getInstance());
+
+			// this lets the command manager use keypresses that arrive in our window to send
+			// out commands
+			addKeyListener (commandManager->getKeyMappings());
+
+			// this tells the DocumentWindow to automatically create and manage a MenuBarComponent
+			// which uses our contentComp as its MenuBarModel
+			setMenuBar (contentComp);
+
+			// tells our menu bar model that it should watch this command manager for
+			// changes, and send change messages accordingly.
+			contentComp->setApplicationCommandManagerToWatch (commandManager);
 
         }
 

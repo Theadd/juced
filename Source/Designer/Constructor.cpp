@@ -8,6 +8,7 @@
   ==============================================================================
 */
 
+#include "NewProjectWizard.cpp"
 #include "Constructor.h"
 
 // Global static pointer used to ensure a single instance of the class.
@@ -272,6 +273,8 @@ void Constructor::setBigTreeRoot(BigTree *bigTreeRoot)
 	//_bigTreeRoot = bigTreeRoot;
 	if (bigTreeRoot != nullptr) {
 		*_bigTreeRoot = BigTree(*bigTreeRoot);
+		//Updating root varName (don't call updateRootVarName() here)
+		rootVarName = getBigTreeRoot()->getProperty(Attributes::varName).toString();
 	} else {
 		_bigTreeRoot = new BigTree();
 	}
@@ -351,4 +354,82 @@ void Constructor::resetCurrentState()
 	setBigTreeRoot(nullptr);
 	getSelectionBox()->setVisible(false);
 	log("C10? - resetCurrentState() done.");
+}
+
+bool Constructor::createNewProject()
+{
+	NewProjectWizard projectWizard;
+	if (projectWizard.show()) {
+		projectName = projectWizard.getProjectName();
+		projectPath = projectWizard.getProjectPath();
+		projectType = projectWizard.getProjectType();
+		resourceType = projectWizard.getResourceType();
+		selectedTemplate = projectWizard.getTemplate();
+
+		File savePath(projectPath);
+		//uncompress project template
+		ZipFile templateZip(File(File::addTrailingSeparator(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "Templates") + selectedTemplate + ".zip"));
+		templateZip.uncompressTo(savePath, true);
+		Constructor::log("D103 - Uncompressed template");
+		File generatedCodeFile(File::addTrailingSeparator(savePath.getFullPathName()) + "Source" + File::separatorString + "GeneratedCode.cpp");
+		String code(generatedCodeFile.loadFileAsString());
+		code = code.replace("%generatedCode%", "");
+		generatedCodeFile.replaceWithText(code);
+		Constructor::log("D103 - Replaced GeneratedCode.cpp : " + generatedCodeFile.getFullPathName() + " SIZE: " + String(code.length()));
+		return true;
+	}
+	return false;
+}
+
+bool Constructor::openProject()
+{
+	File path;
+	FileChooser myChooser ("Please select a project directory", File::getSpecialLocation (File::userHomeDirectory), "*.*");
+	if (myChooser.browseForDirectory()) {
+		path = myChooser.getResult().getFullPathName();
+	} else return false;
+
+	projectPath = path.getFullPathName();
+	resetCurrentState();
+
+	File designsFolder(File::addTrailingSeparator(path.getFullPathName()) + ".juced" + File::separatorString + "designs" + File::separatorString);
+	Array<File> designs;
+	designsFolder.findChildFiles(designs, 6, false, "*.xml");
+	if (designs.size() > 0) {
+		importFromXml(designs.getFirst());
+	}
+	return true;
+}
+
+void Constructor::quickSave ()
+{
+	Constructor::log("QUICK SAVE!");
+	if (getBigTreeRoot() != nullptr) {
+		XmlElement *obj_xml = getBigTreeRoot()->createXml();
+
+		//Create xml file from XmlElement
+		File file = File(File::addTrailingSeparator(File::addTrailingSeparator(File::addTrailingSeparator(projectPath) + ".juced") + "designs") + getBigTreeRoot()->getProperty(Attributes::varName) + ".xml");
+		file.create();
+		obj_xml->writeToFile(file, "");
+
+		delete obj_xml;
+	}
+}
+
+void Constructor::updateRootVarName ()
+{
+	if (rootVarName != getBigTreeRoot()->getProperty(Attributes::varName).toString()) {
+		File file = File(File::addTrailingSeparator(File::addTrailingSeparator(File::addTrailingSeparator(projectPath) + ".juced") + "designs") + rootVarName + ".xml");
+		if (file.existsAsFile()) {
+			file.deleteFile();
+			quickSave();
+		}
+
+		rootVarName = getBigTreeRoot()->getProperty(Attributes::varName).toString();
+	}
+}
+
+ApplicationCommandManager* Constructor::getCommandManager()
+{
+	return &commandManager;
 }
