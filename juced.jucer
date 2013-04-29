@@ -62,6 +62,9 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="LVzlrD" name="juced_ListBox.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_ListBox.cpp"/>
+        <FILE id="C3WPNj" name="juced_ListBox.h" compile="0" resource="0" file="Source/Modules/juced_ListBox.h"/>
         <FILE id="z8iymV" name="juced_ComboBox.cpp" compile="1" resource="0"
               file="Source/Modules/juced_ComboBox.cpp"/>
         <FILE id="kquqHw" name="juced_ComboBox.h" compile="1" resource="0"

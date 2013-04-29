@@ -259,8 +259,6 @@ public:
     */
     ReferenceCountedObjectPtr& operator= (const ReferenceCountedObjectPtr& other)
     {
-		//ReferenceCountedObjectClass *ref = static_cast <ReferenceCountedObjectClass*> (other.get());
-		DBG((String((int)&other.referencedObject)));
         return operator= (other.referencedObject);
     }
 

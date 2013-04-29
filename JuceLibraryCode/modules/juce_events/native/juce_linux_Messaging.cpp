@@ -196,17 +196,18 @@ private:
 
     bool dispatchNextInternalMessage()
     {
-        if (const MessageManager::MessageBase::Ptr msg = popNextMessage())
-        {
-            JUCE_TRY
-            {
-                msg->messageCallback();
-                return true;
-            }
-            JUCE_CATCH_EXCEPTION
-        }
+        const MessageManager::MessageBase::Ptr msg (popNextMessage());
 
-        return false;
+        if (msg == nullptr)
+            return false;
+
+        JUCE_TRY
+        {
+            msg->messageCallback();
+        }
+        JUCE_CATCH_EXCEPTION
+
+        return true;
     }
 };
 

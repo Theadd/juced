@@ -45,16 +45,12 @@ void Logger::writeToLog (const String& message)
         outputDebugString (message);
 }
 
-#if JUCE_LOG_ASSERTIONS || JUCE_DEBUG
+#if JUCE_LOG_ASSERTIONS
 void JUCE_API logAssertion (const char* const filename, const int lineNum) noexcept
 {
     String m ("JUCE Assertion failure in ");
     m << File::createFileWithoutCheckingPath (filename).getFileName() << ':' << lineNum;
 
-   #if JUCE_LOG_ASSERTIONS
     Logger::writeToLog (m);
-   #else
-    DBG (m);
-   #endif
 }
 #endif

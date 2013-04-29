@@ -77,6 +77,7 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -118,6 +119,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -139,6 +141,7 @@
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_ListBox.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_ComboBox.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_ImageButton.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Slider.cpp"/>
@@ -972,6 +975,7 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_ListBox.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_ComboBox.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_ImageButton.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Slider.h"/>

@@ -14,7 +14,7 @@ int juced_ComboBox::_numObjects = 0;
 
 juced_ComboBox::juced_ComboBox()  : ComboBox ()
 {
-	setText("ComboBox", false);
+	setText("Combo Box", false);
 	setName("Box");
 	setProperty(Attributes::objectType, Modules::ComboBox.toString());
 	setProperty(Attributes::text, getText());

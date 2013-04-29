@@ -38,26 +38,23 @@ void MessageManager::stopDispatchLoop()
 bool MessageManager::runDispatchLoopUntil (int millisecondsToRunFor)
 {
     JUCE_AUTORELEASEPOOL
+    jassert (isThisTheMessageThread()); // must only be called by the message thread
+
+    uint32 endTime = Time::getMillisecondCounter() + millisecondsToRunFor;
+    NSDate* endDate = [NSDate dateWithTimeIntervalSinceNow: millisecondsToRunFor * 0.001];
+
+    while (! quitMessagePosted)
     {
-        jassert (isThisTheMessageThread()); // must only be called by the message thread
+        JUCE_AUTORELEASEPOOL
 
-        uint32 endTime = Time::getMillisecondCounter() + millisecondsToRunFor;
-        NSDate* endDate = [NSDate dateWithTimeIntervalSinceNow: millisecondsToRunFor * 0.001];
+        [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode
+                                 beforeDate: endDate];
 
-        while (! quitMessagePosted)
-        {
-            JUCE_AUTORELEASEPOOL
-            {
-                [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode
-                                         beforeDate: endDate];
-
-                if (millisecondsToRunFor >= 0 && Time::getMillisecondCounter() >= endTime)
-                    break;
-            }
-        }
-
-        return ! quitMessagePosted;
+        if (millisecondsToRunFor >= 0 && Time::getMillisecondCounter() >= endTime)
+            break;
     }
+
+    return ! quitMessagePosted;
 }
 
 //==============================================================================
