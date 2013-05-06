@@ -14,11 +14,10 @@ int juced_ListBox::_numObjects = 0;
 
 juced_ListBox::juced_ListBox()  : ListBox ()
 {
-	setText("List Box", false);
+	//setText("List Box", false);
 	setName("ListBox");
 	setProperty(Attributes::objectType, Modules::ListBox.toString());
-	setProperty(Attributes::text, getText());
-	setProperty(Attributes::font, getFont().toString());
+	//setProperty(Attributes::text, getText());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
 	setProperty(Attributes::showEditor, false);
@@ -35,11 +34,11 @@ juced_ListBox::juced_ListBox()  : ListBox ()
 	setProperty(Attributes::ID, getComponentID());
 }
 
-void juced_Label::mouseUp (const MouseEvent& event) {}
-void juced_Label::mouseDrag (const MouseEvent& event) {}
-void juced_Label::mouseDoubleClick (const MouseEvent& event) {}
-void juced_Label::mouseMove (const MouseEvent& event) {}
-void juced_Label::mouseDown (const MouseEvent& event) {}
-void juced_Label::mouseEnter (const MouseEvent& event) {}
-void juced_Label::mouseExit (const MouseEvent& event) {}
-void juced_Label::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}
+void juced_ListBox::mouseUp (const MouseEvent& event) {}
+void juced_ListBox::mouseDrag (const MouseEvent& event) {}
+void juced_ListBox::mouseDoubleClick (const MouseEvent& event) {}
+void juced_ListBox::mouseMove (const MouseEvent& event) {}
+void juced_ListBox::mouseDown (const MouseEvent& event) {}
+void juced_ListBox::mouseEnter (const MouseEvent& event) {}
+void juced_ListBox::mouseExit (const MouseEvent& event) {}
+void juced_ListBox::mouseWheelMove (const MouseEvent &event, const MouseWheelDetails &wheel) {}

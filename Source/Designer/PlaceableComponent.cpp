@@ -228,6 +228,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 	} else if (selectedToolName->equalsIgnoreCase("juced_ComboBox")) {
 		juced_ComboBox *object = new juced_ComboBox();
 		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ListBox")) {
+		juced_ListBox *object = new juced_ListBox();
+		return (DynamicObject *)object;
 	}
 	return nullptr;
 }
