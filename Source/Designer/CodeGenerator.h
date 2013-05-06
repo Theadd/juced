@@ -11,6 +11,12 @@
 #ifndef __CODEGENERATOR_H_200599A5__
 #define __CODEGENERATOR_H_200599A5__
 
+#include "Globals.h"
+#include "BigTree.h"
+#include "Constructor.h"
+
+class BigTree;
+
 class CodeGenerator
 {
 public:
@@ -40,8 +46,9 @@ public:
 	bool isDeclaredAsExtended();
 
 private:
+	friend class BigTree;
 	//BigTree *_tree;
-	BigTree _tree;
+	BigTree* _tree;
 	String _code;
 	String _definition;
 	String _declaration;

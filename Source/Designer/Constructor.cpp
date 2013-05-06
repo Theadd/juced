@@ -376,6 +376,7 @@ bool Constructor::createNewProject()
 		code = code.replace("%generatedCode%", "");
 		generatedCodeFile.replaceWithText(code);
 		Constructor::log("D103 - Replaced GeneratedCode.cpp : " + generatedCodeFile.getFullPathName() + " SIZE: " + String(code.length()));
+
 		return true;
 	}
 	return false;
@@ -390,6 +391,7 @@ bool Constructor::openProject()
 	} else return false;
 
 	projectPath = path.getFullPathName();
+	selectedTemplate = "Empty";
 	resetCurrentState();
 
 	File designsFolder(File::addTrailingSeparator(path.getFullPathName()) + ".juced" + File::separatorString + "designs" + File::separatorString);
@@ -413,6 +415,24 @@ void Constructor::quickSave ()
 		obj_xml->writeToFile(file, "");
 
 		delete obj_xml;
+
+		//Generate code
+		CodeGenerator codeGenerator(Constructor::getInstance()->getBigTreeRoot());
+		String generatedCodeString = codeGenerator.getCode();
+		File generatedCodeFile(File::addTrailingSeparator(projectPath) + "Source" + File::separatorString + "GeneratedCode.cpp");
+		File templateCodeFile(File(_workingDirectory).getChildFile("Templates" + File::separatorString + selectedTemplate + File::separatorString + "Source" + File::separatorString + "GeneratedCode.cpp"));
+		//templateCodeFile.copyFileTo(generatedCodeFile);
+		log(templateCodeFile.getFullPathName());
+		String code(templateCodeFile.loadFileAsString());
+		code = code.replace("%generatedCode%", generatedCodeString);
+		generatedCodeFile.replaceWithText(code);
+		//main.cpp
+		File mainFile(File::addTrailingSeparator(projectPath) + "Source" + File::separatorString + "Main.cpp");
+		File templateMainFile(File(_workingDirectory).getChildFile("Templates" + File::separatorString + selectedTemplate + File::separatorString + "Source" + File::separatorString + "Main.cpp"));
+		String mainFileCode(templateMainFile.loadFileAsString());
+		mainFileCode = mainFileCode.replace("%varName%", codeGenerator.getVarName());
+		mainFile.replaceWithText(mainFileCode);
+
 	}
 }
 

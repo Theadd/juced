@@ -16,6 +16,7 @@
 #include "BigTree.h"
 #include "PlaceableComponent.h"
 #include "Importer.h"
+#include "CodeGenerator.h"
 
 
 #include "../Modules/juced_Label.h"
