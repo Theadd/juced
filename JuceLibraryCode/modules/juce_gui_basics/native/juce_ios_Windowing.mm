@@ -131,12 +131,10 @@ public:
     int getResult()
     {
         jassert (callback == nullptr);
-
         JUCE_AUTORELEASEPOOL
-        {
-            while (! alert.hidden && alert.superview != nil)
-                [[NSRunLoop mainRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.01]];
-        }
+
+        while (! alert.hidden && alert.superview != nil)
+            [[NSRunLoop mainRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.01]];
 
         return result;
     }
@@ -183,10 +181,8 @@ void JUCE_CALLTYPE NativeMessageBox::showMessageBox (AlertWindow::AlertIconType 
                                                      Component* associatedComponent)
 {
     JUCE_AUTORELEASEPOOL
-    {
-        iOSMessageBox mb (title, message, @"OK", nil, nil, nullptr, false);
-        (void) mb.getResult();
-    }
+    iOSMessageBox mb (title, message, @"OK", nil, nil, nullptr, false);
+    (void) mb.getResult();
 }
 
 void JUCE_CALLTYPE NativeMessageBox::showMessageBoxAsync (AlertWindow::AlertIconType iconType,
@@ -306,19 +302,18 @@ Desktop::DisplayOrientation Desktop::getCurrentOrientation() const
 void Desktop::Displays::findDisplays()
 {
     JUCE_AUTORELEASEPOOL
-    {
-        UIScreen* s = [UIScreen mainScreen];
 
-        Display d;
-        d.userArea  = UIViewComponentPeer::realScreenPosToRotated (convertToRectInt ([s applicationFrame]));
-        d.totalArea = UIViewComponentPeer::realScreenPosToRotated (convertToRectInt ([s bounds]));
-        d.isMain = true;
+    UIScreen* s = [UIScreen mainScreen];
 
-        if ([s respondsToSelector: @selector (scale)])
-            d.scale = s.scale;
-        else
-            d.scale = 1.0;
+    Display d;
+    d.userArea  = UIViewComponentPeer::realScreenPosToRotated (convertToRectInt ([s applicationFrame]));
+    d.totalArea = UIViewComponentPeer::realScreenPosToRotated (convertToRectInt ([s bounds]));
+    d.isMain = true;
 
-        displays.add (d);
-    }
+    if ([s respondsToSelector: @selector (scale)])
+        d.scale = s.scale;
+    else
+        d.scale = 1.0;
+
+    displays.add (d);
 }

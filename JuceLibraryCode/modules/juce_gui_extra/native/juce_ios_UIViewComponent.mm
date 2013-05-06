@@ -26,13 +26,13 @@
 class UIViewComponent::Pimpl  : public ComponentMovementWatcher
 {
 public:
-    Pimpl (UIView* const v, Component& comp)
-        : ComponentMovementWatcher (&comp),
-          view (v),
-          owner (comp),
+    Pimpl (UIView* const view_, Component& owner_)
+        : ComponentMovementWatcher (&owner_),
+          view (view_),
+          owner (owner_),
           currentPeer (nullptr)
     {
-        [view retain];
+        [view_ retain];
 
         if (owner.isShowing())
             componentPeerChanged();

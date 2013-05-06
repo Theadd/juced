@@ -55,6 +55,7 @@ namespace Modules
 	const Identifier Slider		  ("Slider");
 	const Identifier ImageButton  ("ImageButton");
     const Identifier ComboBox	  ("ComboBox");
+	const Identifier ListBox	  ("ListBox");
     const Identifier Unknown	  ("Unknown");
 }
 

@@ -111,13 +111,15 @@ public:
 
     /** Changes the current filename.
 
-        @param addToRecentlyUsedList  if true, the filename will also be added to the
-                                      drop-down list of recent files.
-        @param notification           whether to send a notification of the change to listeners
+        If addToRecentlyUsedList is true, the filename will also be added to the
+        drop-down list of recent files.
+
+        If sendChangeNotification is false, then the listeners won't be told of the
+        change.
     */
     void setCurrentFile (File newFile,
                          bool addToRecentlyUsedList,
-                         NotificationType notification = sendNotificationAsync);
+                         bool sendChangeNotification = true);
 
     /** Changes whether the use can type into the filename box.
     */
