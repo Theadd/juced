@@ -64,7 +64,7 @@ public:
     {
     public:
         MainWindow()  : DocumentWindow ("MainWindow",
-                                        Colours::lightgrey,
+                                        Colours::hotpink,
                                         DocumentWindow::allButtons)
         {
 			MainContentComponent* contentComp = new MainContentComponent();
@@ -72,6 +72,10 @@ public:
 			setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
+
+			//Image LogoImage;
+			//LogoImage = ImageFileFormat::loadFrom (BinaryData::juced_png, BinaryData::juced_pngSize);
+			
 
 			ApplicationCommandManager* commandManager = Constructor::getInstance()->getCommandManager();
 			commandManager->registerAllCommandsForTarget (contentComp);
@@ -100,13 +104,16 @@ public:
             
         }
 
-    private:
+
+		
+		    private:
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
     };
 
 private:
     ScopedPointer<MainWindow> mainWindow;
-    
+
+   
 };
 
 //==============================================================================
