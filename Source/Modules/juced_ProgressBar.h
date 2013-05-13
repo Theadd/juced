@@ -33,6 +33,7 @@ public:
 
 private:
 	static int _numObjects;
+	static double _progress;
 };
 
 

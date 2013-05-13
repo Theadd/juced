@@ -16,13 +16,13 @@ juced_BubbleMessageComponent::juced_BubbleMessageComponent()  : BubbleMessageCom
 {
 	//setText("Text label", false);
 	//setName("Label");
-	setProperty(Attributes::objectType, Modules::Label.toString());
+	setProperty(Attributes::objectType, Modules::BubbleComponent.toString());
 	//setProperty(Attributes::text, getText());
 	//setProperty(Attributes::font, getFont().toString());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	//setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
-	setProperty(Attributes::showEditor, false);
-	setProperty(Attributes::editable, false);
+	//setProperty(Attributes::showEditor, false);
+	//setProperty(Attributes::editable, false);
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());

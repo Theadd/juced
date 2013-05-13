@@ -11,8 +11,10 @@
 #include "juced_ProgressBar.h"
 
 int juced_ProgressBar::_numObjects = 0; 
+double juced_ProgressBar::_progress = 0.5;
 
-juced_ProgressBar::juced_ProgressBar()  : ProgressBar ()
+
+juced_ProgressBar::juced_ProgressBar()  : ProgressBar (_progress)
 {
 	//setText("Text label", false);
 	setName("ProgressBar");
