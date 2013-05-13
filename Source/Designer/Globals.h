@@ -56,6 +56,8 @@ namespace Modules
 	const Identifier ImageButton  ("ImageButton");
     const Identifier ComboBox	  ("ComboBox");
 	const Identifier ListBox	  ("ListBox");
+	const Identifier ProgressBar  ("ProgressBar");
+	const Identifier BubbleComponent	  ("BubbleComponent");
     const Identifier Unknown	  ("Unknown");
 }
 

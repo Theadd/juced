@@ -27,8 +27,8 @@ MainContentComponent::MainContentComponent()
 	juced->addToolboxItem(toolbox, "juced_ComboBox", "ComboBox", BinaryData::combobox_png, BinaryData::combobox_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Listbox", "Listbox", BinaryData::listbox_png, BinaryData::listbox_pngSize);
 	//juced->addToolboxItem(toolbox, "juced_TabPanel", "Tab panel", BinaryData::tabs_png, BinaryData::tabs_pngSize);
-	//juced->addToolboxItem(toolbox, "juced_ProgressBar", "Progress Bar", BinaryData::_png, BinaryData::_pngSize);
-	//juced->addToolboxItem(toolbox, "juced_BubbleComponent", "Bubble", BinaryData::_png, BinaryData::_pngSize);
+	juced->addToolboxItem(toolbox, "juced_ProgressBar", "Progress Bar", BinaryData::progressbar_png, BinaryData::progressbar_pngSize);
+	juced->addToolboxItem(toolbox, "juced_BubbleComponent", "Bubble", BinaryData::bubble_png, BinaryData::bubble_pngSize);
 
 	toolbox->setAlwaysOnTop(true);
 	juced->addAndMakeVisible(toolbox, 11);

@@ -1,27 +1,26 @@
 /*
   ==============================================================================
 
-    juced_ListBox.h
-    Created: 30 Apr 2013 12:39:51am
+    juced_ProgressBar.h
+    Created: 13 May 2013 7:27:41am
     Author:  admin
 
   ==============================================================================
 */
 
-#ifndef __JUCED_LISTBOX_H_AAEDCAAB__
-#define __JUCED_LISTBOX_H_AAEDCAAB__
+#ifndef __JUCED_PROGRESSBAR_H_1BE74C4__
+#define __JUCED_PROGRESSBAR_H_1BE74C4__
 
 #include "../Designer/Globals.h"
-//Juce Listbox functionalities are limited
 
-class juced_ListBox    : public ListBox,
+class juced_ProgressBar    : public ProgressBar,
 					   public DynamicObject
 {
 public:
 
 	//ValueTree *linkedValueTree;
 
-    juced_ListBox();
+    juced_ProgressBar();
 
 	void mouseUp (const MouseEvent& event);
 	void mouseDrag (const MouseEvent& event);
@@ -38,4 +37,5 @@ private:
 
 
 
-#endif  // __JUCED_LISTBOX_H_AAEDCAAB__
+
+#endif  // __JUCED_PROGRESSBAR_H_1BE74C4__

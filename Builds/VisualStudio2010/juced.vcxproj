@@ -141,6 +141,8 @@
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_BubbleComponent.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_ProgressBar.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_ListBox.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_ComboBox.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_ImageButton.cpp"/>
@@ -975,6 +977,8 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_BubbleComponent.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_ProgressBar.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_ListBox.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_ComboBox.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_ImageButton.h"/>
@@ -1327,6 +1331,8 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\bubble.png"/>
+    <None Include="..\..\Source\BinaryData\progressbar.png"/>
     <None Include="..\..\Source\BinaryData\image.png"/>
     <None Include="..\..\Source\BinaryData\imagebutton.png"/>
     <None Include="..\..\Source\BinaryData\slider.png"/>

@@ -231,6 +231,12 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 	} else if (selectedToolName->equalsIgnoreCase("juced_ListBox")) {
 		juced_ListBox *object = new juced_ListBox();
 		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ProgressBar")) {
+		juced_ProgressBar *object = new juced_ProgressBar();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_BubbleMessageComponent")) {
+		juced_BubbleMessageComponent *object = new juced_BubbleMessageComponent();
+		return (DynamicObject *)object;
 	}
 	return nullptr;
 }

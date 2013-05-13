@@ -23,6 +23,8 @@
 #include "../Modules/juced_ImageButton.h"
 #include "../Modules/juced_ComboBox.h"
 #include "../Modules/juced_ListBox.h"
+#include "../Modules/juced_ProgressBar.h"
+#include "../Modules/juced_BubbleComponent.h"
 
 /** This class holds all object hierarchy and property modification. */
 class BigTree : public ValueTree,

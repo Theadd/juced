@@ -11,6 +11,8 @@
               file="Source/Styles/LookAndFeelCustom.h"/>
       </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="JV4Gzb" name="bubble.png" compile="0" resource="1" file="Source/BinaryData/bubble.png"/>
+        <FILE id="A3Cx0m" name="progressbar.png" compile="0" resource="1" file="Source/BinaryData/progressbar.png"/>
         <FILE id="QLO7oZ" name="image.png" compile="0" resource="1" file="Source/BinaryData/image.png"/>
         <FILE id="E6RJLL" name="imagebutton.png" compile="0" resource="1" file="Source/BinaryData/imagebutton.png"/>
         <FILE id="T3SAX2" name="slider.png" compile="0" resource="1" file="Source/BinaryData/slider.png"/>
@@ -62,6 +64,14 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="ofEk8x" name="juced_BubbleComponent.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_BubbleComponent.cpp"/>
+        <FILE id="fI06MB" name="juced_BubbleComponent.h" compile="0" resource="0"
+              file="Source/Modules/juced_BubbleComponent.h"/>
+        <FILE id="QynwQe" name="juced_ProgressBar.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_ProgressBar.cpp"/>
+        <FILE id="ZRepHf" name="juced_ProgressBar.h" compile="0" resource="0"
+              file="Source/Modules/juced_ProgressBar.h"/>
         <FILE id="LVzlrD" name="juced_ListBox.cpp" compile="1" resource="0"
               file="Source/Modules/juced_ListBox.cpp"/>
         <FILE id="C3WPNj" name="juced_ListBox.h" compile="0" resource="0" file="Source/Modules/juced_ListBox.h"/>
