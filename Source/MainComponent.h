@@ -47,6 +47,7 @@ private:
 	Viewport *propertyView;
 	ScopedPointer<ResizableEdgeComponent> resizableBorder;
 	ScopedPointer<ComponentBoundsConstrainer> constrainer;
+	ImageComponent logo;
 
 	enum CommandIDs
     {

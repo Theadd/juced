@@ -42,7 +42,3 @@ private:
 
 #endif  // __JUCED_MAINCOMPONENT_H_1B08AA79__
 
-
-
-
-#endif  // __JUCED_COMPONENT_H_6B6D7789__

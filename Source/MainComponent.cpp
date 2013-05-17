@@ -47,6 +47,9 @@ MainContentComponent::MainContentComponent()
 	//propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
 	propertyView->setVisible(false);
 	juced->setVisible(false);
+	logo.setImage(ImageFileFormat::loadFrom (File(File::getCurrentWorkingDirectory().getFullPathName()+File::separatorString+"orange-juice.png")));
+	addAndMakeVisible(&logo);
+	logo.setBounds(0, 0, getWidth(), getHeight());
 	resized();
 }
 
