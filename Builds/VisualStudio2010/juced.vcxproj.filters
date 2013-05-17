@@ -271,6 +271,9 @@
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Modules\juced_Component.cpp">
+      <Filter>juced\Source\Modules</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Modules\juced_BubbleComponent.cpp">
       <Filter>juced\Source\Modules</Filter>
     </ClCompile>
@@ -1226,6 +1229,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_Component.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_BubbleComponent.h">
       <Filter>juced\Source\Modules</Filter>

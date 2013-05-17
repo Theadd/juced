@@ -64,6 +64,10 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="LSUILK" name="juced_Component.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_Component.cpp"/>
+        <FILE id="yDm5ef" name="juced_Component.h" compile="0" resource="0"
+              file="Source/Modules/juced_Component.h"/>
         <FILE id="ofEk8x" name="juced_BubbleComponent.cpp" compile="1" resource="0"
               file="Source/Modules/juced_BubbleComponent.cpp"/>
         <FILE id="fI06MB" name="juced_BubbleComponent.h" compile="0" resource="0"
