@@ -64,7 +64,8 @@ public:
     {
     public:
         MainWindow()  : DocumentWindow ("MainWindow",
-                                        Colours::hotpink,
+                                        //Colour((uint8) 27, (uint8) 80, (uint8) 139),	//Colours::hotpink,
+										Colour((uint8) 49, (uint8) 124, (uint8) 205),
                                         DocumentWindow::allButtons)
         {
 			MainContentComponent* contentComp = new MainContentComponent();
@@ -72,6 +73,7 @@ public:
 			setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
+			contentComp->setVisible(true);
 
 			//Image LogoImage;
 			//LogoImage = ImageFileFormat::loadFrom (BinaryData::juced_png, BinaryData::juced_pngSize);

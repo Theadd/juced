@@ -25,6 +25,7 @@
 #include "../Modules/juced_ListBox.h"
 #include "../Modules/juced_ProgressBar.h"
 #include "../Modules/juced_BubbleComponent.h"
+#include "../Modules/juced_DirectShowComponent.h"
 
 class BigTree;
 

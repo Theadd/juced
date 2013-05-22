@@ -276,6 +276,15 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				//} else {
 					propertyChanged = false;
 				//}
+			} else if (this->getProperty(Attributes::objectType) == Modules::DirectShowComponent) {
+				//deal with DirectShowComponent specific properties
+				juced_DirectShowComponent *cObject = dynamic_cast<juced_DirectShowComponent *> (this->getProperty(Attributes::object).getDynamicObject());
+				if (property == Attributes::movie) {
+					String movieSource = treeWhosePropertyHasChanged.getProperty(property);
+					cObject->loadMovie(movieSource);
+				} else {
+					propertyChanged = false;
+				}
 			}
                  
 			//[CUSTOM MODULES HERE]

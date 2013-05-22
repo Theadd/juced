@@ -58,6 +58,7 @@ namespace Modules
 	const Identifier ListBox	  ("ListBox");
 	const Identifier ProgressBar  ("ProgressBar");
 	const Identifier BubbleComponent	  ("BubbleComponent");
+	const Identifier DirectShowComponent	  ("DirectShowComponent");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -115,6 +116,8 @@ namespace Attributes
 	DECLARE_ID (maximum);
 	DECLARE_ID (interval);
 	DECLARE_ID (value);
+
+	DECLARE_ID (movie);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);

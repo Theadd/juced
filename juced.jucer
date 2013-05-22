@@ -11,6 +11,7 @@
               file="Source/Styles/LookAndFeelCustom.h"/>
       </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="cKNTXm" name="movie.png" compile="0" resource="1" file="Source/BinaryData/movie.png"/>
         <FILE id="JV4Gzb" name="bubble.png" compile="0" resource="1" file="Source/BinaryData/bubble.png"/>
         <FILE id="A3Cx0m" name="progressbar.png" compile="0" resource="1" file="Source/BinaryData/progressbar.png"/>
         <FILE id="QLO7oZ" name="image.png" compile="0" resource="1" file="Source/BinaryData/image.png"/>
@@ -64,6 +65,10 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="BL4hhg" name="juced_DirectShowComponent.cpp" compile="1"
+              resource="0" file="Source/Modules/juced_DirectShowComponent.cpp"/>
+        <FILE id="GWUBIn" name="juced_DirectShowComponent.h" compile="0" resource="0"
+              file="Source/Modules/juced_DirectShowComponent.h"/>
         <FILE id="LSUILK" name="juced_Component.cpp" compile="1" resource="0"
               file="Source/Modules/juced_Component.cpp"/>
         <FILE id="yDm5ef" name="juced_Component.h" compile="0" resource="0"
@@ -122,6 +127,7 @@
     <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="1"/>
   </MODULES>
   <EXPORTFORMATS>
     <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="..\JUCE\modules"
@@ -134,5 +140,5 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <JUCEOPTIONS/>
+  <JUCEOPTIONS JUCE_DIRECTSHOW="enabled" JUCE_MEDIAFOUNDATION="enabled"/>
 </JUCERPROJECT>

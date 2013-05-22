@@ -237,6 +237,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 	} else if (selectedToolName->equalsIgnoreCase("juced_BubbleMessageComponent")) {
 		juced_BubbleMessageComponent *object = new juced_BubbleMessageComponent();
 		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_DirectShowComponent")) {
+		juced_DirectShowComponent *object = new juced_DirectShowComponent();
+		return (DynamicObject *)object;
 	}
 	return nullptr;
 }

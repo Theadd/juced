@@ -14,6 +14,12 @@
 MainContentComponent::MainContentComponent()
 {
 	setSize (800, 600);
+	//set background logo
+	RectanglePlacement logoPlace(804);
+	logo.setImage(ImageFileFormat::loadFrom (File(File::getCurrentWorkingDirectory().getFullPathName()+File::separatorString+"logo.png")), logoPlace);
+	logo.setBounds(0, 0, getWidth(), getHeight());
+	addAndMakeVisible(&logo);
+	//create JUCE_Designer instance
     juced = new JUCE_Designer();
 	addAndMakeVisible(juced);
 	Component* toolbox;
@@ -29,6 +35,7 @@ MainContentComponent::MainContentComponent()
 	//juced->addToolboxItem(toolbox, "juced_TabPanel", "Tab panel", BinaryData::tabs_png, BinaryData::tabs_pngSize);
 	juced->addToolboxItem(toolbox, "juced_ProgressBar", "Progress Bar", BinaryData::progressbar_png, BinaryData::progressbar_pngSize);
 	juced->addToolboxItem(toolbox, "juced_BubbleComponent", "Bubble", BinaryData::bubble_png, BinaryData::bubble_pngSize);
+	juced->addToolboxItem(toolbox, "juced_DirectShowComponent", "DirectShowComponent", BinaryData::movie_png, BinaryData::movie_pngSize);
 
 	toolbox->setAlwaysOnTop(true);
 	juced->addAndMakeVisible(toolbox, 11);
@@ -47,9 +54,7 @@ MainContentComponent::MainContentComponent()
 	//propertyView->addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable));
 	propertyView->setVisible(false);
 	juced->setVisible(false);
-	logo.setImage(ImageFileFormat::loadFrom (File(File::getCurrentWorkingDirectory().getFullPathName()+File::separatorString+"orange-juice.png")));
-	addAndMakeVisible(&logo);
-	logo.setBounds(0, 0, getWidth(), getHeight());
+
 	resized();
 }
 
@@ -59,7 +64,8 @@ MainContentComponent::~MainContentComponent()
 
 void MainContentComponent::paint (Graphics& g)
 {
-    g.fillAll (Colour((uint8) 245, (uint8) 245, (uint8) 245));
+    //g.fillAll (Colour((uint8) 245, (uint8) 245, (uint8) 245));
+	g.fillAll (Colour((uint8) 40, (uint8) 121, (uint8) 208));
 }
 
 void MainContentComponent::resized()
@@ -71,6 +77,7 @@ void MainContentComponent::resized()
 		resizableBorder->setBounds(jr.getWidth() - 5, 0, 5, jr.getHeight());
 		propertyView->setBounds(r.getWidth() - propertyView->getWidth(), 0, propertyView->getWidth(), r.getHeight());
 	}
+	logo.setBounds(r);
 }
 
 void MainContentComponent::componentMovedOrResized (Component &component, bool wasMoved, bool wasResized)

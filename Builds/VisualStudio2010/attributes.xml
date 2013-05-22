@@ -40,4 +40,5 @@
   <Attribute name="itemList" group="General" visible="1" type="textarea" display="Item list" valueType="text" syntax='#'/>
   <Attribute name="editable" group="General" visible="1" type="boolean" display="Editable" valueType="text" syntax='setEditable(%editable%)'/>
   <Attribute name="showEditor" group="General" visible="1" type="boolean" display="Show editor" valueType="text" syntax='#'/>
+  <Attribute name="movie" group="General" visible="1" type="text" display="Movie path/url" valueType="text" syntax='loadMovie("%movie%")'/>
 </Attributes>
