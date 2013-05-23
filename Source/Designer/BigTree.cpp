@@ -98,6 +98,9 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				obj->setColour(DocumentWindow::backgroundColourId, newColour);
 			} else if (property == Attributes::lookAndFeel) {
 				obj->setLookAndFeel(Constructor::getInstance()->getNamedLookAndFeel(treeWhosePropertyHasChanged.getProperty(property).toString()));
+			} else if (property == Attributes::usingNativeTitleBar) {
+				bool usingNativeTitleBar = treeWhosePropertyHasChanged.getProperty(property);
+				obj->setUsingNativeTitleBar(usingNativeTitleBar);
 			}
 		} else {
 			//deal with other type of components since its not a window

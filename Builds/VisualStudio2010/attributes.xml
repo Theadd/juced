@@ -43,4 +43,5 @@
   <Attribute name="movie" group="General" visible="1" type="text" display="Movie path/url" valueType="text" syntax='loadMovie("%movie%")'/>
   <Attribute name="scrollBarThickness" group="Appearance" visible="1" type="text" display="Scrollbar thickness" valueType="integer" syntax='setScrollBarThickness("%scrollBarThickness%")'/>
   <Attribute name="contentViewed" group="General" visible="0" type="boolean" display="Sets if object should add its child using setViewedComponent()" valueType="text" syntax=''/>
+  <Attribute name="usingNativeTitleBar" group="Appearance" visible="1" type="boolean" display="Native Titlebar" valueType="text" syntax='setUsingNativeTitleBar(%usingNativeTitleBar%)'/>
 </Attributes>

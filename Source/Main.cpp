@@ -94,6 +94,7 @@ public:
 			// tells our menu bar model that it should watch this command manager for
 			// changes, and send change messages accordingly.
 			contentComp->setApplicationCommandManagerToWatch (commandManager);
+			setUsingNativeTitleBar(true);
 
         }
 

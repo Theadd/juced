@@ -41,6 +41,7 @@ juced_Window::juced_Window()  : DocumentWindow ("juced_Window",
 	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
+	setProperty(Attributes::usingNativeTitleBar, false);
 
 }
 

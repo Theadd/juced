@@ -121,6 +121,7 @@ namespace Attributes
 	DECLARE_ID (movie);
 	DECLARE_ID (scrollBarThickness);
 	DECLARE_ID (contentViewed);
+	DECLARE_ID (usingNativeTitleBar);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);
