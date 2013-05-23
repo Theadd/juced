@@ -156,6 +156,12 @@ bool PlaceableComponent::perform ()
 			ResizableWindow *parentWindow = dynamic_cast<ResizableWindow *> (parentTree.getProperty(Attributes::object).getDynamicObject());
 			parentWindow->setContentOwned(dynamic_cast<Component *> (_dynamicObject.get()), false);
 		}
+	} else if  (parentTree.isValid() && parentTree.hasProperty(Attributes::contentViewed)) {
+		bool contentViewed = parentTree.getProperty(Attributes::contentViewed);
+		if (contentViewed) {
+			Viewport *parentViewport = dynamic_cast<Viewport *> (parentTree.getProperty(Attributes::object).getDynamicObject());
+			parentViewport->setViewedComponent(dynamic_cast<Component *> (_dynamicObject.get()), false);
+		}
 	}
 	
 	Constructor::log("PC101 - Perform done");
@@ -239,6 +245,12 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 		return (DynamicObject *)object;
 	} else if (selectedToolName->equalsIgnoreCase("juced_DirectShowComponent")) {
 		juced_DirectShowComponent *object = new juced_DirectShowComponent();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_Component")) {
+		juced_Component *object = new juced_Component();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_Viewport")) {
+		juced_Viewport *object = new juced_Viewport();
 		return (DynamicObject *)object;
 	}
 	return nullptr;

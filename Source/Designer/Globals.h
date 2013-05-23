@@ -59,6 +59,7 @@ namespace Modules
 	const Identifier ProgressBar  ("ProgressBar");
 	const Identifier BubbleComponent	  ("BubbleComponent");
 	const Identifier DirectShowComponent	  ("DirectShowComponent");
+	const Identifier Viewport  ("Viewport");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -118,6 +119,8 @@ namespace Attributes
 	DECLARE_ID (value);
 
 	DECLARE_ID (movie);
+	DECLARE_ID (scrollBarThickness);
+	DECLARE_ID (contentViewed);
 
 	DECLARE_ID (textColour);
 	DECLARE_ID (buttonColour);

@@ -302,6 +302,13 @@ Component* Constructor::createComponent(String selectedToolName, String parentCo
 		_placeableComponents.add(childComponent);
 		getUndoManager()->perform(childComponent);
 		//(dynamic_cast<DocumentWindow*> (newComponent->getComponent()))->setContentOwned(childComponent->getComponent(), true);
+	} else if (selectedToolName == "juced_Viewport" && addDependencies) {
+		bounds.setX(0);
+		bounds.setY(0);
+		//bounds.setHeight(bounds.getHeight());
+		PlaceableComponent *childComponent = new PlaceableComponent("juced_Component", newComponent->getComponent()->getComponentID(), bounds);
+		_placeableComponents.add(childComponent);
+		getUndoManager()->perform(childComponent);
 	}
 	getUndoManager()->beginNewTransaction();
 	return newComponent->getComponent();

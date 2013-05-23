@@ -25,11 +25,12 @@ MainContentComponent::MainContentComponent()
 	Component* toolbox;
 	toolbox = juced->createToolbox(1, 32, 5);
 	juced->addToolboxItem(toolbox, "juced_Window", "Window", BinaryData::window_png, BinaryData::window_pngSize);
+	juced->addToolboxItem(toolbox, "juced_Component", "Component", BinaryData::component_png, BinaryData::component_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Label", "Text label", BinaryData::label_png, BinaryData::label_pngSize);
 	juced->addToolboxItem(toolbox, "juced_TextButton", "Text button", BinaryData::button_png, BinaryData::button_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Slider", "Slider", BinaryData::slider_png, BinaryData::slider_pngSize);
 	juced->addToolboxItem(toolbox, "juced_ImageButton", "Image button", BinaryData::imagebutton_png, BinaryData::imagebutton_pngSize);
-	//juced->addToolboxItem(toolbox, "juced_Textbox", "Textbox", BinaryData::textbox_png, BinaryData::textbox_pngSize);
+	juced->addToolboxItem(toolbox, "juced_Viewport", "Viewport", BinaryData::viewport_png, BinaryData::viewport_pngSize);
 	juced->addToolboxItem(toolbox, "juced_ComboBox", "ComboBox", BinaryData::combobox_png, BinaryData::combobox_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Listbox", "Listbox", BinaryData::listbox_png, BinaryData::listbox_pngSize);
 	//juced->addToolboxItem(toolbox, "juced_TabPanel", "Tab panel", BinaryData::tabs_png, BinaryData::tabs_pngSize);

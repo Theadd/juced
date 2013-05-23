@@ -15,7 +15,7 @@ int juced_Component::_numObjects = 0;
 juced_Component::juced_Component()
 {
     //setSize (500, 400);
-	setName("Container");
+	setName("Component");
 	setProperty(Attributes::objectType, Modules::Component.toString());
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
@@ -27,7 +27,6 @@ juced_Component::juced_Component()
 	setProperty(Attributes::declareExtended, false);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
-	setProperty(Attributes::allowTransform, false);
 }
 
 juced_Component::~juced_Component()

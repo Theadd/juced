@@ -21,9 +21,9 @@ JUCE_Designer::JUCE_Designer ()
 	addAndMakeVisible(&infoLabel);
 	infoLabel.setAlwaysOnTop(true);
 	infoLabel.setFont(Font(12.0f));
-	infoLabel.setBounds(5, getHeight() - 102, 350, 102);
+	infoLabel.setBounds(5, getHeight() - 115, 350, 115);
 	infoLabel.setInterceptsMouseClicks(false, false);
-	infoLabel.setText("[Ctrl + R] Randomly resize grid\n[Ctrl + Z] Undo change history\n[Ctrl + Y] Redo change history\n[Ctrl + S] Save current state to save.xml\n[Ctrl + O] Open saved state from save.xml\n[Ctrl + G] Generate a JUCE project from current state\n[Hold Ctrl] Don't snap to grid when editing/drawing", false);
+	infoLabel.setText("[Ctrl + R] Randomly resize grid\n[Ctrl + Z] Undo change history\n[Ctrl + Y] Redo change history\n[Ctrl + S] Save current design\n[Ctrl + O] Open last saved design\n[Ctrl + G] Generate design source code\n[Ctrl + TAB] Select parent of selected component\n[Hold Ctrl] Don't snap to grid when editing/drawing", false);
 	infoLabel.setColour(Label::textColourId, Colours::white);
 	infoLabel.setComponentEffect(new DropShadowEffect());
 
@@ -342,6 +342,18 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));
 			int currentPosY = valueTree.getProperty(Attributes::y);
 			valueTree.setProperty(Attributes::y, currentPosY + 1, Constructor::getInstance()->getUndoManager());
+		}
+	} else if (key.getKeyCode() == 9 && key.getModifiers().isCtrlDown()) {
+		try {
+			if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
+				Component *selectedParent = Constructor::getInstance()->getSelectedComponent()->getParentComponent();
+				if (selectedParent != nullptr && selectedParent != this) {
+					selectComponent(selectedParent);
+					selectComponent(selectedParent);
+				}
+			}
+		} catch (...) {
+			DBG(("Exception caught while selecting parent component of selected component"));
 		}
 	}
     return false;  // Return true if your handler uses this key event, or false to allow it to be passed-on.

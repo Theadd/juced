@@ -24,7 +24,7 @@ juced_MainComponent::juced_MainComponent()
 	setProperty(Attributes::varName, getName() + String(_numObjects));
 	setProperty(Attributes::className, "Component");
 	setProperty(Attributes::toolName, "juced_MainComponent");
-	setProperty(Attributes::declareExtended, false);
+	setProperty(Attributes::declareExtended, true);
 	setComponentID(Uuid().toString());
 	setProperty(Attributes::ID, getComponentID());
 	setProperty(Attributes::allowTransform, false);

@@ -285,6 +285,15 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else {
 					propertyChanged = false;
 				}
+			} else if (this->getProperty(Attributes::objectType) == Modules::Viewport) {
+				//deal with DirectShowComponent specific properties
+				juced_Viewport *cObject = dynamic_cast<juced_Viewport *> (this->getProperty(Attributes::object).getDynamicObject());
+				if (property == Attributes::scrollBarThickness) {
+					int thickness = treeWhosePropertyHasChanged.getProperty(property);
+					cObject->setScrollBarThickness(thickness);
+				} else {
+					propertyChanged = false;
+				}
 			}
                  
 			//[CUSTOM MODULES HERE]

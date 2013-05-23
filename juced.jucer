@@ -11,6 +11,8 @@
               file="Source/Styles/LookAndFeelCustom.h"/>
       </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="Mx9lvA" name="component.png" compile="0" resource="1" file="Source/BinaryData/component.png"/>
+        <FILE id="ZRzWMp" name="viewport.png" compile="0" resource="1" file="Source/BinaryData/viewport.png"/>
         <FILE id="cKNTXm" name="movie.png" compile="0" resource="1" file="Source/BinaryData/movie.png"/>
         <FILE id="JV4Gzb" name="bubble.png" compile="0" resource="1" file="Source/BinaryData/bubble.png"/>
         <FILE id="A3Cx0m" name="progressbar.png" compile="0" resource="1" file="Source/BinaryData/progressbar.png"/>
@@ -65,6 +67,10 @@
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="KDwDaW" name="juced_Viewport.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_Viewport.cpp"/>
+        <FILE id="k0xZEq" name="juced_Viewport.h" compile="0" resource="0"
+              file="Source/Modules/juced_Viewport.h"/>
         <FILE id="BL4hhg" name="juced_DirectShowComponent.cpp" compile="1"
               resource="0" file="Source/Modules/juced_DirectShowComponent.cpp"/>
         <FILE id="GWUBIn" name="juced_DirectShowComponent.h" compile="0" resource="0"
