@@ -10,6 +10,7 @@ var class_j_u_c_e___designer =
     [ "deselectTool", "class_j_u_c_e___designer.html#a4dfeb57c651d285bd292390f83804d55", null ],
     [ "focusGained", "class_j_u_c_e___designer.html#a99a33253baaea60dcd92bc9672025276", null ],
     [ "focusOfChildComponentChanged", "class_j_u_c_e___designer.html#a424a6a5f43af03e852e903e857fbe7c2", null ],
+    [ "generateCode", "class_j_u_c_e___designer.html#a626ae94d6210ab19cf07c68fd5dcd621", null ],
     [ "getPropertyView", "class_j_u_c_e___designer.html#a017758c079bd2aa84023d5a60e892fd4", null ],
     [ "getSelectedToolName", "class_j_u_c_e___designer.html#a295214f3c7def237fc1670f4d2f2c994", null ],
     [ "keyPressed", "class_j_u_c_e___designer.html#aebb50a2cf6a3ca2c6e0fa5bc05b28aef", null ],
@@ -21,7 +22,7 @@ var class_j_u_c_e___designer =
     [ "mouseUp", "class_j_u_c_e___designer.html#a4942b59bad58632a6dd5d79262a36c1f", null ],
     [ "paint", "class_j_u_c_e___designer.html#a0430dec4e33b74125d621b20ea1b0362", null ],
     [ "resized", "class_j_u_c_e___designer.html#a0e5e3642a98c3f7be37290f19631553d", null ],
-    [ "selectComponent", "class_j_u_c_e___designer.html#aa0df012cd5e7a5446204e760ffce7c2f", null ],
+    [ "selectComponent", "class_j_u_c_e___designer.html#a9fe5f25aeff03c1bacb5d397f00eace9", null ],
     [ "writeXmlToFile", "class_j_u_c_e___designer.html#a9c9e01e32da855dc480df50ce18fe6c2", null ],
     [ "grid", "class_j_u_c_e___designer.html#a1dc7a4646ff0de0d55ac8311d562e8de", null ]
 ];

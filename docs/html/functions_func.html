@@ -90,7 +90,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
-      <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
       <li><a href="#index_v"><span>v</span></a></li>
@@ -117,7 +116,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -134,9 +133,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="class_big_tree.html#a51e3dd18a0bc72c35a3b273a617dcd21">BigTree</a>
 </li>
 <li>buttonClicked()
-: <a class="el" href="class_text_with_button_property_component.html#a7dba795846d40985dd8b19b93d57136d">TextWithButtonPropertyComponent</a>
-, <a class="el" href="class_j_u_c_e_d___colour_property_component.html#adce68ca658602ddc927f87266996b2bf">JUCED_ColourPropertyComponent</a>
+: <a class="el" href="class_j_u_c_e_d___colour_property_component.html#adce68ca658602ddc927f87266996b2bf">JUCED_ColourPropertyComponent</a>
+, <a class="el" href="class_text_with_button_property_component.html#a7dba795846d40985dd8b19b93d57136d">TextWithButtonPropertyComponent</a>
 , <a class="el" href="class_enumeration_property_component.html#abc229296ccb8a776792926c265a10b5c">EnumerationPropertyComponent</a>
+, <a class="el" href="class_file_property_component.html#a37af1f844d58fad8418800e39a2d175a">FilePropertyComponent</a>
 </li>
 </ul>
 
@@ -145,9 +145,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>changeListenerCallback()
 : <a class="el" href="class_j_u_c_e_d___colour_property_component.html#a8a0dfb6779dcf54d0fcfbaee3780bda3">JUCED_ColourPropertyComponent</a>
 </li>
-<li>createComponent()
-: <a class="el" href="class_constructor.html#a0f3ec34b180a1d4f104712d50cb14e43">Constructor</a>
-</li>
 <li>createXml()
 : <a class="el" href="class_big_tree.html#a5b17033f66f8f1b0ab8fff44ab6d6543">BigTree</a>
 </li>
@@ -155,8 +152,14 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
-<li>destroy()
-: <a class="el" href="class_constructor.html#a570ea772b42346cdc976aa4f8c2795c7">Constructor</a>
+<li>drawButtonBackground()
+: <a class="el" href="class_look_and_feel_custom.html#aa43f1208471bfa8f7f2f2044b31e7a10">LookAndFeelCustom</a>
+</li>
+<li>drawPopupMenuBackground()
+: <a class="el" href="class_look_and_feel_custom.html#a2cbc7008bff337ca964fb5abffbf52f1">LookAndFeelCustom</a>
+</li>
+<li>drawToggleButton()
+: <a class="el" href="class_look_and_feel_custom.html#a51b5f371316af506ef4f3b62b6c19dfb">LookAndFeelCustom</a>
 </li>
 </ul>
 
@@ -172,9 +175,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>getAttributeOf()
 : <a class="el" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef">Constructor</a>
 </li>
-<li>getBigTreeRoot()
-: <a class="el" href="class_constructor.html#ab069bf462919ffdddadb51453795d1ad">Constructor</a>
-</li>
 <li>getChild()
 : <a class="el" href="class_big_tree.html#ac2c384997bb5faf0d18e6852c3eb2941">BigTree</a>
 </li>
@@ -184,32 +184,8 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>getComponent()
 : <a class="el" href="class_placeable_component.html#a047abd0e11bb1c02b38898ef09b873b1">PlaceableComponent</a>
 </li>
-<li>getDesigner()
-: <a class="el" href="class_constructor.html#a93e5c1a597e8f5dd4d54f89db16cdcaf">Constructor</a>
-</li>
-<li>getDrawBoundsModHeight()
-: <a class="el" href="class_constructor.html#ae6cefdd6768938290aefa927dc916dca">Constructor</a>
-</li>
-<li>getDrawBoundsModWidth()
-: <a class="el" href="class_constructor.html#a814a224a76b8a3557b5dbfdcba694671">Constructor</a>
-</li>
-<li>getDrawBoundsModX()
-: <a class="el" href="class_constructor.html#a829c22c7bdd971dabe48f16add415a7d">Constructor</a>
-</li>
-<li>getDrawBoundsModY()
-: <a class="el" href="class_constructor.html#ae2b5aeaa20c44e5867f1f45684c8600e">Constructor</a>
-</li>
-<li>getEnumerationsOf()
-: <a class="el" href="class_constructor.html#a01e93de94d8be5532e650cddaeda480e">Constructor</a>
-</li>
-<li>getGridSize()
-: <a class="el" href="class_constructor.html#a900f4c6d494c239238809adf2afc290e">Constructor</a>
-</li>
 <li>getInstance()
 : <a class="el" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98">Constructor</a>
-</li>
-<li>getSelectionBox()
-: <a class="el" href="class_constructor.html#ad561d0bb14ee460677882a74d768114d">Constructor</a>
 </li>
 <li>getUndoManager()
 : <a class="el" href="class_constructor.html#ab8c30bd6317d7f2b158f8462a630a3d6">Constructor</a>
@@ -228,11 +204,8 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>loadAttributesFromXmlFile()
 : <a class="el" href="class_constructor.html#aa276e1e035578f7964780a2f3453395f">Constructor</a>
 </li>
-<li>loadEnumerationsFromXmlFile()
-: <a class="el" href="class_constructor.html#a7010d09e0a7b5d97cd861beeb74121b9">Constructor</a>
-</li>
-<li>log()
-: <a class="el" href="class_constructor.html#a852d8d12aa8f62664d52093dbbd5555b">Constructor</a>
+<li>LookAndFeelCustom()
+: <a class="el" href="class_look_and_feel_custom.html#ad5da8ef4f5286cbf9072fcf8f8cbc116">LookAndFeelCustom</a>
 </li>
 </ul>
 
@@ -242,7 +215,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="class_placeable_component.html#af6dcf52a48390ed9a236ae3a00d4314c">PlaceableComponent</a>
 </li>
 <li>PlaceableComponent()
-: <a class="el" href="class_placeable_component.html#a9fbf67d873a6d83cf1ca9d9783aab25d">PlaceableComponent</a>
+: <a class="el" href="class_placeable_component.html#a0372f6b4d0bd106f397711c62ee70e2c">PlaceableComponent</a>
 </li>
 </ul>
 
@@ -251,27 +224,11 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>recursive_removeProperty()
 : <a class="el" href="class_big_tree.html#a47a9f19b49792e570174ff0773ba1d78">BigTree</a>
 </li>
+<li>recursive_setFilePathAsRelative()
+: <a class="el" href="class_big_tree.html#a6569313ce8ebe4a02ec940a1e740d788">BigTree</a>
+</li>
 <li>resized()
 : <a class="el" href="class_text_with_button_property_component.html#a8c9ffa8ad1454bff3af84d58133b7c0c">TextWithButtonPropertyComponent</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
-<li>setBigTreeRoot()
-: <a class="el" href="class_constructor.html#a2930ea7190b6a6252d036de6a2b8c636">Constructor</a>
-</li>
-<li>setDesigner()
-: <a class="el" href="class_constructor.html#a3281de76b822b8bf5919245f1366f581">Constructor</a>
-</li>
-<li>setDrawBoundsMod()
-: <a class="el" href="class_constructor.html#a83ffdce2edec86fb7b0dd4850bfcdecc">Constructor</a>
-</li>
-<li>setGridSize()
-: <a class="el" href="class_constructor.html#ab3f9b48d6ad94eb610447ce94ea4ae1d">Constructor</a>
-</li>
-<li>setSelectedComponent()
-: <a class="el" href="class_constructor.html#aa3ed52a1e6608e639a1dd4801a406ea4">Constructor</a>
 </li>
 </ul>
 
@@ -298,8 +255,8 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 
 <h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
-<li>~Constructor()
-: <a class="el" href="class_constructor.html#a4ad4d817192fadf79f16b2a4b72d86a9">Constructor</a>
+<li>~LookAndFeelCustom()
+: <a class="el" href="class_look_and_feel_custom.html#adeeba857dfbeba8f2e8808698b85a83e">LookAndFeelCustom</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -307,7 +264,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:44 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:47 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

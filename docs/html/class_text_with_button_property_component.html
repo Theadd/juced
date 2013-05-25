@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_text_with_button_property_compon
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,7 +120,8 @@ Inheritance diagram for TextWithButtonPropertyComponent:</div>
   <img src="class_text_with_button_property_component.png" usemap="#TextWithButtonPropertyComponent_map" alt=""/>
   <map id="TextWithButtonPropertyComponent_map" name="TextWithButtonPropertyComponent_map">
 <area href="class_enumeration_property_component.html" title="PropertyComponent that shows a multiple selection popup." alt="EnumerationPropertyComponent" shape="rect" coords="0,112,210,136"/>
-<area href="class_j_u_c_e_d___colour_property_component.html" title="PropertyComponent that shows a CallOutBox with a ColourSelector in it." alt="JUCED_ColourPropertyComponent" shape="rect" coords="220,112,430,136"/>
+<area href="class_file_property_component.html" title="PropertyComponent that shows a File selector dialog." alt="FilePropertyComponent" shape="rect" coords="220,112,430,136"/>
+<area href="class_j_u_c_e_d___colour_property_component.html" title="PropertyComponent that shows a CallOutBox with a ColourSelector in it." alt="JUCED_ColourPropertyComponent" shape="rect" coords="440,112,650,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -217,7 +218,7 @@ Public Attributes</h2></td></tr>
 
 <p>Virtual function called when the user clicks the TextButton. </p>
 
-<p>Implemented in <a class="el" href="class_enumeration_property_component.html#abc229296ccb8a776792926c265a10b5c">EnumerationPropertyComponent</a>, and <a class="el" href="class_j_u_c_e_d___colour_property_component.html#adce68ca658602ddc927f87266996b2bf">JUCED_ColourPropertyComponent</a>.</p>
+<p>Implemented in <a class="el" href="class_enumeration_property_component.html#abc229296ccb8a776792926c265a10b5c">EnumerationPropertyComponent</a>, <a class="el" href="class_j_u_c_e_d___colour_property_component.html#adce68ca658602ddc927f87266996b2bf">JUCED_ColourPropertyComponent</a>, and <a class="el" href="class_file_property_component.html#a37af1f844d58fad8418800e39a2d175a">FilePropertyComponent</a>.</p>
 
 </div>
 </div>
@@ -260,7 +261,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_text_with_button_property_component_8h_source.html#l00030">30</a> of file <a class="el" href="_text_with_button_property_component_8h_source.html">TextWithButtonPropertyComponent.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_colour_property_component_8cpp_source.html#l00041">JUCED_ColourPropertyComponent::buttonClicked()</a>, <a class="el" href="_enumeration_property_component_8cpp_source.html#l00063">EnumerationPropertyComponent::buttonClicked()</a>, <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00030">resized()</a>, and <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00013">TextWithButtonPropertyComponent()</a>.</p>
+<p>Referenced by <a class="el" href="_file_property_component_8cpp_source.html#l00032">FilePropertyComponent::buttonClicked()</a>, <a class="el" href="_colour_property_component_8cpp_source.html#l00041">JUCED_ColourPropertyComponent::buttonClicked()</a>, <a class="el" href="_enumeration_property_component_8cpp_source.html#l00063">EnumerationPropertyComponent::buttonClicked()</a>, <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00030">resized()</a>, and <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00013">TextWithButtonPropertyComponent()</a>.</p>
 
 </div>
 </div>
@@ -278,7 +279,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_text_with_button_property_component_8h_source.html#l00032">32</a> of file <a class="el" href="_text_with_button_property_component_8h_source.html">TextWithButtonPropertyComponent.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_enumeration_property_component_8cpp_source.html#l00063">EnumerationPropertyComponent::buttonClicked()</a>, <a class="el" href="_colour_property_component_8cpp_source.html#l00056">JUCED_ColourPropertyComponent::changeListenerCallback()</a>, <a class="el" href="_colour_property_component_8cpp_source.html#l00032">JUCED_ColourPropertyComponent::JUCED_ColourPropertyComponent()</a>, <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00030">resized()</a>, and <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00013">TextWithButtonPropertyComponent()</a>.</p>
+<p>Referenced by <a class="el" href="_file_property_component_8cpp_source.html#l00032">FilePropertyComponent::buttonClicked()</a>, <a class="el" href="_enumeration_property_component_8cpp_source.html#l00063">EnumerationPropertyComponent::buttonClicked()</a>, <a class="el" href="_colour_property_component_8cpp_source.html#l00056">JUCED_ColourPropertyComponent::changeListenerCallback()</a>, <a class="el" href="_colour_property_component_8cpp_source.html#l00032">JUCED_ColourPropertyComponent::JUCED_ColourPropertyComponent()</a>, <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00030">resized()</a>, and <a class="el" href="_text_with_button_property_component_8cpp_source.html#l00013">TextWithButtonPropertyComponent()</a>.</p>
 
 </div>
 </div>
@@ -292,7 +293,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_text_with_button_property_component.html">TextWithButtonPropertyComponent</a></li>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:44 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:47 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

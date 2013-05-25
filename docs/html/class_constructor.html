@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_constructor.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,87 +119,138 @@ $(document).ready(function(){initNavTree('class_constructor.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ad4d817192fadf79f16b2a4b72d86a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a4ad4d817192fadf79f16b2a4b72d86a9">~Constructor</a> ()</td></tr>
-<tr class="memdesc:a4ad4d817192fadf79f16b2a4b72d86a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a4ad4d817192fadf79f16b2a4b72d86a9"></a><br/></td></tr>
-<tr class="separator:a4ad4d817192fadf79f16b2a4b72d86a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa276e1e035578f7964780a2f3453395f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#aa276e1e035578f7964780a2f3453395f">loadAttributesFromXmlFile</a> (const File &amp;xmlFile)</td></tr>
 <tr class="memdesc:aa276e1e035578f7964780a2f3453395f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called within <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a> constructor.  <a href="#aa276e1e035578f7964780a2f3453395f"></a><br/></td></tr>
 <tr class="separator:aa276e1e035578f7964780a2f3453395f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7010d09e0a7b5d97cd861beeb74121b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a7010d09e0a7b5d97cd861beeb74121b9">loadEnumerationsFromXmlFile</a> (const File &amp;xmlFile)</td></tr>
-<tr class="memdesc:a7010d09e0a7b5d97cd861beeb74121b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called within <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a> constructor.  <a href="#a7010d09e0a7b5d97cd861beeb74121b9"></a><br/></td></tr>
+<tr class="memitem:a7010d09e0a7b5d97cd861beeb74121b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7010d09e0a7b5d97cd861beeb74121b9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadEnumerationsFromXmlFile</b> (const File &amp;xmlFile)</td></tr>
 <tr class="separator:a7010d09e0a7b5d97cd861beeb74121b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab34f1e9062445681a508550415ff18ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_attribute.html">Attribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef">getAttributeOf</a> (Identifier _name)</td></tr>
 <tr class="memdesc:ab34f1e9062445681a508550415ff18ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a struct pointer of attribute parameters given it's Identifier.  <a href="#ab34f1e9062445681a508550415ff18ef"></a><br/></td></tr>
 <tr class="separator:ab34f1e9062445681a508550415ff18ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01e93de94d8be5532e650cddaeda480e"><td class="memItemLeft" align="right" valign="top">Array&lt; <a class="el" href="struct_enumeration.html">Enumeration</a> * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a01e93de94d8be5532e650cddaeda480e">getEnumerationsOf</a> (Identifier _name)</td></tr>
-<tr class="memdesc:a01e93de94d8be5532e650cddaeda480e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to an array of <a class="el" href="struct_enumeration.html">Enumeration</a> pointers given it's Identifier.  <a href="#a01e93de94d8be5532e650cddaeda480e"></a><br/></td></tr>
+<tr class="memitem:a01e93de94d8be5532e650cddaeda480e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01e93de94d8be5532e650cddaeda480e"></a>
+Array&lt; <a class="el" href="struct_enumeration.html">Enumeration</a> * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>getEnumerationsOf</b> (Identifier _name)</td></tr>
 <tr class="separator:a01e93de94d8be5532e650cddaeda480e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec55f8190721cdd8011792490a6242d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec55f8190721cdd8011792490a6242d6"></a>
+<a class="el" href="struct_choices.html">Choices</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getChoicesOf</b> (Identifier _name)</td></tr>
+<tr class="separator:aec55f8190721cdd8011792490a6242d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8c30bd6317d7f2b158f8462a630a3d6"><td class="memItemLeft" align="right" valign="top">UndoManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ab8c30bd6317d7f2b158f8462a630a3d6">getUndoManager</a> ()</td></tr>
 <tr class="memdesc:ab8c30bd6317d7f2b158f8462a630a3d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to an UndoManager.  <a href="#ab8c30bd6317d7f2b158f8462a630a3d6"></a><br/></td></tr>
 <tr class="separator:ab8c30bd6317d7f2b158f8462a630a3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad561d0bb14ee460677882a74d768114d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_selection_area.html">SelectionArea</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ad561d0bb14ee460677882a74d768114d">getSelectionBox</a> ()</td></tr>
-<tr class="memdesc:ad561d0bb14ee460677882a74d768114d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the selection box that envolves the selected component.  <a href="#ad561d0bb14ee460677882a74d768114d"></a><br/></td></tr>
+<tr class="memitem:ad561d0bb14ee460677882a74d768114d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad561d0bb14ee460677882a74d768114d"></a>
+<a class="el" href="class_selection_area.html">SelectionArea</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSelectionBox</b> ()</td></tr>
 <tr class="separator:ad561d0bb14ee460677882a74d768114d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83ffdce2edec86fb7b0dd4850bfcdecc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a83ffdce2edec86fb7b0dd4850bfcdecc">setDrawBoundsMod</a> (int x, int y, int width, int height)</td></tr>
-<tr class="memdesc:a83ffdce2edec86fb7b0dd4850bfcdecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>).  <a href="#a83ffdce2edec86fb7b0dd4850bfcdecc"></a><br/></td></tr>
+<tr class="memitem:a83ffdce2edec86fb7b0dd4850bfcdecc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83ffdce2edec86fb7b0dd4850bfcdecc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDrawBoundsMod</b> (int x, int y, int width, int height)</td></tr>
 <tr class="separator:a83ffdce2edec86fb7b0dd4850bfcdecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a829c22c7bdd971dabe48f16add415a7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a829c22c7bdd971dabe48f16add415a7d">getDrawBoundsModX</a> ()</td></tr>
-<tr class="memdesc:a829c22c7bdd971dabe48f16add415a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>).  <a href="#a829c22c7bdd971dabe48f16add415a7d"></a><br/></td></tr>
+<tr class="memitem:a829c22c7bdd971dabe48f16add415a7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a829c22c7bdd971dabe48f16add415a7d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDrawBoundsModX</b> ()</td></tr>
 <tr class="separator:a829c22c7bdd971dabe48f16add415a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b5aeaa20c44e5867f1f45684c8600e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ae2b5aeaa20c44e5867f1f45684c8600e">getDrawBoundsModY</a> ()</td></tr>
-<tr class="memdesc:ae2b5aeaa20c44e5867f1f45684c8600e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>).  <a href="#ae2b5aeaa20c44e5867f1f45684c8600e"></a><br/></td></tr>
+<tr class="memitem:ae2b5aeaa20c44e5867f1f45684c8600e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2b5aeaa20c44e5867f1f45684c8600e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDrawBoundsModY</b> ()</td></tr>
 <tr class="separator:ae2b5aeaa20c44e5867f1f45684c8600e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a814a224a76b8a3557b5dbfdcba694671"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a814a224a76b8a3557b5dbfdcba694671">getDrawBoundsModWidth</a> ()</td></tr>
-<tr class="memdesc:a814a224a76b8a3557b5dbfdcba694671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>).  <a href="#a814a224a76b8a3557b5dbfdcba694671"></a><br/></td></tr>
+<tr class="memitem:a814a224a76b8a3557b5dbfdcba694671"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a814a224a76b8a3557b5dbfdcba694671"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDrawBoundsModWidth</b> ()</td></tr>
 <tr class="separator:a814a224a76b8a3557b5dbfdcba694671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6cefdd6768938290aefa927dc916dca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ae6cefdd6768938290aefa927dc916dca">getDrawBoundsModHeight</a> ()</td></tr>
-<tr class="memdesc:ae6cefdd6768938290aefa927dc916dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>).  <a href="#ae6cefdd6768938290aefa927dc916dca"></a><br/></td></tr>
+<tr class="memitem:ae6cefdd6768938290aefa927dc916dca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6cefdd6768938290aefa927dc916dca"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getDrawBoundsModHeight</b> ()</td></tr>
 <tr class="separator:ae6cefdd6768938290aefa927dc916dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3f9b48d6ad94eb610447ce94ea4ae1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ab3f9b48d6ad94eb610447ce94ea4ae1d">setGridSize</a> (int newGridSize)</td></tr>
-<tr class="memdesc:ab3f9b48d6ad94eb610447ce94ea4ae1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the size in pixels between the grid lines.  <a href="#ab3f9b48d6ad94eb610447ce94ea4ae1d"></a><br/></td></tr>
+<tr class="memitem:ab3f9b48d6ad94eb610447ce94ea4ae1d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3f9b48d6ad94eb610447ce94ea4ae1d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setGridSize</b> (int newGridSize)</td></tr>
 <tr class="separator:ab3f9b48d6ad94eb610447ce94ea4ae1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a900f4c6d494c239238809adf2afc290e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a900f4c6d494c239238809adf2afc290e">getGridSize</a> ()</td></tr>
-<tr class="memdesc:a900f4c6d494c239238809adf2afc290e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in pixels between the grid lines.  <a href="#a900f4c6d494c239238809adf2afc290e"></a><br/></td></tr>
+<tr class="memitem:a900f4c6d494c239238809adf2afc290e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a900f4c6d494c239238809adf2afc290e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getGridSize</b> ()</td></tr>
 <tr class="separator:a900f4c6d494c239238809adf2afc290e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60c3ff2ca4ceb08dfd8a2c728a382c0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60c3ff2ca4ceb08dfd8a2c728a382c0a"></a>
 Component *&#160;</td><td class="memItemRight" valign="bottom"><b>getSelectedComponent</b> ()</td></tr>
 <tr class="separator:a60c3ff2ca4ceb08dfd8a2c728a382c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ed52a1e6608e639a1dd4801a406ea4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#aa3ed52a1e6608e639a1dd4801a406ea4">setSelectedComponent</a> (Component *selectedComponent)</td></tr>
-<tr class="memdesc:aa3ed52a1e6608e639a1dd4801a406ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current selected component.  <a href="#aa3ed52a1e6608e639a1dd4801a406ea4"></a><br/></td></tr>
+<tr class="memitem:aa3ed52a1e6608e639a1dd4801a406ea4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3ed52a1e6608e639a1dd4801a406ea4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSelectedComponent</b> (Component *selectedComponent)</td></tr>
 <tr class="separator:aa3ed52a1e6608e639a1dd4801a406ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3281de76b822b8bf5919245f1366f581"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a3281de76b822b8bf5919245f1366f581">setDesigner</a> (Component *juce_designer)</td></tr>
-<tr class="memdesc:a3281de76b822b8bf5919245f1366f581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a pointer to an instance of <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a>.  <a href="#a3281de76b822b8bf5919245f1366f581"></a><br/></td></tr>
+<tr class="memitem:a3281de76b822b8bf5919245f1366f581"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3281de76b822b8bf5919245f1366f581"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDesigner</b> (Component *juce_designer)</td></tr>
 <tr class="separator:a3281de76b822b8bf5919245f1366f581"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93e5c1a597e8f5dd4d54f89db16cdcaf"><td class="memItemLeft" align="right" valign="top">Component *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a93e5c1a597e8f5dd4d54f89db16cdcaf">getDesigner</a> ()</td></tr>
-<tr class="memdesc:a93e5c1a597e8f5dd4d54f89db16cdcaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a Component pointer to an instance of <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a>.  <a href="#a93e5c1a597e8f5dd4d54f89db16cdcaf"></a><br/></td></tr>
+<tr class="memitem:a93e5c1a597e8f5dd4d54f89db16cdcaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93e5c1a597e8f5dd4d54f89db16cdcaf"></a>
+Component *&#160;</td><td class="memItemRight" valign="bottom"><b>getDesigner</b> ()</td></tr>
 <tr class="separator:a93e5c1a597e8f5dd4d54f89db16cdcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2930ea7190b6a6252d036de6a2b8c636"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a2930ea7190b6a6252d036de6a2b8c636">setBigTreeRoot</a> (const <a class="el" href="class_big_tree.html">BigTree</a> &amp;bigTreeRoot)</td></tr>
-<tr class="memdesc:a2930ea7190b6a6252d036de6a2b8c636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the root of <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>'s to the value passed by reference.  <a href="#a2930ea7190b6a6252d036de6a2b8c636"></a><br/></td></tr>
-<tr class="separator:a2930ea7190b6a6252d036de6a2b8c636"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab069bf462919ffdddadb51453795d1ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_big_tree.html">BigTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#ab069bf462919ffdddadb51453795d1ad">getBigTreeRoot</a> ()</td></tr>
-<tr class="memdesc:ab069bf462919ffdddadb51453795d1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> root.  <a href="#ab069bf462919ffdddadb51453795d1ad"></a><br/></td></tr>
-<tr class="separator:ab069bf462919ffdddadb51453795d1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f3ec34b180a1d4f104712d50cb14e43"><td class="memItemLeft" align="right" valign="top">Component *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a0f3ec34b180a1d4f104712d50cb14e43">createComponent</a> (String selectedToolName, String parentComponentID, Rectangle&lt; int &gt; bounds)</td></tr>
-<tr class="memdesc:a0f3ec34b180a1d4f104712d50cb14e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and add a component to the editor.  <a href="#a0f3ec34b180a1d4f104712d50cb14e43"></a><br/></td></tr>
-<tr class="separator:a0f3ec34b180a1d4f104712d50cb14e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d72b5eb1a86816be436cca2f754a10c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d72b5eb1a86816be436cca2f754a10c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setBigTreeRoot</b> (<a class="el" href="class_big_tree.html">BigTree</a> *bigTreeRoot)</td></tr>
+<tr class="separator:a4d72b5eb1a86816be436cca2f754a10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa60cf2b7c17ba0a752f9c5b7880eb5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa60cf2b7c17ba0a752f9c5b7880eb5e"></a>
+<a class="el" href="class_big_tree.html">BigTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getBigTreeRoot</b> ()</td></tr>
+<tr class="separator:aaa60cf2b7c17ba0a752f9c5b7880eb5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ca1e43ce2d408e6b922eccf9f9a7c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99ca1e43ce2d408e6b922eccf9f9a7c2"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>getTemplatesDir</b> ()</td></tr>
+<tr class="separator:a99ca1e43ce2d408e6b922eccf9f9a7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a140a379a147a8b47af446f2feb214770"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a140a379a147a8b47af446f2feb214770"></a>
+Component *&#160;</td><td class="memItemRight" valign="bottom"><b>createComponent</b> (String selectedToolName, String parentComponentID, Rectangle&lt; int &gt; bounds, String componentID=String::empty, bool addDependencies=true)</td></tr>
+<tr class="separator:a140a379a147a8b47af446f2feb214770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9cf614fe4c30ffd09b6bd68b65e476d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9cf614fe4c30ffd09b6bd68b65e476d"></a>
+LookAndFeel *&#160;</td><td class="memItemRight" valign="bottom"><b>getNamedLookAndFeel</b> (String name)</td></tr>
+<tr class="separator:ac9cf614fe4c30ffd09b6bd68b65e476d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ceff8a2eacc2e248baf5e6a310c4c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2ceff8a2eacc2e248baf5e6a310c4c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setWorkingDirectory</b> (String path)</td></tr>
+<tr class="separator:af2ceff8a2eacc2e248baf5e6a310c4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaebc5ddad2e8e02c4667fa9250e18133"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaebc5ddad2e8e02c4667fa9250e18133"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>getWorkingDirectory</b> ()</td></tr>
+<tr class="separator:aaebc5ddad2e8e02c4667fa9250e18133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d48eeff0a4ce0cfea4aa380a1c9c3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64d48eeff0a4ce0cfea4aa380a1c9c3d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>importFromXml</b> (File xmlFile)</td></tr>
+<tr class="separator:a64d48eeff0a4ce0cfea4aa380a1c9c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc5998bef6747e9c49f6db6a57bb0b7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc5998bef6747e9c49f6db6a57bb0b7b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resetCurrentState</b> ()</td></tr>
+<tr class="separator:afc5998bef6747e9c49f6db6a57bb0b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53993457749365fca71a5dfd0eb9f7b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53993457749365fca71a5dfd0eb9f7b5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>createNewProject</b> ()</td></tr>
+<tr class="separator:a53993457749365fca71a5dfd0eb9f7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9abb4e187f961eabceebfe48f3b14cf5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9abb4e187f961eabceebfe48f3b14cf5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>openProject</b> ()</td></tr>
+<tr class="separator:a9abb4e187f961eabceebfe48f3b14cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c002a95bbe6ebe88e1582728b0fb2dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c002a95bbe6ebe88e1582728b0fb2dc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>quickSave</b> ()</td></tr>
+<tr class="separator:a9c002a95bbe6ebe88e1582728b0fb2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a591a0abf7f45bb2ddd4d3e4036b8da82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a591a0abf7f45bb2ddd4d3e4036b8da82"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>updateRootVarName</b> ()</td></tr>
+<tr class="separator:a591a0abf7f45bb2ddd4d3e4036b8da82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9009df90cf411adefeaaa241d8bf9f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9009df90cf411adefeaaa241d8bf9f6"></a>
+ApplicationCommandManager *&#160;</td><td class="memItemRight" valign="bottom"><b>getCommandManager</b> ()</td></tr>
+<tr class="separator:aa9009df90cf411adefeaaa241d8bf9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a757cc1671f52f15291b89772bef7aa98"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_constructor.html">Constructor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98">getInstance</a> ()</td></tr>
 <tr class="memdesc:a757cc1671f52f15291b89772bef7aa98"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called to create an instance of the class.  <a href="#a757cc1671f52f15291b89772bef7aa98"></a><br/></td></tr>
 <tr class="separator:a757cc1671f52f15291b89772bef7aa98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a570ea772b42346cdc976aa4f8c2795c7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a570ea772b42346cdc976aa4f8c2795c7">destroy</a> ()</td></tr>
-<tr class="memdesc:a570ea772b42346cdc976aa4f8c2795c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called statically to destroy the instance of this class.  <a href="#a570ea772b42346cdc976aa4f8c2795c7"></a><br/></td></tr>
+<tr class="memitem:a570ea772b42346cdc976aa4f8c2795c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a570ea772b42346cdc976aa4f8c2795c7"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> ()</td></tr>
 <tr class="separator:a570ea772b42346cdc976aa4f8c2795c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a852d8d12aa8f62664d52093dbbd5555b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_constructor.html#a852d8d12aa8f62664d52093dbbd5555b">log</a> (String msg)</td></tr>
-<tr class="memdesc:a852d8d12aa8f62664d52093dbbd5555b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static method to write a line to designer.log file.  <a href="#a852d8d12aa8f62664d52093dbbd5555b"></a><br/></td></tr>
+<tr class="memitem:a852d8d12aa8f62664d52093dbbd5555b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a852d8d12aa8f62664d52093dbbd5555b"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (String msg)</td></tr>
 <tr class="separator:a852d8d12aa8f62664d52093dbbd5555b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a292bcc54668e3f7d018355aeccda8f79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a292bcc54668e3f7d018355aeccda8f79"></a>
-<a class="el" href="class_big_tree.html">BigTree</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_bigTreeRoot</b></td></tr>
-<tr class="separator:a292bcc54668e3f7d018355aeccda8f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8135a7c5eb44bb6bc2bade0ffedef93f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8135a7c5eb44bb6bc2bade0ffedef93f"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>projectName</b></td></tr>
+<tr class="separator:a8135a7c5eb44bb6bc2bade0ffedef93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a553337f4fa06438184d5d1d0692e7875"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a553337f4fa06438184d5d1d0692e7875"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>projectPath</b></td></tr>
+<tr class="separator:a553337f4fa06438184d5d1d0692e7875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a0d2ae5efcd9e2ef5335ec61e0190d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43a0d2ae5efcd9e2ef5335ec61e0190d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>projectType</b></td></tr>
+<tr class="separator:a43a0d2ae5efcd9e2ef5335ec61e0190d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0800b3215824548b3cb327c6ca780f0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0800b3215824548b3cb327c6ca780f0f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>resourceType</b></td></tr>
+<tr class="separator:a0800b3215824548b3cb327c6ca780f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb6479a052bccbca47c390ef3295875b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb6479a052bccbca47c390ef3295875b"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>selectedTemplate</b></td></tr>
+<tr class="separator:adb6479a052bccbca47c390ef3295875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33e4fa2a7a167cd3550350aec0dc0dab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33e4fa2a7a167cd3550350aec0dc0dab"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>rootVarName</b></td></tr>
+<tr class="separator:a33e4fa2a7a167cd3550350aec0dc0dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e61ce4da483b7decac76f27aedff695"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e61ce4da483b7decac76f27aedff695"></a>
+ApplicationCommandManager&#160;</td><td class="memItemRight" valign="bottom"><b>commandManager</b></td></tr>
+<tr class="separator:a5e61ce4da483b7decac76f27aedff695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -209,6 +260,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SelectionArea</b></t
 <tr class="memitem:a2c4615173c3eb48f45a6682bac0b2405"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c4615173c3eb48f45a6682bac0b2405"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>JUCE_Designer</b></td></tr>
 <tr class="separator:a2c4615173c3eb48f45a6682bac0b2405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfffb516c1c009fbf9953d75d260d121"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abfffb516c1c009fbf9953d75d260d121"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>BigTree</b></td></tr>
+<tr class="separator:abfffb516c1c009fbf9953d75d260d121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cf8dfc31c3ef40dbaae0fbb592fd6b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cf8dfc31c3ef40dbaae0fbb592fd6b2"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>PlaceableComponent</b></td></tr>
 <tr class="separator:a8cf8dfc31c3ef40dbaae0fbb592fd6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,105 +272,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>PlaceableComponent</
 <p>Only one instance of this object is allowed.</p>
 <p>To use, simply get an instance of this class using the <a class="el" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98" title="This function is called to create an instance of the class.">getInstance()</a> static method. Example: <a class="el" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a> *constructor = <a class="el" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98" title="This function is called to create an instance of the class.">Constructor::getInstance()</a>; </p>
 
-<p>Definition at line <a class="el" href="_constructor_8h_source.html#l00036">36</a> of file <a class="el" href="_constructor_8h_source.html">Constructor.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a4ad4d817192fadf79f16b2a4b72d86a9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Constructor::~Constructor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Destructor. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00034">34</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>References <a class="el" href="_constructor_8cpp_source.html#l00255">getBigTreeRoot()</a>, <a class="el" href="_constructor_8cpp_source.html#l00203">log()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00221">BigTree::recursive_removeProperty()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0f3ec34b180a1d4f104712d50cb14e43"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Component * Constructor::createComponent </td>
-          <td>(</td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>selectedToolName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>parentComponentID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Rectangle&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>bounds</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create and add a component to the editor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">selectedToolName</td><td>String containing the name of a tool set in PlaceableComponent::createObjectFromToolName </td></tr>
-    <tr><td class="paramname">parentComponentID</td><td>String containing the ID of the parent component </td></tr>
-    <tr><td class="paramname">bounds</td><td>Rectangle&lt;int&gt; of the space that will occupy in the parent component </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00263">263</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>References <a class="el" href="_placeable_component_8cpp_source.html#l00203">PlaceableComponent::getComponent()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00137">getUndoManager()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a570ea772b42346cdc976aa4f8c2795c7"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::destroy </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This function is called statically to destroy the instance of this class. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00028">28</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">log()</a>.</p>
-
-</div>
-</div>
+<p>Definition at line <a class="el" href="_constructor_8h_source.html#l00050">50</a> of file <a class="el" href="_constructor_8h_source.html">Constructor.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ab34f1e9062445681a508550415ff18ef"></a>
 <div class="memitem">
 <div class="memproto">
@@ -334,181 +291,17 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>PlaceableComponent</
 <p>Returns a struct pointer of attribute parameters given it's Identifier. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_name</td><td><a class="el" href="struct_attribute.html" title="Struct to hold all parameters of a given attribute identifier.">Attribute</a> identifier. </td></tr>
+    <tr><td class="paramname">_name</td><td><a class="el" href="struct_attribute.html">Attribute</a> identifier. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="struct_attribute.html" title="Struct to hold all parameters of a given attribute identifier.">Attribute</a> </dd>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="struct_attribute.html">Attribute</a> </dd>
 <dd>
 Attributes </dd></dl>
 
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00119">119</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00146">146</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00058">BigTree::valueTreePropertyChanged()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab069bf462919ffdddadb51453795d1ad"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_big_tree.html">BigTree</a> Constructor::getBigTreeRoot </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a reference to the <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> root. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00255">255</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00046">PlaceableComponent::perform()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00034">~Constructor()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a93e5c1a597e8f5dd4d54f89db16cdcaf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Component * Constructor::getDesigner </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a Component pointer to an instance of <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a>. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00236">236</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00046">PlaceableComponent::perform()</a>, and <a class="el" href="_placeable_component_8cpp_source.html#l00141">PlaceableComponent::undo()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae6cefdd6768938290aefa927dc916dca"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Constructor::getDrawBoundsModHeight </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>). </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00167">167</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a814a224a76b8a3557b5dbfdcba694671"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Constructor::getDrawBoundsModWidth </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>). </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00162">162</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a829c22c7bdd971dabe48f16add415a7d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Constructor::getDrawBoundsModX </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>). </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00152">152</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae2b5aeaa20c44e5867f1f45684c8600e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Constructor::getDrawBoundsModY </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>). </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00157">157</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a01e93de94d8be5532e650cddaeda480e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Array&lt; <a class="el" href="struct_enumeration.html">Enumeration</a> * &gt; * Constructor::getEnumerationsOf </td>
-          <td>(</td>
-          <td class="paramtype">Identifier&#160;</td>
-          <td class="paramname"><em>_name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a pointer to an array of <a class="el" href="struct_enumeration.html">Enumeration</a> pointers given it's Identifier. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_name</td><td><a class="el" href="struct_attribute.html" title="Struct to hold all parameters of a given attribute identifier.">Attribute</a> identifier. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="struct_enumeration.html">Enumeration</a> </dd></dl>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00128">128</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a900f4c6d494c239238809adf2afc290e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Constructor::getGridSize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the size in pixels between the grid lines. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00177">177</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00408">BigTree::recursive_setFilePathAsRelative()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00041">BigTree::valueTreePropertyChanged()</a>.</p>
 
 </div>
 </div>
@@ -536,29 +329,9 @@ Attributes </dd></dl>
 <p>This function is called to create an instance of the class. </p>
 <p>Calling the constructor publicly is not allowed. The constructor is private and is only called by this Instance function. </p>
 
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00016">16</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00017">17</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00046">PlaceableComponent::perform()</a>, <a class="el" href="_placeable_component_8cpp_source.html#l00141">PlaceableComponent::undo()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00058">BigTree::valueTreePropertyChanged()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad561d0bb14ee460677882a74d768114d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_selection_area.html">SelectionArea</a> * Constructor::getSelectionBox </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a pointer to the selection box that envolves the selected component. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_selection_area.html">SelectionArea</a>, getSelectedComponent </dd></dl>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00192">192</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00050">PlaceableComponent::perform()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00408">BigTree::recursive_setFilePathAsRelative()</a>, <a class="el" href="_placeable_component_8cpp_source.html#l00171">PlaceableComponent::undo()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00041">BigTree::valueTreePropertyChanged()</a>.</p>
 
 </div>
 </div>
@@ -578,9 +351,9 @@ Attributes </dd></dl>
 <p>Returns a pointer to an UndoManager. </p>
 <dl class="section see"><dt>See Also</dt><dd>UndoManager, <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>, ValueTree </dd></dl>
 
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00137">137</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00164">164</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_constructor_8cpp_source.html#l00263">createComponent()</a>, and <a class="el" href="_big_tree_8cpp_source.html#l00058">BigTree::valueTreePropertyChanged()</a>.</p>
+<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00041">BigTree::valueTreePropertyChanged()</a>.</p>
 
 </div>
 </div>
@@ -608,194 +381,7 @@ Attributes </dd></dl>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef" title="Returns a struct pointer of attribute parameters given it&#39;s Identifier.">getAttributeOf</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00064">64</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">log()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7010d09e0a7b5d97cd861beeb74121b9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::loadEnumerationsFromXmlFile </td>
-          <td>(</td>
-          <td class="paramtype">const File &amp;&#160;</td>
-          <td class="paramname"><em>xmlFile</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function called within <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a> constructor. </p>
-<p>Loads all parameters from a list of enumerations in a XML file.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xmlFile</td><td>File object that points to XML file in disc. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_constructor.html#a01e93de94d8be5532e650cddaeda480e" title="Returns a pointer to an array of Enumeration pointers given it&#39;s Identifier.">getEnumerationsOf</a> </dd></dl>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00087">87</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>References <a class="el" href="_constructor_8cpp_source.html#l00203">log()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a852d8d12aa8f62664d52093dbbd5555b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::log </td>
-          <td>(</td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Static method to write a line to designer.log file. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00203">203</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="_big_tree_8cpp_source.html#l00021">BigTree::BigTree()</a>, <a class="el" href="_constructor_8cpp_source.html#l00028">destroy()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00179">BigTree::getChildWithProperty()</a>, <a class="el" href="_constructor_8cpp_source.html#l00064">loadAttributesFromXmlFile()</a>, <a class="el" href="_constructor_8cpp_source.html#l00087">loadEnumerationsFromXmlFile()</a>, <a class="el" href="_placeable_component_8cpp_source.html#l00046">PlaceableComponent::perform()</a>, <a class="el" href="_placeable_component_8cpp_source.html#l00141">PlaceableComponent::undo()</a>, <a class="el" href="_big_tree_8cpp_source.html#l00058">BigTree::valueTreePropertyChanged()</a>, and <a class="el" href="_constructor_8cpp_source.html#l00034">~Constructor()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2930ea7190b6a6252d036de6a2b8c636"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::setBigTreeRoot </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_big_tree.html">BigTree</a> &amp;&#160;</td>
-          <td class="paramname"><em>bigTreeRoot</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the root of <a class="el" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>'s to the value passed by reference. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00242">242</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="_placeable_component_8cpp_source.html#l00046">PlaceableComponent::perform()</a>, and <a class="el" href="_placeable_component_8cpp_source.html#l00141">PlaceableComponent::undo()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3281de76b822b8bf5919245f1366f581"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::setDesigner </td>
-          <td>(</td>
-          <td class="paramtype">Component *&#160;</td>
-          <td class="paramname"><em>juce_designer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets a pointer to an instance of <a class="el" href="class_j_u_c_e___designer.html">JUCE_Designer</a>. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00231">231</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a83ffdce2edec86fb7b0dd4850bfcdecc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::setDrawBoundsMod </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Method related to the selection box (<a class="el" href="class_selection_area.html">SelectionArea</a>). </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00144">144</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab3f9b48d6ad94eb610447ce94ea4ae1d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::setGridSize </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newGridSize</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the size in pixels between the grid lines. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_constructor.html#a900f4c6d494c239238809adf2afc290e" title="Returns the size in pixels between the grid lines.">getGridSize</a>, <a class="el" href="class_j_u_c_e___designer_1_1_grid.html">JUCE_Designer::Grid</a> </dd></dl>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00172">172</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa3ed52a1e6608e639a1dd4801a406ea4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Constructor::setSelectedComponent </td>
-          <td>(</td>
-          <td class="paramtype">Component *&#160;</td>
-          <td class="paramname"><em>selectedComponent</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the current selected component. </p>
-
-<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00187">187</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_constructor_8cpp_source.html#l00065">65</a> of file <a class="el" href="_constructor_8cpp_source.html">Constructor.cpp</a>.</p>
 
 </div>
 </div>
@@ -809,7 +395,7 @@ Attributes </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_constructor.html">Constructor</a></li>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:43 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:46 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

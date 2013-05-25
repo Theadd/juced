@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_main_content_component.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -126,6 +126,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>paint</b> (Graphics &
 <tr class="memitem:a42ef2312ea53596306779503fdce5992"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42ef2312ea53596306779503fdce5992"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resized</b> ()</td></tr>
 <tr class="separator:a42ef2312ea53596306779503fdce5992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca54a21809fe6843fb42d216ca40d00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acca54a21809fe6843fb42d216ca40d00"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>componentMovedOrResized</b> (Component &amp;component, bool wasMoved, bool wasResized)</td></tr>
+<tr class="separator:acca54a21809fe6843fb42d216ca40d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ef2d8308ce099b43bac76a995f236b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5ef2d8308ce099b43bac76a995f236b"></a>
+StringArray&#160;</td><td class="memItemRight" valign="bottom"><b>getMenuBarNames</b> ()</td></tr>
+<tr class="separator:ac5ef2d8308ce099b43bac76a995f236b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a830351a500e3a2f94cf56c9f465ef3a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a830351a500e3a2f94cf56c9f465ef3a1"></a>
+PopupMenu&#160;</td><td class="memItemRight" valign="bottom"><b>getMenuForIndex</b> (int menuIndex, const String &amp;)</td></tr>
+<tr class="separator:a830351a500e3a2f94cf56c9f465ef3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780593d05469b4a74337fe15ce66dfeb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a780593d05469b4a74337fe15ce66dfeb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>menuItemSelected</b> (int menuItemID, int)</td></tr>
+<tr class="separator:a780593d05469b4a74337fe15ce66dfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe00bfe98f11a6ca6a1e331356d734d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fe00bfe98f11a6ca6a1e331356d734d"></a>
+ApplicationCommandTarget *&#160;</td><td class="memItemRight" valign="bottom"><b>getNextCommandTarget</b> ()</td></tr>
+<tr class="separator:a2fe00bfe98f11a6ca6a1e331356d734d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef61a3b455b2d605de0737621b98ba1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef61a3b455b2d605de0737621b98ba1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getAllCommands</b> (Array&lt; CommandID &gt; &amp;commands)</td></tr>
+<tr class="separator:aef61a3b455b2d605de0737621b98ba1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d617d51371f1f21cbbab02c1c6cfd57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d617d51371f1f21cbbab02c1c6cfd57"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getCommandInfo</b> (CommandID commandID, ApplicationCommandInfo &amp;result)</td></tr>
+<tr class="separator:a0d617d51371f1f21cbbab02c1c6cfd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe8a39397563d02f4a06403e266debb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe8a39397563d02f4a06403e266debb7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>perform</b> (const InvocationInfo &amp;info)</td></tr>
+<tr class="separator:afe8a39397563d02f4a06403e266debb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -140,7 +164,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>resized</b> ()</td></
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_main_content_component.html">MainContentComponent</a></li>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:44 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:47 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

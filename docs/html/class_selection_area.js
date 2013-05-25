@@ -9,6 +9,7 @@ var class_selection_area =
     [ "isReady", "class_selection_area.html#afb580cfc63418ee93ecf06bc3ae3dffe", null ],
     [ "mouseDrag", "class_selection_area.html#ae043b740d095421016b6b7e9bc2e8a64", null ],
     [ "paint", "class_selection_area.html#a7028c04b01c5c229510492e8d71399ea", null ],
+    [ "setAllowTransform", "class_selection_area.html#a38df7c4c866af7d44ae0646abc39b460", null ],
     [ "setBoxSize", "class_selection_area.html#aa25f2e2d5c4d54eedbb5567b4dcc9faf", null ],
     [ "setListenToChanges", "class_selection_area.html#ae2b928ba6ffdd0a323bcdbf637546d79", null ],
     [ "setSelectionBounds", "class_selection_area.html#ab3c22b9dd3bc07e9a281fd139a696551", null ],

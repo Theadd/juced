@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('_constructor_8h_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,95 +120,126 @@ $(document).ready(function(){initNavTree('_constructor_8h_source.html','');});
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;SelectionArea.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;BigTree.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;PlaceableComponent.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_Label.h&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_TextButton.h&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_Window.h&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_MainComponent.h&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">class </span><a class="code" href="class_selection_area.html">SelectionArea</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">class </span><a class="code" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="class_constructor.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> _bigTreeRoot;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>* <a class="code" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98" title="This function is called to create an instance of the class.">getInstance</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a570ea772b42346cdc976aa4f8c2795c7" title="This function is called statically to destroy the instance of this class.">destroy</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_constructor.html#a4ad4d817192fadf79f16b2a4b72d86a9" title="Destructor.">~Constructor</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#aa276e1e035578f7964780a2f3453395f" title="Function called within JUCE_Designer constructor.">loadAttributesFromXmlFile</a>(<span class="keyword">const</span> File &amp;xmlFile);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a7010d09e0a7b5d97cd861beeb74121b9" title="Function called within JUCE_Designer constructor.">loadEnumerationsFromXmlFile</a>(<span class="keyword">const</span> File &amp;xmlFile);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="struct_attribute.html" title="Struct to hold all parameters of a given attribute identifier.">Attribute</a>* <a class="code" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef" title="Returns a struct pointer of attribute parameters given it&#39;s Identifier.">getAttributeOf</a>(Identifier _name);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Array&lt; Enumeration* &gt;* <a class="code" href="class_constructor.html#a01e93de94d8be5532e650cddaeda480e" title="Returns a pointer to an array of Enumeration pointers given it&#39;s Identifier.">getEnumerationsOf</a>(Identifier _name);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    UndoManager* <a class="code" href="class_constructor.html#ab8c30bd6317d7f2b158f8462a630a3d6" title="Returns a pointer to an UndoManager.">getUndoManager</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="class_selection_area.html">SelectionArea</a>* <a class="code" href="class_constructor.html#ad561d0bb14ee460677882a74d768114d" title="Returns a pointer to the selection box that envolves the selected component.">getSelectionBox</a>();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a83ffdce2edec86fb7b0dd4850bfcdecc" title="Method related to the selection box (SelectionArea).">setDrawBoundsMod</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_constructor.html#a829c22c7bdd971dabe48f16add415a7d" title="Method related to the selection box (SelectionArea).">getDrawBoundsModX</a>();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_constructor.html#ae2b5aeaa20c44e5867f1f45684c8600e" title="Method related to the selection box (SelectionArea).">getDrawBoundsModY</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_constructor.html#a814a224a76b8a3557b5dbfdcba694671" title="Method related to the selection box (SelectionArea).">getDrawBoundsModWidth</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_constructor.html#ae6cefdd6768938290aefa927dc916dca" title="Method related to the selection box (SelectionArea).">getDrawBoundsModHeight</a>();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#ab3f9b48d6ad94eb610447ce94ea4ae1d" title="Sets the size in pixels between the grid lines.">setGridSize</a>(<span class="keywordtype">int</span> newGridSize);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;Importer.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;CodeGenerator.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_Label.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_TextButton.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_Window.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../Modules/juced_MainComponent.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;../Styles/LookAndFeelCustom.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span><a class="code" href="class_selection_area.html">SelectionArea</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span><a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">class </span><a class="code" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//struct Enumeration;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="class_constructor.html">   50</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    String projectName;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    String projectPath;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> projectType;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> resourceType;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    String selectedTemplate;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    String rootVarName;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>* <a class="code" href="class_constructor.html#a757cc1671f52f15291b89772bef7aa98" title="This function is called to create an instance of the class.">getInstance</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> destroy();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ~<a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#aa276e1e035578f7964780a2f3453395f" title="Function called within JUCE_Designer constructor.">loadAttributesFromXmlFile</a>(<span class="keyword">const</span> File &amp;xmlFile);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> loadEnumerationsFromXmlFile(<span class="keyword">const</span> File &amp;xmlFile);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="struct_attribute.html">Attribute</a>* <a class="code" href="class_constructor.html#ab34f1e9062445681a508550415ff18ef" title="Returns a struct pointer of attribute parameters given it&#39;s Identifier.">getAttributeOf</a>(Identifier _name);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    Array&lt; Enumeration* &gt;* getEnumerationsOf(Identifier _name);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="struct_choices.html">Choices</a> getChoicesOf(Identifier _name);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    UndoManager* <a class="code" href="class_constructor.html#ab8c30bd6317d7f2b158f8462a630a3d6" title="Returns a pointer to an UndoManager.">getUndoManager</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_selection_area.html">SelectionArea</a>* getSelectionBox();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> setDrawBoundsMod(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">int</span> getDrawBoundsModX();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> getDrawBoundsModY();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> getDrawBoundsModWidth();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">int</span> getDrawBoundsModHeight();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> setGridSize(<span class="keywordtype">int</span> newGridSize);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">int</span> getGridSize();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    Component* getSelectedComponent();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> setSelectedComponent(Component *selectedComponent);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> log(String msg);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> setDesigner(Component *juce_designer);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    Component* getDesigner();</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_constructor.html#a900f4c6d494c239238809adf2afc290e" title="Returns the size in pixels between the grid lines.">getGridSize</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> setBigTreeRoot(<a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> *bigTreeRoot);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>* getBigTreeRoot();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">/* Returns a pointer to current selected component. */</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    Component* getSelectedComponent();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#aa3ed52a1e6608e639a1dd4801a406ea4" title="Sets the current selected component.">setSelectedComponent</a>(Component *selectedComponent);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    String getTemplatesDir();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    Component* createComponent(String selectedToolName, String parentComponentID, Rectangle&lt;int&gt; bounds, String componentID = String::empty, <span class="keywordtype">bool</span> addDependencies = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    LookAndFeel* getNamedLookAndFeel(String name);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a852d8d12aa8f62664d52093dbbd5555b" title="Static method to write a line to designer.log file.">log</a>(String msg);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> setWorkingDirectory(String path);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    String getWorkingDirectory();</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a3281de76b822b8bf5919245f1366f581" title="Sets a pointer to an instance of JUCE_Designer.">setDesigner</a>(Component *juce_designer);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    Component* <a class="code" href="class_constructor.html#a93e5c1a597e8f5dd4d54f89db16cdcaf" title="Gets a Component pointer to an instance of JUCE_Designer.">getDesigner</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">void</span> importFromXml(File xmlFile);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> resetCurrentState();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">bool</span> createNewProject();</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_constructor.html#a2930ea7190b6a6252d036de6a2b8c636" title="Sets the root of BigTree&#39;s to the value passed by reference.">setBigTreeRoot</a>(<span class="keyword">const</span> <a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> &amp;bigTreeRoot);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a> <a class="code" href="class_constructor.html#ab069bf462919ffdddadb51453795d1ad" title="Returns a reference to the BigTree root.">getBigTreeRoot</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">bool</span> openProject();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> quickSave();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> updateRootVarName ();</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    Component* <a class="code" href="class_constructor.html#a0f3ec34b180a1d4f104712d50cb14e43" title="Create and add a component to the editor.">createComponent</a>(String selectedToolName, String parentComponentID, Rectangle&lt;int&gt; bounds);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    ScopedPointer&lt;UndoManager&gt; undoManager;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    Component *_selectedComponent;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_selection_area.html">SelectionArea</a>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_j_u_c_e___designer.html">JUCE_Designer</a>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    ScopedPointer&lt;SelectionArea&gt; _selectionBox;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    OwnedArray&lt;PlaceableComponent&gt; _placeableComponents;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">struct </span>_Enumerations {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        Identifier name;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        Array&lt; Enumeration* &gt;* enumerations;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    };</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    Array&lt; _Enumerations &gt; _enumerations;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    Array&lt;Attribute*&gt; _attributes;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    Component *_designer;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">int</span> _gridSize;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModX;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModY;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModWidth;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModHeight;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    ApplicationCommandManager* getCommandManager();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    ApplicationCommandManager commandManager;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    ScopedPointer&lt;UndoManager&gt; undoManager;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    Component *_selectedComponent;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    String _workingDirectory;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_selection_area.html">SelectionArea</a>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_j_u_c_e___designer.html">JUCE_Designer</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_placeable_component.html" title="This class represents the actions for create, undo and redo of components creation.">PlaceableComponent</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    ScopedPointer&lt;SelectionArea&gt; _selectionBox;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    OwnedArray&lt;PlaceableComponent&gt; _placeableComponents;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">struct </span>_Enumerations {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        Identifier name;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        Array&lt; Enumeration* &gt;* enumerations;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    };</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    Array&lt; _Enumerations &gt; _enumerations;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    Array&lt;Attribute*&gt; _attributes;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    Component *_designer;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="class_big_tree.html" title="This class holds all object hierarchy and property modification.">BigTree</a>* _bigTreeRoot;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">//OwnedArray&lt;Action&gt; _actions;</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">int</span> _gridSize;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModX;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModY;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModWidth;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">int</span> _drawBoundsModHeight;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="class_look_and_feel_custom.html" title="The original Juce look-and-feel.">LookAndFeelCustom</a> customLookAndFeel;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>(){};  <span class="comment">// Private so that it can  not be called</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>(<a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a> <span class="keyword">const</span>&amp;){};             <span class="comment">// copy constructor is private</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a>&amp; operator=(<a class="code" href="class_constructor.html" title="Object required to build components and show its properties.">Constructor</a> <span class="keyword">const</span>&amp;){};  <span class="comment">// assignment operator is private</span></div>
@@ -226,7 +257,7 @@ $(document).ready(function(){initNavTree('_constructor_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b423d2037aab9cfd0e7364e2bc458880.html">juced</a></li><li class="navelem"><a class="el" href="dir_17ce93d9d1a6b136927b9e86b8e91681.html">Source</a></li><li class="navelem"><a class="el" href="dir_06bffe3af63c05acd06c3e854f1471dc.html">Designer</a></li><li class="navelem"><b>Constructor.h</b></li>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:43 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:46 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

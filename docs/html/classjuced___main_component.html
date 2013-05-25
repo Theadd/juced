@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('classjuced___main_component.html','');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,12 +120,33 @@ Inheritance diagram for juced_MainComponent:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1eb5fa768f44c0a13d26d84e04828d6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1eb5fa768f44c0a13d26d84e04828d6e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paint</b> (Graphics &amp;)</td></tr>
-<tr class="separator:a1eb5fa768f44c0a13d26d84e04828d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba6bf2fb0c9ca18a24255336cf74ced"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaba6bf2fb0c9ca18a24255336cf74ced"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resized</b> ()</td></tr>
 <tr class="separator:aaba6bf2fb0c9ca18a24255336cf74ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811aac24d70eae958bccbebe6f897cac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a811aac24d70eae958bccbebe6f897cac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseUp</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:a811aac24d70eae958bccbebe6f897cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2e7d78f37963ad76027105a5c743f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f2e7d78f37963ad76027105a5c743f1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseDrag</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:a5f2e7d78f37963ad76027105a5c743f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f10c08fdfe4f8d229f47d723fbd2076"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f10c08fdfe4f8d229f47d723fbd2076"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseDoubleClick</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:a4f10c08fdfe4f8d229f47d723fbd2076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc612add8e4a9c5f5a86e85470510bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bc612add8e4a9c5f5a86e85470510bb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMove</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:a7bc612add8e4a9c5f5a86e85470510bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac4f19de153fe15b10fc9ebe14a3db3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeac4f19de153fe15b10fc9ebe14a3db3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseDown</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:aeac4f19de153fe15b10fc9ebe14a3db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae147bc9c0fa3512293bc69cacfb004a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae147bc9c0fa3512293bc69cacfb004a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseEnter</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:ae147bc9c0fa3512293bc69cacfb004a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0c8a33972b7b02df28a5359d196c63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee0c8a33972b7b02df28a5359d196c63"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseExit</b> (const MouseEvent &amp;event)</td></tr>
+<tr class="separator:aee0c8a33972b7b02df28a5359d196c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c76f152a9ec8c30d8baa454dfd0d1c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c76f152a9ec8c30d8baa454dfd0d1c0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseWheelMove</b> (const MouseEvent &amp;event, const MouseWheelDetails &amp;wheel)</td></tr>
+<tr class="separator:a9c76f152a9ec8c30d8baa454dfd0d1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -140,7 +161,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>resized</b> ()</td></
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classjuced___main_component.html">juced_MainComponent</a></li>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:43 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:46 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>

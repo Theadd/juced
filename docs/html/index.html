@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.2-20121118"/>
-<title>JUCE Designer: JUCE GUI Designer Index Page</title>
+<title>JUCE Designer: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,32 +95,15 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">JUCE GUI Designer Index Page </div>  </div>
+<div class="title">JUCE Designer Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p>This is an unofficial WYSIWYG JUCE component class designed to allow the users design a Graphical User Interface of JUCE components. This component is ready to be embedded into your RAD application within a few steps and allows the export/import of XML files containing the component's structure as well as the creation of *.h/*.cpp containing the generated code for them.</p>
-<h1><a class="anchor" id="install_sec"></a>
-Installation</h1>
-<h2><a class="anchor" id="step1"></a>
-Step 1: Copy the code somewhere into your project.</h2>
-<h2><a class="anchor" id="step2"></a>
-Step 2: Place attributes.xml and enumerations.xml into your application working directory.</h2>
-<h2><a class="anchor" id="step3"></a>
-Step 3: Add #include "***SOMEWHERE***./JUCE_Designer.h" and type in this code:</h2>
-<p>juced = new JUCE_Designer();</p>
-<p>addAndMakeVisible(juced); juced-&gt;setBounds(this-&gt;getLocalBounds()); juced-&gt;setAlwaysOnTop(true);</p>
-<p>Create a new <a class="el" href="class_toolbox.html">Toolbox</a>: params(itemsPerRow, itemSize, itemPadding); Component* toolbox = juced-&gt;createToolbox(1, 32, 5);</p>
-<p>Add items to our toolbox (more than one toolbox can be created). juced-&gt;addToolboxItem(toolbox, "juced_Window", "Window", BinaryData::window_png, BinaryData::window_pngSize); juced-&gt;addToolboxItem(toolbox, "juced_Label", "Text label", BinaryData::label_png, BinaryData::label_pngSize); juced-&gt;addToolboxItem(toolbox, "juced_TextButton", "Text button", BinaryData::button_png, BinaryData::button_pngSize);</p>
-<p>toolbox-&gt;setAlwaysOnTop(true); juced-&gt;addAndMakeVisible(toolbox, 11);</p>
-<p>Viewport *propertyView = juced-&gt;getPropertyView(); addAndMakeVisible(propertyView); propertyView-&gt;setBounds(100, 100, 200, 400); propertyView-&gt;setOpaque(true); propertyView-&gt;addToDesktop((int)(ComponentPeer::windowHasTitleBar | ComponentPeer::windowIsResizable)); </p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Mar 27 2013 22:15:44 for JUCE Designer by
+    <li class="footer">Generated on Sun May 26 2013 00:05:47 for JUCE Designer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2-20121118 </li>
   </ul>
