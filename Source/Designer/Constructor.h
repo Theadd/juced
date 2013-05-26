@@ -125,6 +125,7 @@ public:
 	LookAndFeel* getNamedLookAndFeel(String name);
 
 	void setWorkingDirectory(String path);
+	String getWorkingDirectory();
 
 	void importFromXml(File xmlFile);
 
@@ -137,6 +138,12 @@ public:
 	void quickSave();
 
 	void updateRootVarName ();
+
+	/** Copy a given file absolute path into project resources directory and returns copied filename with extension. **/
+	String setResourceFile(String path);
+
+	/** Returns an absolute path to a file located in project resources directory. **/
+	String getResourceFilePath(String filename);
 
 	ApplicationCommandManager* getCommandManager();
 

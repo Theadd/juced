@@ -67,8 +67,8 @@ public:
         selectedTemplate.setColour(ComboBox::backgroundColourId, Colour::fromString("FFFFFFFF"));
         selectedTemplate.setColour(ComboBox::textColourId, Colour::fromString("FF000000"));
         selectedTemplate.addItem("Empty", 1);
-        selectedTemplate.addItem("Window", 2);
-        selectedTemplate.addItem("Wizard", 3);
+        //selectedTemplate.addItem("Window", 2);
+        //selectedTemplate.addItem("Wizard", 3);
         selectedTemplate.setName("Box");
         addAndMakeVisible(&selectedTemplate);
         resourceType.setBounds(139, 85, 240, 20);
@@ -76,8 +76,8 @@ public:
         resourceType.setColour(ComboBox::backgroundColourId, Colour::fromString("FFFFFFFF"));
         resourceType.setColour(ComboBox::textColourId, Colour::fromString("FF000000"));
         resourceType.addItem("BinaryData", 1);
-        resourceType.addItem("Load files from BinaryData folder", 2);
-        resourceType.addItem("Load files from resources folder", 3);
+        //resourceType.addItem("Load files from BinaryData folder", 2);
+        //resourceType.addItem("Load files from resources folder", 3);
         resourceType.setName("Box");
         addAndMakeVisible(&resourceType);
         projectName.setBounds(139, 13, 240, 20);

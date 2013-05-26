@@ -82,6 +82,9 @@ public:
 	/** Recursive function to remove a named property from this BigTree and all it's children. */
 	void recursive_removeProperty(Identifier name, UndoManager *undoManager);
 
+	/** Recursive function to replace a string from any property. **/
+	void recursive_setFilePathAsRelative(UndoManager *undoManager);
+
 	/** Returns an XmlElement containing the representation of the current BigTree and all it's children. */
 	XmlElement* createXml();
 

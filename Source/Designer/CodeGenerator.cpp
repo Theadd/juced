@@ -40,7 +40,7 @@ void CodeGenerator::getKeywords()
 	for (int i = _tree->getNumProperties();	--i >= 0;) {
 		Attribute *attrib = constructor->getAttributeOf(_tree->getPropertyName(i));
 		if (attrib != nullptr && attrib->valueType != ValueType::undefined) {
-			if (attrib->type == AttributeType::file) {
+			/*if (attrib->type == AttributeType::file) {
 				//If its an existing file, copy it to BinaryData folder
 				//Source\BinaryData
 				String filename = _tree->getProperty(_tree->getPropertyName(i)).toString();
@@ -52,10 +52,18 @@ void CodeGenerator::getKeywords()
 						resourceFile.copyFileTo(destinationFile);
 					}
 				}
-			}
+			}*/
+			
+
 			_match *m = new _match;
 			m->pattern = "%" + _tree->getPropertyName(i).toString() + "%";
-			m->value = _tree->getProperty(_tree->getPropertyName(i)).toString();
+			if (attrib->type == AttributeType::file) {
+				//convert filename.ext to filename_ext
+				String filename = _tree->getProperty(_tree->getPropertyName(i)).toString();
+				m->value = filename.replace(".", "_");
+			} else {
+				m->value = _tree->getProperty(_tree->getPropertyName(i)).toString();
+			}
 			_matches.add(m);
 			/*_match *m = new _match;
 			*m = {"%" + _tree->getPropertyName(i).toString() + "%", _tree->getProperty(_tree->getPropertyName(i))};
@@ -101,10 +109,22 @@ void CodeGenerator::setSpecificProperty(Identifier prop, String appliedTo)
 			_definition += appliedTo + "showEditor();\n";
 		}
 	} else if (prop == Attributes::normalImage) {
+		/*
 		String normalImage = (File::isAbsolutePath(value)) ? "ImageFileFormat::loadFrom(File::getCurrentWorkingDirectory().getChildFile(\"../../Source/BinaryData/" + File(value).getFileName() + "\"))" : "Image()";
 		String overImage = (File::isAbsolutePath(_tree->getProperty(Attributes::overImage))) ? "ImageFileFormat::loadFrom(File::getCurrentWorkingDirectory().getChildFile(\"../../Source/BinaryData/" + File(_tree->getProperty(Attributes::overImage)).getFileName() + "\"))" : "Image()";
 		String downImage = (File::isAbsolutePath(_tree->getProperty(Attributes::downImage))) ? "ImageFileFormat::loadFrom(File::getCurrentWorkingDirectory().getChildFile(\"../../Source/BinaryData/" + File(_tree->getProperty(Attributes::downImage)).getFileName() + "\"))" : "Image()";
 		_definition += appliedTo + "setImages (false, true, true, " + normalImage + ", 0.6000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f), " + overImage + ", 1.0000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f), " + downImage + ", 1.0000f, Colour((uint8) 150, (uint8) 150, (uint8) 150, 0.3f));\n";
+		*/
+		//String temp = "ImageCache::getFromMemory(BinaryData::" + value + ", BinaryData::" + value + "Size)";
+		String normalImage = (value.isNotEmpty()) ? "ImageCache::getFromMemory(BinaryData::" + value + ", BinaryData::" + value + "Size)" : "Image()";
+		String overImageValue = replaceKeywords("%overImage%");
+		String overImage = (overImageValue.isNotEmpty()) ? "ImageCache::getFromMemory(BinaryData::" + overImageValue + ", BinaryData::" + overImageValue + "Size)" : "Image()";
+		//String overImage = (File::isAbsolutePath(_tree->getProperty(Attributes::overImage))) ? "ImageFileFormat::loadFrom(File::getCurrentWorkingDirectory().getChildFile(\"../../Source/BinaryData/" + File(_tree->getProperty(Attributes::overImage)).getFileName() + "\"))" : "Image()";
+		String downImageValue = replaceKeywords("%downImage%");
+		String downImage = (downImageValue.isNotEmpty()) ? "ImageCache::getFromMemory(BinaryData::" + downImageValue + ", BinaryData::" + downImageValue + "Size)" : "Image()";
+		//String downImage = (File::isAbsolutePath(_tree->getProperty(Attributes::downImage))) ? "ImageFileFormat::loadFrom(File::getCurrentWorkingDirectory().getChildFile(\"../../Source/BinaryData/" + File(_tree->getProperty(Attributes::downImage)).getFileName() + "\"))" : "Image()";
+		_definition += appliedTo + "setImages (false, true, true, " + normalImage + ", 0.6000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f), " + overImage + ", 1.0000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f), " + downImage + ", 1.0000f, Colour((uint8) 150, (uint8) 150, (uint8) 150, 0.3f));\n";
+		
 	}
 	
 	

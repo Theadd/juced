@@ -202,7 +202,7 @@ bool MainContentComponent::perform (const InvocationInfo& info)
 
 	case quickLoad:
 
-        if (Constructor::getInstance()->createNewProject()) {
+        if (Constructor::getInstance()->openProject()) {
 			propertyView->setVisible(true);
 			juced->setVisible(true);
 		}

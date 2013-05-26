@@ -239,9 +239,9 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 					propertyChanged = false;
 				}
 				if (updateImage) {
-					Image normalImage = (File::isAbsolutePath(getProperty(Attributes::normalImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::normalImage).toString())) : Image();
-					Image overImage = (File::isAbsolutePath(getProperty(Attributes::overImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::overImage).toString())) : Image();
-					Image downImage = (File::isAbsolutePath(getProperty(Attributes::downImage).toString())) ? ImageFileFormat::loadFrom(File(getProperty(Attributes::downImage).toString())) : Image();
+					Image normalImage = (File::isAbsolutePath(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::normalImage).toString()))) ? ImageFileFormat::loadFrom(File(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::normalImage).toString()))) : Image();
+					Image overImage = (File::isAbsolutePath(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::overImage).toString()))) ? ImageFileFormat::loadFrom(File(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::overImage).toString()))) : Image();
+					Image downImage = (File::isAbsolutePath(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::downImage).toString()))) ? ImageFileFormat::loadFrom(File(Constructor::getInstance()->getResourceFilePath(getProperty(Attributes::downImage).toString()))) : Image();
 					cObject->setImages (false, true, true,
                           normalImage,
 						  0.6000f, Colour((uint8) 0, (uint8) 0, (uint8) 0, 0.0f),
@@ -396,11 +396,37 @@ BigTree BigTree::getChild(int index) const
 	return BigTree(ValueTree::getChild(index));
 }
 
-void BigTree::recursive_removeProperty(Identifier name, UndoManager *undoManager) {
+void BigTree::recursive_removeProperty(Identifier name, UndoManager *undoManager)
+{
 
 	removeProperty(name, undoManager);
 	for (int i = getNumChildren(); --i >= 0;) {
 		getChild(i).recursive_removeProperty(name, undoManager);
+	}
+}
+
+void BigTree::recursive_setFilePathAsRelative(UndoManager *undoManager)
+{
+	DBG(("BigTree::recursive_setFilePathAsRelative()"));
+	for (int i = 0; i < getNumProperties(); ++i) {
+		Identifier p = getPropertyName(i);
+		DBG(("parsing property: " + p.toString()));
+		Attribute *attrib = Constructor::getInstance()->getAttributeOf(p);
+		if (attrib != nullptr  && attrib->type == AttributeType::file) {
+			String pValue = getPropertyAsValue(p, undoManager).toString();
+			if (File(pValue).exists()) {
+				File temp(pValue);
+				String relativePath = temp.getRelativePathFrom(File(Constructor::getInstance()->getWorkingDirectory()));
+				//if (pValue.contains(stringToReplace)) {
+				//	setProperty(p, pValue.replace(stringToReplace, stringToInsertInstead, false), undoManager);
+				//}
+				if (relativePath != String::empty)
+					setProperty(p, relativePath, undoManager);
+			}
+		}
+	}
+	for (int i = getNumChildren(); --i >= 0;) {
+		getChild(i).recursive_setFilePathAsRelative(undoManager);
 	}
 }
 
@@ -409,6 +435,7 @@ XmlElement* BigTree::createXml()
 
 	BigTree *printableTree = new BigTree(createCopy());
 	printableTree->recursive_removeProperty(Attributes::object, 0);
+	//printableTree->recursive_setFilePathAsRelative(0);
 	ValueTree *vTree = (ValueTree *) printableTree;
 	return vTree->createXml();
 }

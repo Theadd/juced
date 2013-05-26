@@ -37,7 +37,7 @@ public:
 		if (myChooser.browseForFileToOpen(&preview))
 		{
 			path = myChooser.getResult().getFullPathName();
-			textLabel->setText(path, false);
+			textLabel->setText(Constructor::getInstance()->setResourceFile(path), false);
 		}
 	}
 

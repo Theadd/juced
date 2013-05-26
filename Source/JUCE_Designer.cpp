@@ -316,9 +316,9 @@ bool JUCE_Designer::keyPressed (const KeyPress& key)
 	} else if (key.getKeyCode() == 79 && key.getModifiers().isCtrlDown()) {	//import
 		Constructor::getInstance()->resetCurrentState();
 		Constructor::getInstance()->importFromXml(File(File::addTrailingSeparator(File::getCurrentWorkingDirectory().getFullPathName()) + "save.xml"));
-	*/
 	} else if (key.getKeyCode() == 71 && key.getModifiers().isCtrlDown()) {
 		this->generateCode();
+	*/
 	} else if (key.getKeyCode() == key.leftKey) {
 		if (Constructor::getInstance()->getSelectedComponent() != nullptr) {
 			BigTree valueTree(Constructor::getInstance()->getBigTreeRoot()->getChildWithProperty(Attributes::ID, Constructor::getInstance()->getSelectedComponent()->getComponentID(), true));

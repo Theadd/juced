@@ -335,6 +335,11 @@ void Constructor::setWorkingDirectory(String path)
 	_workingDirectory = path;
 }
 
+String Constructor::getWorkingDirectory()
+{
+	return _workingDirectory;
+}
+
 void Constructor::importFromXml(File xmlFile)
 {
 	Importer importer(xmlFile);
@@ -453,6 +458,33 @@ void Constructor::updateRootVarName ()
 		}
 
 		rootVarName = getBigTreeRoot()->getProperty(Attributes::varName).toString();
+	}
+}
+
+String Constructor::setResourceFile(String path)
+{
+	if (File::isAbsolutePath(path)) {
+		File resourceFile(path);
+		if (resourceFile.existsAsFile()) {
+			File destinationFile(File::addTrailingSeparator(projectPath) + "Source" + File::separatorString + "BinaryData" + File::separatorString + resourceFile.getFileName());
+			if (resourceFile.copyFileTo(destinationFile)) {
+				return destinationFile.getFileName();
+			} else {
+				return String::empty;
+			}
+		} else {
+			return String::empty;
+		}
+	}
+}
+
+String Constructor::getResourceFilePath(String filename)
+{
+	File resourceFile(File::addTrailingSeparator(projectPath) + "Source" + File::separatorString + "BinaryData" + File::separatorString + filename);
+	if (resourceFile.existsAsFile()) {
+		return resourceFile.getFullPathName();
+	} else {
+		return String::empty;
 	}
 }
 

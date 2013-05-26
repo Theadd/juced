@@ -53,9 +53,18 @@ void Importer::create(XmlElement *xml, String parentComponentID)
 		if (attributeName == "y") continue;
 		if (attributeName == "width") continue;
 		if (attributeName == "height") continue;
+		
+		String attributeValue = xml->getAttributeValue(i);
+
+		/*Attribute *attrib = constructor->getAttributeOf(Identifier(attributeName));
+		if (attrib != nullptr) {
+			if (attrib->type == AttributeType::file) {
+				attributeValue = attributeValue.replace("%workingDirectory%", constructor->getWorkingDirectory());
+			}
+		}*/
 		//set object property
 		Constructor::log("I103 - Set property " + attributeName);
-		bTree.setProperty(attributeName, xml->getAttributeValue(i), 0);
+		bTree.setProperty(attributeName, attributeValue, 0);
 
 	}
 	Constructor::log("I103 - Recursively deal with its children");

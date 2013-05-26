@@ -21,9 +21,9 @@ juced_ImageButton::juced_ImageButton()  : ImageButton ()
 	setProperty(Attributes::name, getName());
 	++_numObjects;
 	setProperty(Attributes::varName, getName() + String(_numObjects));
-	setProperty(Attributes::normalImage, "Image()");
-	setProperty(Attributes::overImage, "Image()");
-	setProperty(Attributes::downImage, "Image()");
+	setProperty(Attributes::normalImage, "");
+	setProperty(Attributes::overImage, "");
+	setProperty(Attributes::downImage, "");
 	setProperty(Attributes::className, "ImageButton");
 	setProperty(Attributes::toolName, "juced_ImageButton");
 	setProperty(Attributes::declareExtended, false);
