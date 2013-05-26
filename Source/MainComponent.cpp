@@ -29,6 +29,7 @@ MainContentComponent::MainContentComponent()
 	juced->addToolboxItem(toolbox, "juced_Label", "Text label", BinaryData::label_png, BinaryData::label_pngSize);
 	juced->addToolboxItem(toolbox, "juced_TextButton", "Text button", BinaryData::button_png, BinaryData::button_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Slider", "Slider", BinaryData::slider_png, BinaryData::slider_pngSize);
+	juced->addToolboxItem(toolbox, "juced_ImageComponent", "Image component", BinaryData::imagecomponent_png, BinaryData::imagecomponent_pngSize);
 	juced->addToolboxItem(toolbox, "juced_ImageButton", "Image button", BinaryData::imagebutton_png, BinaryData::imagebutton_pngSize);
 	juced->addToolboxItem(toolbox, "juced_Viewport", "Viewport", BinaryData::viewport_png, BinaryData::viewport_pngSize);
 	juced->addToolboxItem(toolbox, "juced_ComboBox", "ComboBox", BinaryData::combobox_png, BinaryData::combobox_pngSize);

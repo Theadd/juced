@@ -21,9 +21,9 @@ JUCE_Designer::JUCE_Designer ()
 	addAndMakeVisible(&infoLabel);
 	infoLabel.setAlwaysOnTop(true);
 	infoLabel.setFont(Font(12.0f));
-	infoLabel.setBounds(5, getHeight() - 115, 350, 115);
+	infoLabel.setBounds(5, getHeight() - 104, 350, 104);
 	infoLabel.setInterceptsMouseClicks(false, false);
-	infoLabel.setText("[Ctrl + R] Randomly resize grid\n[Ctrl + Z] Undo change history\n[Ctrl + Y] Redo change history\n[Ctrl + S] Save current design\n[Ctrl + O] Open last saved design\n[Ctrl + G] Generate design source code\n[Ctrl + TAB] Select parent of selected component\n[Hold Ctrl] Don't snap to grid when editing/drawing", false);
+	infoLabel.setText("[Ctrl + R] Randomly resize grid\n[Ctrl + Z] Undo change history\n[Ctrl + Y] Redo change history\n[Ctrl + S] Save current design & generate source\n[Ctrl + L] Open last saved design\n[Ctrl + TAB] Select parent of selected component\n[Hold Ctrl] Don't snap to grid when editing/drawing", false);
 	infoLabel.setColour(Label::textColourId, Colours::white);
 	infoLabel.setComponentEffect(new DropShadowEffect());
 

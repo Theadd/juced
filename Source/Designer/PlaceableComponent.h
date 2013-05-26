@@ -28,6 +28,7 @@
 #include "../Modules/juced_DirectShowComponent.h"
 #include "../Modules/juced_Component.h"
 #include "../Modules/juced_Viewport.h"
+#include "../Modules/juced_ImageComponent.h"
 
 class BigTree;
 

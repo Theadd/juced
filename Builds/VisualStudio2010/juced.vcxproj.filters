@@ -280,8 +280,14 @@
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp">
       <Filter>juced\Source\Designer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Designer\NewProjectWizard.cpp">
+      <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp">
       <Filter>juced\Source\Designer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Modules\juced_ImageComponent.cpp">
+      <Filter>juced\Source\Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Modules\juced_Viewport.cpp">
       <Filter>juced\Source\Modules</Filter>
@@ -1268,6 +1274,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h">
       <Filter>juced\Source\Designer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Modules\juced_ImageComponent.h">
+      <Filter>juced\Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Modules\juced_Viewport.h">
       <Filter>juced\Source\Modules</Filter>
@@ -2348,6 +2357,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\imagecomponent.png">
+      <Filter>juced\Source\BinaryData</Filter>
+    </None>
     <None Include="..\..\Source\BinaryData\component.png">
       <Filter>juced\Source\BinaryData</Filter>
     </None>

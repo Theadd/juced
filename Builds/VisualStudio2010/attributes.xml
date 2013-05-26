@@ -44,4 +44,5 @@
   <Attribute name="scrollBarThickness" group="Appearance" visible="1" type="text" display="Scrollbar thickness" valueType="integer" syntax='setScrollBarThickness("%scrollBarThickness%")'/>
   <Attribute name="contentViewed" group="General" visible="0" type="boolean" display="Sets if object should add its child using setViewedComponent()" valueType="text" syntax=''/>
   <Attribute name="usingNativeTitleBar" group="Appearance" visible="1" type="boolean" display="Native Titlebar" valueType="text" syntax='setUsingNativeTitleBar(%usingNativeTitleBar%)'/>
+  <Attribute name="image" group="Appearance" visible="1" type="file" display="Image" valueType="text" syntax='setImage(ImageCache::getFromMemory(BinaryData::%image%, BinaryData::%image%Size))'/>
 </Attributes>

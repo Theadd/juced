@@ -6,6 +6,9 @@
 
 namespace BinaryData
 {
+    extern const char*   imagecomponent_png;
+    const int            imagecomponent_pngSize = 4514;
+
     extern const char*   component_png;
     const int            component_pngSize = 159;
 

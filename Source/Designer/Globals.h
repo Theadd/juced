@@ -60,6 +60,7 @@ namespace Modules
 	const Identifier BubbleComponent	  ("BubbleComponent");
 	const Identifier DirectShowComponent	  ("DirectShowComponent");
 	const Identifier Viewport  ("Viewport");
+	const Identifier ImageComponent  ("ImageComponent");
     const Identifier Unknown	  ("Unknown");
 }
 
@@ -94,6 +95,7 @@ namespace Attributes
 	DECLARE_ID (normalImage);
 	DECLARE_ID (overImage);
 	DECLARE_ID (downImage);
+	DECLARE_ID (image);
 	//combobox
 	DECLARE_ID (itemList);
 	//label

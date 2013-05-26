@@ -297,6 +297,17 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else {
 					propertyChanged = false;
 				}
+			} else if (this->getProperty(Attributes::objectType) == Modules::ImageComponent) {
+				//deal with DirectShowComponent specific properties
+				juced_ImageComponent *cObject = dynamic_cast<juced_ImageComponent *> (this->getProperty(Attributes::object).getDynamicObject());
+				if (property == Attributes::image) {
+					String filePath = Constructor::getInstance()->getResourceFilePath(getProperty(property).toString());
+					Image resourceImage = (filePath.isNotEmpty()) ? ImageFileFormat::loadFrom(File(filePath)) : Image();
+
+					cObject->setImage(resourceImage);
+				} else {
+					propertyChanged = false;
+				}
 			}
                  
 			//[CUSTOM MODULES HERE]

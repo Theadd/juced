@@ -138,7 +138,9 @@
     <ClCompile Include="..\..\Source\Designer\PlaceableComponent.cpp"/>
     <ClCompile Include="..\..\Source\Designer\BigTree.cpp"/>
     <ClCompile Include="..\..\Source\Designer\SelectionArea.cpp"/>
+    <ClCompile Include="..\..\Source\Designer\NewProjectWizard.cpp"/>
     <ClCompile Include="..\..\Source\Designer\Toolbox.cpp"/>
+    <ClCompile Include="..\..\Source\Modules\juced_ImageComponent.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Viewport.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_DirectShowComponent.cpp"/>
     <ClCompile Include="..\..\Source\Modules\juced_Component.cpp"/>
@@ -991,6 +993,7 @@
     <ClInclude Include="..\..\Source\Designer\Globals.h"/>
     <ClInclude Include="..\..\Source\Designer\BigTree.h"/>
     <ClInclude Include="..\..\Source\Designer\SelectionArea.h"/>
+    <ClInclude Include="..\..\Source\Modules\juced_ImageComponent.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Viewport.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_DirectShowComponent.h"/>
     <ClInclude Include="..\..\Source\Modules\juced_Component.h"/>
@@ -1352,6 +1355,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\BinaryData\imagecomponent.png"/>
     <None Include="..\..\Source\BinaryData\component.png"/>
     <None Include="..\..\Source\BinaryData\viewport.png"/>
     <None Include="..\..\Source\BinaryData\movie.png"/>

@@ -11,6 +11,8 @@
               file="Source/Styles/LookAndFeelCustom.h"/>
       </GROUP>
       <GROUP id="{806D96D6-DA1E-9130-9547-127CFAA0585A}" name="BinaryData">
+        <FILE id="rdLYTk" name="imagecomponent.png" compile="0" resource="1"
+              file="Source/BinaryData/imagecomponent.png"/>
         <FILE id="Mx9lvA" name="component.png" compile="0" resource="1" file="Source/BinaryData/component.png"/>
         <FILE id="ZRzWMp" name="viewport.png" compile="0" resource="1" file="Source/BinaryData/viewport.png"/>
         <FILE id="cKNTXm" name="movie.png" compile="0" resource="1" file="Source/BinaryData/movie.png"/>
@@ -64,9 +66,15 @@
         <FILE id="f8Vzc2" name="SelectionArea.cpp" compile="1" resource="0"
               file="Source/Designer/SelectionArea.cpp"/>
         <FILE id="lN1Un6" name="SelectionArea.h" compile="0" resource="0" file="Source/Designer/SelectionArea.h"/>
+        <FILE id="Xq9NCd" name="NewProjectWizard.cpp" compile="1" resource="0"
+              file="Source/Designer/NewProjectWizard.cpp"/>
         <FILE id="HnzRyc" name="Toolbox.cpp" compile="1" resource="0" file="Source/Designer/Toolbox.cpp"/>
       </GROUP>
       <GROUP id="{DB559E00-582A-A317-DC43-63A774523777}" name="Modules">
+        <FILE id="pBw6O7" name="juced_ImageComponent.cpp" compile="1" resource="0"
+              file="Source/Modules/juced_ImageComponent.cpp"/>
+        <FILE id="jvwoJs" name="juced_ImageComponent.h" compile="0" resource="0"
+              file="Source/Modules/juced_ImageComponent.h"/>
         <FILE id="KDwDaW" name="juced_Viewport.cpp" compile="1" resource="0"
               file="Source/Modules/juced_Viewport.cpp"/>
         <FILE id="k0xZEq" name="juced_Viewport.h" compile="0" resource="0"

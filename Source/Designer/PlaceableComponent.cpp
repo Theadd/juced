@@ -252,6 +252,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 	} else if (selectedToolName->equalsIgnoreCase("juced_Viewport")) {
 		juced_Viewport *object = new juced_Viewport();
 		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ImageComponent")) {
+		juced_ImageComponent *object = new juced_ImageComponent();
+		return (DynamicObject *)object;
 	}
 	return nullptr;
 }
