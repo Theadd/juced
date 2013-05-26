@@ -67,7 +67,7 @@ public:
         selectedTemplate.setColour(ComboBox::backgroundColourId, Colour::fromString("FFFFFFFF"));
         selectedTemplate.setColour(ComboBox::textColourId, Colour::fromString("FF000000"));
         selectedTemplate.addItem("Empty", 1);
-        //selectedTemplate.addItem("Window", 2);
+        selectedTemplate.addItem("Empty with DirectShow", 2);
         //selectedTemplate.addItem("Wizard", 3);
         selectedTemplate.setName("Box");
         addAndMakeVisible(&selectedTemplate);

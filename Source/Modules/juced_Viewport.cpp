@@ -35,7 +35,7 @@ juced_Viewport::juced_Viewport()  : Viewport ()
 void juced_Viewport::paint (Graphics& g)
 {
     //g.fillAll (Colour((uint8) 245, (uint8) 245, (uint8) 245));
-	g.fillAll (Colour((uint8) 40, (uint8) 121, (uint8) 208));
+	//g.fillAll (Colour((uint8) 40, (uint8) 121, (uint8) 208));
 }
 
 void juced_Viewport::mouseUp (const MouseEvent& event) {}
