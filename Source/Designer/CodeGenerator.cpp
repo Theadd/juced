@@ -165,6 +165,7 @@ void CodeGenerator::refresh()
 	}
 
 	if (!declareExtended) {
+		
 		//if parent component is a window, this component must be owned by the window
 		if (_parentCodeGenerator->isContentOwner()) {
 			//if parent window is not an extended DocumentWindow class, set to modify its corresponding object
@@ -172,7 +173,17 @@ void CodeGenerator::refresh()
 				_definition += _parentCodeGenerator->getVarName() + ".";
 			}
 			//set this component as owned by the parent window
-			_definition += "setContentOwned (&" + _tree->getProperty(Attributes::varName).toString() + ", false);\n";
+			_definition += "setContentOwned(&" + _tree->getProperty(Attributes::varName).toString() + ", false);\n";
+
+		} else if (_parentCodeGenerator->isContentViewer()) {
+			//if parent component is a Viewport, this component must be added as a viewed component
+			//if parent window is not an extended viewport class, set to modify its corresponding object
+			if (!_parentCodeGenerator->isDeclaredAsExtended()) {
+				_definition += _parentCodeGenerator->getVarName() + ".";
+			}
+			//set this component as owned by the parent window
+			_definition += "setViewedComponent(&" + _tree->getProperty(Attributes::varName).toString() + ");\n";
+
 		} else {
 			//add and make visible this component into the parent component
 			if (!_parentCodeGenerator->isDeclaredAsExtended()) {
@@ -232,6 +243,8 @@ String CodeGenerator::getDefinitions()
 
 			if (isContentOwner()) {
 				childDefinitions += "setContentOwned (&" + _childGenerators.getUnchecked(i)->getVarName().toLowerCase() + ", true);\n";
+			} else if (isContentViewer()) {
+				childDefinitions += "setViewedComponent(&" + _childGenerators.getUnchecked(i)->getVarName().toLowerCase() + ");\n";
 			} else {
 				childDefinitions += "addAndMakeVisible(&" + _childGenerators.getUnchecked(i)->getVarName().toLowerCase() + ");\n";
 			}
@@ -267,6 +280,13 @@ bool CodeGenerator::isContentOwner()
 	} else {
 		return false;
 	}
+}
+
+bool CodeGenerator::isContentViewer() {
+
+	bool isViewer = _tree->getProperty(Attributes::contentViewed, var(false));	//for viewport
+
+	return isViewer;
 }
 
 bool CodeGenerator::isDeclaredAsExtended()

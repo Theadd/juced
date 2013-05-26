@@ -29,7 +29,7 @@ juced_Viewport::juced_Viewport()  : Viewport ()
 
 	setProperty(Attributes::contentViewed, true);
 	setProperty(Attributes::scrollBarThickness, getScrollBarThickness());
-	setScrollBarsShown(true, false);
+	setScrollBarsShown(true, true);
 }
 
 void juced_Viewport::paint (Graphics& g)

@@ -81,7 +81,7 @@ public:
         resourceType.setName("Box");
         addAndMakeVisible(&resourceType);
         projectName.setBounds(139, 13, 240, 20);
-        projectName.setText("", false);
+        projectName.setText("sample", false);
         projectName.setColour(Label::backgroundColourId, Colour::fromString("FFFFFFFF"));
         projectName.setColour(Label::textColourId, Colour::fromString("FF000000"));
         projectName.showEditor();

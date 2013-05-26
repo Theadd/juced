@@ -475,9 +475,7 @@ String Constructor::setResourceFile(String path)
 		} else {
 			return String::empty;
 		}
-	} else {
-		return String::empty;
-	}
+	} 
 }
 
 String Constructor::getResourceFilePath(String filename)

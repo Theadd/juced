@@ -43,6 +43,9 @@ public:
 
 	bool isContentOwner();
 
+	/** Tells wether child component must be added using setViewedComponent instead of addAndMakeVisible. **/
+	bool isContentViewer();
+
 	bool isDeclaredAsExtended();
 
 private:
