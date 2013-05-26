@@ -271,6 +271,9 @@ void JUCE_Designer::mouseUp (const MouseEvent& event)
 			MouseEvent relativeEvent = event.getEventRelativeTo(event.originalComponent);
 			Constructor *constructor = Constructor::getInstance();
 
+			if (event.originalComponent != event.eventComponent)
+				DBG(("WARNING!! event.originalComponent != event.eventComponent !!"));
+
 			Rectangle<int> bounds(relativeEvent.getMouseDownX() - constructor->getDrawBoundsModX(), relativeEvent.getMouseDownY()  - constructor->getDrawBoundsModY(), relativeEvent.getDistanceFromDragStartX() - constructor->getDrawBoundsModWidth(), relativeEvent.getDistanceFromDragStartY() - constructor->getDrawBoundsModHeight());
 			Component* newComponent = constructor->createComponent(*selectedToolName, event.originalComponent->getComponentID(), bounds);
 

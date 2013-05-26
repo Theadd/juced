@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Program Files (x86)/Microsoft Visual Studio 10.0/Common7/IDE/Extensions/Microsoft/Visualization and Modeling Feature Pack/2.0/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log">
+  <Message Timestamp="2013-05-26T22:05:07" Importance="High" Text="Reverse Engineering Started." />
+  <Error Timestamp="2013-05-26T22:05:07" Importance="High" Text="Reverse engineer C++ type is not supported. Some DGML node(s) will be skipped during the process. Please see warnings for details." />
+  <Warning Timestamp="2013-05-26T22:05:07" Importance="Medium" Text="Reverse engineer C++ type 'CodeGenerator' is skipped." />
+  <Message Timestamp="2013-05-26T22:05:07" Importance="High" Text="(0) type(s) fully reverse engineered." />
+  <Message Timestamp="2013-05-26T22:05:07" Importance="High" Text="The reverse engineering operation completed with (1) error(s), and (1) warning(s)." />
+</Log>

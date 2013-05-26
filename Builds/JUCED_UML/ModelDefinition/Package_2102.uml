@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="04436004-0f9a-4ba2-97cd-3e1e9464573c"
+  name="Custom PropertyComponents" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="e90260a3-dfa9-4c1b-a39d-aa51c7531619"
+        name="TextWithButtonPropertyComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="58c448ff-5599-4c8b-88b5-aa8b32d5801a"
+            isSubstitutable="false">
+            <classMoniker
+              Id="cc52ac3c-ef05-4edd-b369-8d2d1bca4dfa"
+              LastKnownName="PropertyComponent"
+              LastKnownLocation="JUCED_UML.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d308fa91-938c-4d4e-8755-8cc024443bd4"
+        name="FilePropertyComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="5d82b549-6265-4331-bc51-3208df74d5f2"
+            isSubstitutable="false">
+            <classMoniker
+              Id="e90260a3-dfa9-4c1b-a39d-aa51c7531619"
+              LastKnownName="TextWithButtonPropertyComponent"
+              LastKnownLocation="Package_2102.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="69748bea-935b-4e53-98eb-c6136746b81b"
+        name="EnumerationPropertyComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="5397128e-fe57-4f7c-8754-a6b6fac8aa40"
+            isSubstitutable="false">
+            <classMoniker
+              Id="e90260a3-dfa9-4c1b-a39d-aa51c7531619"
+              LastKnownName="TextWithButtonPropertyComponent"
+              LastKnownLocation="Package_2102.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dd3fa11d-e8c5-477a-8d6d-dbc66f39bb59"
+        name="JUCED_ColourPropertyComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="0281c064-a4c4-4f8a-b370-6973c3c6939d"
+            isSubstitutable="false">
+            <classMoniker
+              Id="e90260a3-dfa9-4c1b-a39d-aa51c7531619"
+              LastKnownName="TextWithButtonPropertyComponent"
+              LastKnownLocation="Package_2102.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

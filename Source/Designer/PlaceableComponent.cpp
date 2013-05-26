@@ -49,7 +49,7 @@ PlaceableComponent::~PlaceableComponent()
 
 bool PlaceableComponent::perform ()
 {
-	Constructor::log("PC001 - Perform init (" + _selectedToolName + ")");
+	Constructor::log("PC001 - Perform init (" + _selectedToolName + "), bounds: " + _bounds.toString());
 	bool isBeingCreated = false;
 	Constructor::log("PC101 - Find associated BigTree of the parent component");
 	//If user draw inside a component, let's find it's associated BigTree of the parent component
@@ -108,10 +108,12 @@ bool PlaceableComponent::perform ()
 		//current component's BigTree is invalid, create a new one
 		Constructor::log("PC101 - current component's BigTree is invalid, create a new one");
 		delete _componentTree;
-		Constructor::log("PC101 - deleted");
+		Constructor::log("PC101 - deleted, creating BigTree of object type: " + _dynamicObject->getProperty(Attributes::objectType).toString());
+		//wait(250);
 		objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
 		Constructor::log("PC101 - created, valid: " + String(objTree->isValid()) + " @" + String((int)&_componentTree));
 		//DBG((static_cast<void *> (&_componentTree)));
+		//wait(1000);
 		*_componentTree = BigTree(*objTree);
 		Constructor::log("PC101 - copied");
 	} else {
