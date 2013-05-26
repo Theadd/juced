@@ -445,6 +445,9 @@ void Constructor::quickSave ()
 		mainFileCode = mainFileCode.replace("%varName%", codeGenerator.getVarName());
 		mainFile.replaceWithText(mainFileCode);
 
+		system(String("AStyle.exe -n --style=allman " + generatedCodeFile.getFullPathName()).getCharPointer());//File::addTrailingSeparator(savePath.getFullPathName()) + "Source" + File::separatorString + "GeneratedCode.cpp").getCharPointer());
+		
+
 	}
 }
 

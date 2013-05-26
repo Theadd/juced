@@ -107,6 +107,7 @@ void JUCE_Designer::writeXmlToFile (String _filename)
 
 void JUCE_Designer::generateCode ()
 {
+	return;
 	Constructor::log("D003 - Generate code structure");
 	if (Constructor::getInstance()->getBigTreeRoot() != nullptr) {
 
