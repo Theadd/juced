@@ -29,6 +29,7 @@
 #include "../Modules/juced_Component.h"
 #include "../Modules/juced_Viewport.h"
 #include "../Modules/juced_ImageComponent.h"
+#include "../Modules/juced_ToggleButton.h"
 
 class BigTree;
 

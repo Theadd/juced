@@ -29,6 +29,7 @@
 #include "../Modules/juced_Component.h"
 #include "../Modules/juced_Viewport.h"
 #include "../Modules/juced_ImageComponent.h"
+#include "../Modules/juced_ToggleButton.h"
 
 /** This class holds all object hierarchy and property modification. */
 class BigTree : public ValueTree,

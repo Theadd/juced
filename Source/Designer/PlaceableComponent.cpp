@@ -114,7 +114,19 @@ bool PlaceableComponent::perform ()
 		Constructor::log("PC101 - created, valid: " + String(objTree->isValid()) + " @" + String((int)&_componentTree));
 		//DBG((static_cast<void *> (&_componentTree)));
 		//wait(1000);
-		*_componentTree = BigTree(*objTree);
+		bool crashed = false;
+		try {
+			*_componentTree = BigTree(*objTree);
+		} catch (...) {
+			DBG(("Exception caught!! Retry!"));
+			crashed = true;
+		}
+		if (crashed) {
+			objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
+			DBG(("CREATED AGAIN!"));
+			*_componentTree = BigTree(*objTree);
+			DBG(("WOW! Done?!?"));
+		}
 		Constructor::log("PC101 - copied");
 	} else {
 		Constructor::log("PC101 - else!! wtf");
@@ -256,6 +268,9 @@ DynamicObject* PlaceableComponent::createObjectFromToolName (String *selectedToo
 		return (DynamicObject *)object;
 	} else if (selectedToolName->equalsIgnoreCase("juced_ImageComponent")) {
 		juced_ImageComponent *object = new juced_ImageComponent();
+		return (DynamicObject *)object;
+	} else if (selectedToolName->equalsIgnoreCase("juced_ToggleButton")) {
+		juced_ToggleButton *object = new juced_ToggleButton();
 		return (DynamicObject *)object;
 	}
 	return nullptr;

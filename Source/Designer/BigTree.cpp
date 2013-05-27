@@ -308,6 +308,12 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				} else {
 					propertyChanged = false;
 				}
+			} else if (this->getProperty(Attributes::objectType) == Modules::ToggleButton) {
+				//deal with DirectShowComponent specific properties
+				//juced_ToggleButton *cObject = dynamic_cast<juced_ToggleButton *> (this->getProperty(Attributes::object).getDynamicObject());
+				
+				propertyChanged = false;
+
 			}
                  
 			//[CUSTOM MODULES HERE]

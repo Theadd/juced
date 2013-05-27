@@ -61,6 +61,7 @@ namespace Modules
 	const Identifier DirectShowComponent	  ("DirectShowComponent");
 	const Identifier Viewport  ("Viewport");
 	const Identifier ImageComponent  ("ImageComponent");
+	const Identifier ToggleButton  ("ToggleButton");
     const Identifier Unknown	  ("Unknown");
 }
 

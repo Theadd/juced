@@ -6,6 +6,9 @@
 
 namespace BinaryData
 {
+    extern const char*   togglebutton_png;
+    const int            togglebutton_pngSize = 1713;
+
     extern const char*   imagecomponent_png;
     const int            imagecomponent_pngSize = 4514;
 

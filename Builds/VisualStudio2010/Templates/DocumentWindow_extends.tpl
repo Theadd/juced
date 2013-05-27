@@ -12,7 +12,7 @@ public:
 
 	void closeButtonPressed()
 	{
-		//JUCEApplication::getInstance()->systemRequestedQuit();	
+		JUCEApplication::getInstance()->systemRequestedQuit();	
 	}
 	
 	void mouseUp (const MouseEvent& event)
