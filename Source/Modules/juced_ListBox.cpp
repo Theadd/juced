@@ -20,8 +20,8 @@ juced_ListBox::juced_ListBox()  : ListBox ()
 	//setProperty(Attributes::text, getText());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
-	setProperty(Attributes::showEditor, false);
-	setProperty(Attributes::editable, false);
+	//setProperty(Attributes::showEditor, false);
+	//setProperty(Attributes::editable, false);
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());

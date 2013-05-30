@@ -109,11 +109,9 @@ bool PlaceableComponent::perform ()
 		Constructor::log("PC101 - current component's BigTree is invalid, create a new one");
 		delete _componentTree;
 		Constructor::log("PC101 - deleted, creating BigTree of object type: " + _dynamicObject->getProperty(Attributes::objectType).toString());
-		//wait(250);
 		objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
 		Constructor::log("PC101 - created, valid: " + String(objTree->isValid()) + " @" + String((int)&_componentTree));
 		//DBG((static_cast<void *> (&_componentTree)));
-		//wait(1000);
 		bool crashed = false;
 		try {
 			*_componentTree = BigTree(*objTree);
@@ -122,10 +120,9 @@ bool PlaceableComponent::perform ()
 			crashed = true;
 		}
 		if (crashed) {
+			DBG(("Crashed, retry"));
 			objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
-			DBG(("CREATED AGAIN!"));
 			*_componentTree = BigTree(*objTree);
-			DBG(("WOW! Done?!?"));
 		}
 		Constructor::log("PC101 - copied");
 	} else {

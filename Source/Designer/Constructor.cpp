@@ -371,6 +371,7 @@ void Constructor::resetCurrentState()
 bool Constructor::createNewProject()
 {
 	NewProjectWizard projectWizard;
+
 	if (projectWizard.show()) {
 		projectName = projectWizard.getProjectName();
 		projectPath = projectWizard.getProjectPath();

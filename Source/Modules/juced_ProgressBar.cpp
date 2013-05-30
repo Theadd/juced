@@ -23,8 +23,8 @@ juced_ProgressBar::juced_ProgressBar()  : ProgressBar (_progress)
 	//setProperty(Attributes::font, getFont().toString());
 	setProperty(Attributes::backgroundColour, findColour(backgroundColourId).toDisplayString(true));
 	//setProperty(Attributes::textColour, findColour(textColourId).toDisplayString(true));
-	setProperty(Attributes::showEditor, false);
-	setProperty(Attributes::editable, false);
+	//setProperty(Attributes::showEditor, false);
+	//setProperty(Attributes::editable, false);
 	setProperty(Attributes::height, getHeight());
 	setProperty(Attributes::width, getWidth());
 	setProperty(Attributes::name, getName());

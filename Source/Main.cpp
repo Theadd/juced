@@ -63,7 +63,7 @@ public:
     class MainWindow    : public DocumentWindow
     {
     public:
-        MainWindow()  : DocumentWindow ("MainWindow",
+        MainWindow()  : DocumentWindow ("JUCE Interface Designer",
                                         //Colour((uint8) 27, (uint8) 80, (uint8) 139),	//Colours::hotpink,
 										Colour((uint8) 49, (uint8) 124, (uint8) 205),
                                         DocumentWindow::allButtons)
