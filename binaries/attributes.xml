@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Attributes>
+  <Attribute name="name" group="General" visible="1" type="text" display="Name" valueType="text" syntax='setName("%name%")'/>
+  <Attribute name="varName" group="General" visible="1" type="text" display="Variable name" valueType="text" syntax=''/>
+  <Attribute name="text" group="General" visible="1" type="textarea" display="Text" valueType="text" syntax='setText("%text%", false)'/>
+  <Attribute name="object" group="General" visible="0" type="text" display="" valueType="undefined" syntax=''/>
+  <Attribute name="objectType" group="General" visible="0" type="text" display="" valueType="undefined" syntax=''/>
+  <Attribute name="className" group="General" visible="0" type="text" display="Class name" valueType="text" syntax=''/>
+  <Attribute name="buttonText" group="General" visible="1" type="text" display="Button text" valueType="text" syntax='setButtonText("%buttonText%")'/>
+  <Attribute name="x" group="Bounds" visible="1" type="text" display="X" valueType="integer" syntax="setBounds(%x%, %y%, %width%, %height%)"/>
+  <Attribute name="y" group="Bounds" visible="1" type="text" display="Y" valueType="integer" syntax=''/>
+  <Attribute name="height" group="Bounds" visible="1" type="text" display="Height" valueType="integer" syntax=''/>
+  <Attribute name="width" group="Bounds" visible="1" type="text" display="Width" valueType="integer" syntax=''/>
+  <Attribute name="backgroundColour" group="Colours" visible="1" type="colour" display="Background colour" valueType="rgba" syntax='setColour(%className%::backgroundColourId, Colour::fromString("%backgroundColour%"))'/>
+  <Attribute name="textColour" group="Colours" visible="1" type="colour" display="Text colour" valueType="rgba" syntax='setColour(%className%::textColourId, Colour::fromString("%textColour%"))'/>
+  <Attribute name="connectedEdges" group="Appearance" visible="1" type="enumeration" display="Connected edges" valueType="integer" syntax='setConnectedEdges(%connectedEdges%)'/>
+  <Attribute name="titleBarButtons" group="Appearance" visible="1" type="enumeration" display="Titlebar buttons" valueType="integer" syntax='setTitleBarButtonsRequired(%titleBarButtons%, %titleBarButtonsOnLeft%)'/>
+  <Attribute name="titleBarHeight" group="Appearance" visible="1" type="text" display="Titlebar height" valueType="integer" syntax='setTitleBarHeight(%titleBarHeight%)'/>
+  <Attribute name="titleBarButtonsOnLeft" group="Appearance" visible="1" type="boolean" display="Titlebar buttons on left" valueType="text" syntax=''/>
+  <Attribute name="titleBarTextCentered" group="Appearance" visible="1" type="boolean" display="Titlebar text centered" valueType="text" syntax='setTitleBarTextCentred(%titleBarTextCentered%)'/>
+  <Attribute name="declareExtended" group="General" visible="1" type="boolean" display="Declare as an extended class" valueType="text" syntax=''/>
+  <Attribute name="lookAndFeel" group="Appearance" visible="1" type="choice" display="LookAndFeel" valueType="text" syntax='#'/>
+  <Attribute name="textEntryBoxPosition" group="Appearance" visible="1" type="choice" display="Textbox position" valueType="text" syntax='setTextBoxStyle(%className%::%textEntryBoxPosition%, %textBoxReadOnly%, %textEntryBoxWidth%, %textEntryBoxHeight%)'/>
+  <Attribute name="sliderStyle" group="Appearance" visible="1" type="choice" display="Slider style" valueType="text" syntax='setSliderStyle(%className%::%sliderStyle%)'/>
+  <Attribute name="textEntryBoxWidth" group="Appearance" visible="1" type="text" display="Textbox width" valueType="integer" syntax=''/>
+  <Attribute name="textEntryBoxHeight" group="Appearance" visible="1" type="text" display="Textbox height" valueType="integer" syntax=''/>
+  <Attribute name="textBoxReadOnly" group="General" visible="1" type="boolean" display="Textbox read only" valueType="integer" syntax=''/>
+  <Attribute name="minimum" group="General" visible="1" type="text" display="Min value" valueType="integer" syntax='setRange(%minimum%, %maximum%, %interval%)'/>
+  <Attribute name="maximum" group="General" visible="1" type="text" display="Max value" valueType="integer" syntax=''/>
+  <Attribute name="interval" group="General" visible="1" type="text" display="Interval" valueType="integer" syntax=''/>
+  <Attribute name="value" group="General" visible="1" type="text" display="Value" valueType="integer" syntax='setValue(%value%)'/>
+  <Attribute name="toolName" group="General" visible="0" type="text" display="Tool Name" valueType="text" syntax=''/>
+  <Attribute name="allowTransform" group="General" visible="0" type="boolean" display="Allow transform(components owned by windows are not allowed)" valueType="text" syntax=''/>
+  <Attribute name="contentOwner" group="General" visible="0" type="boolean" display="Sets if object should have another component owned" valueType="text" syntax=''/>
+  <Attribute name="normalImage" group="Appearance" visible="1" type="file" display="Normal image" valueType="text" syntax='#'/>
+  <Attribute name="overImage" group="Appearance" visible="1" type="file" display="Over image" valueType="text" syntax=''/>
+  <Attribute name="downImage" group="Appearance" visible="1" type="file" display="Down image" valueType="text" syntax=''/>
+  <Attribute name="castMouseEvents" group="General" visible="1" type="boolean" display="Cast mouse events" valueType="text" syntax='#'/>
+  <Attribute name="itemList" group="General" visible="1" type="textarea" display="Item list" valueType="text" syntax='#'/>
+  <Attribute name="editable" group="General" visible="1" type="boolean" display="Editable" valueType="text" syntax='setEditable(%editable%)'/>
+  <Attribute name="showEditor" group="General" visible="1" type="boolean" display="Show editor" valueType="text" syntax='#'/>
+  <Attribute name="movie" group="General" visible="1" type="text" display="Movie path/url" valueType="text" syntax='loadMovie("%movie%")'/>
+  <Attribute name="scrollBarThickness" group="Appearance" visible="1" type="text" display="Scrollbar thickness" valueType="integer" syntax='setScrollBarThickness(%scrollBarThickness%)'/>
+  <Attribute name="contentViewed" group="General" visible="0" type="boolean" display="Sets if object should add its child using setViewedComponent()" valueType="text" syntax=''/>
+  <Attribute name="usingNativeTitleBar" group="Appearance" visible="1" type="boolean" display="Native Titlebar" valueType="text" syntax='setUsingNativeTitleBar(%usingNativeTitleBar%)'/>
+  <Attribute name="image" group="Appearance" visible="1" type="file" display="Image" valueType="text" syntax='setImage(ImageCache::getFromMemory(BinaryData::%image%, BinaryData::%image%Size))'/>
+</Attributes>

@@ -33,8 +33,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "juced";
-    const char* const  versionString  = "0.1";
-    const int          versionNumber  = 0x100;
+    const char* const  versionString  = "1.0";
+    const int          versionNumber  = 0x10000;
 }
 
 #endif   // __APPHEADERFILE_FNJJNJ__

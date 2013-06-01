@@ -21,6 +21,9 @@
 class /*JUCE_API*/  LookAndFeelCustom    : public LookAndFeel
 {
 public:
+
+    static LookAndFeelCustom* m_pInstance;
+
     //==============================================================================
     /** Creates the default JUCE look and feel. */
     LookAndFeelCustom();
@@ -156,7 +159,6 @@ public:
 private:
     //==============================================================================
     DropShadowEffect scrollbarShadow;
-	static ScopedPointer<LookAndFeelCustom> m_pInstance;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LookAndFeelCustom);
 };

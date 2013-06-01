@@ -12,7 +12,7 @@
 
 int juced_DirectShowComponent::_numObjects = 0; 
 
-juced_DirectShowComponent::juced_DirectShowComponent()  : DirectShowComponent()
+juced_DirectShowComponent::juced_DirectShowComponent()   : Component()
 {
 	setName("DirectShow");
 	setProperty(Attributes::objectType, Modules::Label.toString());

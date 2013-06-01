@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="fnjJNJ" name="juced" projectType="guiapp" version="0.1" bundleIdentifier="edu.upc.juced"
-              jucerVersion="3.0.0" userNotes="JUCE GUI Designer">
+<JUCERPROJECT id="fnjJNJ" name="juced" projectType="guiapp" version="1.0" bundleIdentifier="edu.upc.juced"
+              jucerVersion="3.0.0" userNotes="JUCE Interface Designer">
   <MAINGROUP id="PHxAmr" name="juced">
     <GROUP id="{28A7121C-2451-00DC-CECA-C9820136CEE0}" name="Source">
       <GROUP id="{89244D1A-FB64-710E-1DF6-D1C3432E67CC}" name="Styles">
@@ -146,19 +146,31 @@
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
   </MODULES>
   <EXPORTFORMATS>
     <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="..\JUCE\modules"
-            bigIcon="AIae3g" smallIcon="AIae3g">
+            bigIcon="AIae3g" smallIcon="AIae3g" externalLibraries="..\..\lib\AStyleLib.lib">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="juced"/>
+                       isDebug="1" optimisation="1" targetName="juced" binaryPath="binaries"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="2" targetName="juced"/>
+                       isDebug="0" optimisation="2" targetName="juced" binaryPath="binaries"/>
+        <CONFIGURATION name="Release64" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       optimisation="2" targetName="juced64" binaryPath="binaries"/>
       </CONFIGURATIONS>
     </VS2010>
+    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../JUCE/modules" smallIcon="AIae3g"
+                bigIcon="AIae3g">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="juced" binaryPath="binaries"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
+                       targetName="juced" binaryPath="binaries"/>
+      </CONFIGURATIONS>
+    </LINUX_MAKE>
   </EXPORTFORMATS>
-  <JUCEOPTIONS JUCE_DIRECTSHOW="enabled" JUCE_MEDIAFOUNDATION="enabled"/>
+  <JUCEOPTIONS JUCE_DIRECTSHOW="enabled" JUCE_MEDIAFOUNDATION="enabled" JUCE_USE_XSHM="enabled"
+               JUCE_USE_XRENDER="enabled" JUCE_USE_XCURSOR="enabled"/>
 </JUCERPROJECT>

@@ -19,7 +19,7 @@ class juced_Viewport	: public Viewport,
 public:
 
     juced_Viewport();
-	void juced_Viewport::paint (Graphics& g);
+	//void juced_Viewport::paint (Graphics& g);
 
 	void mouseUp (const MouseEvent& event);
 	void mouseDrag (const MouseEvent& event);

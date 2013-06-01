@@ -1,0 +1,1 @@
+libx11-dev libfreetype6 libfreetype6-dev libxinerama-dev libxcursor-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev libxcomposite-dev

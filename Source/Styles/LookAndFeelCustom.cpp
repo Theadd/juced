@@ -11,7 +11,7 @@
 #include "LookAndFeelCustom.h"
 
 
-ScopedPointer<LookAndFeelCustom> LookAndFeelCustom::m_pInstance = nullptr; 
+LookAndFeelCustom* LookAndFeelCustom::m_pInstance = nullptr; 
 
 LookAndFeelCustom* LookAndFeelCustom::getInstance()
 {

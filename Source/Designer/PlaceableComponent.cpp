@@ -110,7 +110,7 @@ bool PlaceableComponent::perform ()
 		delete _componentTree;
 		Constructor::log("PC101 - deleted, creating BigTree of object type: " + _dynamicObject->getProperty(Attributes::objectType).toString());
 		objTree = new BigTree(_dynamicObject, _dynamicObject->getProperty(Attributes::objectType));
-		Constructor::log("PC101 - created, valid: " + String(objTree->isValid()) + " @" + String((int)&_componentTree));
+		Constructor::log("PC101 - created");
 		//DBG((static_cast<void *> (&_componentTree)));
 		bool crashed = false;
 		try {

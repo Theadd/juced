@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Choices>
+  <Choice name="lookAndFeel">
+	<Item name="Inherit" display="Inherit" value="Inherit"/>
+    <Item name="Custom" display="Custom" value="LookAndFeelCustom"/>
+  </Choice>
+  <Choice name="textEntryBoxPosition">
+	<Item name="NoTextBox" display="None" value="NoTextBox"/>
+	<Item name="TextBoxLeft" display="Left" value="TextBoxLeft"/>
+	<Item name="TextBoxRight" display="Right" value="TextBoxRight"/>
+	<Item name="TextBoxAbove" display="Above" value="TextBoxAbove"/>
+	<Item name="TextBoxBelow" display="Below" value="TextBoxBelow"/>
+  </Choice>
+  <Choice name="sliderStyle">
+	<Item name="LinearHorizontal" display="LinearHorizontal" value="LinearHorizontal"/>
+    <Item name="LinearVertical" display="LinearVertical" value="LinearVertical"/>
+    <Item name="LinearBar" display="LinearBar" value="LinearBar"/>
+    <Item name="LinearBarVertical" display="LinearBarVertical" value="LinearBarVertical"/>
+    <Item name="Rotary" display="Rotary" value="Rotary"/>
+    <Item name="RotaryHorizontalDrag" display="RotaryHorizontalDrag" value="RotaryHorizontalDrag"/>
+    <Item name="RotaryVerticalDrag" display="RotaryVerticalDrag" value="RotaryVerticalDrag"/>
+    <Item name="RotaryHorizontalVerticalDrag" display="RotaryHorizontalVerticalDrag" value="RotaryHorizontalVerticalDrag"/>
+    <Item name="IncDecButtons" display="IncDecButtons" value="IncDecButtons"/>
+    <Item name="TwoValueHorizontal" display="TwoValueHorizontal" value="TwoValueHorizontal"/>
+    <Item name="TwoValueVertical" display="TwoValueVertical" value="TwoValueVertical"/>
+    <Item name="ThreeValueHorizontal" display="ThreeValueHorizontal" value="ThreeValueHorizontal"/>
+    <Item name="ThreeValueVertical" display="ThreeValueVertical" value="ThreeValueVertical"/>
+  </Choice>
+</Choices>

@@ -57,6 +57,8 @@ public:
 	String selectedTemplate;
 	String rootVarName;
 
+        static Constructor* m_pInstance;
+
 	/** This function is called to create an instance of the class.
 
 		Calling the constructor publicly is not allowed. The constructor
@@ -183,7 +185,7 @@ private:
 	Constructor(){};  // Private so that it can  not be called
 	Constructor(Constructor const&){};             // copy constructor is private
 	Constructor& operator=(Constructor const&){};  // assignment operator is private
-	static ScopedPointer<Constructor> m_pInstance;
+	
 
 	JUCE_LEAK_DETECTOR (Constructor)
 };

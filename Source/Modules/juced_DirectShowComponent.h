@@ -13,8 +13,8 @@
 
 #include "../Designer/Globals.h"
 
-class juced_DirectShowComponent    : public DirectShowComponent,
-									 public DynamicObject
+class juced_DirectShowComponent    : public Component,
+                                     public DynamicObject
 {
 public:
 
@@ -36,3 +36,4 @@ private:
 
 
 #endif  // __JUCED_DIRECTSHOWCOMPONENT_H_43DF349E__
+

@@ -284,7 +284,7 @@ void BigTree::valueTreePropertyChanged (ValueTree &treeWhosePropertyHasChanged, 
 				juced_DirectShowComponent *cObject = dynamic_cast<juced_DirectShowComponent *> (this->getProperty(Attributes::object).getDynamicObject());
 				if (property == Attributes::movie) {
 					String movieSource = treeWhosePropertyHasChanged.getProperty(property);
-					cObject->loadMovie(movieSource);
+					//cObject->loadMovie(movieSource);
 				} else {
 					propertyChanged = false;
 				}

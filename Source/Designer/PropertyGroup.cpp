@@ -40,7 +40,8 @@ public:
 		bool allowTransform = true;
 		if (tree != nullptr) {
 			setName((tree->hasProperty(Attributes::name)) ? tree->getProperty(Attributes::name) : "undefined");
-			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + tree->getProperty(Attributes::objectType.toString()) : getName());
+                        String propertyAsString = tree->getProperty(Attributes::objectType.toString());
+			setName((tree->hasProperty(Attributes::objectType)) ? getName() + " : " + propertyAsString : getName());
 			//if we are not allowed to transform this component, some properties groups will be hidden
 			if (tree->hasProperty(Attributes::allowTransform))
 				allowTransform = tree->getProperty(Attributes::allowTransform);

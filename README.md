@@ -7,7 +7,9 @@ Features
     Easy to use
     Undo/redo support
     Extensive editable properties
-    Export/Import to save.xml (Ctrl+s / Ctrl+o)
-    C++ code generation (Ctrl+g)
+    Export/Import project design
+    C++ automatic code generation on save
+    Custom LookAndFeel (As a component property)
+    Multi-platform support: Windows and Linux (Tested on Ubuntu 13.04)
 
 See GitHub pages: http://theadd.github.io/juced/

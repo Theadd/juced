@@ -12,7 +12,7 @@
 #include "Constructor.h"
 
 // Global static pointer used to ensure a single instance of the class.
-ScopedPointer<Constructor> Constructor::m_pInstance = nullptr; 
+Constructor* Constructor::m_pInstance = nullptr; 
 
 Constructor* Constructor::getInstance()
 {
@@ -423,7 +423,8 @@ void Constructor::quickSave ()
 		XmlElement *obj_xml = getBigTreeRoot()->createXml();
 
 		//Create xml file from XmlElement
-		File file = File(File::addTrailingSeparator(File::addTrailingSeparator(File::addTrailingSeparator(projectPath) + ".juced") + "designs") + getBigTreeRoot()->getProperty(Attributes::varName) + ".xml");
+                String varNameAsString = getBigTreeRoot()->getProperty(Attributes::varName);
+		File file = File(File::addTrailingSeparator(File::addTrailingSeparator(File::addTrailingSeparator(projectPath) + ".juced") + "designs") + varNameAsString + ".xml");
 		file.create();
 		obj_xml->writeToFile(file, "");
 
